@@ -6,7 +6,7 @@
   <link href="http://w3nx1z1.github.io/atom.xml" rel="self"/>
   
   <link href="http://w3nx1z1.github.io/"/>
-  <updated>2023-04-03T11:12:02.511Z</updated>
+  <updated>2023-04-07T07:18:31.423Z</updated>
   <id>http://w3nx1z1.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>精武杯预赛要点</title>
+    <link href="http://w3nx1z1.github.io/2023/04/07/%E7%B2%BE%E6%AD%A6%E6%9D%AF%E9%A2%84%E8%B5%9B%E8%A6%81%E7%82%B9/"/>
+    <id>http://w3nx1z1.github.io/2023/04/07/%E7%B2%BE%E6%AD%A6%E6%9D%AF%E9%A2%84%E8%B5%9B%E8%A6%81%E7%82%B9/</id>
+    <published>2023-04-07T07:18:52.067Z</published>
+    <updated>2023-04-07T07:18:31.423Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="精武杯预赛要点"><a href="#精武杯预赛要点" class="headerlink" title="精武杯预赛要点"></a>精武杯预赛要点</h1><h2 id="6-操作系统账户”JIANGWU”登陆总次数为："><a href="#6-操作系统账户”JIANGWU”登陆总次数为：" class="headerlink" title="6.操作系统账户”JIANGWU”登陆总次数为："></a>6.操作系统账户”JIANGWU”登陆总次数为：</h2><p>答案为：19</p><p>注意：这里建议从系统痕迹—系统信息—用户信息—用户名—登录次数里面看 不要在帐户登陆里面直接数次数 容易错</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230405093346941.png" alt="image-20230405093346941"></p><p>这里面是18次</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230405093653311.png" alt="image-20230405093653311"></p><p>但真正其实是19次</p><h2 id="8-破解操作系统登录账户及密码所需文件为"><a href="#8-破解操作系统登录账户及密码所需文件为" class="headerlink" title="8.破解操作系统登录账户及密码所需文件为"></a>8.破解操作系统登录账户及密码所需文件为</h2><p>SAM和SYSTEM</p><p>原理性知识 是windows密码的储存文件位置</p><h2 id="10-13题问文件在系统中的储存路径"><a href="#10-13题问文件在系统中的储存路径" class="headerlink" title="10.13题问文件在系统中的储存路径"></a>10.13题问文件在系统中的储存路径</h2><p>建议是创建一个虚拟机 确实的看一下绝对路径 结合取证大师获得正确的答案(取证大师里面是相对路径)</p><p>推荐是虚拟机里面看一下在哪个磁盘中 再将取证大师里面后部分路径直接复制一下 因为虚拟机里面部分路径是中文的 可能和答案不一样</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230405095359440.png" alt="image-20230405095359440"></p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230405095447239.png" alt="image-20230405095447239"></p><p>比如10题 应该是要Documents 但虚拟机里面显示的是”文档”</p><h2 id="在复习一下bitlocker的解密方法"><a href="#在复习一下bitlocker的解密方法" class="headerlink" title="在复习一下bitlocker的解密方法"></a>在复习一下bitlocker的解密方法</h2><p>在密码&#x2F;密钥检索里面找到bitlocker恢复密钥—跳转源文件—保存到本地—在加密分区中找到bitlocker解密—将密钥文件填进去就能解密</p><h2 id="手机取证的操作方法"><a href="#手机取证的操作方法" class="headerlink" title="手机取证的操作方法"></a>手机取证的操作方法</h2><p>我们是可以在取证大师里面找到两个手机备份相关数据的文件夹 </p><p>打开手机大师—文件取证—手机备份取证 在选择相应的手机平台 文件路径就可以了</p><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20230406093400181.png" alt="image-20230406093400181"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;精武杯预赛要点&quot;&gt;&lt;a href=&quot;#精武杯预赛要点&quot; class=&quot;headerlink&quot; title=&quot;精武杯预赛要点&quot;&gt;&lt;/a&gt;精武杯预赛要点&lt;/h1&gt;&lt;h2 id=&quot;6-操作系统账户”JIANGWU”登陆总次数为：&quot;&gt;&lt;a href=&quot;#6-操作系统账户”</summary>
+      
+    
+    
+    
+    <category term="取证" scheme="http://w3nx1z1.github.io/categories/%E5%8F%96%E8%AF%81/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>NKCTF Misc部分复现</title>
