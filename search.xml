@@ -92,10 +92,16 @@
       
       <categories>
           
-          <category> web </category>
+          <category> ctf </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
       
     </entry>
     
