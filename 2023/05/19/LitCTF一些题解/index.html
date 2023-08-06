@@ -1,0 +1,354 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>LitCTF一些题解 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="LitCTF一些题解WEB导弹迷踪F12 在源代码中找到flag  NSSCTF{y0u_w1n_th1s_!!!} 我Flag呢？bp使用repeater看一下  NSSCTF{6ea58035-0f11-4048-ad1d-39be33c5d5c6} 同时在网站的控制台处可以找到第一个彩蛋   LitCTF{First_t0_The_k3y! Follow me and hack me简单的h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LitCTF一些题解">
+<meta property="og:url" content="http://w3nx1z1.github.io/2023/05/19/LitCTF%E4%B8%80%E4%BA%9B%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="LitCTF一些题解WEB导弹迷踪F12 在源代码中找到flag  NSSCTF{y0u_w1n_th1s_!!!} 我Flag呢？bp使用repeater看一下  NSSCTF{6ea58035-0f11-4048-ad1d-39be33c5d5c6} 同时在网站的控制台处可以找到第一个彩蛋   LitCTF{First_t0_The_k3y! Follow me and hack me简单的h">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2023-05-19T10:34:54.119Z">
+<meta property="article:modified_time" content="2023-06-12T12:16:54.103Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="misc">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/2023/05/19/LitCTF%E4%B8%80%E4%BA%9B%E9%A2%98%E8%A7%A3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LitCTF一些题解',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-12 20:16:54'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">LitCTF一些题解</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-19T10:34:54.119Z" title="发表于 2023-05-19 18:34:54">2023-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-12T12:16:54.103Z" title="更新于 2023-06-12 20:16:54">2023-06-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="LitCTF一些题解"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="LitCTF一些题解"><a href="#LitCTF一些题解" class="headerlink" title="LitCTF一些题解"></a>LitCTF一些题解</h1><h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="导弹迷踪"><a href="#导弹迷踪" class="headerlink" title="导弹迷踪"></a>导弹迷踪</h3><p>F12 在源代码中找到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519155006089.png" alt="image-20230519155006089"></p>
+<p><strong>NSSCTF{y0u_w1n_th1s_!!!}</strong></p>
+<h3 id="我Flag呢？"><a href="#我Flag呢？" class="headerlink" title="我Flag呢？"></a>我Flag呢？</h3><p>bp使用repeater看一下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519155501335.png" alt="image-20230519155501335"></p>
+<p><strong>NSSCTF{6ea58035-0f11-4048-ad1d-39be33c5d5c6}</strong></p>
+<p>同时在网站的控制台处可以找到第一个彩蛋</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519155800019.png" alt="image-20230519155800019"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519155809078.png" alt="image-20230519155809078"></p>
+<p><strong>LitCTF{First_t0_The_k3y!</strong></p>
+<h3 id="Follow-me-and-hack-me"><a href="#Follow-me-and-hack-me" class="headerlink" title="Follow me and hack me"></a>Follow me and hack me</h3><p>简单的hackbar的使用 用post和get方法分别进行传参</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519160049607.png" alt="image-20230519160049607"></p>
+<p><strong>NSSCTF{957f8756-66e3-45d2-9e1c-bcf6dd96c2ee}</strong></p>
+<p>常见的网站备份文件名都试一下</p>
+<p>发现输入<a target="_blank" rel="noopener" href="http://www.zip可以进行下载/">www.zip可以进行下载</a> 下载后得到备份文件index.php.bak</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519163046047.png" alt="image-20230519163046047"></p>
+<p>得到第三个彩蛋</p>
+<pre><code>_R3ady_Pl4yer_000ne_
+</code></pre>
+<h3 id="这是什么？SQL-！注一下-！"><a href="#这是什么？SQL-！注一下-！" class="headerlink" title="这是什么？SQL ！注一下 ！"></a>这是什么？SQL ！注一下 ！</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519165142849.png" alt="image-20230519165142849"></p>
+<p>在网页下方可以看到传入id参数的sql语句</p>
+<p>尝试输入1、2等 直接看到了第四个彩蛋</p>
+<p><strong>F1rst_to_Th3_eggggggggg!}</strong> </p>
+<p>使用sqlmap进行一个梭</p>
+<pre><code class="python">python sqlmap url --dbs
+python sqlmap url -D ctftraining -T flag -C &quot;flag&quot; --dump
+</code></pre>
+<p>得到<strong>NSSCTF{9ff959f5-1a7e-484a-8295-225ca817bef1}</strong></p>
+<h3 id="就当无事发生"><a href="#就当无事发生" class="headerlink" title="就当无事发生"></a>就当无事发生</h3><p>给了探姬的博客<a target="_blank" rel="noopener" href="https://probiusofficial.github.io/">https://ProbiusOfficial.github.io</a></p>
+<p>那就进去看看 第一篇文章就是题目相关的 “什么是flag ”</p>
+<p>那进入github找到探姬存放数据的库</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519182641671.png" alt="image-20230519182641671"></p>
+<p>定位到博客的库</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524211251005.png" alt="image-20230524211251005"></p>
+<p>点击branch</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519182751017.png" alt="image-20230519182751017"></p>
+<p>发现main分支最近更改过  “什么是flag”这篇文章也是最近发布的</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519183002787.png" alt="image-20230519183002787"></p>
+<p>查看commit 一个commit可以认为是一个改动的节点 进入后查看新提交的commit的位置</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519183157172.png" alt="image-20230519183157172"></p>
+<p>在这里有一个红 <font color="red">×</font> 进入后找到“什么是flag呢” 对应的index.html<br><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519183400263.png" alt="image-20230519183400263"></p>
+<p>找到flag：<strong>LitCTF{g1thub_c0mmit_1s_s0_us3ful}</strong></p>
+<h3 id="Http-pro-max-plus"><a href="#Http-pro-max-plus" class="headerlink" title="Http pro max plus"></a>Http pro max plus</h3><p>考察http协议伪造</p>
+<p>首先，显示只允许本地访问</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519191538249.png" alt="image-20230519191538249"></p>
+<p>使用ip地址欺骗的字典 一键全部复制粘贴</p>
+<pre><code>X-Forwarded-For: 127.0.0.1
+X-Forwarded: 127.0.0.1
+X-Forwarded-With:127.0.0.1
+X-Forwarded-Proto:127.0.0.1
+X-Forwarded-Host:127.0.0.1
+Forwarded-For: 127.0.0.1
+Forwarded: 127.0.0.1
+X-Forwarded-Host: 127.0.0.1
+X-remote-IP: 127.0.0.1
+X-remote-addr: 127.0.0.1 
+True-Client-IP: 127.0.0.1 
+X-Client-IP: 127.0.0.1
+Client-IP: 127.0.0.1
+X-Real-IP: 127.0.0.1
+Ali-CDN-Real-IP: 127.0.0.1
+Cdn-Src-Ip: 127.0.0.1
+Cdn-Real-Ip: 127.0.0.1
+CF-Connecting-IP: 127.0.0.1
+X-Cluster-Client-IP: 127.0.0.1 
+WL-Proxy-Client-IP: 127.0.0.1 
+Proxy-Client-IP: 127.0.0.1 
+Fastly-Client-Ip: 127.0.0.1 
+True-Client-Ip: 127.0.0.1
+</code></pre>
+<p>第二层 you are not from pornhub.com</p>
+<p>伪造Referer</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519192324761.png" alt="image-20230519192324761"></p>
+<p>第三步 用chrome浏览器啊</p>
+<p>伪造User-Agent</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519192354974.png" alt="image-20230519192354974"></p>
+<p>第四步 修改代理服务器地址</p>
+<p>伪造via</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519192546047.png" alt="image-20230519192546047"></p>
+<p>提示查看&#x2F;wtfwtfwtfwtf.php</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519193646867.png" alt="image-20230519193646867"></p>
+<p>回显内容并没有用 f12看源代码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519193726024.png" alt="image-20230519193726024"></p>
+<p>转到sejishikong.php</p>
+<p>得到<strong>NSSCTF{6dc39953-2c34-4dde-8217-5a76f14a385f}</strong></p>
+<h4 id="http伪造相关知识"><a href="#http伪造相关知识" class="headerlink" title="http伪造相关知识"></a><strong>http伪造相关知识</strong></h4><p>1.请从本地访问&#x2F;提到ip ip地址欺骗</p>
+<p>2.从什么网址访问 修改Referer</p>
+<p>3.通过什么浏览器访问 修改User-Agent</p>
+<p>4.使用什么代理服务器 修改via</p>
+<p>5.http状态码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519195205508.png" alt="image-20230519195205508"></p>
+<p>6.cookie欺骗 认证 伪造</p>
+<pre><code>cookie机制是在浏览网页的时候，服务器将你的登录信息，浏览信息等发送给客户端并保存一定的时间。当你下一次访问这个网站的时候，就能读取上一次你的记录
+
+cookie是一段小型的文本数据是由一个名称（Name）、一个值（Value）和其它几个用于控制Cookie有效期、安全性、使用范围的可选属性组成。我们只要伪造了这个信息就可以绕过登录页面，直接登录。
+</code></pre>
+<p><strong>HTTP基本认证</strong></p>
+<p>是允许http用户代理在请求的时候 提供用户名和密码的一种方式</p>
+<p>认证过程:</p>
+<p>1.客户端请求</p>
+<p>2.服务端应答 包含字段WWW-Authenticate: Basic realm&#x3D;”Secure Area”  Basic为验证模式 realm&#x3D;”Secure Area”是保护域</p>
+<p>3.客户端输入用户名和密码 进行处理，在原先的请求上增加认证消息头（Authorization）然后重新发送再次尝试。过程如下：</p>
+<ol>
+<li>将用户名和密码拼接为<code>用户：密码</code>形式的字符串。</li>
+<li>如果服务器<code>WWW-Authenticate</code>字段有指定编码，则将字符串编译成对应的编码（如：UTF-8）。</li>
+<li>将字符串编码为base64。</li>
+<li>拼接<code>Basic</code> ，放入<code>Authorization</code>头字段，就像这样：<code>Authorization Basic 字符串</code>。 示例：用户名：<code>Aladdin</code> ，密码：<code>OpenSesame</code> ，拼接后为<code>Aladdin:OpenSesame</code>，编码后<code>QWxhZGRpbjpPcGVuU2VzYW1l</code>，在HTTP头部里会是这样：<code>Authorization: Basic QWxhZGRpbjpPcGVuU2VzYW1l</code></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519200031252.png" alt="image-20230519200031252"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519200053714.png" alt="image-20230519200053714"></p>
+<p>由此原理 可以对cookie进行爆破 伪造等操作</p>
+<h3 id="PHP是世界上最好的语言！！"><a href="#PHP是世界上最好的语言！！" class="headerlink" title="PHP是世界上最好的语言！！"></a>PHP是世界上最好的语言！！</h3><p>一句话命令</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230519201416235.png" alt="image-20230519201410989"></p>
+<p><strong>NSSCTF{6eb8d6fb-3f6b-44b8-8698-979458e6df93}</strong></p>
+<h3 id="作业管理系统"><a href="#作业管理系统" class="headerlink" title="作业管理系统"></a>作业管理系统</h3><p>登陆页面 admin admin直接过</p>
+<p>在上传文件处找到第二个彩蛋 <strong>_S0_ne3t?</strong></p>
+<p>简单的文件上传</p>
+<p>在上传文件处写入file:&#x2F;&#x2F;&#x2F;flag 上传-继续编辑 就可以看到flag</p>
+<p><strong>NSSCTF{e2a030e7-c7f3-4587-a3b2-ea2243537015}</strong></p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="easy-shark"><a href="#easy-shark" class="headerlink" title="easy_shark"></a>easy_shark</h3><p>首先压缩包含有伪加密</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524090146235.png" alt="image-20230524090146235"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524090158520.png" alt="image-20230524090158520"></p>
+<p>修改后得到一个流量包</p>
+<p>过滤http 在最后一个包中找到flag (前面是一堆fake的flag)</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524090915381.png" alt="image-20230524090915381"></p>
+<p>有一个方程组 解为17 和 77  gezx{j13p5oznp_1t_z_900y_k3z771h_k001} 看起来是什么加密</p>
+<p>猜测是<strong>仿射密码</strong></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524091412869.png" alt="image-20230524091412869"></p>
+<pre><code>flag&#123;w13e5hake_1s_a_900d_t3a771c_t001&#125;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524091840267.png" alt="image-20230524091840267"></p>
+<p>在tcp流中可以找到上传了一句话木马文件</p>
+<p>所以木马的key就是a</p>
+<pre><code>flag&#123;w13e5hake_1s_a_900d_t3a771c_t001_a&#125;
+</code></pre>
+<h3 id="两仪生四象"><a href="#两仪生四象" class="headerlink" title="两仪生四象"></a>两仪生四象</h3><p>拿到加密脚本 </p>
+<p>其实现的过程是：截取了flag中大括号内的内容 将其每个字符转化为10个二进制字符 再将他们一起拼接到binary_text文件中 将binary_text文件中 每三位二进制字符 对应_reverse_hash表中的数字与卦象进行转换 保存在encode_text中 最后对其进行输出</p>
+<pre><code class="python">_hash = &#123;&quot;乾&quot;: &quot;111&quot;, &quot;兑&quot;: &quot;011&quot;, &quot;离&quot;: &quot;101&quot;, &quot;震&quot;: &quot;001&quot;, &quot;巽&quot;: &quot;110&quot;, &quot;坎&quot;: &quot;010&quot;, &quot;艮&quot;: &quot;100&quot;, &quot;坤&quot;: &quot;000&quot;&#125;
+
+encoded_text = &quot;坤乾兑艮兑坎坤坤巽震坤巽震艮兑坎坤震兑乾坤巽坤艮兑震巽坤巽艮坤巽艮艮兑兑艮震兑乾坤乾坤坤兑艮艮坤巽坤坤巽坎坤兑离坎震艮兑坤巽坎艮兑震坤震兑乾坤乾坎坤兑坎坤震艮离坤离乾艮震艮巽震离震坤巽兑艮兑坎坤震巽艮坤离乾艮坎离坤震巽坎坤兑坤艮兑震巽震巽坎坤巽坤艮兑兑坎震巽兑&quot;
+text = &#39;&#39;
+binary_text = &quot;&quot;
+for char in encoded_text:
+    binary_text += _hash[char]
+formatted_binary_text = &quot; &quot;.join(binary_text[i:i+10] for i in range(0, len(binary_text), 10))
+
+print(formatted_binary_text)
+# 0001110111 0001101000 0000110001 0001100011 0001101000 0001011111 0001100001 0001100111 0000110100 0001101001 0001101110 0001011111 0001110000 0001110010 0000110000 0001100100 0001110101 0001100011 0001100101 0001100100 0001011111 0001110100 0001101000 0001100101 0001011111 0000110011 0001101001 0001100111 0001101000 0001110100 0001011111 0001010100 0001110010 0000110001 0001100111 0001110010 0001100001 0001101101 0001110011
+</code></pre>
+<p>拿到在线二进制转文本工具中 得到flag内的结果</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524094505475.png" alt="image-20230524094505475"></p>
+<p>NSSCTF{wh1ch_ag4in_pr0duced_the_3ight_Tr1grams}</p>
+<h3 id="ssvvgg"><a href="#ssvvgg" class="headerlink" title="ssvvgg"></a>ssvvgg</h3><p>010editor打开发现base64  可以讲base64解码后在单独保存为一个文件 也可以找个工具直接梭 将base64转为图片</p>
+<p><a href="base64%E8%BD%AC%E5%9B%BE%E7%89%87">https://feling.net/base64/</a></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524154633930.png" alt="image-20230524154633930"></p>
+<p>保存为1.png</p>
+<p>在图片尾部提示使用steghide 且密码为六位数字</p>
+<p>使用sh脚本爆破可以得到密码为666666</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230524173026457.png" alt="image-20230524173026457"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2023/05/19/LitCTF%E4%B8%80%E4%BA%9B%E9%A2%98%E8%A7%A3/">http://w3nx1z1.github.io/2023/05/19/LitCTF一些题解/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/misc/">misc</a><a class="post-meta__tags" href="/tags/web/">web</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/03/2023%E5%B9%B4%E9%99%95%E8%A5%BF%E7%9C%81%E8%B5%9B/" title="2023年陕西省赛"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2023年陕西省赛</div></div></a></div><div class="next-post pull-right"><a href="/2023/05/16/web%E5%AE%9E%E8%AE%AD%E6%8A%80%E8%83%BD%E5%90%AC%E8%AF%BE%E7%AC%94%E8%AE%B0/" title="web实训技能听课笔记(持续更新中)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">web实训技能听课笔记(持续更新中)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/03/2023%E5%B9%B4%E9%99%95%E8%A5%BF%E7%9C%81%E8%B5%9B/" title="2023年陕西省赛"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-03</div><div class="title">2023年陕西省赛</div></div></a></div><div><a href="/2023/07/21/2023%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2/" title="2023巅峰极客MISC题解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-21</div><div class="title">2023巅峰极客MISC题解</div></div></a></div><div><a href="/2023/03/07/wp/" title="一些misc和crypto刷题(nssctf)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-07</div><div class="title">一些misc和crypto刷题(nssctf)</div></div></a></div><div><a href="/2023/06/04/NSSRound%2012%20Misc%20%E4%B8%93%E5%9C%BA/" title="NSSRound 12 Misc 专场"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-04</div><div class="title">NSSRound 12 Misc 专场</div></div></a></div><div><a href="/2023/04/13/2023%E6%84%9A%E4%BA%BA%E6%9D%AFmiscwp/" title="2023愚人杯misc wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-13</div><div class="title">2023愚人杯misc wp</div></div></a></div><div><a href="/2023/04/16/%E7%A4%BE%E5%9B%A2%E6%98%A5%E5%AD%A3%E8%B5%9B/" title="社团春季赛miscwp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-16</div><div class="title">社团春季赛miscwp</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LitCTF%E4%B8%80%E4%BA%9B%E9%A2%98%E8%A7%A3"><span class="toc-text">LitCTF一些题解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB"><span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%BC%B9%E8%BF%B7%E8%B8%AA"><span class="toc-text">导弹迷踪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91Flag%E5%91%A2%EF%BC%9F"><span class="toc-text">我Flag呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Follow-me-and-hack-me"><span class="toc-text">Follow me and hack me</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9FSQL-%EF%BC%81%E6%B3%A8%E4%B8%80%E4%B8%8B-%EF%BC%81"><span class="toc-text">这是什么？SQL ！注一下 ！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%B1%E5%BD%93%E6%97%A0%E4%BA%8B%E5%8F%91%E7%94%9F"><span class="toc-text">就当无事发生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Http-pro-max-plus"><span class="toc-text">Http pro max plus</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#http%E4%BC%AA%E9%80%A0%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-text">http伪造相关知识</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP%E6%98%AF%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E5%A5%BD%E7%9A%84%E8%AF%AD%E8%A8%80%EF%BC%81%EF%BC%81"><span class="toc-text">PHP是世界上最好的语言！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-text">作业管理系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-shark"><span class="toc-text">easy_shark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E4%BB%AA%E7%94%9F%E5%9B%9B%E8%B1%A1"><span class="toc-text">两仪生四象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ssvvgg"><span class="toc-text">ssvvgg</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/28/%E6%98%A5%E8%8B%97%E5%8F%96%E8%AF%81%E8%80%83%E6%A0%B8%E5%AE%9E%E6%93%8D/" title="春苗进阶考核实操">春苗进阶考核实操</a><time datetime="2023-07-28T07:42:35.888Z" title="发表于 2023-07-28 15:42:35">2023-07-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/24/%E5%B7%A5%E6%8E%A7-w3nx1z1/" title="工控安全培训">工控安全培训</a><time datetime="2023-07-24T01:14:26.670Z" title="发表于 2023-07-24 09:14:26">2023-07-24</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/21/2023%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2/" title="2023巅峰极客MISC题解">2023巅峰极客MISC题解</a><time datetime="2023-07-21T13:59:21.893Z" title="发表于 2023-07-21 21:59:21">2023-07-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/07/04/2022%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%88%9D%E8%B5%9B%E5%A4%8D%E7%8E%B0/" title="2022蓝帽杯初赛取证复现">2022蓝帽杯初赛取证复现</a><time datetime="2023-07-04T14:48:32.957Z" title="发表于 2023-07-04 22:48:32">2023-07-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/06/04/NSSRound%2012%20Misc%20%E4%B8%93%E5%9C%BA/" title="NSSRound 12 Misc 专场">NSSRound 12 Misc 专场</a><time datetime="2023-06-04T13:40:04.444Z" title="发表于 2023-06-04 21:40:04">2023-06-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
