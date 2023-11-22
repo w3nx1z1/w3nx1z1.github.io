@@ -414,28 +414,6 @@
   </entry>
   
   <entry>
-    <title>记录一次简单的xshell远程连接</title>
-    <link href="http://w3nx1z1.github.io/2023/04/13/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%AE%80%E5%8D%95%E7%9A%84xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/"/>
-    <id>http://w3nx1z1.github.io/2023/04/13/%E8%AE%B0%E5%BD%95%E4%B8%80%E6%AC%A1%E7%AE%80%E5%8D%95%E7%9A%84xshell%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5/</id>
-    <published>2023-04-13T05:56:51.614Z</published>
-    <updated>2023-06-12T12:17:15.213Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="记录一次简单的xshell远程连接"><a href="#记录一次简单的xshell远程连接" class="headerlink" title="记录一次简单的xshell远程连接"></a>记录一次简单的xshell远程连接</h1><p>起初的原因是复现2022年长安杯 检材一就是服务器 奈何vm的操作页面太不人性化 选择用xshell</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230412171101828.png" alt="image-20230412171101828"></p><p>先在虚拟机里面输入命令ifconfig 看到ip地址是172.16.80.133(静态网址)</p><p>在本机运行ipconfig 发现ip为192.16.80.1(动态网址) ip网络地址和主机地址(无所谓的)都不一样 即虚拟机和主机不在同一局域网下</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230412171906340.png" alt="image-20230412171906340"></p><p>所以要对网络进行修改</p><p>在vm里面编辑—虚拟网络编辑器—NAT模式—使用本地DHCP服务将ip地址分配给虚拟机—将子网ip改为172.16.80与虚拟机的ip地址一致(即网络地址一致)—再在NAT设置里面将网关的网络地址改为172.16.80</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230412190736986.png" alt="image-20230412190736986"></p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230412191205385.png" alt="image-20230412191205385"></p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230412191114979.png" alt="image-20230412191114979"></p><p>再次查看本机ip已经变为172.16.80的网络地址</p><p>再打开xshell 开始进行远程连接</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230412191436449.png" alt="image-20230412191436449"></p><p>成功连接</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230412191521261.png" alt="image-20230412191521261"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;记录一次简单的xshell远程连接&quot;&gt;&lt;a href=&quot;#记录一次简单的xshell远程连接&quot; class=&quot;headerlink&quot; title=&quot;记录一次简单的xshell远程连接&quot;&gt;&lt;/a&gt;记录一次简单的xshell远程连接&lt;/h1&gt;&lt;p&gt;起初的原因是复现20</summary>
-      
-    
-    
-    
-    <category term="随笔" scheme="http://w3nx1z1.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>精武杯预赛要点</title>
     <link href="http://w3nx1z1.github.io/2023/04/07/%E7%B2%BE%E6%AD%A6%E6%9D%AF%E9%A2%84%E8%B5%9B%E8%A6%81%E7%82%B9/"/>
     <id>http://w3nx1z1.github.io/2023/04/07/%E7%B2%BE%E6%AD%A6%E6%9D%AF%E9%A2%84%E8%B5%9B%E8%A6%81%E7%82%B9/</id>
