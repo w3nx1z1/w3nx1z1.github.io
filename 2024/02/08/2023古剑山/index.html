@@ -1,0 +1,566 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>2024古剑山 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2023古剑山misc数独(gaps拼图)给了一个image.png和sudoku.png 先把数独解了一下 得到下面的结果  但是不知道有什么用 再看一下image.png 需要重新拼一下图 就用gaps就行了 原图像的大小是630x630 小图片是9x9 因此使用的size参数就是70 gaps --image&#x3D;image.png --generations&#x3D;50 --populations&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024古剑山">
+<meta property="og:url" content="http://w3nx1z1.github.io/2024/02/08/2023%E5%8F%A4%E5%89%91%E5%B1%B1/index.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="2023古剑山misc数独(gaps拼图)给了一个image.png和sudoku.png 先把数独解了一下 得到下面的结果  但是不知道有什么用 再看一下image.png 需要重新拼一下图 就用gaps就行了 原图像的大小是630x630 小图片是9x9 因此使用的size参数就是70 gaps --image&#x3D;image.png --generations&#x3D;50 --populations&#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2024-02-08T14:49:34.267Z">
+<meta property="article:modified_time" content="2024-02-08T14:51:03.056Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="w3nx1z1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/2024/02/08/2023%E5%8F%A4%E5%89%91%E5%B1%B1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2024古剑山',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-08 22:51:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2024古剑山</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-08T14:49:34.267Z" title="发表于 2024-02-08 22:49:34">2024-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-08T14:51:03.056Z" title="更新于 2024-02-08 22:51:03">2024-02-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/object-Object/">[object Object]</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/misc/">misc</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/crypto/">crypto</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>17分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2024古剑山"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="2023古剑山"><a href="#2023古剑山" class="headerlink" title="2023古剑山"></a>2023古剑山</h1><h2 id="misc"><a href="#misc" class="headerlink" title="misc"></a>misc</h2><h3 id="数独-gaps拼图"><a href="#数独-gaps拼图" class="headerlink" title="数独(gaps拼图)"></a>数独(gaps拼图)</h3><p>给了一个image.png和sudoku.png 先把数独解了一下 得到下面的结果</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401311803025.png" alt="image-20240131180350976"></p>
+<p>但是不知道有什么用 再看一下image.png 需要重新拼一下图 就用gaps就行了</p>
+<p>原图像的大小是630x630 小图片是9x9 因此使用的size参数就是70</p>
+<pre><code>gaps --image=image.png --generations=50 --populations=200 --size=70 --save 
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401311810545.jpg" alt="image_solution1"></p>
+<p>这里我当时是以为数独有什么用 把解好的数独都写在原图片之后再拼的 实际上我们拼完之后直接按照从上到下 从左到右的顺序读flag就行</p>
+<h3 id="幸运饼干-DPAPI技术-Chrome数据加密"><a href="#幸运饼干-DPAPI技术-Chrome数据加密" class="headerlink" title="幸运饼干(DPAPI技术 Chrome数据加密)"></a>幸运饼干(DPAPI技术 Chrome数据加密)</h3><p>附件是一个hint.jpg和flag.zip flag.zip里面有个和hint.jpg大小一样的文件 直接明文攻击 先将hint.jpg压缩为hint.zip 在ARCHPR里面进行明文攻击</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401312201871.png" alt="image-20240131211749661"></p>
+<p>得到密码</p>
+<pre><code>sv@1v3z
+</code></pre>
+<p>解压压缩包 得到一个压缩包 一个admin.txt和Cookie文件 先看一下Cookie文件格式 用file命令 是个sql数据库文件</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401312237874.png" alt="image-20240131223747841"></p>
+<p>admin.txt里面是使用mimikatz对计算机进行分析的记录  看到里面有一个NTML密码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401312244139.png" alt="image-20240131224435108"></p>
+<p>解一下 密码是<code>54231</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401312311633.png" alt="image-20240131231126598"></p>
+<h4 id="先看一下前置知识"><a href="#先看一下前置知识" class="headerlink" title="先看一下前置知识"></a>先看一下前置知识</h4><p>DPAPI，Data Protection Application Programming Interface，是Windows系统的一个数据保护接口，它本质上使用了Windows通过用户自己登录（sids，登录密码等），以及域登录后的一些数据生成的密钥，并且使用内置的算法，对用户指定的数据进行加密。通常Windows上的浏览器历史数据，邮件加密，wifi密码等等都会以这种方式进行数据加密。</p>
+<p>Chrome使用DPAPI保存了我们的登录密码和cookie值</p>
+<p>用户使用Chrome访问网站进行登录时，可以选择是否保存密码。当选择保存密码时，Chrome先将密码进行加密，再保存在SQLite数据库文件中，数据库文件路径位于：</p>
+<pre><code>%LocalAppData%\Google\Chrome\User Data\Default\Login Data
+</code></pre>
+<p>同上，保存Cookie时，数据库文件路径为：</p>
+<pre><code>%LocalAppData%\Google\Chrome\User Data\Default\Cookies
+</code></pre>
+<p>存储的cookie值被加密为DPAPI blob来进行保护；我们可以通过使用Mimikatz这个工具来对Chrome中的SQLite数据库进行解析：</p>
+<pre><code>mimikatz dpapi::chrome /in:&#39;%LocalAppData%\Google\Chrome\User Data\Default\Cookies&#39;
+</code></pre>
+<p>解密DPAPI blob用到的相关概念：</p>
+<pre><code>DPAPI blob：一段密文，可以使用Master Key对其解密
+
+Master Key：64字节，用于解密DPAPI blob；使用用户登录密码、SID和16字节随机数加密后保存在Master Key file中
+
+Master Key file：二进制文件，可以使用用户登录密码对其解密，得到Master Key
+</code></pre>
+<p>对采用DPAPI技术加密的数据进行解密，需要获取当前操作系统登录用户对应的 Master Key，而获取 MasterKey 需要知道用户名、密码以及对应的SID，然后利用这些数据生成一个 blob 加密过程中使用的 MasterKey，从而对目标blob进行解密</p>
+<p>大致的过程是</p>
+<pre><code>dpapi::masterkey /in:&#123;masterkeyfile&#125; /sid:&#123;sid&#125; /password:&#123;password&#125; /protected
+</code></pre>
+<p>得到masterkey之后 使用masterkey(原key值或者sha1加密值都可以)解密Cookies&#x2F;logindata</p>
+<pre><code>dpapi::chrome /in:&#123;Cookies&#125; /masterkey:&#123;masterkey&#125; /unprotect
+</code></pre>
+<p>这样就可以得到Cookies的加密数据的hex值或者直接得到明文</p>
+<p>toto✌🏻的这篇文章写的很全面 狠狠膜拜了</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jyttttttt/article/details/134972038?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170670869216800192291692%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=170670869216800192291692&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-134972038-null-null.142%5Ev99%5Epc_search_result_base9&utm_term=mimikatz%20blob%E8%A7%A3%E5%AF%86&spm=1018.2226.3001.4187">电子取证中Chrome各版本解密Cookies、LoginData账号密码、历史记录</a></p>
+<p>我们用sqlcipher打开Cooike这个sql数据库文件 看到有一个encrypted_value 提示是blob 那就是一个利用DPAPI技术加密的Chrome数据</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402010011268.png" alt="image-20240201001135197"></p>
+<p>我们结合前置知识 现在我们有了用户名 密码 在flag.zip解压后的文件里面还有一个压缩包 文件名就是SID 压缩包里面的文件应该就是masterkey文件</p>
+<pre><code>S-1-5-21-726299542-2485387390-1117163988-1001
+</code></pre>
+<p>有了这些我们就可以得到masterkey</p>
+<pre><code>dpapi::masterkey /in:.\S-1-5-21-726299542-2485387390-1117163988-1001\e5f8e386-7041-4f16-b02d-304c71040126 /sid:S-1-5-21-726299542-2485387390-1117163988-1001 /password:54231 /protected 
+</code></pre>
+<p><font color='red'>这个地方遇到了几个问题 一是Cookies文件解压之后在文件夹里面是看不到的 但是用vscode打开文件夹作为工作区是可以看到的 二是注意一下最好是将文件夹或者Cookies文件直接放在mimikatz程序的文件夹中 放在其他位置有可能不出结果</font></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402011958520.png" alt="image-20240201195817441"></p>
+<p> 下面就是用masterkey解密Cookies文件</p>
+<pre><code>dpapi::chrome /in:.\Cookies /masterkey:7a4d2ffbb42d0a1ab46f0351260aef16cae699e03e9d6514b3bf10e2977c5d228fda4a48e39b7b8a06a443c39653c2a3c3656596e7edc84e1c9682511c8343ac /unprotect
+</code></pre>
+<p>直接得到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402011959283.png" alt="image-20240201195956233"></p>
+<p>另 在学习姿势的时候 还看到了一些将Cookies识别分割为数据库的方法</p>
+<pre><code>binwalk Cookies
+dd if=Cookies bs=1 skip=0 of=1.db
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012017942.png" alt="image-20240201201726904"></p>
+<h3 id="同类型的题：-红明谷CTF-2022-MissingFile"><a href="#同类型的题：-红明谷CTF-2022-MissingFile" class="headerlink" title="同类型的题：[红明谷CTF 2022]MissingFile"></a>同类型的题：[红明谷CTF 2022]MissingFile</h3><p><font color='red'>我们再来看一下这道类似的题 主要是学习一下面对这种题的思路和解题步骤 </font></p>
+<p>附件是一个内存镜像文件<code>memory</code> 题目描述为</p>
+<pre><code>好像被攻击者入侵了，但是赶到现场的时候，已经只剩下一个空的文件夹了，快照能找到攻击者留下的秘密吗？
+</code></pre>
+<p>首先看一下被入侵的痕迹 </p>
+<pre><code>.\volatility.exe -f E:\Desktop\比赛\古剑山\misc\[红明谷CTF2022]MissingFile\memory --profile=Win7SP1x86_23418 hashdump
+</code></pre>
+<p>可以看到有一个link3用户 还有一个NewGuest用户 既然是被入侵 那NewGuest应该就是攻击者入侵之后创建的账户 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012032769.png" alt="image-20240201203208646"></p>
+<p>NewGuest用户的密码还是个可破解的哈希值 <code>123456</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012059018.png" alt="image-20240201205917974"></p>
+<p>再看一下攻击用户进行的文件操作  看到使用了mimikatz的记录</p>
+<pre><code>.\volatility.exe -f E:\Desktop\比赛\古剑山\misc\[红明谷CTF2022]MissingFile\memory --profile=Win7SP1x86_23418 filescan | findstr &quot;NewGuest&quot;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012031203.png" alt="image-20240201203152737"></p>
+<p>使用 mftparser 对内存中的 MFT 条目进行分析，并将结果保存至 mftparser.txt</p>
+<pre><code>MFT（Master File Table）是NTFS文件系统中的一个重要概念，它是用来存储文件和目录元数据的数据结构。MFT条目（MFT entry）是MFT中的一个记录，每个文件或目录在MFT中都有一个对应的MFT条目。
+
+每个MFT条目包含了文件或目录的元数据信息，如文件名、文件大小、创建时间、修改时间等。MFT条目还包含了指向文件数据的指针，以及其他一些属性信息。
+
+MFT条目的结构可以分为两部分：固定长度部分和可变长度部分。固定长度部分包含了MFT条目的基本信息，如文件类型、标志位等。可变长度部分则包含了文件属性信息，如文件名、时间戳等。
+
+MFT条目在NTFS文件系统中起着非常重要的作用，它记录了文件和目录的元数据信息，使得文件系统能够有效地管理和访问文件。通过MFT条目，文件系统可以快速定位到文件的位置和属性信息，从而实现对文件的读取和操作。
+</code></pre>
+<pre><code>.\volatility.exe -f E:\Desktop\比赛\古剑山\misc\[红明谷CTF2022]MissingFile\memory --profile=Win7SP1x86_23418 mftparser &gt;mftparser.txt
+</code></pre>
+<p>在扫描文件的时候 找到了一个Hacker文件夹 我们在mftparser.txt里面继续找这个文件夹 找到了里面的<code>S3cret</code>文件  将其进行保存</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402082249091.png" alt="image-20240201203830998"></p>
+<pre><code class="python">with  open(&#39;S3cert.txt&#39;,&#39;r&#39;) as f:
+    data = f.readlines()
+    for line in data:
+        new_line = line[12:60:1]
+        print(new_line)
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012057793.png" alt="image-20240201205733741"></p>
+<p>我们使用mimikatz检查一下<code>S3cert</code>文件</p>
+<pre><code>privilege::debug 
+dpapi::blob /in:./S3cert
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012102545.png" alt="image-20240201210221496"></p>
+<p>找到masterkey的guid 在mftparser.txt里面找一下这个guid</p>
+<pre><code>470a5148-d8c9-4453-bf41-f0c09d158bfd
+</code></pre>
+<p>找到了masterkey文件 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012105859.png" alt="image-20240201210539783"></p>
+<p>一样 将这个masterkey文件导出来 命名为<code>470a5148-d8c9-4453-bf41-f0c09d158bfd</code></p>
+<p>下面就和幸运饼干的步骤一样了 先得到masterkey </p>
+<pre><code>dpapi::masterkey /in:.\470a5148-d8c9-4453-bf41-f0c09d158bfd /sid:S-1-5-21-206512979-2006505507-2644814589-1001 /password:123456 /protected
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012111117.png" alt="image-20240201211142048"></p>
+<pre><code>092c4220064c30bc7f8b15d2d48957c4926af0632149b9c08cd87f34fc43aa1204d775bdc6ab429a0d4d0826fb80b08250b125d92913e2f7578cf778073bfe38
+</code></pre>
+<p>在解密<code>S3cert</code>文件</p>
+<pre><code>dpapi::blob /in:.\S3cert /masterkey:092c4220064c30bc7f8b15d2d48957c4926af0632149b9c08cd87f34fc43aa1204d775bdc6ab429a0d4d0826fb80b08250b125d92913e2f7578cf778073bfe38 /unprotect
+</code></pre>
+<p>得到16进制的明文</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012140800.png" alt="image-20240201214002735"></p>
+<p>解一下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012140718.png" alt="image-20240201214035675"></p>
+<h3 id="i-have-the-flag"><a href="#i-have-the-flag" class="headerlink" title="i_have_the_flag"></a>i_have_the_flag</h3><p>附件是一个js文件还有一个html文件 看一下html文件</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012019166.png" alt="image-20240201201933126"></p>
+<p>随便测试一下  发现输入不同错误内容的时候 回显的内容不一样 也不像base64编码 那就转向分析js文件 看到一段关键代码</p>
+<pre><code class="javascript">function ck(s) &#123;
+    try &#123;
+        ic
+    &#125; catch (e) &#123;
+        return;
+    &#125;
+    var a = [118, 108, 112, 115, 111, 104, 104, 103, 120, 52, 53, 54];
+    if (s.length == a.length) &#123;
+        for (i = 0; i &lt; s.length; i++) &#123;
+            if (a[i] - s.charCodeAt(i) != 3)
+                return ic = false;
+        &#125;
+        return ic = true;
+    &#125;
+    return ic = false;
+&#125;
+</code></pre>
+<ul>
+<li>该函数的目的是检查输入字符串是否满足特定条件，即字符串的每个字符的 ASCII 值与数组中对应位置的数字相差 3。</li>
+<li>如果满足条件，函数返回 <code>true</code>，否则返回 <code>false</code>。</li>
+</ul>
+<p>很简单 我们直接将上面数组a的ascii码全部减三 在解ascii码就可以得到正确的key了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402012359818.png" alt="image-20240201235958771"></p>
+<pre><code>simpleedu123
+</code></pre>
+<p>输入 就可以得到正确的值了 就是flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402020000443.png" alt="image-20240202000046406"></p>
+<h3 id="jpginside"><a href="#jpginside" class="headerlink" title="jpginside"></a>jpginside</h3><p>附件是<code>jpginside.xxx</code>这样一个文件 不知道是什么类型的 用file命令看一下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402021204718.png"></p>
+<p>是一个pyc文件 在线反编译一下</p>
+<pre><code class="python">store = [
+    141,
+    183,
+    139,
+    129,
+    116,
+    117,
+    .....
+    49,
+    50]
+key = raw_input(&#39;Please input the key:&#39;)
+with open(&#39;excellent.jpg&#39;, &#39;wb&#39;) as jpg:
+    for i in range(len(store)):
+        jpg.write(chr(store[i] ^ ord(key[i % len(key)])))
+</code></pre>
+<p>  先脚本恢复key 在上面的加密脚本里面用key加密的方式是对key的每一位循环使用 那我们只要取一部分明文和jpg图片格式里面相同的部分就可以恢复密钥 通过观察jpg图片结构 我们可以发现jpg的前13位都是一样的 那我们就选取这部分恢复我们的密钥</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402022347740.png" alt="image-20240202234745688"></p>
+<pre><code class="python">encrypted_data = [0xFF, 0xD8, 0xFF, 0xE0, 0x00, 0x10, 0x4A, 0x46, 0x49, 0x46, 0x00, 0x01, 0x01]
+
+# 已知的加密后的数据
+store = [141, 183, 139, 129, 116, 117, 123, 116, 122, 114, 33, 115, 110]
+
+# 恢复密钥的过程
+key = &quot;&quot;
+for i in range(len(store)):
+    original_byte = store[i] ^ encrypted_data[i]
+    key += chr(original_byte)
+
+print(&quot;Recovered key:&quot;, key)
+</code></pre>
+<p>得到结果是</p>
+<pre><code>rotate1234!ro
+</code></pre>
+<p>那按照前面说的密钥是按位循环使用 我们就取前11位就是完整密钥</p>
+<pre><code>rotate1234!
+</code></pre>
+<p>有了密钥我们直接利用上面的加密脚本 得到exllcent.jpg</p>
+<pre><code class="python">store = [
+    141,
+    183,
+    139,
+    129,
+    116,
+    117,
+    .....
+    49,
+    50]
+key = rotate1234!
+with open(&#39;excellent.jpg&#39;, &#39;wb&#39;) as jpg:
+    for i in range(len(store)):
+        jpg.write(chr(store[i] ^ ord(key[i % len(key)])))
+</code></pre>
+<p>注意这个脚本的运行欢迎是python2.7 python3运行可能会报错 </p>
+<p>得到图片</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402082249587.png" alt="image-20240203000535700"></p>
+<p>看文件结构发现尾部有一个压缩包 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402030010545.png" alt="image-20240203001001490"></p>
+<p>分离出来发现crc有问题 修改为<code>504B</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402030010997.png" alt="image-20240203001035922"></p>
+<p>正常解压  需要密码 猜测是前面的key 得到<code>jpek.txt</code></p>
+<pre><code>jpek&#123;39i0jf49229fie5j33f02403hj953012&#125;
+</code></pre>
+<p>随波逐流梭了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402030013607.png" alt="image-20240203001322559"></p>
+<h2 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h2><h3 id="Vigenere"><a href="#Vigenere" class="headerlink" title="Vigenere+++"></a>Vigenere+++</h3><pre><code class="python">import sys
+from secret_file  import *
+def _l(idx, s):
+    return s[idx:] + s[:idx]
+def main(p, k1, k2):
+    s = &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz_&#123;&#125;&quot;
+    t = [[_l((i+j) % len(s), s) for j in range(len(s))] for i in range(len(s))]
+    i1 = 0
+    i2 = 0
+    c = &quot;&quot;
+    for a in p:
+        c += t[s.find(a)][s.find(k1[i1])][s.find(k2[i2])]
+        i1 = (i1 + 1) % len(k1)
+        i2 = (i2 + 1) % len(k2)
+    return c
+
+flag=&quot;flag&#123;************************&#125;&quot;
+key=&quot;**********&quot;
+
+# * 为马赛克，长度为1。 
+# hint：  可以自己尝试下运行加密函数，看看秘钥对加密结果的影响。 
+# hint：  首先根据线索求秘钥，秘钥不唯一，找到一个有效的，就能爆破flag了。 
+print main(flag, key, key[::-1])
+
+# 程序运行结果（即密文为）:
+kY0awfsdlY1FFL8C3bi4GSYCF&#123;8W_E
+</code></pre>
+<p>比较无脑 ctfwiki原题</p>
+<p><a target="_blank" rel="noopener" href="https://ctf-wiki.org/crypto/classical/summary/#_4">2017 SECCON Vigenere3d</a></p>
+<pre><code class="python"># exp2.py
+enc_str = &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz_&#123;&#125;&#39;
+dec_dic = &#123;k:v for v,k in enumerate(enc_str)&#125;
+encrypt = &#39;kY0awfsdlY1FFL8C3bi4GSYCF&#123;8W_E&#39;
+flag_bg = &#39;flag&#123;**************************&#125;&#39;
+
+sim_key = [dec_dic[encrypt[i]]-dec_dic[flag_bg[i]] for i in range(5)] # 破解模拟密钥
+sim_key = sim_key + sim_key[::-1]
+
+flag_ed = [dec_dic[v]-sim_key[k%10] for k,v in enumerate(encrypt)] # 模拟密钥解密
+flag_ed = &#39;&#39;.join([enc_str[i%len(enc_str)] for i in flag_ed]) # 解码
+print(flag_ed)
+
+# flag&#123;kynFTW2PRdH9lCZBf8IKDe6U&#125;
+</code></pre>
+<h3 id="guess-the-key"><a href="#guess-the-key" class="headerlink" title="guess_the_key"></a>guess_the_key</h3><p>给了一个main.c 是加密函数的代码 给了msg01是明文 msg01.enc、msg02.enc是密文 先看加密代码</p>
+<pre><code class="c">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(int argc, char **argv) &#123;
+    if (argc != 3) &#123;
+        printf(&quot;USAGE: %s INPUT OUTPUT\n&quot;, argv[0]);
+        return 0;
+    &#125;
+    FILE* input  = fopen(argv[1], &quot;rb&quot;);
+    FILE* output = fopen(argv[2], &quot;wb&quot;);
+    if (!input || !output) &#123;
+        printf(&quot;Error\n&quot;);
+        return 0;
+    &#125;
+    char key[] = &quot;guessthekey&quot;;
+    char d, q, t = 0;
+    int ijk = 0;
+    while ((q = fgetc(input)) != EOF) &#123;
+        d = (q + (key[ijk % strlen( key )] ^ t) + ijk*ijk) &amp; 0xff;
+        t = q;
+        ijk++;
+        fputc(d, output);
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<p>其实关键的一步就是d &#x3D; (q + (key[ijk % strlen( key )] ^ t) + ijk*ijk) &amp; 0xff;</p>
+<p>d是密文[i] q是明文[i] key是密钥[i] t在经历一次循环之后就是明文[i-1] ijk就是一个单独的参数 在每一次循环结束之后都自加1  </p>
+<p>由此我们利用明文msg.01和msg01.enc来破解出key </p>
+<p>在这段加密代码中 key是每一位循环使用的 但对于前几位明文(不超过key的长度)来说 key[ijk % strlen( key ) 这一部分其实就是key[i] </p>
+<p>我们可以利用爆破的方法 利用上面这个公式反推出q[i] &#x3D; d[i] - key[i]^q[i-1] - pow(ijk, 2) </p>
+<p>我们使用循环遍历每一位key[i]的值 当出现满足q[i] &#x3D;&#x3D; text[i] (text是已知的明文)的key[i]时 我们就将这个key输出    下面是脚本</p>
+<pre><code class="python">ciphertext = [0x9E,0x97,0x4B,0xD2,0x9A,0x8B,0xAD,0xA1,0x89,0x09,0xDE,0xAD,0x69,0x23,0x4E,0x76,0x70,0xAB,0xE4,0x97,0x44,0x22,0x81,0x8D,0x7F,0x22,0x23,0x70,0x7F,0xB5,0xFF,0x68,0x72,0xC1,0xC2,0x4B]
+text = &quot;Hi,there is nothing here,heiheihei.&quot;
+t = 0
+i = 0
+for p in ciphertext:
+        for key in range(31, 125):  # 这里表示的是key的ascii值
+            q = (p - (key ^ t) - i*i) &amp; 0xff
+            q = chr(q)  # 将q的ascii值转换为字符
+            try:
+                if q == text[i]:
+                    print(chr(key), end=&quot;&quot;)  # 将key的ascii值转换为字符输出
+                    t = ord(q)               # 将q的ascii值赋予t
+                    i += 1
+                    break
+            except:
+                 print(&#39;&#39;)
+                    
+# VeryVeryLongKeyYouWillNeverKnowVery
+</code></pre>
+<p>我们可以看到key出现了循环的部分 那么正确的key就是<code>VeryVeryLongKeyYouWillNeverKnow</code></p>
+<p>有了key  我们就可以继续写脚本获得msg02</p>
+<pre><code class="python">msg02_enc = [0xA9,0x9F,0x83,0x45,0xEE,0x87,0x9B,0x6E,0x0E,0xC3,0xD4,0xE9,0xD5,0x61,0x36,0x81,0x70,0x96,0xD4,0xD7,0xF9,0xE4,0xC9,0x8C,0xD3,0xEA,0xDE,0xAC,0x7B,0xC5,0xA9,0x84,0x97,0xCB,0xB8,0xA8,0x8A,0x95,0x54,0x6D,0xBA,0xC0,0x7B,0xA0,0x06,0x68,0x9F,0x02,0xA8,0xCD,0x2A,0x52,0x49,0x91,0xE7,0x4A,0x71,0x6B,0xA8,0x1E,0x8E,0xBB,0xDC,0xED,0x7C,0x0B,0x5C,0x04,0x74,0x6B,0xBE,0x1C,0xC1,0x59,0xBC,0xAD,0x12,0xC2,0xFB,0xDA,0xEB,0x26,0xB1,0x61,0xED,0xE0,0x5D,0xF2,0xC8,0xA3,0x27,0xC5,0x96,0x58,0xAD,0xF5,0x8D,0x54,0x05,0xBC,0x47,0xAD,0x0C,0xE9,0xC0,0xAF,0x48,0x02,0x25,0x1E,0xC9,0xAB,0x6F,0x5B,0x37,0x30,0xBD,0x3A,0xC8,0xC7,0xCD,0xA0,0x4F,0xD9,0xBC,0x72,0x7E,0x84,0x53,0xB5,0x87,0x48,0xE5,0x8D,0x92,0xA9,0xC7,0xBC,0xEE,0x13,0x01,0xE7,0x5D,0x73,0x99,0x59,0x29,0xDC,0x1A,0xEF,0xA6,0xBB,0xB6,0xFD,0x12,0x86,0x82,0x7E,0x4C,0x6F,0x84,0xBA,0xF7,0x52,0x80,0x92,0x0D,0xB0,0xD9,0x07,0x40,0xF3,0x17,0x95,0xAF,0xC9,0xBB,0xE8,0xE7,0xF1,0x08,0x75,0xF4,0xF1,0x03,0x1C,0xC3,0x11,0x36,0x49,0xAA,0x04,0x69,0xF7,0xA0,0xC5,0xCD,0x17,0xC6,0x23,0x6B,0xBE,0xE7,0x7B,0xE2,0xE6,0x4B,0xD4,0x5E,0x55,0xC3,0x0C,0x54,0xD3,0x5C,0x05,0x79,0xCE,0x1B,0xD4,0x91,0x50,0xF6,0xB4,0x36,0x41,0x46,0xD5,0x38,0xB1,0x21,0xE0,0xE2,0x38,0xA2,0x65,0xB7,0x16,0x71,0xF7,0x82,0x56,0x4D,0x22,0xE2,0x3B,0xEE,0x89,0x1E,0xA7,0xB3,0x46,0xFA,0x82,0x83,0x3D,0xB1,0x8C,0x85,0x92,0xB7,0x52,0x99,0x13,0xBA,0x72,0x43,0xDB,0x10,0xE8,0xA0,0x5B,0x39,0xDA,0xB3,0xF8,0xF8,0xE3,0xAF,0xA2,0x6A,0x29,0x2F,0x82,0x91,0x6E,0x41,0x58,0x77,0xC8,0xAD,0xA8,0x89,0xCF,0x00,0xB3,0xB6,0x27,0x5F,0xC6,0xD6,0xAF,0xB3,0x1C,0x6B,0xF1,0x25,0xB8,0x20,0xA0,0xD1,0x89,0xBA,0x04,0xF9,0xD5,0x8E,0x0B,0xB0,0x10,0x8B,0x37,0x99,0xBC,0xBA,0x05,0xB3,0x58,0xA3,0x5C,0xF4,0x86,0x43,0xEA,0x08,0x1D,0x79,0xFE,0x1B,0x05]
+key = &#39;VeryVeryLongKeyYouWillNeverKnow&#39;
+msg02 = &#39;&#39;
+t = 0
+for i in range(len(msg02_enc)):
+     if i ==0:
+        q = chr((msg02_enc[i] - (ord(key[i % len(key)]) ^ 0) - pow(i, 2)) &amp; 0xff)
+     else:
+        q = chr((msg02_enc[i] - (ord(key[i % len(key)]) ^ ord(t)) - pow(i, 2)) &amp; 0xff)
+     t = q
+     msg02 += q
+print(msg02)
+
+# She had been shopping with her Mom in Wal-Mart. She must have been 6 years old, this beautiful brown haired, freckle-faced image of innocence. It was pouring outside. The kind of rain that gushes over the top of rain gutters, so much in a hurry to hit the Earth, it has no time to flow down the spout.flag&#123;101a6ec9f938885df0a44f20458d2eb4&#125;
+</code></pre>
+<h3 id="babyRSA"><a href="#babyRSA" class="headerlink" title="babyRSA"></a>babyRSA</h3><pre><code>p=165183720742741436051373219716388644270093189046466421563632727622389425827620783096218651072108769567350808642169644915755493944233905573858905774991122631609402471527613272585988802294622263573574301013199411535656758222265554222107815469076608655188293263358371274025455477828555535371028164366376886408977
+q=120848273460784230746197749214740170558670241437030497317956826606952430354830550737450520592481405802317202852411775956584677841602475259120706429378240071206662182089399302414435162197602907213282222144680788273948123482886712835590321726087823477518087588076504167863011019333002124841000448268076303735731
+e=33
+c=10407733127291995335613764691145477155502676597183852092212444772475748406250517097288411248334115120781386833588013995106957807313657632637086223225958539244315092039575434338289689184523710991223212333496000621300008178955253701172159259970353872359828291763446333588873982621853358272632447440961028670921631505593309092190417674648927653583956106734654954561031328286272044755552317084498103486458373580383410475085969677647030080606373264155592552338785789990114607084241499363324045488462563945268471178702696791804080490936763759252660049728533344304874474003893472238560682850602644793844258072019357796047919
+</code></pre>
+<p>上面就是我们能拿到的数据</p>
+<p>看yolo师傅的博客学到是  有限域内开方 <a target="_blank" rel="noopener" href="https://hucongting.com/2023/10/19/RSA%E4%B8%ADe%E5%92%8Cphi%E4%B8%8D%E4%BA%92%E7%B4%A0%E9%97%AE%E9%A2%98/">RSA中e和phi不互素问题</a></p>
+<pre><code class="python">from Crypto.Util.number import *
+p=165183720742741436051373219716388644270093189046466421563632727622389425827620783096218651072108769567350808642169644915755493944233905573858905774991122631609402471527613272585988802294622263573574301013199411535656758222265554222107815469076608655188293263358371274025455477828555535371028164366376886408977
+q=120848273460784230746197749214740170558670241437030497317956826606952430354830550737450520592481405802317202852411775956584677841602475259120706429378240071206662182089399302414435162197602907213282222144680788273948123482886712835590321726087823477518087588076504167863011019333002124841000448268076303735731
+e=33
+c=10407733127291995335613764691145477155502676597183852092212444772475748406250517097288411248334115120781386833588013995106957807313657632637086223225958539244315092039575434338289689184523710991223212333496000621300008178955253701172159259970353872359828291763446333588873982621853358272632447440961028670921631505593309092190417674648927653583956106734654954561031328286272044755552317084498103486458373580383410475085969677647030080606373264155592552338785789990114607084241499363324045488462563945268471178702696791804080490936763759252660049728533344304874474003893472238560682850602644793844258072019357796047919
+n = p*q
+
+P.&lt;a&gt;=PolynomialRing(Zmod(p),implementation=&#39;NTL&#39;)
+f=a^e-c
+mps=f.monic().roots()
+
+P.&lt;a&gt;=PolynomialRing(Zmod(q),implementation=&#39;NTL&#39;)
+g=a^e-c
+mqs=g.monic().roots()
+
+flag=[]
+for mpp in mps:
+    x=mpp[0]
+    for mqq in mqs:
+        y=mqq[0]
+        solution = CRT_list([int(x), int(y)], [p, q])
+        flag.append(solution)
+for i in flag:
+    m=long_to_bytes(i)
+    if b&#39;flag&#39;in m:
+        print(m)
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402082248969.png" alt="image-20240208224859887"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2024/02/08/2023%E5%8F%A4%E5%89%91%E5%B1%B1/">http://w3nx1z1.github.io/2024/02/08/2023古剑山/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/01/30/2024%E7%8D%AC%E8%B1%B8%E6%9D%AF/" title="2024獬豸杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2024獬豸杯</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2023%E5%8F%A4%E5%89%91%E5%B1%B1"><span class="toc-text">2023古剑山</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#misc"><span class="toc-text">misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%8B%AC-gaps%E6%8B%BC%E5%9B%BE"><span class="toc-text">数独(gaps拼图)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B8%E8%BF%90%E9%A5%BC%E5%B9%B2-DPAPI%E6%8A%80%E6%9C%AF-Chrome%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86"><span class="toc-text">幸运饼干(DPAPI技术 Chrome数据加密)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E7%9C%8B%E4%B8%80%E4%B8%8B%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-text">先看一下前置知识</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%A2%98%EF%BC%9A-%E7%BA%A2%E6%98%8E%E8%B0%B7CTF-2022-MissingFile"><span class="toc-text">同类型的题：[红明谷CTF 2022]MissingFile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#i-have-the-flag"><span class="toc-text">i_have_the_flag</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jpginside"><span class="toc-text">jpginside</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crypto"><span class="toc-text">crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vigenere"><span class="toc-text">Vigenere+++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#guess-the-key"><span class="toc-text">guess_the_key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#babyRSA"><span class="toc-text">babyRSA</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/02/08/2023%E5%8F%A4%E5%89%91%E5%B1%B1/" title="2024古剑山">2024古剑山</a><time datetime="2024-02-08T14:49:34.267Z" title="发表于 2024-02-08 22:49:34">2024-02-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/30/2024%E7%8D%AC%E8%B1%B8%E6%9D%AF/" title="2024獬豸杯">2024獬豸杯</a><time datetime="2024-01-29T16:15:37.932Z" title="发表于 2024-01-30 00:15:37">2024-01-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/13/2023%E4%B8%AD%E7%A7%91%E5%AE%9E%E6%95%B0%E6%9D%AF/" title="2023第四届中科实数杯">2023第四届中科实数杯</a><time datetime="2024-01-12T16:29:53.586Z" title="发表于 2024-01-13 00:29:53">2024-01-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/01/2023%E5%B9%B4%E5%BA%A6%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" title="w3nx1z1的年度个人总结">w3nx1z1的年度个人总结</a><time datetime="2023-12-31T17:21:44.200Z" title="发表于 2024-01-01 01:21:44">2024-01-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/12/05/vulnhub%E9%9D%B6%E5%9C%BADC-5%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="vulnhub靶场记录DC-5">vulnhub靶场记录DC-5</a><time datetime="2023-12-05T12:41:12.972Z" title="发表于 2023-12-05 20:41:12">2023-12-05</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
