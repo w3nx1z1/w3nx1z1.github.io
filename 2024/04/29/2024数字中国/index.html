@@ -1,0 +1,541 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>2024数字中国 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="2024数字中国被职业哥们干爆了 但是学生组好像人比较少 侥幸拿了个北区第一   重要的System32小明把自己的System32文件分享出去了，不小心泄露了重要数据（虚拟机做好快照后，在虚拟机中分析；flag的提交格式为 flag&amp;#123;uuid&amp;#125; ） 三个部分的flag关注 注册表、winevt\Logs、OBJECTS.DATA  就按照给的提示 从注册表 winevt\Lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2024数字中国">
+<meta property="og:url" content="http://w3nx1z1.github.io/2024/04/29/2024%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD/index.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="2024数字中国被职业哥们干爆了 但是学生组好像人比较少 侥幸拿了个北区第一   重要的System32小明把自己的System32文件分享出去了，不小心泄露了重要数据（虚拟机做好快照后，在虚拟机中分析；flag的提交格式为 flag&amp;#123;uuid&amp;#125; ） 三个部分的flag关注 注册表、winevt\Logs、OBJECTS.DATA  就按照给的提示 从注册表 winevt\Lo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2024-04-29T15:07:14.050Z">
+<meta property="article:modified_time" content="2024-04-29T15:07:41.459Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="misc">
+<meta property="article:tag" content="web">
+<meta property="article:tag" content="forensics">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/2024/04/29/2024%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '2024数字中国',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-29 23:07:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">2024数字中国</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-04-29T15:07:14.050Z" title="发表于 2024-04-29 23:07:14">2024-04-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-04-29T15:07:41.459Z" title="更新于 2024-04-29 23:07:41">2024-04-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="2024数字中国"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="2024数字中国"><a href="#2024数字中国" class="headerlink" title="2024数字中国"></a>2024数字中国</h1><p>被职业哥们干爆了 但是学生组好像人比较少 侥幸拿了个北区第一</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281639162.png" alt="image-20240428163912024"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292306992.png" alt="image-20240429230609921"></p>
+<h2 id="重要的System32"><a href="#重要的System32" class="headerlink" title="重要的System32"></a>重要的System32</h2><pre><code>小明把自己的System32文件分享出去了，不小心泄露了重要数据（虚拟机做好快照后，在虚拟机中分析；flag的提交格式为 flag&#123;uuid&#125; ）
+三个部分的flag关注 注册表、winevt\Logs、OBJECTS.DATA
+</code></pre>
+<p>就按照给的提示 从注册表 winevt\Logs文件夹中 OBJECTS.DATA文件中搜有相关flag的字段就好 考验一个眼力(bushi)</p>
+<p>第二部分</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292225295.png" alt="image-20240429210313730"></p>
+<pre><code>-834f-f797
+</code></pre>
+<p>第一部分 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292225572.png" alt="image-20240429210707535"></p>
+<pre><code>&#123;ef63fcbc-3467
+</code></pre>
+<p>第三部分 翻注册表</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292225389.png" alt="image-20240429211545409"></p>
+<p>找到一个Pwd 还有flag文件路径是<code>C:\\Users\\Administrator\\Documents\\Navicat\\MySQL\\Servers\\f1a4_3</code> 看起来是让我们破解Navicat连接的密码 找个php代码</p>
+<pre><code class="php">&lt;?php
+class NavicatPassword
+&#123;
+    protected $version = 0;
+    protected $aesKey = &#39;libcckeylibcckey&#39;;
+    protected $aesIv = &#39;libcciv libcciv &#39;;
+    protected $blowString = &#39;3DC5CA39&#39;;
+    protected $blowKey = null;
+    protected $blowIv = null;
+     
+    public function __construct($version = 12)
+    &#123;
+        $this-&gt;version = $version;
+        $this-&gt;blowKey = sha1(&#39;3DC5CA39&#39;, true);
+        $this-&gt;blowIv = hex2bin(&#39;d9c7c3c8870d64bd&#39;);
+    &#125;
+     
+    public function encrypt($string)
+    &#123;
+        $result = FALSE;
+        switch ($this-&gt;version) &#123;
+            case 11:
+                $result = $this-&gt;encryptEleven($string);
+                break;
+            case 12:
+                $result = $this-&gt;encryptTwelve($string);
+                break;
+            default:
+                break;
+        &#125;
+         
+        return $result;
+    &#125;
+     
+    protected function encryptEleven($string)
+    &#123;
+        $round = intval(floor(strlen($string) / 8));
+        $leftLength = strlen($string) % 8;
+        $result = &#39;&#39;;
+        $currentVector = $this-&gt;blowIv;
+         
+        for ($i = 0; $i &lt; $round; $i++) &#123;
+            $temp = $this-&gt;encryptBlock($this-&gt;xorBytes(substr($string, 8 * $i, 8), $currentVector));
+            $currentVector = $this-&gt;xorBytes($currentVector, $temp);
+            $result .= $temp;
+        &#125;
+         
+        if ($leftLength) &#123;
+            $currentVector = $this-&gt;encryptBlock($currentVector);
+            $result .= $this-&gt;xorBytes(substr($string, 8 * $i, $leftLength), $currentVector);
+        &#125;
+         
+        return strtoupper(bin2hex($result));
+    &#125;
+     
+    protected function encryptBlock($block)
+    &#123;
+        return openssl_encrypt($block, &#39;BF-ECB&#39;, $this-&gt;blowKey, OPENSSL_RAW_DATA|OPENSSL_NO_PADDING);
+    &#125;
+     
+    protected function decryptBlock($block)
+    &#123;
+        return openssl_decrypt($block, &#39;BF-ECB&#39;, $this-&gt;blowKey, OPENSSL_RAW_DATA|OPENSSL_NO_PADDING);
+    &#125;
+     
+    protected function xorBytes($str1, $str2)
+    &#123;
+        $result = &#39;&#39;;
+        for ($i = 0; $i &lt; strlen($str1); $i++) &#123;
+            $result .= chr(ord($str1[$i]) ^ ord($str2[$i]));
+        &#125;
+         
+        return $result;
+    &#125;
+     
+    protected function encryptTwelve($string)
+    &#123;
+        $result = openssl_encrypt($string, &#39;AES-128-CBC&#39;, $this-&gt;aesKey, OPENSSL_RAW_DATA, $this-&gt;aesIv);
+        return strtoupper(bin2hex($result));
+    &#125;
+     
+    public function decrypt($string)
+    &#123;
+        $result = FALSE;
+        switch ($this-&gt;version) &#123;
+            case 11:
+                $result = $this-&gt;decryptEleven($string);
+                break;
+            case 12:
+                $result = $this-&gt;decryptTwelve($string);
+                break;
+            default:
+                break;
+        &#125;
+         
+        return $result;
+    &#125;
+     
+    protected function decryptEleven($upperString)
+    &#123;
+        $string = hex2bin(strtolower($upperString));
+         
+        $round = intval(floor(strlen($string) / 8));
+        $leftLength = strlen($string) % 8;
+        $result = &#39;&#39;;
+        $currentVector = $this-&gt;blowIv;
+         
+        for ($i = 0; $i &lt; $round; $i++) &#123;
+            $encryptedBlock = substr($string, 8 * $i, 8);
+            $temp = $this-&gt;xorBytes($this-&gt;decryptBlock($encryptedBlock), $currentVector);
+            $currentVector = $this-&gt;xorBytes($currentVector, $encryptedBlock);
+            $result .= $temp;
+        &#125;
+         
+        if ($leftLength) &#123;
+            $currentVector = $this-&gt;encryptBlock($currentVector);
+            $result .= $this-&gt;xorBytes(substr($string, 8 * $i, $leftLength), $currentVector);
+        &#125;
+         
+        return $result;
+    &#125;
+     
+    protected function decryptTwelve($upperString)
+    &#123;
+        $string = hex2bin(strtolower($upperString));
+        return openssl_decrypt($string, &#39;AES-128-CBC&#39;, $this-&gt;aesKey, OPENSSL_RAW_DATA, $this-&gt;aesIv);
+    &#125;
+&#125;;
+ 
+ 
+//需要指定版本两种，11或12
+//$navicatPassword = new NavicatPassword(11);
+$navicatPassword = new NavicatPassword(11);
+ 
+//解密
+//$decode = $navicatPassword-&gt;decrypt(&#39;15057D7BA390&#39;);
+$decode = $navicatPassword-&gt;decrypt(&#39;FB916DAFA4CE92143350DCF66AE9&#39;); // navicat密钥
+echo $decode.&quot;\n&quot;;
+?&gt;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226757.png" alt="image-20240429212426207"></p>
+<p>拿到第三部分</p>
+<pre><code>-185817e5f846&#125;
+</code></pre>
+<p>合起来</p>
+<pre><code>flag&#123;ef63fcbc-3467-834f-f797-185817e5f846&#125;
+</code></pre>
+<h2 id="Strangesystem-NTLMv2哈希计算"><a href="#Strangesystem-NTLMv2哈希计算" class="headerlink" title="Strangesystem(NTLMv2哈希计算)"></a>Strangesystem(NTLMv2哈希计算)</h2><pre><code>你是一名安全防护人员，你发现有人成功入侵了公司的服务器，你查找有关的流量设备，发现了一个流量包文件，你认为它可能包含了一些重要的信息。但是当你打开它时，你发现它被加密了：你觉得这个文件可能被某种奇怪的系统加密过，你想要找出加密算法并解密出文件内容。
+</code></pre>
+<p>拿到一个流量 先看http导出 有张<code>q.png</code> 直接导出</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226598.png" alt="image-20240429153504477"></p>
+<p>使用010打开 发现尾部存在压缩包 导出并保存 压缩包真加密存在解压密码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226165.png" alt="image-20240429153736350"></p>
+<p>看到压缩包尾部也存在额外信息 先留着 回来看流量包 QUIC协议的流量包存在加密 搜一下解密方法</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37177958/article/details/120476794">Wireshark对QUIC包的抓包和解包</a></p>
+<p>简单来说 就是使用在抓包时获得的关于TLS握手信息的密钥日志文件 在wireshark编辑——首选项——Protocols——TLS 中将日志文件添加进(Pre)-Master-Secret   Log filename中就可以进行解密</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226671.png" alt="image-20240429155157374"></p>
+<p>这个日志密钥文件 就是我们上面在压缩包后面发现的内容 将这部分信息另存为<code>sshkey.log</code>文件 放入上面提到的位置 就可以进行解密</p>
+<pre><code>SERVER_HANDSHAKE_TRAFFIC_SECRET e8ef73b91b4c9d6e37113bcc88465a7f61badb5fd87177ca51c24ceab944b34a 82ec3ebf3131b2442d165bb00dd6b8d1a6b4c866daf3fd373c22d33886290ed2868a7395e691980b990de46b76a54f9e
+CLIENT_HANDSHAKE_TRAFFIC_SECRET e8ef73b91b4c9d6e37113bcc88465a7f61badb5fd87177ca51c24ceab944b34a 10965df426257a285c6e812ed54468c59437e77bceff2c3a6d633dacefadf8188e97c4935df6815e5398b24273addc79
+SERVER_TRAFFIC_SECRET_0 e8ef73b91b4c9d6e37113bcc88465a7f61badb5fd87177ca51c24ceab944b34a cdbf7c7a161af7aa829b14becaa2c000b8183000983e06589fef0c50e9462cf71aeb487e1cb1defaef06a941234ea7a2
+CLIENT_TRAFFIC_SECRET_0 e8ef73b91b4c9d6e37113bcc88465a7f61badb5fd87177ca51c24ceab944b34a e58e4088a7840d3991ac2336c581d2a35edbebfd14420a29c287444c3631dc98038b71f1d153cd37ba46164145a028fd
+</code></pre>
+<p>解密之后追踪QUIC流 可以看到一组账密和一个html网页</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226193.png" alt="image-20240429155557247"></p>
+<p>网页文件中的内容是</p>
+<pre><code>admin::SecretServer:d158262017948de9:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:010100000000000058b2da67cbe0d001c575cfa48d38bec50000000002001600450047004900540049004d002d00500043003100340001001600450047004900540049004d002d00500043003100340004001600650067006900740069006d002d00500043003100340003001600650067006900740069006d002d0050004300310034000700080058b2da67cbe0d0010600040002000000080030003000000000000000000000000030000065d85a4000a167cdbbf6eff657941f52bc9ee2745e11f10c61bb24db541165800a001000000000000000000000000000000000000900240063006900660073002f003100390032002e003100360038002e0031002e00310030003700000000000000000000000000
+</code></pre>
+<p>中间未知的部分是NETntlmv2的值 我们可以通过前面的一组账密和已知的ntlm值得到NETntlmv2的值 在此之前 我们先一起来学习一些概念 下面我是参考学习的文章</p>
+<p><a target="_blank" rel="noopener" href="https://3gstudent.github.io/Windows%E4%B8%8B%E7%9A%84%E5%AF%86%E7%A0%81hash-NTLM-hash%E5%92%8CNet-NTLM-hash%E4%BB%8B%E7%BB%8D">Windows下的密码hash——NTLM hash和Net-NTLM hash介绍</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/NTLM">NTML</a></p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@notahades/what-is-ntlmv2-31153aa3102c">什么是NTMLv2</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/32272615/is-it-possible-to-convert-netmtlmv2-hash-to-ntlm-hash">由NTLM哈希计算出NETntlmv2哈希</a></p>
+<pre><code>NTLM 是一种质询-响应身份验证协议 
+NTLM 协议使用两个散列密码值中的一个或两个，这两个值也存储在服务器（或域控制器）上，并且通过缺少加盐，它们是等效的密码，这意味着如果您从服务器获取散列值，您可以在不知道实际密码的情况下进行身份验证。这两个是LM 哈希（基于DES 的函数，应用于将密码的前 14 个字符转换为该语言的传统 8 位 PC 字符集）和 NT 哈希（小端UTF-16 Unicode密码的MD4 ） ）。两个哈希值均为 16 字节（128 位）。
+NTLM 协议还使用两个单向函数之一，具体取决于 NTLM 版本； NT LanMan 和 NTLM 版本 1 使用基于 DES 的 LanMan 单向功能 (LMOWF)，而 NTLMv2 使用基于 NT MD4的单向功能 (NTOWF)   这个MD4的加密方法后面也会提到
+</code></pre>
+<pre><code>NTLM hash
+通常是指Windows系统下Security Account Manager中保存的用户密码hash
+该hash的生成方法：
+将明文口令转换成十六进制的格式
+转换成Unicode格式，即在每个字节之后添加0x00
+对Unicode字符串作MD4加密，生成32位的十六进制数字串
+</code></pre>
+<pre><code>NTLMv2（NT LAN Manager 版本 2） 也是一种质询-响应身份验证协议 
+NTLMv2 发送两个对 8 字节服务器质询的响应。每个响应包含服务器质询的16 字节HMAC - MD5哈希值、完全/部分随机生成的客户端质询以及用户密码和其他标识信息的 HMAC-MD5 哈希值。
+NTLMv2的主要功能：
+1.身份验证协议 
+2.质询-响应机制 
+3.散列和加密 NTLMv2 依赖加密技术来保护身份验证数据。它使用 HMAC-MD5（具有 MD5 哈希函数的基于哈希的消息身份验证代码）进行完整性检查，并使用 MD4进行加密。
+4.增强的安全性
+5.兼容性 NTLMv2也向后兼容NTML协议
+6.域身份验证
+</code></pre>
+<pre><code>NTLM认证采用质询/应答（Challenge/Response）的消息交换模式，流程如下：
+1.客户端向服务器发送一个请求，请求中包含明文的登录用户名。服务器会提前存储登录用户名和对应的密码hash
+2.服务器接收到请求后，生成一个16位的随机数(这个随机数被称为Challenge),明文发送回客户端。使用存储的登录用户密码hash加密Challenge，获得Challenge1
+3.客户端接收到Challenge后，使用登录用户的密码hash对Challenge加密，获得Challenge2(这个结果被称为response)，将response发送给服务器
+4.服务器接收客户端加密后的response，比较Challenge1和response，如果相同，验证成功
+在以上流程中，登录用户的密码hash即NTLM hash，response中包含Net-NTLM hash
+这上面提到的NTLM包括NTLMv1 NTLMv2 NTLM sessionV2三种协议 不同协议使用不同格式的challenge和加密算法 因此也就区分出了NETntlmv1 hash和NETntlmv2 hash
+NTLMv2的格式是
+username::domain:challenge:HMAC-MD5:blob
+其中domain是IP或者机器名
+challenge是上面提到的服务器收到请求之后生成的随机数 体现在流量包中是NTLM Server Challenge
+HMAC-MD5在流量包中体现为NTProofstr
+blob是上面提到的使用用户登陆的密码对challenge进行加密之后的challenge1(即response)的值去掉NTProofstr的部分
+</code></pre>
+<p>那么对照上面说的NTLMv2的格式 我们这个题中<code>xxx</code>的部分很明显就是缺少了HMAC-MD5部分的值  好在我们有用户admin的登陆密码 可以计算出这部分缺失的值 同时计算出该用户的NTLMv2 hash值</p>
+<p>下面是计算流程</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226818.png" alt="image-20240429170531714"></p>
+<p>计算方法参考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/32272615/is-it-possible-to-convert-netmtlmv2-hash-to-ntlm-hash">由NTLM哈希计算出NETntlmv2哈希</a>  我们使用python2和python3两个版本来实现这个计算过程</p>
+<pre><code class="python"># python2
+# python2
+
+import hashlib
+import binascii
+import hmac
+
+
+input_ntml = raw_input(&quot;please input password:&quot;)
+_ntml = hashlib.new(&quot;md4&quot;,input_ntml.encode(&quot;utf-16-le&quot;)).digest()
+ntlm = binascii.hexlify(_ntml)
+
+
+input_user = raw_input(&quot;please input username:&quot;)
+input_domain = raw_input(&quot;please input domain:&quot;)
+input_user_and_domain = input_user + input_domain
+encode_user_and_domain = input_user_and_domain.upper().encode(&quot;utf-16-le&quot;).encode(&quot;hex&quot;)
+
+
+firstHMAC = hmac.new(ntlm.decode(&quot;hex&quot;), encode_user_and_domain.decode(&quot;hex&quot;), hashlib.md5).hexdigest()
+
+
+input_challange = raw_input(&quot;please input challenge:&quot;)
+input_blob = raw_input(&quot;please input blob:&quot;)
+type2challenge = input_challange + input_blob
+ntlmv2 = hmac.new(firstHMAC.decode(&quot;hex&quot;), type2challenge.decode(&quot;hex&quot;), hashlib.md5).hexdigest()
+
+print(&quot;NTLMv2 is:&quot;+ ntlmv2)
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226464.png" alt="image-20240429174403973"></p>
+<pre><code class="python"># python3
+
+import hashlib
+import binascii
+import hmac
+
+# 计算密码的ntlm hash值
+input_ntml = input(&quot;please input password:&quot;)
+_ntml = hashlib.new(&quot;md4&quot;, input_ntml.encode(&quot;utf-16-le&quot;)).digest()
+ntlm = binascii.hexlify(_ntml)
+
+# 计算用户名和域名的编码值
+input_user = input(&quot;please input username:&quot;)
+input_domain = input(&quot;please input domain:&quot;)
+input_user_and_domain = input_user + input_domain
+encode_user_and_domain = binascii.hexlify(input_user_and_domain.upper().encode(&quot;utf-16-le&quot;))
+
+# 计算HMAC-hash值
+firstHMAC = hmac.new(binascii.unhexlify(ntlm), binascii.unhexlify(encode_user_and_domain), hashlib.md5).hexdigest()
+
+# 计算NTLMv2 hash值
+input_challenge = input(&quot;please input challenge:&quot;)
+input_blob = input(&quot;please input blob:&quot;)
+type2challenge = input_challenge + input_blob
+ntlmv2 = hmac.new(binascii.unhexlify(firstHMAC), binascii.unhexlify(type2challenge.encode()), hashlib.md5).hexdigest()
+
+print(&quot;NTLMv2 is:&quot; + ntlmv2)
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226056.png" alt="image-20240429174433304"></p>
+<p>最终算出admin用户的NTLMv2哈希值为<code>efa243f442b9d683eb1b00a2b1a0c9fc</code></p>
+<p>使用这个值就可以解压压缩包 得到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404292226647.png" alt="image-20240429174554406"></p>
+<h2 id="Wireshark2-1"><a href="#Wireshark2-1" class="headerlink" title="Wireshark2.1"></a>Wireshark2.1</h2><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281640078.png" alt="image-20240428164034035"></p>
+<p>很显然是theanswerishere.php</p>
+<h2 id="Wireshark2-2"><a href="#Wireshark2-2" class="headerlink" title="Wireshark2.2"></a>Wireshark2.2</h2><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281643179.png" alt="image-20240428164317144"></p>
+<p>刚开始写的2 错误 输入3 对了</p>
+<h2 id="Wireshark2-3"><a href="#Wireshark2-3" class="headerlink" title="Wireshark2.3"></a>Wireshark2.3</h2><pre><code>id=0%27%20union%20select%201,2,group_concat(th1sfI4g)%20from%20fl4g--+
+</code></pre>
+<p>这句查询语句</p>
+<p>很明显列名是th1sfI4g</p>
+<h2 id="Wireshark2-4"><a href="#Wireshark2-4" class="headerlink" title="Wireshark2.4"></a>Wireshark2.4</h2><p>在最后一行直接追踪http流</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281645495.png" alt="image-20240428164531407"></p>
+<h2 id="WeirdUSB-1"><a href="#WeirdUSB-1" class="headerlink" title="WeirdUSB.1"></a>WeirdUSB.1</h2><p>使用取证大师分析 问下载 直接搜download</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281648437.png" alt="image-20240428164854359"></p>
+<p>合并显示 发现目标文件名</p>
+<pre><code>212633.crdownload
+</code></pre>
+<h2 id="WeirdUSB-2"><a href="#WeirdUSB-2" class="headerlink" title="WeirdUSB.2"></a>WeirdUSB.2</h2><p>发现Area2&#x2F;Job2目录下的docx文件是唯一一个访问时间和修改时间相同的</p>
+<p>猜测是该目录下的txt文件</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281658734.png" alt="image-20240428165840676"></p>
+<h2 id="fake-php"><a href="#fake-php" class="headerlink" title="fake_php"></a>fake_php</h2><p>随便输入一些 抓个包 看到要crc32校验</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281653267.png" alt="image-20240428165332188"></p>
+<p>写个脚本进行爆破</p>
+<pre><code class="python">import itertools
+import zlib
+
+# 要匹配的CRC32校验值
+target_crc32 = 0xb4a5bb5a
+
+# 可能的字符集：大小写字母和数字
+chars = &#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@!%$^&amp;*&#39;
+
+# 使用itertools.product生成所有可能的四位字符组合
+for combo in itertools.product(chars, repeat=4):
+    # 将字符元组转换为字符串
+    four_letter_combo = &#39;&#39;.join(combo) + &#39;-/flag&#39;
+    # 计算拼接字符串的CRC32校验值
+    crc32_result = zlib.crc32(four_letter_combo.encode(&#39;utf-8&#39;)) &amp; 0xffffffff
+    # 检查校验值是否与目标匹配
+    if crc32_result == target_crc32:
+        # 如果找到匹配，打印结果并停止
+        print(f&quot;Found matching string: &#123;four_letter_combo&#125;&quot;)
+        break
+else:
+    print(&quot;No matching string found.&quot;)
+</code></pre>
+<p>爆到了S!@#</p>
+<p>写入admin.php 抓包输入上面密码的url密码 得到adminS3cr3t.php</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281657577.png" alt="image-20240428165730488"></p>
+<p>访问</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281658968.png" alt="image-20240428165803920"></p>
+<p>下面参照</p>
+<p><a target="_blank" rel="noopener" href="https://spyclub.tech/2020/08/02/inctf2020-gosqlv3-challenge-writeup/#Phase-1-Being-the-admin">https://spyclub.tech/2020/08/02/inctf2020-gosqlv3-challenge-writeup/#Phase-1-Being-the-admin</a></p>
+<p>存在一个sql绕过 直接打poc 出flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202404281658353.png" alt="image-20240428165822285"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2024/04/29/2024%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD/">http://w3nx1z1.github.io/2024/04/29/2024数字中国/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/misc/">misc</a><a class="post-meta__tags" href="/tags/web/">web</a><a class="post-meta__tags" href="/tags/forensics/">forensics</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/04/13/vulnhub%E9%9D%B6%E5%9C%BADC-9/" title="vulnhub靶场记录DC-9"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">vulnhub靶场记录DC-9</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/03/30/NKCTF2024/" title="2024NKCTF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-30</div><div class="title">2024NKCTF</div></div></a></div><div><a href="/2023/06/03/2023%E5%B9%B4%E9%99%95%E8%A5%BF%E7%9C%81%E8%B5%9B/" title="2023年陕西省赛"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-03</div><div class="title">2023年陕西省赛</div></div></a></div><div><a href="/2024/04/01/2023%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%98/" title="2023极客大挑战"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-01</div><div class="title">2023极客大挑战</div></div></a></div><div><a href="/2023/05/19/LitCTF%E4%B8%80%E4%BA%9B%E9%A2%98%E8%A7%A3/" title="LitCTF一些题解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-19</div><div class="title">LitCTF一些题解</div></div></a></div><div><a href="/2023/07/21/2023%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A2/" title="2023巅峰极客MISC题解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-21</div><div class="title">2023巅峰极客MISC题解</div></div></a></div><div><a href="/2024/02/08/2023%E5%8F%A4%E5%89%91%E5%B1%B1/" title="2024古剑山"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-08</div><div class="title">2024古剑山</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">39</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2024%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD"><span class="toc-text">2024数字中国</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%9A%84System32"><span class="toc-text">重要的System32</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Strangesystem-NTLMv2%E5%93%88%E5%B8%8C%E8%AE%A1%E7%AE%97"><span class="toc-text">Strangesystem(NTLMv2哈希计算)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wireshark2-1"><span class="toc-text">Wireshark2.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wireshark2-2"><span class="toc-text">Wireshark2.2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wireshark2-3"><span class="toc-text">Wireshark2.3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wireshark2-4"><span class="toc-text">Wireshark2.4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WeirdUSB-1"><span class="toc-text">WeirdUSB.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WeirdUSB-2"><span class="toc-text">WeirdUSB.2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fake-php"><span class="toc-text">fake_php</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/29/2024%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD/" title="2024数字中国">2024数字中国</a><time datetime="2024-04-29T15:07:14.050Z" title="发表于 2024-04-29 23:07:14">2024-04-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/13/vulnhub%E9%9D%B6%E5%9C%BADC-9/" title="vulnhub靶场记录DC-9">vulnhub靶场记录DC-9</a><time datetime="2024-04-13T13:40:27.748Z" title="发表于 2024-04-13 21:40:27">2024-04-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/13/2023FIC/" title="2023FIC(除了两个程序分析)">2023FIC(除了两个程序分析)</a><time datetime="2024-04-13T12:31:22.799Z" title="发表于 2024-04-13 20:31:22">2024-04-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/11/2023%E6%B5%99%E8%AD%A6%E8%81%94%E5%90%88%E8%B5%9B/" title="2023浙警联合赛">2023浙警联合赛</a><time datetime="2024-04-11T10:15:08.914Z" title="发表于 2024-04-11 18:15:08">2024-04-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/03/vulnhub%E9%9D%B6%E5%9C%BADC-8/" title="vulnhub靶场记录DC-8">vulnhub靶场记录DC-8</a><time datetime="2024-04-03T08:22:55.429Z" title="发表于 2024-04-03 16:22:55">2024-04-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
