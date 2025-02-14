@@ -1,6 +1,11 @@
 # hexo robots.txt
 User-agent: *
 Allow: /
-
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Allow: /about/
+Allow: /link
+Allow: /messageboard/
 Sitemap: https://w3nx1z1.github.io/sitemap.xml
 Sitemap: https://w3nx1z1.github.io/baidusitemap.xml
