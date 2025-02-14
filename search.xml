@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>对博客进行SEO优化</title>
+      <link href="/posts/75d05e45.html"/>
+      <url>/posts/75d05e45.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="对博客进行SEO优化"><a href="#对博客进行SEO优化" class="headerlink" title="对博客进行SEO优化"></a>对博客进行SEO优化</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>很长一段时间里 发现如果不是在公开场合(包括但不限于pyq或者一些比赛群里面)发过我自己文章的链接的话 文章的浏览量很低 再一次比赛结束之后 学弟和我都发了一篇比赛的wp 他的博客是直接用的博客园 经过搜索发现 他的文章很容易就找到了 在我搜索引擎的第一页 而我的文章翻了好几页都找不到 遂打算对我的博客进行一下SEO优化 </code></pre><p>本篇文章进行的SEO优化操作参考<a href="https://qmike.top/posts/2a1b5a62">Butterfly 进阶篇（一） - SEO 优化搜索引擎收录</a></p><h2 id="站点文章目录优化"><a href="#站点文章目录优化" class="headerlink" title="站点文章目录优化"></a>站点文章目录优化</h2><p>我们可以发现 如果直接使用hexo来搭建博客的话 一般来讲文章的地址路径是[网站url&#x2F;年&#x2F;月&#x2F;日&#x2F;文章名称的url编码]</p><p>类似</p><pre><code>https://w3nx1z1.github.io/2024/12/31/2024%E5%B9%B4%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93/</code></pre><p>但是这种复杂的结构不利于搜索引擎对我们网站文章的爬虫 一般来说最好是在三层目录结构之内 </p><p>因此我们使用<code>hexo-abbrlink</code>插件</p><pre><code># 安装npm install hexo-abbrlink --save</code></pre><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502141640419.png" alt="image-20250214164017299"></p><p>在修改网站根目录下的<code>config.yml</code>文件</p><pre><code># URLurl: http://w3nx1z1.github.iopermalink: posts/:abbrlink.html</code></pre><p>再在底部添加</p><pre><code># abbrlink configabbrlink:  alg: crc32      # support crc16(default) and crc32  rep: hex        # support dec(default) and hex</code></pre><p>执行</p><pre><code>hexo  g -d</code></pre><p>我们发现文章目录结构都变成了[网站url&#x2F;posts&#x2F;随机生成的字符串.html]的格式 </p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502142213375.png" alt="image-20250214221325836"></p><h2 id="创建站点地图"><a href="#创建站点地图" class="headerlink" title="创建站点地图"></a>创建站点地图</h2><p>站点地图 sitemap里面的内容是搜索引擎可以抓取的我们网站上的页面的链接 我们生成这个站点地图之后上传到搜索资源平台 就可以让搜索引擎更完全的爬取我们网站上的页面 从而提高我们网站在搜索结果上的排名 增加我们网站的点击率</p><p>首先安装百度和谷歌的站点地图生成插件</p><pre><code>npm install hexo-generator-baidu-sitemap --savenpm install hexo-generator-sitemap --save</code></pre><p>在网站根目录下的config.yml文件中添加</p><pre><code># 站点地图sitemap:  path: sitemap.xmlbaidusitemap:  path: baidusitemap.xml</code></pre><p>推送之后 发现根目录下public文件夹中出现<code>sitemap.xml</code>和<code>baidusitemap.xml</code>两个文件</p><p>尝试访问</p><pre><code>网站url/sitemap.xml网站url/baidusitemap.xml</code></pre><p>出现下面类似内容说明操作成功</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502142330014.png" alt="image-20250214233002928"></p><h2 id="添加robots-txt"><a href="#添加robots-txt" class="headerlink" title="添加robots.txt"></a>添加robots.txt</h2><p>添加的robots.txt是放在source文件夹下</p><pre><code># hexo robots.txtUser-agent: *Allow: /Sitemap: https://w3nx1z1.github.io/sitemap.xmlSitemap: https://w3nx1z1.github.io/baidusitemap.xml</code></pre><h2 id="加入百度收录"><a href="#加入百度收录" class="headerlink" title="加入百度收录"></a>加入百度收录</h2><p>这里我尝试加入百度收录但是不知道为什么失败了 还是简单说一下流程</p><p>访问<a href="https://ziyuan.baidu.com/">百度搜索资源平台</a></p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502142345069.png" alt="image-20250214234533904"></p><p>后面验证网站如果选择html标签验证 就把content的内容写入<code>_config.butterfly.yml</code> 中的 <code>baidu_site_verification</code></p><pre><code>site_verification:  - name: baidu-site-verification    content: xxxxxxx</code></pre><p>手动收录就是把上面生成的站点地图的链接添加到资源提交——手动提交处</p><pre><code>网站url/sitemap.xml网站url/baidusitemap.xml</code></pre><h2 id="谷歌收录"><a href="#谷歌收录" class="headerlink" title="谷歌收录"></a>谷歌收录</h2><p>访问<a href="https://search.google.com/search-console/welcome">Google Search Console</a></p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502142351776.png" alt="image-20250214235137664"></p><p>在网址前缀输入自己的网站url 然后进行验证</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502142358564.png" alt="image-20250214235808449"></p><p>其中html标记类似前面的百度收录 也是编辑<code>_config.butterfly.yml</code></p><pre><code>site_verification:  - name: google-site-verification    content: xxxx</code></pre><p>html文件验证就是把上面需要下载的文件放到根目录下的source文件夹 在进行推送上传 就可以通过验证</p><p>然后就是添加上面创建的站点地图 等待平台爬取即可</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502150019955.png" alt="image-20250215001906875"></p><h2 id="bing收录"><a href="#bing收录" class="headerlink" title="bing收录"></a>bing收录</h2><p>可以直接从谷歌收录中导入 </p><h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>SEO优化其实是个任重道远的工作 但是经过我们上面的一系列操作之后 是可以看到一些进步的 希望对大家有所帮助 </p><p>下面展示两张截图 是我在配置前和配置后的 可以看到配置前bing搜索结果排名从第一页的第七到配置后变成了第一页的第三</p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502150021027.png" alt="image-20250215002130905"></p><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202502150021560.png" alt="image-20250215002142440"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 随笔 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2025启航杯wp</title>
       <link href="/posts/6f5a3cd.html"/>
       <url>/posts/6f5a3cd.html</url>
