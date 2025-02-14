@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>NKCTF Misc部分复现 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[NSSCTF]Misc部分题复现easy_rgb (montage拼图 gaps恢复顺序 AES加解密)给了一个文件夹和一个有密码的压缩包 文件夹里面有180张小图 考虑用montage拼图后在用gaps拼成正确的图 使用montage 首先在kali中cd进小图所在的文件夹 将小图的总数分解 比如该题180张分为15*12(能分成正方形最好是正方形) 命令为： montage *.png -t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NKCTF Misc部分复现">
+<meta property="og:url" content="http://w3nx1z1.github.io/posts/66e9fcd/index.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="[NSSCTF]Misc部分题复现easy_rgb (montage拼图 gaps恢复顺序 AES加解密)给了一个文件夹和一个有密码的压缩包 文件夹里面有180张小图 考虑用montage拼图后在用gaps拼成正确的图 使用montage 首先在kali中cd进小图所在的文件夹 将小图的总数分解 比如该题180张分为15*12(能分成正方形最好是正方形) 命令为： montage *.png -t">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2023-04-03T11:10:53.209Z">
+<meta property="article:modified_time" content="2025-02-14T08:30:17.429Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="misc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/posts/66e9fcd/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="TndEWE7xyUxTUkbHXgpxFtutY3_VE4qYCNq6-qHt11I"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'NKCTF Misc部分复现',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-14 16:30:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">NKCTF Misc部分复现</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-03T11:10:53.209Z" title="发表于 2023-04-03 19:10:53">2023-04-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-14T08:30:17.429Z" title="更新于 2025-02-14 16:30:17">2025-02-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="NKCTF Misc部分复现"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="NSSCTF-Misc部分题复现"><a href="#NSSCTF-Misc部分题复现" class="headerlink" title="[NSSCTF]Misc部分题复现"></a>[NSSCTF]Misc部分题复现</h1><h2 id="easy-rgb-montage拼图-gaps恢复顺序-AES加解密"><a href="#easy-rgb-montage拼图-gaps恢复顺序-AES加解密" class="headerlink" title="easy_rgb (montage拼图 gaps恢复顺序 AES加解密)"></a>easy_rgb (montage拼图 gaps恢复顺序 AES加解密)</h2><p>给了一个文件夹和一个有密码的压缩包 文件夹里面有180张小图 考虑用montage拼图后在用gaps拼成正确的图</p>
+<p>使用montage</p>
+<p>首先在kali中cd进小图所在的文件夹 将小图的总数分解 比如该题180张分为15*12(能分成正方形最好是正方形) 命令为：</p>
+<p>montage *.png -tile 15x12 -geometry +0+0 flag.png</p>
+<p>就可以在文件夹中找到这个拼接好的图片</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190412049.png" alt="image-20230403190412049"></p>
+<p>然后要用ps 修改图片的长宽为1:1 用较大的数值为边长 是图片为正方形 便于后续size参数的计算</p>
+<p>然后是在kali中使用gaps 恢复正常图片</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190443685.png" alt="image-20230403190443685"></p>
+<p>命令为：python3 gaps –image&#x3D;flag2.png –size&#x3D;125 –save</p>
+<p>size为正方形小图的边长 刚刚ps的时候改变了整体的长宽 注意此时的小正方形的边长也要发生改变</p>
+<p>得到一个密码：NKCTF2023 用此密码打开刚刚的压缩包得到三个文档r.txt g.txt b.txt</p>
+<p>将三个文档内容放在一起 竖着读（脑洞） 发现是压缩包结构</p>
+<pre><code class="python">f_1=open(&#39;r.txt&#39;,&#39;r&#39;)
+f_2=open(&#39;g.txt&#39;,&#39;r&#39;)
+f_3=open(&#39;b.txt&#39;,&#39;r&#39;)
+r1=f_1.read()
+r2=f_2.read()
+r3=f_3.read()
+for i in range(0, len(r2)-1):
+    print(r1[i] + r2[i] + r3[i], end=&#39;&#39;)
+</code></pre>
+<pre><code class="python">504b03041400000008003dba6a5654369fb2420000004000000008000000666c61672e747874f3740aa94cb32c48af0cb22c70760df20932f52bf52fc8f4f70b76370c8b2a28c92d0bf54ccf0fd40f0a712d08890a080b09374a3437b72cc87172f32c4bf6d30600504b010214001400000008003dba6a5654369fb24200000040000000080024000000000000002000000000000000666c61672e7478740a0020000000000001001800c4ecda7d6353d90185c557aa6553d9016a47568f6553d901504b050600000000010001005a0000006800000007004145532d3132
+</code></pre>
+<p>放在010editor里面 save为压缩包 解压得到一串字符</p>
+<p>IBTyf9pgyR9pCERLR5NuOpiONSG1VZptmvUIgoQ&#x2F;RTEpTZPVTW2a779plBFIvcN+</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230329092048534.png" alt="image-20230329092048534"></p>
+<p>提示是AES加密 不需要偏移量 猜测密钥就是刚刚的NKCTF2023</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230329093224178.png" alt="image-20230329093224178"></p>
+<p>:horse:NKCTF{603fcdfc-652b-40e4-90cf-f27c2edc2d9f}</p>
+<h2 id="easy-word-掩码爆破-lsb隐写"><a href="#easy-word-掩码爆破-lsb隐写" class="headerlink" title="easy_word(掩码爆破 lsb隐写)"></a>easy_word(掩码爆破 lsb隐写)</h2><p>先在给的压缩包中看到了注释 对密码信息进行了提示</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230329180648249.png" alt="image-20230329180648249"></p>
+<p>设置掩码进行爆破</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42094992/article/details/102178981?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168008477816800213020232%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=168008477816800213020232&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-102178981-null-null.142%5Ev77%5Econtrol_1,201%5Ev4%5Eadd_ask,239%5Ev2%5Einsert_chatgpt&utm_term=%E8%AE%BE%E7%BD%AE%E6%8E%A9%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%88%86%E7%A0%B4&spm=1018.2226.3001.4187">https://blog.csdn.net/qq_42094992/article/details/102178981?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168008477816800213020232%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=168008477816800213020232&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-102178981-null-null.142^v77^control_1,201^v4^add_ask,239^v2^insert_chatgpt&amp;utm_term=%E8%AE%BE%E7%BD%AE%E6%8E%A9%E7%A0%81%E8%BF%9B%E8%A1%8C%E7%88%86%E7%A0%B4&amp;spm=1018.2226.3001.4187</a></p>
+<p>(掩码设置可以看这篇)</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230329195352821.png" alt="image-20230329195352821"></p>
+<p>得到密码h4evOF90</p>
+<p>打开了加密文档 但是并没有flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230329195747687.png" alt="image-20230329195747687"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230329195834107.png" alt="image-20230329195834107"></p>
+<p>binwalk分离一下  找到了一张图片 拿到key:Welcome_to_NKCTF</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230329195910240.png" alt="image-20230329195910240"></p>
+<p>放到stegsolve中看一下 发现不对劲 是lsb隐写</p>
+<p><img src="https://w3nx1z1.github.io/blogimage@main/image/image-20230329205339042.png" alt="image-20230329205339042"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230329205458115.png" alt="image-20230329205458115"></p>
+<p>密码就是图片中的密码</p>
+<p>得到flag:horse:NKCTF{dc0684dd-5a57-4d47-b9c0-debed0ef28b9}  </p>
+<h2 id="first-spam-of-rabbit-year-与佛论禅-零宽隐写-rot13-rot47-rabbit加解密"><a href="#first-spam-of-rabbit-year-与佛论禅-零宽隐写-rot13-rot47-rabbit加解密" class="headerlink" title="first spam of rabbit year(与佛论禅 零宽隐写 rot13 rot47 rabbit加解密)"></a>first spam of rabbit year(与佛论禅 零宽隐写 rot13 rot47 rabbit加解密)</h2><p>题目已经告诉我们了 这是一个垃圾邮件 翻到最底下 有一串社会主义核心价值观编码：</p>
+<p>法治文明公正民主公正文明公正文明公正敬业法治自由文明富强友善爱国平等爱国友善敬业爱国爱国文明富强公正诚信和谐公正诚信平等法治公正公正平等</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230330135348531.png" alt="image-20230330135348531"></p>
+<p>解码为：rabbit 又 move</p>
+<p>找到一个叫spammimic的网站 可以解密垃圾邮件<a target="_blank" rel="noopener" href="https://www.spammimic.com/decode.cgi">spammimic - decoded</a></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190538577.png" alt="image-20230403190538577"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230330140145317.png" alt="image-20230330140145317"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230330190745310.png"></p>
+<p>试了普通的与佛论禅发现领悟不了佛的真意 尝试是加密的与佛论禅 密码就是rabbit 得到一串字符</p>
+<p><code>&amp;‍‎‏auD5‏‍v&#39;&lt;)‏‍‌</code>h‎‏{dF6C_*’Jrcqzrh&amp;ZaF&gt;<code>g^‏‍‌Hr&#39;&#125;vuHZJB‎‏%~&#125;_H5?gu‌‏‏;q‍‏‌)&quot;&lt;rA?&#123;sH2&#123;IfafKfu=6w_tip:47&amp;13</code></p>
+<p>放在厨子里面看一下 就看到有零宽隐写 在猫捉鱼铃网站上找到在线零宽解密工具</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230330192644150.png" alt="image-20230330192644150"></p>
+<p><code>EnoOoO1G</code>为隐写信息 再刚刚得到的字符串中有tip：47&amp;13 是指rot47和rot13</p>
+<p>对零宽隐写的内容进行rot13解密</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230330193512665.png" alt="image-20230330193512665"></p>
+<p>得到RabBbB1T</p>
+<p>在对字符串<code>&amp;auD5v&#39;&lt;)</code>h{dF6C_*’Jrcqzrh&amp;ZaF&gt;<code>g^Hr&#39;&#125;vuHZJB%~&#125;_H5?gu;q)&quot;&lt;rA?&#123;sH2&#123;IfafKfu=6w</code>进行rot47解码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230330194602713.png" alt="image-20230330194602713"></p>
+<p>得到<code>U‍‎‏2Fsd‏‍GVkX‏‍‌19‎‏L5uer0YVyC4BKC9U+2um18/‏‍‌wCVNGFw+yq‎‏TON0wdn8F‌‏‏jB‍‏‌XQkCpnLDwaLx727z7FleH</code>进行rabbit解密 拿到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230330200221581.png" alt="image-20230330200221581"></p>
+<pre><code>NKCTF&#123;H4Ppy_tH3_Y34r_0f_R4BbBbbbB1tTtTtT&#125;
+</code></pre>
+<h2 id="三体-bmp提取信息"><a href="#三体-bmp提取信息" class="headerlink" title="三体(bmp提取信息)"></a>三体(bmp提取信息)</h2><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/%E4%B8%89%E4%BD%93.bmp" alt="三体"></p>
+<p>开局一张bmp图片</p>
+<pre><code class="python">from PIL import Image
+
+def decode(im):
+    width,height = im.size
+    lst = []
+    for y in range(height):
+        for x in range(width):
+            red,green,blue = im.getpixel((x,y))
+            if(blue | green | red) == 0:
+                break
+            index = (green&lt;&lt;8) + blue
+            lst.append(chr(index))
+    return &#39;&#39;.join(lst)
+
+if __name__==&#39;__main__&#39;:
+
+    all_text = decode(Image.open(&quot;三体.bmp&quot;,&quot;r&quot;))
+    with open (&quot;decode.text&quot;,&quot;w&quot;,encoding = &quot;utf-8&quot;) as f:
+        f.write(all_text)
+</code></pre>
+<p>脚本直接提取</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230330202121371.png" alt="image-20230330202121371"></p>
+<p>NKCTF{3d77dc1a37b2d1ebf489c973f554ea10}</p>
+<h2 id="easy-music-openbuff软件-波形频谱隐写"><a href="#easy-music-openbuff软件-波形频谱隐写" class="headerlink" title="easy_music(openbuff软件 波形频谱隐写)"></a>easy_music(openbuff软件 波形频谱隐写)</h2><p>题目提示要有三个密码</p>
+<p>用audacity打开</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230331075747420.png"></p>
+<p>发现psdB：74208645</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230331082045938.png"></p>
+<p>010editor打开在尾部发现psdC：01374890</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230331082234613.png" alt="image-20230331082234613"></p>
+<p>在前面的波形很像二进制 对应二进制数字是</p>
+<pre><code>01110000 01110011 01100100 01000001 00111010 00111000 00110011 00111001 00110111 00111001 00110011 00110110 00110111 
+</code></pre>
+<p>转为文本(注意为八位算一个字节)</p>
+<p>得到psdA:83979367</p>
+<p>要使用的软件就是openbuff </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230331084007521.png" alt="image-20230331084007521"></p>
+<p>:horse:NKCTF{52d446a51c6896af878f872e0d748118}</p>
+<h2 id="TH-Master-游戏题-作弊器的使用"><a href="#TH-Master-游戏题-作弊器的使用" class="headerlink" title="TH Master(游戏题 作弊器的使用)"></a>TH Master(游戏题 作弊器的使用)</h2><p>游戏题  使用东方星莲船修改器 把分数改成200000000分就OK了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230402121739812.png" alt="image-20230402121739812"></p>
+<p>在replay的th12_01.rpy文件中就可以找到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190622943.png" alt="image-20230403190622943"></p>
+<p>:horse:NKCTF{U_R_re411y_g00d_At_p14ying_t0h0u}</p>
+<h2 id="easy-bmp-爆破出bmp文件的宽度-puzzlesolver工具的使用"><a href="#easy-bmp-爆破出bmp文件的宽度-puzzlesolver工具的使用" class="headerlink" title="easy_bmp(爆破出bmp文件的宽度 puzzlesolver工具的使用)"></a>easy_bmp(爆破出bmp文件的宽度 puzzlesolver工具的使用)</h2><p>打开是一个有密码的压缩包和两张有问题的bmp</p>
+<p>一张直接看出的高度有问题 修改一下得到key的前半段</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190650649.png" alt="image-20230403190650649"></p>
+<p>剩下一张bmp文件名是width提示要修改宽度 选择python脚本来进行爆破 在里面找出最清楚的一张</p>
+<pre><code class="python">import struct
+
+with open(&#39;width.bmp&#39;, &#39;rb&#39;) as f:
+    data = f.read()
+    width = struct.unpack(&#39;&lt;i&#39;, data[18:22])[0]
+    height = struct.unpack(&#39;&lt;i&#39;, data[22:26])[0]
+
+# 爆破 BMP 文件的宽度
+for i in range(1000, 1500):
+    f1 = open(&#39;bpout&#39; + str(i) + &#39;.bmp&#39;, &#39;wb&#39;)
+    img = data[:18] + struct.pack(&#39;&gt;i&#39;, i)[::-1] + data[22:]
+    f1.write(img)
+    f1.close()
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/bpout1404.bmp" alt="bpout1404"></p>
+<p>组合起来就是key：BMP_Height_width_easy</p>
+<p>打开是一张flag.bmp 看到前面图片里的”SAME”猜测也是宽高发生了变化 使用puzzlesolver工具进行处理</p>
+<p>得到一张二维码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190735178.png" alt="image-20230403190735178"></p>
+<p>用sharex扫描一下 得到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190804825.png" alt="image-20230403190804825"></p>
+<p>:horse:NKCTF{eab1291e-9e37-4ff1-b76d-f1af63eaad43}</p>
+<h2 id="easypic-用图片做加密容器的密钥-近邻法缩放图片"><a href="#easypic-用图片做加密容器的密钥-近邻法缩放图片" class="headerlink" title="easypic(用图片做加密容器的密钥 近邻法缩放图片)"></a>easypic(用图片做加密容器的密钥 近邻法缩放图片)</h2><p>题目描述：出题人把flag偷偷藏在加密盘里面了，你知道怎么把它还原出来吗</p>
+<p>附件为一张图片 在图片png文件尾后发现藏了东西 可以分离为一张图片和一个vc容器加密盘 密钥文件就是图片</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190827040.png" alt="image-20230403190827040"></p>
+<p>加密容器里面有一张图片</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190844383.png" alt="image-20230403190844383"></p>
+<p>隐隐约约可以看见背景图层还是一张图片 又在010editor看见flag.png文件尾有一个tip：566*566 所以用ps将图片尺寸改一下</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190909663.png" alt="image-20230403190909663"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230403190927078.png" alt="image-20230403190927078"></p>
+<p>得到flag:horse:NKCTF{49ce8740502743585c4a44404e62d8f9}</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/posts/66e9fcd/">http://w3nx1z1.github.io/posts/66e9fcd/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/misc/">misc</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/posts/ae10e9a0/" title="精武杯预赛要点"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">精武杯预赛要点</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/9b920400/" title="2023年中国工业互联网安全大赛决赛-misc"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-03</div><div class="title">2023年中国工业互联网安全大赛决赛-misc</div></div></a></div><div><a href="/posts/1993ae4b/" title="2023巅峰极客MISC题解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-21</div><div class="title">2023巅峰极客MISC题解</div></div></a></div><div><a href="/posts/f5b0b099/" title="2023年陕西省赛"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-03</div><div class="title">2023年陕西省赛</div></div></a></div><div><a href="/posts/352a8c69/" title="2024古剑山"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-08</div><div class="title">2024古剑山</div></div></a></div><div><a href="/posts/b645f749/" title="2023愚人杯misc wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-13</div><div class="title">2023愚人杯misc wp</div></div></a></div><div><a href="/posts/b348ce4d/" title="2023极客大挑战"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-01</div><div class="title">2023极客大挑战</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NSSCTF-Misc%E9%83%A8%E5%88%86%E9%A2%98%E5%A4%8D%E7%8E%B0"><span class="toc-text">[NSSCTF]Misc部分题复现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-rgb-montage%E6%8B%BC%E5%9B%BE-gaps%E6%81%A2%E5%A4%8D%E9%A1%BA%E5%BA%8F-AES%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-text">easy_rgb (montage拼图 gaps恢复顺序 AES加解密)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-word-%E6%8E%A9%E7%A0%81%E7%88%86%E7%A0%B4-lsb%E9%9A%90%E5%86%99"><span class="toc-text">easy_word(掩码爆破 lsb隐写)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#first-spam-of-rabbit-year-%E4%B8%8E%E4%BD%9B%E8%AE%BA%E7%A6%85-%E9%9B%B6%E5%AE%BD%E9%9A%90%E5%86%99-rot13-rot47-rabbit%E5%8A%A0%E8%A7%A3%E5%AF%86"><span class="toc-text">first spam of rabbit year(与佛论禅 零宽隐写 rot13 rot47 rabbit加解密)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E4%BD%93-bmp%E6%8F%90%E5%8F%96%E4%BF%A1%E6%81%AF"><span class="toc-text">三体(bmp提取信息)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-music-openbuff%E8%BD%AF%E4%BB%B6-%E6%B3%A2%E5%BD%A2%E9%A2%91%E8%B0%B1%E9%9A%90%E5%86%99"><span class="toc-text">easy_music(openbuff软件 波形频谱隐写)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TH-Master-%E6%B8%B8%E6%88%8F%E9%A2%98-%E4%BD%9C%E5%BC%8A%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">TH Master(游戏题 作弊器的使用)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-bmp-%E7%88%86%E7%A0%B4%E5%87%BAbmp%E6%96%87%E4%BB%B6%E7%9A%84%E5%AE%BD%E5%BA%A6-puzzlesolver%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">easy_bmp(爆破出bmp文件的宽度 puzzlesolver工具的使用)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easypic-%E7%94%A8%E5%9B%BE%E7%89%87%E5%81%9A%E5%8A%A0%E5%AF%86%E5%AE%B9%E5%99%A8%E7%9A%84%E5%AF%86%E9%92%A5-%E8%BF%91%E9%82%BB%E6%B3%95%E7%BC%A9%E6%94%BE%E5%9B%BE%E7%89%87"><span class="toc-text">easypic(用图片做加密容器的密钥 近邻法缩放图片)</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/75d05e45/" title="对博客进行SEO优化">对博客进行SEO优化</a><time datetime="2025-02-14T08:41:37.455Z" title="发表于 2025-02-14 16:41:37">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6f5a3cd/" title="2025启航杯wp">2025启航杯wp</a><time datetime="2025-01-25T15:56:54.364Z" title="发表于 2025-01-25 23:56:54">2025-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2f21d3bc/" title="2025龙信考核比武">2025龙信考核比武</a><time datetime="2025-01-11T01:20:22.398Z" title="发表于 2025-01-11 09:20:22">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/67db48b9/" title="2024冀信杯决赛">2024冀信杯决赛</a><time datetime="2025-01-10T16:54:11.458Z" title="发表于 2025-01-11 00:54:11">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5b3dd75d/" title="DASCTF 2024最后一战 | Misc">DASCTF 2024最后一战 | Misc</a><time datetime="2025-01-08T10:00:09.647Z" title="发表于 2025-01-08 18:00:09">2025-01-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

