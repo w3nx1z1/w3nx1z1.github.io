@@ -6,7 +6,7 @@
   <link href="http://w3nx1z1.github.io/atom.xml" rel="self"/>
   
   <link href="http://w3nx1z1.github.io/"/>
-  <updated>2025-09-12T11:26:17.927Z</updated>
+  <updated>2025-10-01T07:01:51.981Z</updated>
   <id>http://w3nx1z1.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>2025年9月联考学习记录</title>
+    <link href="http://w3nx1z1.github.io/posts/4ab653c8.html"/>
+    <id>http://w3nx1z1.github.io/posts/4ab653c8.html</id>
+    <published>2025-10-01T07:00:58.270Z</published>
+    <updated>2025-10-01T07:01:51.981Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;2025年9月联考学习记录&quot;&gt;&lt;a href=&quot;#2025年9月联考学习记录&quot; class=&quot;headerlink&quot; title=&quot;2025年9月联考学习记录&quot;&gt;&lt;/a&gt;2025年9月联考学习记录&lt;/h1&gt;&lt;h2 id=&quot;9-1周一&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="http://w3nx1z1.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>2025年第九届工业信息安全技能大赛典型工业场景锦标赛CTF wp</title>
     <link href="http://w3nx1z1.github.io/posts/b58e5da6.html"/>
     <id>http://w3nx1z1.github.io/posts/b58e5da6.html</id>
     <published>2025-09-12T11:08:02.408Z</published>
-    <updated>2025-09-12T11:26:17.927Z</updated>
+    <updated>2025-09-12T11:26:49.069Z</updated>
     
     
       
@@ -191,13 +214,13 @@
     
     <category term="misc" scheme="http://w3nx1z1.github.io/tags/misc/"/>
     
+    <category term="crypto" scheme="http://w3nx1z1.github.io/tags/crypto/"/>
+    
     <category term="web" scheme="http://w3nx1z1.github.io/tags/web/"/>
     
     <category term="re" scheme="http://w3nx1z1.github.io/tags/re/"/>
     
     <category term="forensics" scheme="http://w3nx1z1.github.io/tags/forensics/"/>
-    
-    <category term="crypto" scheme="http://w3nx1z1.github.io/tags/crypto/"/>
     
   </entry>
   
@@ -486,31 +509,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;Offensive-Pentesting-GameZone&quot;&gt;&lt;a href=&quot;#Offensive-Pentesting-GameZone&quot; class=&quot;headerlink&quot; title=&quot;Offensive</summary>
-        
-      
-    
-    
-    
-    <category term="渗透" scheme="http://w3nx1z1.github.io/categories/%E6%B8%97%E9%80%8F/"/>
-    
-    
-    <category term="打靶" scheme="http://w3nx1z1.github.io/tags/%E6%89%93%E9%9D%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Offensive Pentesting-Kenobi</title>
-    <link href="http://w3nx1z1.github.io/posts/77f3502a.html"/>
-    <id>http://w3nx1z1.github.io/posts/77f3502a.html</id>
-    <published>2024-11-26T09:04:45.988Z</published>
-    <updated>2025-02-14T08:30:17.426Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Offensive-Pentesting-Kenobi&quot;&gt;&lt;a href=&quot;#Offensive-Pentesting-Kenobi&quot; class=&quot;headerlink&quot; title=&quot;Offensive</summary>
         
       
     
